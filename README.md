@@ -26,15 +26,53 @@ The success of the interoperability framework depends on uptake by the ledger so
 
 There is one or more interface specifications for each of the interactions in the overview diagram.  All technical specifications are developed using the [COSS](http://rfc.unprotocols.org/spec:2/COSS/) (Consensus Oriented Specification System) governance model.  COSS ensures that any interested party can participate (because it imposes no restrictins on contributions). It also maximises consensus because, if the editor does not accept your contribution, you can always fork the specification and become the new editor (if others agree they'll follow, but if nobody else likes your fork then you'll be editor of a lonely specification that will wither on the vine).
 
-## The Identity Provider
+## The Identity Provider (IDP)
 
-## The Digital Capability Locator
+A federated set of one or more identity providers are the key source of trust for the network.  This specificaiton defines a standard taxonomy of OIDC claims and scopes, together with a set of identity assurance levels and a standard way to link identity claims.
+* [https://github.com/ausdigital/identity-provider](IDP Working Group)
+* IDP Discussion Group
 
-## The Service Metadata Publisher
+| Specification URL | Status | Test Service | Comments |
+| ----------------- | ------ | ------------ | -------- |
+| Blah | Blah | Blah  | Blah |
 
-## The Access Point
+
+## The Digital Capability Locator (DCL)
+
+The framework assumes that there could be multiple SMP in the network and so the digital capability locator is essentially a DNS entry (NAPTR Record type) that is used to redirect a lookup query for a given business identifier to the correct SMP.
+
+* [https://github.com/ausdigital/capability-locator](DCL Working Group)
+* DCL Discussion Group
+
+| Specification URL | Status | Test Service | Comments |
+| ----------------- | ------ | ------------ | -------- |
+| Blah | Blah | Blah  | Blah |
+
+
+## The Service Metadata Publisher (SMP)
+
+The framework depends heavily on the ability to discover detailed service information for any given business identifier.  The SMP maintains a list of businesses, with a list of services for each business. Each service lists supported document formats and transport protocols and holds a digital certificate for message signing and encryption.
+
+* [https://github.com/ausdigital/metadata-publisher](DCL Working Group)
+* SMP Discussion Group
+
+| Specification URL | Status | Test Service | Comments |
+| ----------------- | ------ | ------------ | -------- |
+| Blah | Blah | Blah  | Blah |
+
+## The Access Point (AP)
+
+The access point, usually provided by the ledger vendor, is the service gateway for a given business and so hosts the end-point to which business documents are sent.  The gateway is an avaialbility mediator (allowing specific businesses to have intermittent connectivity) and is responsible for signature validation and submitting transactions to the notary service.
+
+* [https://github.com/ausdigital/access-point](DCL Working Group)
+* SMP Discussion Group
+
+| Specification URL | Status | Test Service | Comments |
+| ----------------- | ------ | ------------ | -------- |
+| Blah | Blah | Blah  | Blah |
 
 ## The Notary
+
 
 ## Invocing Semantics
 
