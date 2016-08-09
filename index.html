@@ -28,9 +28,76 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h1>
-<a id="ausdigitalgithubio" class="anchor" href="#ausdigitalgithubio" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ausdigital.github.io</h1>
+<a id="purpose-of-this-site" class="anchor" href="#purpose-of-this-site" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Purpose of this site</h1>
 
-<p>Homepage for ausdigital specifications</p>
+<p>The <a href="http://digitalbusinesscouncil.com.au/">Australian Digital Business Council</a> has published an interoperability framework that aims to increase national productivity through automation of common buisness processes such as invoicing.  This site makes the framework easy to implement by providing </p>
+
+<ul>
+<li>simple and readable technical specifications that are the normative reference for what to build.</li>
+<li>links to reference implementations that you may use to speed up your own implementation.</li>
+<li>links to test cases and test end-points that you can use to be sure that your implementation will work.</li>
+<li>links to collaboration forums and mailing lists for special interest groups that seek to leverage or extend the framework.</li>
+</ul>
+
+<p>As an implementer you may choose to just read the information and use the tools presented here - or you may wish to participate more actively by contributing to the specification development or reference implementations.  </p>
+
+<h1>
+<a id="framework-overview" class="anchor" href="#framework-overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Framework Overview</h1>
+
+<p>Unlike single provoder APIs (eg google or facebook), a B2B community needs many different systems to implement the same service interfaces (eg an e-invoicing end-point) so that any business can send any other business an invoice.  The many-to-many aspect of B2B transactions requires a few extra components in the framework as shown in the conceptual overview diagram.</p>
+
+<p><img src="AusDigitalHomepage.png" alt="Framework Diagram"></p>
+
+<p>For any of the millions of buisnesses in an economy to be able to exchange electronic business documents with any other business:</p>
+
+<ul>
+<li>Buyers and sellers may have different ledger systems but they must expose access points that conforms to a common interface standard.</li>
+<li>Independent and trusted identity providers need to be able to confirm business identity (to avoid every business having to issue passwords to every other business)</li>
+<li>Electronic service end-point information needs to be discoverable via a registry because a sender system will generally know the identity of a receiver (eg ABN 1234) but not necessarily the technical data about how and where to send and electronic invoice.</li>
+<li>Security measures such as signatures, encryption, and notaries are essential to provide trust and reduce fraud opportunities.</li>
+</ul>
+
+<p>The success of the interoperability framework depends on uptake by the ledger software providers. Those systems must implement a numebr of interfaces in a consistent way - which requires clear standards, good test services, and easy to use tooling.  That is the purpose of this site.</p>
+
+<h1>
+<a id="the-specifications" class="anchor" href="#the-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Specifications</h1>
+
+<p>There is one or more interface specifications for each of the interactions in the overview diagram.  All technical specifications are developed using the <a href="http://rfc.unprotocols.org/spec:2/COSS/">COSS</a> (Consensus Oriented Specification System) governance model.  COSS ensures that any interested party can participate (because it imposes no restrictins on contributions). It also maximises consensus because, if the editor does not accept your contribution, you can always fork the specification and become the new editor (if others agree they'll follow, but if nobody else likes your fork then you'll be editor of a lonely specification that will wither on the vine).</p>
+
+<h2>
+<a id="the-identity-provider" class="anchor" href="#the-identity-provider" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Identity Provider</h2>
+
+<h2>
+<a id="the-digital-capability-locator" class="anchor" href="#the-digital-capability-locator" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Digital Capability Locator</h2>
+
+<h2>
+<a id="the-service-metadata-publisher" class="anchor" href="#the-service-metadata-publisher" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Service Metadata Publisher</h2>
+
+<h2>
+<a id="the-access-point" class="anchor" href="#the-access-point" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Access Point</h2>
+
+<h2>
+<a id="the-notary" class="anchor" href="#the-notary" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Notary</h2>
+
+<h2>
+<a id="invocing-semantics" class="anchor" href="#invocing-semantics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Invocing Semantics</h2>
+
+<h2>
+<a id="purchase-order-semantics" class="anchor" href="#purchase-order-semantics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Purchase Order Semantics</h2>
+
+<h2>
+<a id="shipping-notice-semantcis" class="anchor" href="#shipping-notice-semantcis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Shipping Notice Semantcis</h2>
+
+<h1>
+<a id="the-special-interest-groups" class="anchor" href="#the-special-interest-groups" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Special Interest Groups</h1>
+
+<p>Some interest groups cross multiple specifications and may have an impact on many of them but are not, in themselves, the logical owners of a particular specification.  We value the support and opinions of such groups and so we are happy to provide some collaboration tools to facilitate consultation and collaboration with such groups.  If you'd like to participate (or just watch the conversation) of a particular group then please follow the links to subscribe.</p>
+
+<h2>
+<a id="security-interest-group" class="anchor" href="#security-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Security Interest Group</h2>
+
+<h2>
+<a id="trade-finance-interest-group" class="anchor" href="#trade-finance-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Trade Finance Interest Group</h2>
       </section>
     </div>
 
