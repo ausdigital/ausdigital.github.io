@@ -35,8 +35,8 @@
 <ul>
 <li>simple and readable technical specifications that are the normative reference for what to build.</li>
 <li>links to reference implementations that you may use to speed up your own implementation.</li>
-<li>links to test cases and test end-points that you can use to be sure that your implementation will work.</li>
-<li>links to collaboration forums and mailing lists for special interest groups that seek to leverage or extend the framework.</li>
+<li>links to test cases and test end-points that you can use to be sure that your implementation is functioning correctly.</li>
+<li>links to collaboration forums and mailing lists for special interest groups that seek to contribute to the evolution of the framework.</li>
 </ul>
 
 <p>As an implementer you may choose to just read the information and use the tools presented here - or you may wish to participate more actively by contributing to the specification development or reference implementations.  </p>
@@ -60,33 +60,235 @@
 <p>The success of the interoperability framework depends on uptake by the ledger software providers. Those systems must implement a numebr of interfaces in a consistent way - which requires clear standards, good test services, and easy to use tooling.  That is the purpose of this site.</p>
 
 <h1>
-<a id="the-specifications" class="anchor" href="#the-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Specifications</h1>
+<a id="the-technical-framework-specifications" class="anchor" href="#the-technical-framework-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Technical Framework Specifications</h1>
 
 <p>There is one or more interface specifications for each of the interactions in the overview diagram.  All technical specifications are developed using the <a href="http://rfc.unprotocols.org/spec:2/COSS/">COSS</a> (Consensus Oriented Specification System) governance model.  COSS ensures that any interested party can participate (because it imposes no restrictins on contributions). It also maximises consensus because, if the editor does not accept your contribution, you can always fork the specification and become the new editor (if others agree they'll follow, but if nobody else likes your fork then you'll be editor of a lonely specification that will wither on the vine).</p>
 
 <h2>
-<a id="the-identity-provider" class="anchor" href="#the-identity-provider" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Identity Provider</h2>
+<a id="implementation-compliance-statement" class="anchor" href="#implementation-compliance-statement" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Implementation Compliance Statement</h2>
+
+<p>As a software application vendor seeking compliance with the framework you;</p>
+
+<ul>
+<li>MUST support the AP specification, and</li>
+<li>MUST support the client role in the DCL specification, and</li>
+<li>MUST support the client role in the SMP specification, and</li>
+<li>SHOULD support the RP (Relying Party) role in the IDP specification, and</li>
+<li>MAY support the client role in the NRY specification, and</li>
+<li>MAY choose to outsource these specification compliance requirements to a compliant third party</li>
+</ul>
 
 <h2>
-<a id="the-digital-capability-locator" class="anchor" href="#the-digital-capability-locator" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Digital Capability Locator</h2>
+<a id="the-identity-provider-idp" class="anchor" href="#the-identity-provider-idp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Identity Provider (IDP)</h2>
+
+<p>A federated set of one or more identity providers are the key source of trust for the network.  This specificaiton defines a standard taxonomy of OIDC claims and scopes, together with a set of identity assurance levels and a standard way to link identity claims.</p>
+
+<ul>
+<li><a href="IDP%20Working%20Group">https://github.com/ausdigital/identity-provider</a></li>
+<li>IDP Discussion Group</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>Specification URL</th>
+<th>Status</th>
+<th>Test Service</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blah</td>
+<td>Blah</td>
+<td>Blah</td>
+<td>Blah</td>
+</tr>
+</tbody>
+</table>
 
 <h2>
-<a id="the-service-metadata-publisher" class="anchor" href="#the-service-metadata-publisher" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Service Metadata Publisher</h2>
+<a id="the-digital-capability-locator-dcl" class="anchor" href="#the-digital-capability-locator-dcl" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Digital Capability Locator (DCL)</h2>
+
+<p>The framework assumes that there could be multiple SMP in the network and so the digital capability locator is essentially a DNS entry (NAPTR Record type) that is used to redirect a lookup query for a given business identifier to the correct SMP.</p>
+
+<ul>
+<li><a href="DCL%20Working%20Group">https://github.com/ausdigital/capability-locator</a></li>
+<li>DCL Discussion Group</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>Specification URL</th>
+<th>Status</th>
+<th>Test Service</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blah</td>
+<td>Blah</td>
+<td>Blah</td>
+<td>Blah</td>
+</tr>
+</tbody>
+</table>
 
 <h2>
-<a id="the-access-point" class="anchor" href="#the-access-point" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Access Point</h2>
+<a id="the-service-metadata-publisher-smp" class="anchor" href="#the-service-metadata-publisher-smp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Service Metadata Publisher (SMP)</h2>
+
+<p>The framework depends heavily on the ability to discover detailed service information for any given business identifier.  The SMP maintains a list of businesses, with a list of services for each business. Each service lists supported document formats and transport protocols and holds a digital certificate for message signing and encryption.</p>
+
+<ul>
+<li><a href="SMP%20Working%20Group">https://github.com/ausdigital/metadata-publisher</a></li>
+<li>SMP Discussion Group</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>Specification URL</th>
+<th>Status</th>
+<th>Test Service</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blah</td>
+<td>Blah</td>
+<td>Blah</td>
+<td>Blah</td>
+</tr>
+</tbody>
+</table>
 
 <h2>
-<a id="the-notary" class="anchor" href="#the-notary" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Notary</h2>
+<a id="the-access-point-ap" class="anchor" href="#the-access-point-ap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Access Point (AP)</h2>
+
+<p>The access point, usually provided by the ledger vendor, is the service gateway for a given business and so hosts the end-point to which business documents are sent.  The gateway is an avaialbility mediator (allowing specific businesses to have intermittent connectivity) and is responsible for signature validation and submitting transactions to the notary service.</p>
+
+<ul>
+<li><a href="AP%20Working%20Group">https://github.com/ausdigital/access-point</a></li>
+<li>AP Discussion Group</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>Specification URL</th>
+<th>Status</th>
+<th>Test Service</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blah</td>
+<td>Blah</td>
+<td>Blah</td>
+<td>Blah</td>
+</tr>
+</tbody>
+</table>
 
 <h2>
-<a id="invocing-semantics" class="anchor" href="#invocing-semantics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Invocing Semantics</h2>
+<a id="the-notary-nry" class="anchor" href="#the-notary-nry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Notary (NRY)</h2>
+
+<p>The notary serivce provides an irrefutable history of a specific "contract" (eg an invoice and it's status lifecycle), recorded in a blockchain distributed ledger.  This service supports dispute resolution and provides the foundation platform for financial services such as debtor financing.</p>
+
+<ul>
+<li><a href="NRY%20Working%20Group">https://github.com/ausdigital/notary</a></li>
+<li>NRY Discussion Group</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>Specification URL</th>
+<th>Status</th>
+<th>Test Service</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blah</td>
+<td>Blah</td>
+<td>Blah</td>
+<td>Blah</td>
+</tr>
+</tbody>
+</table>
+
+<h1>
+<a id="the-business-document-semantic-specifications" class="anchor" href="#the-business-document-semantic-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Business Document Semantic Specifications</h1>
+
+<p>The technical framework exists only to provide the foundation for the secure and reliable interchange of business documents such as electronic invoices.  The specifications in this section describe the semantics of each business document.  Note that;</p>
+
+<ul>
+<li>the semantics can vary depending on the process context - for example "commercial invoice" and "reciptient created tax invoice" are two different processes that leverage the same document type.<br>
+</li>
+<li>each process has at least two roles (eg Buyer and Seller) with different requirements under the specification.<br>
+</li>
+</ul>
+
+<p>Therefore the semantic specifictions group compliance requirements by process and role.</p>
+
+<p>Like the technical specifications, the semantic specification are developed using the <a href="http://rfc.unprotocols.org/spec:2/COSS/">COSS</a> (Consensus Oriented Specification System) governance model.</p>
+
+<h2>
+<a id="compliance-statement" class="anchor" href="#compliance-statement" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compliance Statement</h2>
+
+<p>As a software application vendor seeking compliance with the framework you;</p>
+
+<ul>
+<li>SHOULD support one or more of the business document semantic specifications, and</li>
+<li>MAY choose to support one or more processes for the given business document, and</li>
+<li>MAY choose to support one or more roles (eg buyer or seller) in the relevant process, and</li>
+<li>MUST publish all supported semantic documents, processes, and roles to an SMP</li>
+</ul>
+
+<h2>
+<a id="billing-semantics" class="anchor" href="#billing-semantics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Billing Semantics</h2>
+
+<p>The Billing Specifications are based on <a href="http://docs.oasis-open.org/ubl/UBL-2.1.html">OASIS UBL2.1</a> <a href="http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html#S-BILLING">billing semantics</a> and include the Invoice, Credit Note, Debit Note, and Application Response documents.  The process roles are buyer and seller.</p>
+
+<ul>
+<li><a href="Billing%20Working%20Group">https://github.com/ausdigital/billing-semantics</a></li>
+<li>Billing Discussion Group</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>Specification URL</th>
+<th>Status</th>
+<th>Test Service</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blah</td>
+<td>Blah</td>
+<td>Blah</td>
+<td>Blah</td>
+</tr>
+</tbody>
+</table>
 
 <h2>
 <a id="purchase-order-semantics" class="anchor" href="#purchase-order-semantics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Purchase Order Semantics</h2>
 
+<p>Coming soon - let us know if you'd like to lead this group.</p>
+
 <h2>
-<a id="shipping-notice-semantcis" class="anchor" href="#shipping-notice-semantcis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Shipping Notice Semantcis</h2>
+<a id="shipping-notice-semantics" class="anchor" href="#shipping-notice-semantics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Shipping Notice Semantics</h2>
+
+<p>Coming soon - let us know if you'd like to lead this group</p>
 
 <h1>
 <a id="the-special-interest-groups" class="anchor" href="#the-special-interest-groups" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Special Interest Groups</h1>
@@ -96,8 +298,12 @@
 <h2>
 <a id="security-interest-group" class="anchor" href="#security-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Security Interest Group</h2>
 
+<p>Coming soon - let us know if you'd like to moderate this group</p>
+
 <h2>
 <a id="trade-finance-interest-group" class="anchor" href="#trade-finance-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Trade Finance Interest Group</h2>
+
+<p>Coming soon - let us know if you'd like to moderate this croup</p>
       </section>
     </div>
 
