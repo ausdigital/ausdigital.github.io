@@ -3,8 +3,8 @@
 The [Australian Digital Business Council](http://digitalbusinesscouncil.com.au/) has published an interoperability framework that aims to increase national productivity through automation of common buisness processes such as invoicing.  This site makes the framework easy to implement by providing 
 * simple and readable technical specifications that are the normative reference for what to build.
 * links to reference implementations that you may use to speed up your own implementation.
-* links to test cases and test end-points that you can use to be sure that your implementation will work.
-* links to collaboration forums and mailing lists for special interest groups that seek to leverage or extend the framework.
+* links to test cases and test end-points that you can use to be sure that your implementation is functioning correctly.
+* links to collaboration forums and mailing lists for special interest groups that seek to contribute to the evolution of the framework.
 
 As an implementer you may choose to just read the information and use the tools presented here - or you may wish to participate more actively by contributing to the specification development or reference implementations.  
 
@@ -22,9 +22,19 @@ For any of the millions of buisnesses in an economy to be able to exchange elect
 
 The success of the interoperability framework depends on uptake by the ledger software providers. Those systems must implement a numebr of interfaces in a consistent way - which requires clear standards, good test services, and easy to use tooling.  That is the purpose of this site.
 
-# The Specifications
+# The Technical Framework Specifications
 
 There is one or more interface specifications for each of the interactions in the overview diagram.  All technical specifications are developed using the [COSS](http://rfc.unprotocols.org/spec:2/COSS/) (Consensus Oriented Specification System) governance model.  COSS ensures that any interested party can participate (because it imposes no restrictins on contributions). It also maximises consensus because, if the editor does not accept your contribution, you can always fork the specification and become the new editor (if others agree they'll follow, but if nobody else likes your fork then you'll be editor of a lonely specification that will wither on the vine).
+
+## Implementation Compliance Statement
+
+As a software application vendor seeking compliance with the framework you;
+* MUST support the AP specification, and
+* MUST support the client role in the DCL specification, and
+* MUST support the client role in the SMP specification, and
+* SHOULD support the RP (Relying Party) role in the IDP specification, and
+* MAY support the client role in the NRY specification, and
+* MAY choose to outsource these specification compliance requirements to a compliant third party
 
 ## The Identity Provider (IDP)
 
@@ -53,7 +63,7 @@ The framework assumes that there could be multiple SMP in the network and so the
 
 The framework depends heavily on the ability to discover detailed service information for any given business identifier.  The SMP maintains a list of businesses, with a list of services for each business. Each service lists supported document formats and transport protocols and holds a digital certificate for message signing and encryption.
 
-* [https://github.com/ausdigital/metadata-publisher](DCL Working Group)
+* [https://github.com/ausdigital/metadata-publisher](SMP Working Group)
 * SMP Discussion Group
 
 | Specification URL | Status | Test Service | Comments |
@@ -64,21 +74,60 @@ The framework depends heavily on the ability to discover detailed service inform
 
 The access point, usually provided by the ledger vendor, is the service gateway for a given business and so hosts the end-point to which business documents are sent.  The gateway is an avaialbility mediator (allowing specific businesses to have intermittent connectivity) and is responsible for signature validation and submitting transactions to the notary service.
 
-* [https://github.com/ausdigital/access-point](DCL Working Group)
-* SMP Discussion Group
+* [https://github.com/ausdigital/access-point](AP Working Group)
+* AP Discussion Group
 
 | Specification URL | Status | Test Service | Comments |
 | ----------------- | ------ | ------------ | -------- |
 | Blah | Blah | Blah  | Blah |
 
-## The Notary
+## The Notary (NRY)
 
+The notary serivce provides an irrefutable history of a specific "contract" (eg an invoice and it's status lifecycle), recorded in a blockchain distributed ledger.  This service supports dispute resolution and provides the foundation platform for financial services such as debtor financing.
 
-## Invocing Semantics
+* [https://github.com/ausdigital/notary](NRY Working Group)
+* NRY Discussion Group
+
+| Specification URL | Status | Test Service | Comments |
+| ----------------- | ------ | ------------ | -------- |
+| Blah | Blah | Blah  | Blah |
+
+# The Business Document Semantic Specifications
+
+The technical framework exists only to provide the foundation for the secure and reliable interchange of business documents such as electronic invoices.  The specifications in this section describe the semantics of each business document.  Note that;
+* the semantics can vary depending on the process context - for example "commercial invoice" and "reciptient created tax invoice" are two different processes that leverage the same document type.   
+* each process has at least two roles (eg Buyer and Seller) with different requirements under the specification.  
+
+Therefore the semantic specifictions group compliance requirements by process and role.
+
+Like the technical specifications, the semantic specification are developed using the [COSS](http://rfc.unprotocols.org/spec:2/COSS/) (Consensus Oriented Specification System) governance model.
+
+## Compliance Statement
+
+As a software application vendor seeking compliance with the framework you;
+* SHOULD support one or more of the business document semantic specifications, and
+* MAY choose to support one or more processes for the given business document, and
+* MAY choose to support one or more roles (eg buyer or seller) in the relevant process, and
+* MUST publish all supported semantic documents, processes, and roles to an SMP
+
+## Billing Semantics
+
+The Billing Specifications are based on [OASIS UBL2.1](http://docs.oasis-open.org/ubl/UBL-2.1.html) [billing semantics](http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html#S-BILLING) and include the Invoice, Credit Note, Debit Note, and Application Response documents.  The process roles are buyer and seller.
+
+* [https://github.com/ausdigital/billing-semantics](Billing Working Group)
+* Billing Discussion Group
+
+| Specification URL | Status | Test Service | Comments |
+| ----------------- | ------ | ------------ | -------- |
+| Blah | Blah | Blah  | Blah |
 
 ## Purchase Order Semantics
 
-## Shipping Notice Semantcis
+Coming soon - let us know if you'd like to lead this group.
+
+## Shipping Notice Semantics
+
+Coming soon - let us know if you'd like to lead this group
 
 # The Special Interest Groups
 
@@ -86,7 +135,10 @@ Some interest groups cross multiple specifications and may have an impact on man
 
 ## Security Interest Group
 
+Coming soon - let us know if you'd like to moderate this group
+
 ## Trade Finance Interest Group
 
+Coming soon - let us know if you'd like to moderate this croup
 
 
