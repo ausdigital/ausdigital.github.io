@@ -24,7 +24,19 @@ The success of the interoperability framework depends on uptake by the ledger so
 
 # The Technical Framework Specifications
 
-There is one or more interface specifications for each of the interactions in the overview diagram.  All technical specifications are developed using the [COSS](http://rfc.unprotocols.org/spec:2/COSS/) (Consensus Oriented Specification System) governance model.  COSS ensures that any interested party can participate (because it imposes no restrictins on contributions). It also maximises consensus because, if the editor does not accept your contribution, you can always fork the specification and become the new editor (if others agree they'll follow, but if nobody else likes your fork then you'll be editor of a lonely specification that will wither on the vine).
+There is one or more interface specifications for each of the interactions in the overview diagram.  
+
+## Specification Governance model
+
+All technical specifications are developed using the [COSS](http://rfc.unprotocols.org/spec:2/COSS/) (Consensus Oriented Specification System) governance model.  COSS ensures that any interested party can participate (because it imposes no restrictins on contributions). It also maximises consensus because, if the editor does not accept your contribution, you can always fork the specification and become the new editor (if others agree they'll follow, but if nobody else likes your fork then you'll be editor of a lonely specification that will wither on the vine).
+
+A new technical specification can be launched at any time via the following process:
+1. [Raise a ticket](https://github.com/ausdigital/ausdigital.github.io/issues) in with title “Proposed SPEC”.  Document a high level scope and purpose of the proposed spec in the issue.
+2. Prove evidence of participation interest by collecting "+1" in the form of comments on the issue from at least 6 other people from at least 3 different organisations. 
+3. Nominate an Editor
+4. Indicate acceptance of the [COSS](http://rfc.unprotocols.org/spec:2/COSS/) governance model and the [http://semver.org/](SemVer) versioning model for specification development.
+5. Once steps 1 to 4 are complete, we will create the repository, give the editor write access, and add the default document template
+6. The new editor should then notify relevant special interest groups of issues or questions regarding the new SPEC
 
 ## Implementation Compliance Statement
 
