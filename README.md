@@ -52,8 +52,8 @@ As a software application vendor seeking compliance with the framework you;
 ## The Identity Provider (IDP)
 
 A federated set of one or more identity providers are the key source of trust for the network.  This specificaiton defines a standard taxonomy of OIDC claims and scopes, together with a set of identity assurance levels and a standard way to link identity claims.
-* [https://github.com/ausdigital/identity-provider](IDP Working Group)
-* IDP Discussion Group
+* [IDP Working Group](https://github.com/ausdigital/identity-provider)
+* [IDP Discussion Group](http://talk.testpoint.io/outreach-sig/channels/spec-idp)
 
 | Specification URL | Status | Test Service | Comments |
 | ----------------- | ------ | ------------ | -------- |
@@ -64,8 +64,8 @@ A federated set of one or more identity providers are the key source of trust fo
 
 The framework assumes that there could be multiple SMP in the network and so the digital capability locator is essentially a DNS entry (NAPTR Record type) that is used to redirect a lookup query for a given business identifier to the correct SMP.
 
-* [https://github.com/ausdigital/capability-locator](DCL Working Group)
-* DCL Discussion Group
+* [DCL Working Group](https://github.com/ausdigital/capability-locator)
+* [DCL Discussion Group](http://talk.testpoint.io/outreach-sig/channels/spec-dcp)
 
 | Specification URL | Status | Test Service | Comments |
 | ----------------- | ------ | ------------ | -------- |
@@ -76,8 +76,8 @@ The framework assumes that there could be multiple SMP in the network and so the
 
 The framework depends heavily on the ability to discover detailed service information for any given business identifier.  The SMP maintains a list of businesses, with a list of services for each business. Each service lists supported document formats and transport protocols and holds a digital certificate for message signing and encryption.
 
-* [https://github.com/ausdigital/metadata-publisher](SMP Working Group)
-* SMP Discussion Group
+* [SMP Working Group](https://github.com/ausdigital/metadata-publisher)
+* [SMP Discussion Group](http://talk.testpoint.io/outreach-sig/channels/spec-smp)
 
 | Specification URL | Status | Test Service | Comments |
 | ----------------- | ------ | ------------ | -------- |
@@ -87,8 +87,8 @@ The framework depends heavily on the ability to discover detailed service inform
 
 The access point, usually provided by the ledger vendor, is the service gateway for a given business and so hosts the end-point to which business documents are sent.  The gateway is an avaialbility mediator (allowing specific businesses to have intermittent connectivity) and is responsible for signature validation and submitting transactions to the notary service.
 
-* [https://github.com/ausdigital/access-point](AP Working Group)
-* AP Discussion Group
+* [AP Working Group](https://github.com/ausdigital/access-point])
+* [AP Discussion Group](http://talk.testpoint.io/outreach-sig/channels/spec-ap)
 
 | Specification URL | Status | Test Service | Comments |
 | ----------------- | ------ | ------------ | -------- |
@@ -98,8 +98,8 @@ The access point, usually provided by the ledger vendor, is the service gateway 
 
 The notary serivce provides an irrefutable history of a specific "contract" (eg an invoice and it's status lifecycle), recorded in a blockchain distributed ledger.  This service supports dispute resolution and provides the foundation platform for financial services such as debtor financing.
 
-* [https://github.com/ausdigital/notary](NRY Working Group)
-* NRY Discussion Group
+* [NRY Working Group](https://github.com/ausdigital/notary)
+* [NRY Discussion Group](http://talk.testpoint.io/outreach-sig/channels/spec-nry)
 
 | Specification URL | Status | Test Service | Comments |
 | ----------------- | ------ | ------------ | -------- |
@@ -127,8 +127,8 @@ As a software application vendor seeking compliance with the framework you;
 
 The Billing Specifications are based on [OASIS UBL2.1](http://docs.oasis-open.org/ubl/UBL-2.1.html) [billing semantics](http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html#S-BILLING) and include the Invoice, Credit Note, Debit Note, and Application Response documents.  The process roles are buyer and seller.
 
-* [https://github.com/ausdigital/billing-semantics](Billing Working Group)
-* Billing Discussion Group
+* [Billing Working Group](https://github.com/ausdigital/billing-semantics)
+* [Billing Discussion Group](http://talk.testpoint.io/outreach-sig/channels/spec-billing)
 
 | Specification URL | Status | Test Service | Comments |
 | ----------------- | ------ | ------------ | -------- |
