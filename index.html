@@ -17,16 +17,16 @@
 
     <section class="main-content">
       <h1>
-<a id="purpose-of-this-site" class="anchor" href="#purpose-of-this-site" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Purpose of this Site</h1>
+<a id="purpose-of-this-site" class="anchor" href="#purpose-of-this-site" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Purpose of this site</h1>
 
-<p>Exchange of buisness documents like invoices between business finance systems ought to be as simple as sending and email.  This site provides some open specifications and test services designed to make that easy.</p>
+<p>Exchange of buisness documents like invoices between business finance systems ought to be as simple as email.  This site provides some open specifications and test services designed to make that easy.</p>
 
 <ul>
 <li>As a business, I want to send electronic invoices to my customer systems and know the payment status so I can manage my cashflow and get cheap debtor financing if I need it.</li>
 <li>As a business I want all invoices and tax receipts from my authorised suppliers to be automatically loaded to my financial system ready for my approval so I can reduce my administration burden.</li>
 </ul>
 
-<p>To support that goal, this site provides</p>
+<p>To support these scenarios financial software vendors need to meet common standards. This site provides</p>
 
 <ul>
 <li>A suite of technical specifications - including <a href="#the-odentity-provider-specification">identity-provider</a>, <a href="#the-digital-capability-locator-specification">capability-lookup</a>, <a href="#the-service-metadata-publisher-specification">metadata-publisher</a>, <a href="#the-access-point-specification">access-point</a>, and <a href="#the-notary-specification">notary</a>
@@ -35,7 +35,7 @@
 </li>
 <li>A set of special interest groups including <a href="#development-and-testing-interest-group">development</a>, <a href="#engagement-interest-group">engagement</a>, <a href="#information-security-and-privacy-interest-group">infoSec</a>, <a href="#ledger-ervices-interest-group">ledger services</a>, and <a href="#trade-finance-interest-group">trade finance</a>
 </li>
-<li>An open and transparent <a href="#specification-governance-model">governance and participation</a> model that performas all work in the public domain and is open to participation by intrested parties.</li>
+<li>An open and transparent <a href="#specification-governance-model">governance and participation</a> model that performs all work in the public domain and is open to participation by interested parties.</li>
 </ul>
 
 <h1>
@@ -44,10 +44,10 @@
 <p>The <a href="http://digitalbusinesscouncil.com.au/">Australian Digital Business Council</a> has promised to publish an interoperability framework that aims to increase national productivity through automation of common buisness processes such as invoicing.  We anticipate that the published framework will include;</p>
 
 <ul>
-<li>A discovery model based on OASIS BDX and SMP standards</li>
-<li>A messaging model based on OASIS ebMS3/AS4 standards</li>
-<li>A semantic model based on OASIS UBL 2.1 standards
-We will link to them when they are published.<br>
+<li>A discovery model based on OASIS <a href="http://docs.oasis-open.org/bdxr/BDX-Location/v1.0/cs01/BDX-Location-v1.0-cs01.html">BDX-L</a> and <a href="http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/cs01/bdx-smp-v1.0-cs01.html">SMP</a> standards</li>
+<li>A messaging model based on OASIS <a href="http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/core/os/ebms_core-3.0-spec-os.html">ebMS3</a> and <a href="http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/profiles/AS4-profile/v1.0/os/AS4-profile-v1.0-os.html">AS4</a> standards</li>
+<li>A semantic model based on OASIS <a href="http://docs.oasis-open.org/ubl/UBL-2.1.html">UBL 2.1</a> standards
+We will link to Australian profiles when they are published.<br>
 </li>
 </ul>
 
@@ -56,11 +56,9 @@ We will link to them when they are published.<br>
 <h1>
 <a id="how-it-works" class="anchor" href="#how-it-works" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How it Works</h1>
 
-<p>Unlike single provider APIs (eg google or facebook), a B2B community needs many different systems to implement the same service interfaces (eg an e-invoicing end-point) so that any business can send any other business an invoice.  The many-to-many aspect of B2B transactions requires a few extra components in the framework as shown in the conceptual overview diagram.</p>
+<p>Unlike single provider APIs (eg google or facebook), a B2B community needs all businesses to implement the same interface so that the same document format (e.g. an invoice) can be send from any business to any other business.  The many-to-many aspect of B2B transactions requires a few extra components in the framework as shown in the conceptual overview diagram.</p>
 
 <p><img src="AusDigitalHomepage.png" alt="Framework Diagram"></p>
-
-<p>For any of the millions of buisnesses in an economy to be able to exchange electronic business documents with any other business:</p>
 
 <ul>
 <li>Buyers and sellers may have different ledger systems but they must expose access points that conforms to a common interface standard.</li>
@@ -69,20 +67,20 @@ We will link to them when they are published.<br>
 <li>Security measures such as signatures, encryption, and notaries are essential to provide trust and reduce fraud opportunities.</li>
 </ul>
 
-<p>The success of the interoperability framework depends on uptake by the ledger software providers. Those systems must implement a numebr of interfaces in a consistent way - which requires clear standards, good test services, and easy to use tooling.  That is the purpose of this site.</p>
+<p>The success of the interoperability framework depends on uptake by the ledger software providers. Those systems must implement a number of interfaces in a consistent way - which requires clear standards, good test services, and easy to use tooling.  That is the purpose of this site.</p>
 
 <h1>
-<a id="the-technical-framework-specifications" class="anchor" href="#the-technical-framework-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Technical Framework Specifications</h1>
+<a id="the-technical-framework-specifications" class="anchor" href="#the-technical-framework-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The technical framework specifications</h1>
 
-<p>There is one or more interface specifications for each of the interactions in the overview diagram.  </p>
+<p>There are five technical specifications, each with it's own github repository.  Ledger vendors must implement in accordance with the <a href="#compliance-statement-for-technical-specifications">compliance statement</a></p>
 
 <h2>
-<a id="the-identity-provider-specification" class="anchor" href="#the-identity-provider-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Identity Provider Specification</h2>
+<a id="the-identity-provider-specification" class="anchor" href="#the-identity-provider-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The identity provider specification</h2>
 
-<p>A federated set of one or more identity providers are the key source of trust for the network.  This specificaiton defines a standard taxonomy of OIDC claims and scopes, together with a set of identity assurance levels and a standard way to link identity claims.</p>
+<p>A federated set of one or more identity providers are the key source of trust for the network.  This specification defines a standard taxonomy of OIDC claims and scopes, together with a set of identity assurance levels and a standard way to link identity claims.</p>
 
 <ul>
-<li><a href="https://github.com/ausdigital/identity-provider">IDP Githib Working Group</a></li>
+<li><a href="https://github.com/ausdigital/identity-provider">IDP Github Working Group</a></li>
 </ul>
 
 <table>
@@ -109,9 +107,9 @@ We will link to them when they are published.<br>
 </table>
 
 <h2>
-<a id="the-digital-capability-locator-specification" class="anchor" href="#the-digital-capability-locator-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Digital Capability Locator Specification</h2>
+<a id="the-digital-capability-locator-specification" class="anchor" href="#the-digital-capability-locator-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The digital capability locator specification</h2>
 
-<p>The framework assumes that there could be multiple SMP in the network and so the digital capability locator is essentially a DNS entry (NAPTR Record type) that is used to redirect a lookup query for a given business identifier to the correct SMP.</p>
+<p>The framework assumes that there could be multiple metadata publishers (SMP) in the network and so the digital capability locator is essentially a DNS entry (NAPTR Record type) that is used to redirect a lookup query for a given business identifier to the correct SMP.</p>
 
 <ul>
 <li><a href="https://github.com/ausdigital/capability-locator">DCL Working Group</a></li>
@@ -141,7 +139,7 @@ We will link to them when they are published.<br>
 </table>
 
 <h2>
-<a id="the-service-metadata-publisher-specification" class="anchor" href="#the-service-metadata-publisher-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Service Metadata Publisher Specification</h2>
+<a id="the-service-metadata-publisher-specification" class="anchor" href="#the-service-metadata-publisher-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The service metadata publisher specification</h2>
 
 <p>The framework depends heavily on the ability to discover detailed service information for any given business identifier.  The SMP maintains a list of businesses, with a list of services for each business. Each service lists supported document formats and transport protocols and holds a digital certificate for message signing and encryption.</p>
 
@@ -173,9 +171,9 @@ We will link to them when they are published.<br>
 </table>
 
 <h2>
-<a id="the-access-point-specification" class="anchor" href="#the-access-point-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Access Point Specification</h2>
+<a id="the-access-point-specification" class="anchor" href="#the-access-point-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The access point specification</h2>
 
-<p>The access point, usually provided by the ledger vendor, is the service gateway for a given business and so hosts the end-point to which business documents are sent.  The gateway is an avaialbility mediator (allowing specific businesses to have intermittent connectivity) and is responsible for signature validation and submitting transactions to the notary service.</p>
+<p>The access point, usually provided by the ledger vendor, is the service gateway for a given business and so hosts the end-point to which business documents are sent. The gateway is an avaialbility mediator (allowing specific businesses to have intermittent connectivity) and is responsible for signature validation and submitting transactions to the notary service.</p>
 
 <ul>
 <li><a href="https://github.com/ausdigital/access-point%5D">AP Working Group</a></li>
@@ -205,7 +203,7 @@ We will link to them when they are published.<br>
 </table>
 
 <h2>
-<a id="the-notary-specification" class="anchor" href="#the-notary-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Notary Specification</h2>
+<a id="the-notary-specification" class="anchor" href="#the-notary-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The notary specification</h2>
 
 <p>The notary serivce provides an irrefutable history of a specific "contract" (eg an invoice and it's status lifecycle), recorded in a blockchain distributed ledger.  This service supports dispute resolution and provides the foundation platform for financial services such as debtor financing.</p>
 
@@ -237,7 +235,7 @@ We will link to them when they are published.<br>
 </table>
 
 <h1>
-<a id="the-business-document-semantic-specifications" class="anchor" href="#the-business-document-semantic-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Business Document Semantic Specifications</h1>
+<a id="the-business-document-semantic-specifications" class="anchor" href="#the-business-document-semantic-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The business document semantic specifications</h1>
 
 <p>The technical framework exists only to provide the foundation for the secure and reliable interchange of business documents such as electronic invoices.  The specifications in this section describe the semantics of each business document.  Note that;</p>
 
@@ -253,7 +251,7 @@ We will link to them when they are published.<br>
 <p>Like the technical specifications, the semantic specification are developed using the <a href="http://rfc.unprotocols.org/spec:2/COSS/">COSS</a> (Consensus Oriented Specification System) governance model.</p>
 
 <h2>
-<a id="billing-semantics-specification" class="anchor" href="#billing-semantics-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Billing Semantics Specification</h2>
+<a id="billing-semantics-specification" class="anchor" href="#billing-semantics-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Billing semantics specification</h2>
 
 <p>The Billing Specifications are based on <a href="http://docs.oasis-open.org/ubl/UBL-2.1.html">OASIS UBL2.1</a> <a href="http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html#S-BILLING">billing semantics</a> and include the Invoice, Credit Note, Debit Note, and Application Response documents.  The process roles are buyer and seller.</p>
 
@@ -285,22 +283,22 @@ We will link to them when they are published.<br>
 </table>
 
 <h2>
-<a id="purchase-order-semantics-specification" class="anchor" href="#purchase-order-semantics-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Purchase Order Semantics Specification</h2>
+<a id="purchase-order-semantics-specification" class="anchor" href="#purchase-order-semantics-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Purchase order semantics specification</h2>
 
-<p>Coming soon - let us know if you'd like to lead this group.</p>
+<p>Coming soon - let us know if you'd like to lead this group</p>
 
 <h2>
-<a id="shipping-notice-semantics-specification" class="anchor" href="#shipping-notice-semantics-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Shipping Notice Semantics Specification</h2>
+<a id="shipping-notice-semantics-specification" class="anchor" href="#shipping-notice-semantics-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Shipping notice semantics specification</h2>
 
 <p>Coming soon - let us know if you'd like to lead this group</p>
 
 <h1>
-<a id="the-special-interest-groups" class="anchor" href="#the-special-interest-groups" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Special Interest Groups</h1>
+<a id="the-special-interest-groups" class="anchor" href="#the-special-interest-groups" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The special interest groups</h1>
 
-<p>Some interest groups cross multiple specifications and may have an impact on many of them but are not, in themselves, the logical owners of a particular specification.  We value the support and opinions of such groups and so we provide some collaboration tools to facilitate consultation and collaboration with such groups.  If you'd like to participate (or just watch the conversation) of a particular group then please follow the links to subscribe to the chat channel or low volume mailing list.  If you'd like to create a new special interest group, please join the engagement group and raise your request there.</p>
+<p>We value the support and opinions of special interest groups and so we provide some collaboration tools to facilitate consultation and collaboration.  If you'd like to participate (or just watch the conversation) of a particular group then please follow the links to subscribe to the chat channel or low volume mailing list.  If you'd like to create a new special interest group, please join the engagement group and raise your request there.</p>
 
 <h2>
-<a id="development-and-testing-interest-group" class="anchor" href="#development-and-testing-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Development and Testing Interest Group</h2>
+<a id="development-and-testing-interest-group" class="anchor" href="#development-and-testing-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Development and testing interest group</h2>
 
 <p>A special interest group for implementers that would like to share their experiences and get help from a community of implementers. </p>
 
@@ -312,7 +310,7 @@ We will link to them when they are published.<br>
 </ul>
 
 <h2>
-<a id="engagement-interest-group" class="anchor" href="#engagement-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Engagement Interest Group</h2>
+<a id="engagement-interest-group" class="anchor" href="#engagement-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Engagement interest group</h2>
 
 <p>A special interest group that is focussed on stakeholder engagement and outreach in order to ensure that all interested parties are aware and have the opportunity to participate.</p>
 
@@ -324,7 +322,7 @@ We will link to them when they are published.<br>
 </ul>
 
 <h2>
-<a id="information-security-and-privacy-interest-group" class="anchor" href="#information-security-and-privacy-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Information Security and Privacy Interest Group</h2>
+<a id="information-security-and-privacy-interest-group" class="anchor" href="#information-security-and-privacy-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Information security and privacy interest group</h2>
 
 <p>A special interest group for those concerned about information security and privacy issues related to the specifciations.</p>
 
@@ -336,7 +334,7 @@ We will link to them when they are published.<br>
 </ul>
 
 <h2>
-<a id="ledger-services-interest-group" class="anchor" href="#ledger-services-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ledger Services Interest Group</h2>
+<a id="ledger-services-interest-group" class="anchor" href="#ledger-services-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ledger services interest group</h2>
 
 <p>A special interest group for financial software vendors to discuss an issues related to ledger systems and their support for the specification.</p>
 
@@ -348,7 +346,7 @@ We will link to them when they are published.<br>
 </ul>
 
 <h2>
-<a id="trade-finance-interest-group" class="anchor" href="#trade-finance-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Trade Finance Interest Group</h2>
+<a id="trade-finance-interest-group" class="anchor" href="#trade-finance-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Trade finance interest group</h2>
 
 <p>A special interest group for financial software vendors to discuss an issues related to ledger systems and their support for the specification.</p>
 
@@ -360,14 +358,14 @@ We will link to them when they are published.<br>
 </ul>
 
 <h1>
-<a id="specification-governance-model" class="anchor" href="#specification-governance-model" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Specification Governance model</h1>
+<a id="specification-governance-model" class="anchor" href="#specification-governance-model" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Specification governance model</h1>
 
 <p>All technical specifications are developed using the <a href="http://rfc.unprotocols.org/spec:2/COSS/">COSS</a> (Consensus Oriented Specification System) governance model.  COSS ensures that any interested party can participate (because it imposes no restrictins on contributions). It also maximises consensus because, if the editor does not accept your contribution, you can always fork the specification and become the new editor (if others agree they'll follow, but if nobody else likes your fork then you'll be editor of a lonely specification that will wither on the vine).</p>
 
 <h2>
-<a id="participation" class="anchor" href="#participation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Participation</h2>
+<a id="how-to-participate" class="anchor" href="#how-to-participate" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to participate</h2>
 
-<p>All specifications are developed in the public domain.  To make your voice heard, you can</p>
+<p>All specifications are developed in the public domain.  To make your voice heard, you can:</p>
 
 <ul>
 <li>Raise a ticket on any of the relevant repositories</li>
@@ -383,7 +381,7 @@ We will link to them when they are published.<br>
 6. The new editor should then notify relevant special interest groups of issues or questions regarding the new SPEC</p>
 
 <h2>
-<a id="implementation-compliance-statement-for-technical-specifications" class="anchor" href="#implementation-compliance-statement-for-technical-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Implementation Compliance Statement for technical specifications</h2>
+<a id="compliance-statement-for-technical-specifications" class="anchor" href="#compliance-statement-for-technical-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compliance statement for technical specifications</h2>
 
 <p>As a software application vendor seeking compliance with the framework you;</p>
 
@@ -394,9 +392,10 @@ We will link to them when they are published.<br>
 <li>SHOULD support the RP (Relying Party) role in the IDP specification, and</li>
 <li>MAY support the client role in the NRY specification, and</li>
 <li>MAY choose to outsource these specification compliance requirements to a compliant third party</li>
-<li>
-## Compliance Statement for semantic specifications</li>
 </ul>
+
+<h2>
+<a id="compliance-statement-for-semantic-specifications" class="anchor" href="#compliance-statement-for-semantic-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compliance statement for semantic specifications</h2>
 
 <p>As a software application vendor seeking compliance with the framework you;</p>
 
