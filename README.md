@@ -4,7 +4,7 @@ Exchange of buisness documents like invoices between business finance systems ou
 * As a business, I want to send electronic invoices to my customer systems and know the payment status so I can manage my cashflow and get cheap debtor financing if I need it.
 * As a business I want all invoices and tax receipts from my authorised suppliers to be automatically loaded to my financial system ready for my approval so I can reduce my administration burden.
 
-To support these scenarios financial software vendors need to meet common standards. This site provides
+We want the simplest, lowest cost and most secure solution to these needs so we've developed a suite of RESFul API standards and thrown in strong identity measures that support end-to-end encryption and digital signatures.  This site supports implementers by providing:
 * A suite of technical specifications - including [identity-provider](#the-identity-provider-specification), [capability-lookup](#the-digital-capability-locator-specification), [metadata-publisher](#the-service-metadata-publisher-specification), [access-point](#the-access-point-specification), and [notary](#the-notary-specification)
 * A suite of semantic specifications -  initially [billing-semantics](#billing-semantics-specification) and, in future, [order-semantics](#purchase-order-semantics-specification), [shipping-semantics](#shipping-notice-semantics-specification)
 * A set of special interest groups including [development](#development-and-testing-interest-group), [engagement](#engagement-interest-group), [infoSec](#information-security-and-privacy-interest-group), [ledger services](#ledger-services-interest-group), and [trade finance](#trade-finance-interest-group)
