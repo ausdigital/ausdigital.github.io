@@ -5,10 +5,10 @@ Exchange of buisness documents like invoices between business finance systems ou
 * As a business I want all invoices and tax receipts from my authorised suppliers to be automatically loaded to my financial system ready for my approval so I can reduce my administration burden.
 
 To support that goal, this site provides
-* A suite of technical specifications - including [identity-provider](#The Identity Provider Specification), [capability-lookup](#The Digital Capability Locator Specification), [metadata-publisher](#The Service Metadata Publisher Specification), [access-point](#The Access Point Specification), and [notary](#The Notary Specification)
-* A suite of semantic specifications -  initially [billing-semantics](#Billing Semantics Specification) and, in future, [order-semantics](#Purchase Order Semantics Specification), [shipping-semantics](#Shipping Notice Semantics Specification)
-* A set of special interest groups including [development](#Development and Testing Interest Group), [engagement](Engagement Interest Group), [infoSec](#Information Security and Privacy Interest Group), [ledger services](Ledger Services Interest Group), and [trade finance](Trade Finance Interest Group)
-* An open and transparent [governance and participation](#Specification Governance model) model that performas all work in the public domain and is open to participation by intrested parties.
+* A suite of technical specifications - including [identity-provider](#the-odentity-provider-specification), [capability-lookup](#the-digital-capability-locator-specification), [metadata-publisher](#the-service-metadata-publisher-specification), [access-point](#the-access-point-specification), and [notary](#the-notary-specification)
+* A suite of semantic specifications -  initially [billing-semantics](#billing-semantics-specification) and, in future, [order-semantics](#purchase-order-semantics-specification), [shipping-semantics](#shipping-notice-semantics-specification)
+* A set of special interest groups including [development](#development-and-testing-interest-group), [engagement](#engagement-interest-group), [infoSec](#information-security-and-privacy-interest-group), [ledger services](#ledger-ervices-interest-group), and [trade finance](#trade-finance-interest-group)
+* An open and transparent [governance and participation](#specification-governance-model) model that performas all work in the public domain and is open to participation by intrested parties.
 
 # Background
 
