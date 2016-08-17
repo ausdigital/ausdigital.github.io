@@ -85,12 +85,12 @@
 </ul>
 
 <h2>
-<a id="the-identity-provider-idp" class="anchor" href="#the-identity-provider-idp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Identity Provider (IDP)</h2>
+<a id="the-identity-provider-idp-specification" class="anchor" href="#the-identity-provider-idp-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Identity Provider (IDP) Specification</h2>
 
 <p>A federated set of one or more identity providers are the key source of trust for the network.  This specificaiton defines a standard taxonomy of OIDC claims and scopes, together with a set of identity assurance levels and a standard way to link identity claims.</p>
 
 <ul>
-<li><a href="https://github.com/ausdigital/identity-provider">IDP Working Group</a></li>
+<li><a href="https://github.com/ausdigital/identity-provider">IDP Githib Working Group</a></li>
 <li><a href="http://talk.testpoint.io/outreach-sig/channels/spec-idp">IDP Discussion Group</a></li>
 </ul>
 
@@ -98,6 +98,7 @@
 <thead>
 <tr>
 <th>Specification URL</th>
+<th>Version</th>
 <th>Status</th>
 <th>API Definition</th>
 <th>Test Service</th>
@@ -107,6 +108,7 @@
 <tbody>
 <tr>
 <td>Readthedocs link</td>
+<td>1.0</td>
 <td>Draft</td>
 <td>Swaggerhub Link</td>
 <td>testpoint.io link</td>
@@ -116,7 +118,7 @@
 </table>
 
 <h2>
-<a id="the-digital-capability-locator-dcl" class="anchor" href="#the-digital-capability-locator-dcl" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Digital Capability Locator (DCL)</h2>
+<a id="the-digital-capability-locator-dcl-specification" class="anchor" href="#the-digital-capability-locator-dcl-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Digital Capability Locator (DCL) Specification</h2>
 
 <p>The framework assumes that there could be multiple SMP in the network and so the digital capability locator is essentially a DNS entry (NAPTR Record type) that is used to redirect a lookup query for a given business identifier to the correct SMP.</p>
 
@@ -129,6 +131,7 @@
 <thead>
 <tr>
 <th>Specification URL</th>
+<th>Version</th>
 <th>Status</th>
 <th>API Definition</th>
 <th>Test Service</th>
@@ -138,6 +141,7 @@
 <tbody>
 <tr>
 <td>Readthedocs link</td>
+<td>1.0</td>
 <td>Draft</td>
 <td>Swaggerhub Link</td>
 <td>testpoint.io link</td>
@@ -147,7 +151,7 @@
 </table>
 
 <h2>
-<a id="the-service-metadata-publisher-smp" class="anchor" href="#the-service-metadata-publisher-smp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Service Metadata Publisher (SMP)</h2>
+<a id="the-service-metadata-publisher-smp-specification" class="anchor" href="#the-service-metadata-publisher-smp-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Service Metadata Publisher (SMP) Specification</h2>
 
 <p>The framework depends heavily on the ability to discover detailed service information for any given business identifier.  The SMP maintains a list of businesses, with a list of services for each business. Each service lists supported document formats and transport protocols and holds a digital certificate for message signing and encryption.</p>
 
@@ -160,6 +164,7 @@
 <thead>
 <tr>
 <th>Specification URL</th>
+<th>Version</th>
 <th>Status</th>
 <th>API Definition</th>
 <th>Test Service</th>
@@ -169,6 +174,7 @@
 <tbody>
 <tr>
 <td>Readthedocs link</td>
+<td>1.0</td>
 <td>Draft</td>
 <td><a href="https://swaggerhub.com/api/ausdigital/smp/0.1">SMP API v0.1</a></td>
 <td><a href="https://smp.testpoint.io">smp.testpoint.io</a></td>
@@ -178,7 +184,7 @@
 </table>
 
 <h2>
-<a id="the-access-point-ap" class="anchor" href="#the-access-point-ap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Access Point (AP)</h2>
+<a id="the-access-point-ap-specification" class="anchor" href="#the-access-point-ap-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Access Point (AP) Specification</h2>
 
 <p>The access point, usually provided by the ledger vendor, is the service gateway for a given business and so hosts the end-point to which business documents are sent.  The gateway is an avaialbility mediator (allowing specific businesses to have intermittent connectivity) and is responsible for signature validation and submitting transactions to the notary service.</p>
 
@@ -191,6 +197,7 @@
 <thead>
 <tr>
 <th>Specification URL</th>
+<th>Version</th>
 <th>Status</th>
 <th>API Definition</th>
 <th>Test Service</th>
@@ -200,6 +207,7 @@
 <tbody>
 <tr>
 <td>Readthedocs link</td>
+<td>1.0</td>
 <td>Draft</td>
 <td>Swaggerhub Link</td>
 <td>testpoint.io link</td>
@@ -209,7 +217,7 @@
 </table>
 
 <h2>
-<a id="the-notary-nry" class="anchor" href="#the-notary-nry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Notary (NRY)</h2>
+<a id="the-notary-nry-specification" class="anchor" href="#the-notary-nry-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Notary (NRY) Specification</h2>
 
 <p>The notary serivce provides an irrefutable history of a specific "contract" (eg an invoice and it's status lifecycle), recorded in a blockchain distributed ledger.  This service supports dispute resolution and provides the foundation platform for financial services such as debtor financing.</p>
 
@@ -222,6 +230,7 @@
 <thead>
 <tr>
 <th>Specification URL</th>
+<th>Version</th>
 <th>Status</th>
 <th>API Definition</th>
 <th>Test Service</th>
@@ -231,6 +240,7 @@
 <tbody>
 <tr>
 <td>Readthedocs link</td>
+<td>1.0</td>
 <td>Draft</td>
 <td>Swaggerhub Link</td>
 <td>testpoint.io link</td>
@@ -268,7 +278,7 @@
 </ul>
 
 <h2>
-<a id="billing-semantics" class="anchor" href="#billing-semantics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Billing Semantics</h2>
+<a id="billing-semantics-specification" class="anchor" href="#billing-semantics-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Billing Semantics Specification</h2>
 
 <p>The Billing Specifications are based on <a href="http://docs.oasis-open.org/ubl/UBL-2.1.html">OASIS UBL2.1</a> <a href="http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html#S-BILLING">billing semantics</a> and include the Invoice, Credit Note, Debit Note, and Application Response documents.  The process roles are buyer and seller.</p>
 
@@ -281,6 +291,7 @@
 <thead>
 <tr>
 <th>Specification URL</th>
+<th>Version</th>
 <th>Status</th>
 <th>API Definition</th>
 <th>Test Service</th>
@@ -290,6 +301,7 @@
 <tbody>
 <tr>
 <td>Readthedocs link</td>
+<td>1.0</td>
 <td>Draft</td>
 <td>Swaggerhub Link</td>
 <td>testpoint.io link</td>
@@ -299,12 +311,12 @@
 </table>
 
 <h2>
-<a id="purchase-order-semantics" class="anchor" href="#purchase-order-semantics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Purchase Order Semantics</h2>
+<a id="purchase-order-semantics-specification" class="anchor" href="#purchase-order-semantics-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Purchase Order Semantics Specification</h2>
 
 <p>Coming soon - let us know if you'd like to lead this group.</p>
 
 <h2>
-<a id="shipping-notice-semantics" class="anchor" href="#shipping-notice-semantics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Shipping Notice Semantics</h2>
+<a id="shipping-notice-semantics-specification" class="anchor" href="#shipping-notice-semantics-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Shipping Notice Semantics Specification</h2>
 
 <p>Coming soon - let us know if you'd like to lead this group</p>
 
