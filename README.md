@@ -18,7 +18,7 @@ The [Australian Digital Business Council](http://digitalbusinesscouncil.com.au/)
 * A semantic model based on OASIS UBL 2.1 standards
 We will link to them when they are published.  
 
-The Digital Business COuntil has also created a RESTful working group that aims to provide a simpler and more secure implementation model based on ubiquitous internet standards such as REST.  This site is the repository for those specifications.
+The Digital Business Council has also created a RESTful working group that aims to provide a simpler and more secure implementation model based on ubiquitous internet standards such as REST.  This site is the repository for those specifications.  
 
 # How it Works
 
