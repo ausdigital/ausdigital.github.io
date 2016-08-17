@@ -49,61 +49,61 @@ As a software application vendor seeking compliance with the framework you;
 * MAY support the client role in the NRY specification, and
 * MAY choose to outsource these specification compliance requirements to a compliant third party
 
-## The Identity Provider (IDP)
+## The Identity Provider (IDP) Specification
 
 A federated set of one or more identity providers are the key source of trust for the network.  This specificaiton defines a standard taxonomy of OIDC claims and scopes, together with a set of identity assurance levels and a standard way to link identity claims.
-* [IDP Working Group](https://github.com/ausdigital/identity-provider)
+* [IDP Githib Working Group](https://github.com/ausdigital/identity-provider)
 * [IDP Discussion Group](http://talk.testpoint.io/outreach-sig/channels/spec-idp)
 
-| Specification URL | Status | API Definition | Test Service | Comments |
-| ----------------- | ------ | -------------- | ------------ | -------- |
-| Readthedocs link | Draft  | Swaggerhub Link | testpoint.io link  |   |
+| Specification URL | Version | Status | API Definition | Test Service | Comments |
+| ----------------- | ------  | ------ | -------------- | ------------ | -------- |
+| Readthedocs link | 1.0 | Draft  | Swaggerhub Link | testpoint.io link  |   |
 
 
-## The Digital Capability Locator (DCL)
+## The Digital Capability Locator (DCL) Specification
 
 The framework assumes that there could be multiple SMP in the network and so the digital capability locator is essentially a DNS entry (NAPTR Record type) that is used to redirect a lookup query for a given business identifier to the correct SMP.
 
 * [DCL Working Group](https://github.com/ausdigital/capability-locator)
 * [DCL Discussion Group](http://talk.testpoint.io/outreach-sig/channels/spec-dcp)
 
-| Specification URL | Status | API Definition | Test Service | Comments |
-| ----------------- | ------ | -------------- | ------------ | -------- |
-| Readthedocs link | Draft  | Swaggerhub Link | testpoint.io link  |   |
+| Specification URL | Version | Status | API Definition | Test Service | Comments |
+| ----------------- | ------  | ------ | -------------- | ------------ | -------- |
+| Readthedocs link | 1.0 | Draft  | Swaggerhub Link | testpoint.io link  |   |
 
 
-## The Service Metadata Publisher (SMP)
+## The Service Metadata Publisher (SMP) Specification
 
 The framework depends heavily on the ability to discover detailed service information for any given business identifier.  The SMP maintains a list of businesses, with a list of services for each business. Each service lists supported document formats and transport protocols and holds a digital certificate for message signing and encryption.
 
 * [SMP Working Group](https://github.com/ausdigital/metadata-publisher)
 * [SMP Discussion Group](http://talk.testpoint.io/outreach-sig/channels/spec-smp)
 
-| Specification URL | Status | API Definition | Test Service | Comments |
-| ----------------- | ------ | -------------- | ------------ | -------- |
-| Readthedocs link | Draft | [SMP API v0.1](https://swaggerhub.com/api/ausdigital/smp/0.1)  | [smp.testpoint.io](https://smp.testpoint.io) |    |
+| Specification URL | Version | Status | API Definition | Test Service | Comments |
+| ----------------- | ------- | ------ | -------------- | ------------ | -------- |
+| Readthedocs link | 1.0 | Draft | [SMP API v0.1](https://swaggerhub.com/api/ausdigital/smp/0.1)  | [smp.testpoint.io](https://smp.testpoint.io) |    |
 
-## The Access Point (AP)
+## The Access Point (AP) Specification
 
 The access point, usually provided by the ledger vendor, is the service gateway for a given business and so hosts the end-point to which business documents are sent.  The gateway is an avaialbility mediator (allowing specific businesses to have intermittent connectivity) and is responsible for signature validation and submitting transactions to the notary service.
 
 * [AP Working Group](https://github.com/ausdigital/access-point])
 * [AP Discussion Group](http://talk.testpoint.io/outreach-sig/channels/spec-ap)
 
-| Specification URL | Status | API Definition | Test Service | Comments |
-| ----------------- | ------ | -------------- | ------------ | -------- |
-| Readthedocs link | Draft  | Swaggerhub Link | testpoint.io link  |   |
+| Specification URL | Version | Status | API Definition | Test Service | Comments |
+| ----------------- | ------  | ------ | -------------- | ------------ | -------- |
+| Readthedocs link | 1.0 | Draft  | Swaggerhub Link | testpoint.io link  |   |
 
-## The Notary (NRY)
+## The Notary (NRY) Specification
 
 The notary serivce provides an irrefutable history of a specific "contract" (eg an invoice and it's status lifecycle), recorded in a blockchain distributed ledger.  This service supports dispute resolution and provides the foundation platform for financial services such as debtor financing.
 
 * [NRY Working Group](https://github.com/ausdigital/notary)
 * [NRY Discussion Group](http://talk.testpoint.io/outreach-sig/channels/spec-nry)
 
-| Specification URL | Status | API Definition | Test Service | Comments |
-| ----------------- | ------ | -------------- | ------------ | -------- |
-| Readthedocs link | Draft  | Swaggerhub Link | testpoint.io link  |   |
+| Specification URL | Version | Status | API Definition | Test Service | Comments |
+| ----------------- | ------  | ------ | -------------- | ------------ | -------- |
+| Readthedocs link | 1.0 | Draft  | Swaggerhub Link | testpoint.io link  |   |
 
 # The Business Document Semantic Specifications
 
@@ -123,22 +123,22 @@ As a software application vendor seeking compliance with the framework you;
 * MAY choose to support one or more roles (eg buyer or seller) in the relevant process, and
 * MUST publish all supported semantic documents, processes, and roles to an SMP
 
-## Billing Semantics
+## Billing Semantics Specification
 
 The Billing Specifications are based on [OASIS UBL2.1](http://docs.oasis-open.org/ubl/UBL-2.1.html) [billing semantics](http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html#S-BILLING) and include the Invoice, Credit Note, Debit Note, and Application Response documents.  The process roles are buyer and seller.
 
 * [Billing Working Group](https://github.com/ausdigital/billing-semantics)
 * [Billing Discussion Group](http://talk.testpoint.io/outreach-sig/channels/spec-billing)
 
-| Specification URL | Status | API Definition | Test Service | Comments |
-| ----------------- | ------ | -------------- | ------------ | -------- |
-| Readthedocs link | Draft  | Swaggerhub Link | testpoint.io link  |   |
+| Specification URL | Version | Status | API Definition | Test Service | Comments |
+| ----------------- | ------  | ------ | -------------- | ------------ | -------- |
+| Readthedocs link | 1.0 | Draft  | Swaggerhub Link | testpoint.io link  |   |
 
-## Purchase Order Semantics
+## Purchase Order Semantics Specification
 
 Coming soon - let us know if you'd like to lead this group.
 
-## Shipping Notice Semantics
+## Shipping Notice Semantics Specification
 
 Coming soon - let us know if you'd like to lead this group
 
