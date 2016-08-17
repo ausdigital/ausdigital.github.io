@@ -57,7 +57,7 @@ A federated set of one or more identity providers are the key source of trust fo
 
 | Specification URL | Status | API Definition | Test Service | Comments |
 | ----------------- | ------ | -------------- | ------------ | -------- |
-| Readthedocs link | Draft | [SMP API v0.1](https://swaggerhub.com/api/ausdigital/smp/0.1)  | [smp.testpoint.io](https://smp.testpoint.io) |    |
+| Readthedocs link | Draft  | Swaggerhub Link | testpoint.io link  |   |
 
 
 ## The Digital Capability Locator (DCL)
@@ -81,7 +81,7 @@ The framework depends heavily on the ability to discover detailed service inform
 
 | Specification URL | Status | API Definition | Test Service | Comments |
 | ----------------- | ------ | -------------- | ------------ | -------- |
-| Readthedocs link | Draft  | Swaggerhub Link | testpoint.io link  |   |
+| Readthedocs link | Draft | [SMP API v0.1](https://swaggerhub.com/api/ausdigital/smp/0.1)  | [smp.testpoint.io](https://smp.testpoint.io) |    |
 
 ## The Access Point (AP)
 
