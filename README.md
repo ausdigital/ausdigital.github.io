@@ -5,17 +5,18 @@ Exchange of buisness documents like invoices between business finance systems ou
 * As a business I want all invoices and tax receipts from my authorised suppliers to be automatically loaded to my financial system ready for my approval so I can reduce my administration burden.
 
 To support these scenarios financial software vendors need to meet common standards. This site provides
-* A suite of technical specifications - including [identity-provider](#the-odentity-provider-specification), [capability-lookup](#the-digital-capability-locator-specification), [metadata-publisher](#the-service-metadata-publisher-specification), [access-point](#the-access-point-specification), and [notary](#the-notary-specification)
+* A suite of technical specifications - including [identity-provider](#the-identity-provider-specification), [capability-lookup](#the-digital-capability-locator-specification), [metadata-publisher](#the-service-metadata-publisher-specification), [access-point](#the-access-point-specification), and [notary](#the-notary-specification)
 * A suite of semantic specifications -  initially [billing-semantics](#billing-semantics-specification) and, in future, [order-semantics](#purchase-order-semantics-specification), [shipping-semantics](#shipping-notice-semantics-specification)
-* A set of special interest groups including [development](#development-and-testing-interest-group), [engagement](#engagement-interest-group), [infoSec](#information-security-and-privacy-interest-group), [ledger services](#ledger-ervices-interest-group), and [trade finance](#trade-finance-interest-group)
+* A set of special interest groups including [development](#development-and-testing-interest-group), [engagement](#engagement-interest-group), [infoSec](#information-security-and-privacy-interest-group), [ledger services](#ledger-services-interest-group), and [trade finance](#trade-finance-interest-group)
 * An open and transparent [governance and participation](#specification-governance-model) model that performs all work in the public domain and is open to participation by interested parties.
 
 # Background
 
-The [Australian Digital Business Council](http://digitalbusinesscouncil.com.au/) has promised to publish an interoperability framework that aims to increase national productivity through automation of common buisness processes such as invoicing.  We anticipate that the published framework will include;
+The [Australian Digital Business Council](http://digitalbusinesscouncil.com.au/) has promised to publish an interoperability framework that aims to increase national productivity through automation of common buisness processes such as invoicing.  We anticipate that the published standards will be framed as Australian implementation profiles of the following OASIS standards;
 * A discovery model based on OASIS [BDX-L](http://docs.oasis-open.org/bdxr/BDX-Location/v1.0/cs01/BDX-Location-v1.0-cs01.html) and [SMP](http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/cs01/bdx-smp-v1.0-cs01.html) standards
 * A messaging model based on OASIS [ebMS3](http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/core/os/ebms_core-3.0-spec-os.html) and [AS4](http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/profiles/AS4-profile/v1.0/os/AS4-profile-v1.0-os.html) standards
 * A semantic model based on OASIS [UBL 2.1](http://docs.oasis-open.org/ubl/UBL-2.1.html) standards
+
 We will link to Australian profiles when they are published.  
 
 The Digital Business Council has also created a RESTful working group that aims to provide a simpler and more secure implementation model based on ubiquitous internet standards such as REST.  This site is the repository for those specifications.  
