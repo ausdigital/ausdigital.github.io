@@ -162,7 +162,8 @@ All specifications are developed in the public domain.  To make your voice heard
 * Participate in a special interest group.
 
 A new technical specification can be launched at any time via the following process:
-1. [Raise a ticket](https://github.com/ausdigital/ausdigital.github.io/issues) in with title “Proposed SPEC”.  Document a high level scope and purpose of the proposed spec in the issue.
+
+1. [Raise a ticket](https://github.com/ausdigital/ausdigital.github.io/issues) with title “Proposed SPEC”.  Document a high level scope and purpose of the proposed spec in the issue.
 2. Prove evidence of participation interest by collecting "+1" in the form of comments on the issue from at least 6 other people from at least 3 different organisations. 
 3. Nominate an Editor
 4. Indicate acceptance of the [COSS](http://rfc.unprotocols.org/spec:2/COSS/) governance model and the [http://semver.org/](SemVer) versioning model for specification development.
