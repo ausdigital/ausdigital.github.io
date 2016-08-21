@@ -34,21 +34,21 @@ Unlike single provider APIs (eg google or facebook), a B2B community needs all b
 
 The success of the interoperability framework depends on uptake by the ledger software providers. Those systems must implement a number of interfaces in a consistent way - which requires clear standards, good test services, and easy to use tooling.  That is the purpose of this site.
 
-# The technical framework specifications
+# The Technical Framework Specifications
 
 There are five technical specifications, each with it's own github repository.  Ledger vendors must implement in accordance with the [compliance statement](#compliance-statement-for-technical-specifications)
 
-## The identity provider specification
+## The Identity Provider specification
 
 A federated set of one or more identity providers are the key source of trust for the network.  This specification defines a standard taxonomy of OIDC claims and scopes, together with a set of identity assurance levels and a standard way to link identity claims.
 * [IDP Github Working Group](https://github.com/ausdigital/identity-provider)
 
 | Specification URL | Version | Status | API Definition | Test Service | Comments |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| Readthedocs link | 1.0 | Draft  | Swaggerhub Link | testpoint.io link  |   |
+| [IDP 1.0 specification](https://readthedocs.org/projects/identity-provider/en/latest/) | 1.0 | Raw  | [IDP 1.0 API definition](https://swaggerhub.com/api/ausdigital/identity-provider/1.0) | [idp.testpoint.io](https://idp.testpoint.io)  |   |
 
 
-## The digital capability locator specification
+## The Digital Capability Locator specification
 
 The framework assumes that there could be multiple metadata publishers (SMP) in the network and so the digital capability locator is essentially a DNS entry (NAPTR Record type) that is used to redirect a lookup query for a given business identifier to the correct SMP.
 
@@ -56,10 +56,10 @@ The framework assumes that there could be multiple metadata publishers (SMP) in 
 
 | Specification URL | Version | Status | API Definition | Test Service | Comments |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| Readthedocs link | 1.0 | Draft  | Swaggerhub Link | testpoint.io link  |   |
+| [DCL 1.0 specification](https://readthedocs.org/projects/capability-locator/en/latest/) | 1.0 | Raw  | [DCL 1.0 API definition](https://swaggerhub.com/api/ausdigital/capability-locator/1.0) | [dcp.testpoint.io](https://dcp.testpoint.io)  |   |
 
 
-## The service metadata publisher specification
+## The Service Metadata Publisher specification
 
 The framework depends heavily on the ability to discover detailed service information for any given business identifier.  The SMP maintains a list of businesses, with a list of services for each business. Each service lists supported document formats and transport protocols and holds a digital certificate for message signing and encryption.
 
@@ -67,19 +67,19 @@ The framework depends heavily on the ability to discover detailed service inform
 
 | Specification URL | Version | Status | API Definition | Test Service | Comments |
 | ----------------- | ------- | ------ | -------------- | ------------ | -------- |
-| Readthedocs link | 1.0 | Draft | [SMP API v0.1](https://swaggerhub.com/api/ausdigital/smp/0.1)  | [smp.testpoint.io](https://smp.testpoint.io) |    |
+| [SMP specification](http://metadata-publisher.readthedocs.io/en/latest/) | 1.0 | Draft | [SMP 1.0 API definition](https://swaggerhub.com/api/ausdigital/metadata-publisher/1.0)  | [smp.testpoint.io](https://smp.testpoint.io) |    |
 
-## The access point specification
+## The Ledger Access Point specification
 
-The access point, usually provided by the ledger vendor, is the service gateway for a given business and so hosts the end-point to which business documents are sent. The gateway is an avaialbility mediator (allowing specific businesses to have intermittent connectivity) and is responsible for signature validation and submitting transactions to the notary service.
+The ledger access point, is the service interface for a given business and so hosts the end-point to which business documents are sent. The access point is an avaialbility mediator (allowing specific businesses to have intermittent connectivity) and is responsible for signature validation and submitting transactions to the notary service.
 
-* [AP Working Group](https://github.com/ausdigital/access-point])
+* [LAP Working Group](https://github.com/ausdigital/access-point])
 
 | Specification URL | Version | Status | API Definition | Test Service | Comments |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| Readthedocs link | 1.0 | Draft  | Swaggerhub Link | testpoint.io link  |   |
+| [LAP specification](http://access-point.readthedocs.io/en/latest/) | 1.0 | Draft  | [LAP 1.0 API definition](https://swaggerhub.com/api/ausdigital/access-point/1.0) | testpoint.io link  |   |
 
-## The notary specification
+## The Notary specification
 
 The notary serivce provides an irrefutable history of a specific "contract" (eg an invoice and it's status lifecycle), recorded in a blockchain distributed ledger.  This service supports dispute resolution and provides the foundation platform for financial services such as debtor financing.
 
@@ -87,9 +87,9 @@ The notary serivce provides an irrefutable history of a specific "contract" (eg 
 
 | Specification URL | Version | Status | API Definition | Test Service | Comments |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| Readthedocs link | 1.0 | Draft  | Swaggerhub Link | testpoint.io link  |   |
+| Readthedocs link | 1.0 | Draft  | Swaggerhub Link | [lap.testpoint.io](https://lap.testpoint.io)  |   |
 
-# The business document semantic specifications
+# The Business Document Semantic Specifications
 
 The technical framework exists only to provide the foundation for the secure and reliable interchange of business documents such as electronic invoices.  The specifications in this section describe the semantics of each business document.  Note that;
 * the semantics can vary depending on the process context - for example "commercial invoice" and "reciptient created tax invoice" are two different processes that leverage the same document type.   
@@ -99,7 +99,7 @@ Therefore the semantic specifictions group compliance requirements by process an
 
 Like the technical specifications, the semantic specification are developed using the [COSS](http://rfc.unprotocols.org/spec:2/COSS/) (Consensus Oriented Specification System) governance model.
 
-## Billing semantics specification
+## Billing Semantics specification
 
 The Billing Specifications are based on [OASIS UBL2.1](http://docs.oasis-open.org/ubl/UBL-2.1.html) [billing semantics](http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html#S-BILLING) and include the Invoice, Credit Note, Debit Note, and Application Response documents.  The process roles are buyer and seller.
 
@@ -107,17 +107,17 @@ The Billing Specifications are based on [OASIS UBL2.1](http://docs.oasis-open.or
 
 | Specification URL | Version | Status | API Definition | Test Service | Comments |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| Readthedocs link | 1.0 | Draft  | Swaggerhub Link | testpoint.io link  |   |
+| [Billing 1.0 Specification](http://billing-semantics.readthedocs.io/en/latest/) | 1.0 | Draft  | [Billing 1.0 API definition](https://swaggerhub.com/api/ausdigital/billing/1.0) | [billing.testpoint.io]((https://lap.testpoint.io)  |   |
 
-## Purchase order semantics specification
-
-Coming soon - let us know if you'd like to lead this group
-
-## Shipping notice semantics specification
+## Purchase Order semantics specification
 
 Coming soon - let us know if you'd like to lead this group
 
-# The special interest groups
+## Shipping Notice semantics specification
+
+Coming soon - let us know if you'd like to lead this group
+
+# The Special Interest Groups
 
 We value the support and opinions of special interest groups and so we provide some collaboration tools to facilitate consultation and collaboration.  If you'd like to participate (or just watch the conversation) of a particular group then please follow the links to subscribe to the chat channel or low volume mailing list.  If you'd like to create a new special interest group, please join the engagement group and raise your request there.
 
@@ -151,7 +151,7 @@ A special interest group for financial software vendors to discuss an issues rel
 * Join the [trade finance discussion group](http://talk.testpoint.io/outreach-sig/channels/sig-trade-finance)
 * Subscribe to the [trade finance mailing list]( )
 
-# Specification governance model
+# Specification Governance Model
 
 All technical specifications are developed using the [COSS](http://rfc.unprotocols.org/spec:2/COSS/) (Consensus Oriented Specification System) governance model.  COSS ensures that any interested party can participate (because it imposes no restrictins on contributions). It also maximises consensus because, if the editor does not accept your contribution, you can always fork the specification and become the new editor (if others agree they'll follow, but if nobody else likes your fork then you'll be editor of a lonely specification that will wither on the vine).
 
