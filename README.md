@@ -5,10 +5,10 @@ Exchange of buisness documents like invoices between business finance systems ou
 * As a business I want all invoices and tax receipts from my authorised suppliers to be automatically loaded to my financial system ready for my approval so I can reduce my administration burden.
 
 We want the simplest, lowest cost and most secure solution to these needs so we've developed a suite of RESTful API standards and thrown in strong identity measures that support end-to-end encryption and digital signatures.  This site supports implementers by providing:
-* A suite of technical specifications - including [identity-provider](#the-identity-provider-specification), [capability-lookup](#the-digital-capability-locator-specification), [metadata-publisher](#the-service-metadata-publisher-specification), [access-point](#the-access-point-specification), and [notary](#the-notary-specification)
-* A suite of semantic specifications -  initially [billing-semantics](#billing-semantics-specification) and, in future, [order-semantics](#purchase-order-semantics-specification), [shipping-semantics](#shipping-notice-semantics-specification)
-* A set of [special interest groups}(#the-special-interest-groups) including development, engagement, infoSec, ledger services, and trade finance
-* An open and transparent [governance and participation](#specification-governance-model) model that performs all work in the public domain and is open to participation by interested parties.
+* A suite of [technical specifications](#the-technical-framework-specifications) and free test points.
+* A suite of [semantic specifications](#the-business-document-semantic-specifications) and free test points.
+* A set of [special interest groups](#the-special-interest-groups) with collaboration tools.
+* A transparent [governance model](#specification-governance-model) with free participation for any interested party.
 
 # Background
 
@@ -27,10 +27,10 @@ Unlike single provider APIs (eg google or facebook), a B2B community needs all b
 
 ![Framework Diagram](AusDigitalHomepage.png)
 
-* Buyers and sellers may have different ledger systems but they must expose access points that conforms to a common interface standard.
-* Independent and trusted identity providers need to be able to confirm business identity (to avoid every business having to issue passwords to every other business)
-* Electronic service end-point information needs to be discoverable via a registry because a sender system will generally know the identity of a receiver (eg ABN 1234) but not necessarily the technical data about how and where to send and electronic invoice.
-* Security measures such as signatures, encryption, and notaries are essential to provide trust and reduce fraud opportunities.
+* Ledger Access Points (LAPs) provide high availability end-points and logging services for business ledger systems.
+* Identity Providers (IDPs) provide trusted identity verification for business participants.
+* Service Metadata Publishers (SMPs) provide a lookup service for all service end-points for any given business.
+* Notary Services (NRYs) provide a non-repudiable record of transactions for audit and financial service providers.
 
 The success of the interoperability framework depends on uptake by the ledger software providers. Those systems must implement a number of interfaces in a consistent way - which requires clear standards, good test services, and easy to use tooling.  That is the purpose of this site.
 
