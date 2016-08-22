@@ -29,13 +29,10 @@
 <p>We want the simplest, lowest cost and most secure solution to these needs so we've developed a suite of RESTful API standards and thrown in strong identity measures that support end-to-end encryption and digital signatures.  This site supports implementers by providing:</p>
 
 <ul>
-<li>A suite of technical specifications - including <a href="#the-identity-provider-specification">identity-provider</a>, <a href="#the-digital-capability-locator-specification">capability-lookup</a>, <a href="#the-service-metadata-publisher-specification">metadata-publisher</a>, <a href="#the-access-point-specification">access-point</a>, and <a href="#the-notary-specification">notary</a>
-</li>
-<li>A suite of semantic specifications -  initially <a href="#billing-semantics-specification">billing-semantics</a> and, in future, <a href="#purchase-order-semantics-specification">order-semantics</a>, <a href="#shipping-notice-semantics-specification">shipping-semantics</a>
-</li>
-<li>A set of special interest groups including <a href="#development-and-testing-interest-group">development</a>, <a href="#engagement-interest-group">engagement</a>, <a href="#information-security-and-privacy-interest-group">infoSec</a>, <a href="#ledger-services-interest-group">ledger services</a>, and <a href="#trade-finance-interest-group">trade finance</a>
-</li>
-<li>An open and transparent <a href="#specification-governance-model">governance and participation</a> model that performs all work in the public domain and is open to participation by interested parties.</li>
+<li>A suite of <a href="#the-technical-framework-specifications">technical specifications</a> and free test points.</li>
+<li>A suite of <a href="#the-business-document-semantic-specifications">semantic specifications</a> and free test points.</li>
+<li>A set of <a href="#the-special-interest-groups">special interest groups</a> with collaboration tools.</li>
+<li>A transparent <a href="#specification-governance-model">governance model</a> with free participation for any interested party.</li>
 </ul>
 
 <h1>
@@ -61,10 +58,10 @@
 <p><img src="AusDigitalHomepage.png" alt="Framework Diagram"></p>
 
 <ul>
-<li>Buyers and sellers may have different ledger systems but they must expose access points that conforms to a common interface standard.</li>
-<li>Independent and trusted identity providers need to be able to confirm business identity (to avoid every business having to issue passwords to every other business)</li>
-<li>Electronic service end-point information needs to be discoverable via a registry because a sender system will generally know the identity of a receiver (eg ABN 1234) but not necessarily the technical data about how and where to send and electronic invoice.</li>
-<li>Security measures such as signatures, encryption, and notaries are essential to provide trust and reduce fraud opportunities.</li>
+<li>Ledger Access Points (LAPs) provide high availability end-points and logging services for business ledger systems.</li>
+<li>Identity Providers (IDPs) provide trusted identity verification for business participants.</li>
+<li>Service Metadata Publishers (SMPs) provide a lookup service for all service end-points for any given business.</li>
+<li>Notary Services (NRYs) provide a non-repudiable record of transactions for audit and financial service providers.</li>
 </ul>
 
 <p>The success of the interoperability framework depends on uptake by the ledger software providers. Those systems must implement a number of interfaces in a consistent way - which requires clear standards, good test services, and easy to use tooling.  That is the purpose of this site.</p>
@@ -80,7 +77,8 @@
 <p>A federated set of one or more identity providers are the key source of trust for the network.  This specification defines a standard taxonomy of OIDC claims and scopes, together with a set of identity assurance levels and a standard way to link identity claims.</p>
 
 <ul>
-<li><a href="https://github.com/ausdigital/identity-provider">IDP Github Working Group</a></li>
+<li>
+<a href="https://github.com/ausdigital/identity-provider">IDP Working Group</a> GitHub repository.</li>
 </ul>
 
 <table>
@@ -98,7 +96,7 @@
 <tr>
 <td><a href="https://readthedocs.org/projects/identity-provider/en/latest/">IDP 1.0 spec</a></td>
 <td>1.0</td>
-<td>Raw</td>
+<td><img src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" alt="Raw"></td>
 <td><a href="https://swaggerhub.com/api/ausdigital/identity-provider/1.0">IDP 1.0 API</a></td>
 <td><a href="https://idp.testpoint.io">idp.testpoint.io</a></td>
 <td></td>
@@ -112,7 +110,8 @@
 <p>The framework assumes that there could be multiple metadata publishers (SMP) in the network and so the digital capability locator is essentially a DNS entry (NAPTR Record type) that is used to redirect a lookup query for a given business identifier to the correct SMP.</p>
 
 <ul>
-<li><a href="https://github.com/ausdigital/capability-locator">DCL Working Group</a></li>
+<li>
+<a href="https://github.com/ausdigital/capability-locator">DCL Working Group</a> GitHub repository.</li>
 </ul>
 
 <table>
@@ -130,7 +129,7 @@
 <tr>
 <td><a href="https://readthedocs.org/projects/capability-locator/en/latest/">DCL 1.0 spec</a></td>
 <td>1.0</td>
-<td>Raw</td>
+<td><img src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" alt="Raw"></td>
 <td><a href="https://swaggerhub.com/api/ausdigital/capability-locator/1.0">DCL 1.0 API</a></td>
 <td><a href="https://dcp.testpoint.io">dcp.testpoint.io</a></td>
 <td></td>
@@ -144,7 +143,8 @@
 <p>The framework depends heavily on the ability to discover detailed service information for any given business identifier.  The SMP maintains a list of businesses, with a list of services for each business. Each service lists supported document formats and transport protocols and holds a digital certificate for message signing and encryption.</p>
 
 <ul>
-<li><a href="https://github.com/ausdigital/metadata-publisher">SMP Working Group</a></li>
+<li>
+<a href="https://github.com/ausdigital/metadata-publisher">SMP Working Group</a> GitHub repository.</li>
 </ul>
 
 <table>
@@ -162,7 +162,7 @@
 <tr>
 <td><a href="http://metadata-publisher.readthedocs.io/en/latest/">SMP 1.0 spec</a></td>
 <td>1.0</td>
-<td>Draft</td>
+<td><img src="http://rfc.unprotocols.org/spec:2/COSS/draft.svg" alt="Draft"></td>
 <td><a href="https://swaggerhub.com/api/ausdigital/metadata-publisher/1.0">SMP 1.0 API</a></td>
 <td><a href="https://smp.testpoint.io">smp.testpoint.io</a></td>
 <td></td>
@@ -176,7 +176,8 @@
 <p>The ledger access point, is the service interface for a given business and so hosts the end-point to which business documents are sent. The access point is an avaialbility mediator (allowing specific businesses to have intermittent connectivity) and is responsible for signature validation and submitting transactions to the notary service.</p>
 
 <ul>
-<li><a href="https://github.com/ausdigital/access-point%5D">LAP Working Group</a></li>
+<li>
+<a href="https://github.com/ausdigital/access-point%5D">LAP Working Group</a> GitHub repository.</li>
 </ul>
 
 <table>
@@ -194,7 +195,7 @@
 <tr>
 <td><a href="http://access-point.readthedocs.io/en/latest/">LAP 1.0 spec</a></td>
 <td>1.0</td>
-<td>Draft</td>
+<td><img src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" alt="Raw"></td>
 <td><a href="https://swaggerhub.com/api/ausdigital/access-point/1.0">LAP 1.0 API</a></td>
 <td><a href="https://lap.testpoint.io">lap.testpoint.io</a></td>
 <td></td>
@@ -208,7 +209,8 @@
 <p>The notary serivce provides an irrefutable history of a specific "contract" (eg an invoice and it's status lifecycle), recorded in a blockchain distributed ledger.  This service supports dispute resolution and provides the foundation platform for financial services such as debtor financing.</p>
 
 <ul>
-<li><a href="https://github.com/ausdigital/notary">NRY Working Group</a></li>
+<li>
+<a href="https://github.com/ausdigital/notary">NRY Working Group</a> GitHub repository.</li>
 </ul>
 
 <table>
@@ -226,7 +228,7 @@
 <tr>
 <td><a href="http://notary.readthedocs.io/en/latest/">NRY 1.0 spec</a></td>
 <td>1.0</td>
-<td>Draft</td>
+<td><img src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" alt="Raw"></td>
 <td><a href="https://swaggerhub.com/api/ausdigital/notary/1.0">NRY 1.0 API</a></td>
 <td><a href="https://nry.testpoint.io">nry.testpoint.io</a></td>
 <td></td>
@@ -256,7 +258,8 @@
 <p>The Billing Specifications are based on <a href="http://docs.oasis-open.org/ubl/UBL-2.1.html">OASIS UBL2.1</a> <a href="http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html#S-BILLING">billing semantics</a> and include the Invoice, Credit Note, Debit Note, and Application Response documents.  The process roles are buyer and seller.</p>
 
 <ul>
-<li><a href="https://github.com/ausdigital/billing-semantics">Billing Working Group</a></li>
+<li>
+<a href="https://github.com/ausdigital/billing-semantics">Billing Working Group</a> GitHub repository.</li>
 </ul>
 
 <table>
@@ -274,7 +277,7 @@
 <tr>
 <td><a href="http://billing-semantics.readthedocs.io/en/latest/">Billing 1.0 spec</a></td>
 <td>1.0</td>
-<td>Draft</td>
+<td><img src="http://rfc.unprotocols.org/spec:2/COSS/draft.svg" alt="Draft"></td>
 <td><a href="https://swaggerhub.com/api/ausdigital/billing/1.0">Billing 1.0 API</a></td>
 <td><a href="https://lap.testpoint.io">lap.testpoint.io</a></td>
 <td></td>
@@ -297,70 +300,59 @@
 
 <p>We value the support and opinions of special interest groups and so we provide some collaboration tools to facilitate consultation and collaboration.  If you'd like to participate (or just watch the conversation) of a particular group then please follow the links to subscribe to the chat channel or low volume mailing list.  If you'd like to create a new special interest group, please join the engagement group and raise your request there.</p>
 
-<h2>
-<a id="development-and-testing-interest-group" class="anchor" href="#development-and-testing-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Development and testing interest group</h2>
-
-<p>A special interest group for implementers that would like to share their experiences and get help from a community of implementers. </p>
-
-<ul>
-<li>Join the <a href="http://talk.testpoint.io/outreach-sig/channels/sig-development">development discussion group</a>
-</li>
-<li>Subscribe to the <a href="">development mailing list</a>
-</li>
-</ul>
-
-<h2>
-<a id="engagement-interest-group" class="anchor" href="#engagement-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Engagement interest group</h2>
-
-<p>A special interest group that is focussed on stakeholder engagement and outreach in order to ensure that all interested parties are aware and have the opportunity to participate.</p>
-
-<ul>
-<li>Join the <a href="http://talk.testpoint.io/outreach-sig/channels/sig-engagement">engagement discussion group</a>
-</li>
-<li>Subscribe to the <a href="">engagement mailing list</a>
-</li>
-</ul>
-
-<h2>
-<a id="information-security-and-privacy-interest-group" class="anchor" href="#information-security-and-privacy-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Information security and privacy interest group</h2>
-
-<p>A special interest group for those concerned about information security and privacy issues related to the specifciations.</p>
-
-<ul>
-<li>Join the <a href="http://talk.testpoint.io/outreach-sig/channels/sig-infosec">infosec discussion group</a>
-</li>
-<li>Subscribe to the <a href="">infosec mailing list</a>
-</li>
-</ul>
-
-<h2>
-<a id="ledger-services-interest-group" class="anchor" href="#ledger-services-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ledger services interest group</h2>
-
-<p>A special interest group for financial software vendors to discuss an issues related to ledger systems and their support for the specification.</p>
-
-<ul>
-<li>Join the <a href="http://talk.testpoint.io/outreach-sig/channels/sig-ledger-services">ledger services discussion group</a>
-</li>
-<li>Subscribe to the <a href="">ledger services mailing list</a>
-</li>
-</ul>
-
-<h2>
-<a id="trade-finance-interest-group" class="anchor" href="#trade-finance-interest-group" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Trade finance interest group</h2>
-
-<p>A special interest group for financial software vendors to discuss an issues related to ledger systems and their support for the specification.</p>
-
-<ul>
-<li>Join the <a href="http://talk.testpoint.io/outreach-sig/channels/sig-trade-finance">trade finance discussion group</a>
-</li>
-<li>Subscribe to the <a href="">trade finance mailing list</a>
-</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Group Name</th>
+<th>Purpose</th>
+<th>Chat Room</th>
+<th>Mailing List</th>
+<th>Archive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Engagement SIG</td>
+<td>For stakeholder engagement and outreach - to engage all interested parties.</td>
+<td><a href="http://talk.testpoint.io/outreach-sig/channels/sig-development">Engagement chat</a></td>
+<td><a href="http://eepurl.com/ccptxv">List sign-up</a></td>
+<td><a href="http://us14.campaign-archive1.com/home/?u=2f0838d563cfad631e78b6925&amp;id=85aca3789a">View archive</a></td>
+</tr>
+<tr>
+<td>Development SIG</td>
+<td>For implementers that would like to share their experiences and get help</td>
+<td><a href="http://talk.testpoint.io/outreach-sig/channels/sig-development">Developer chat</a></td>
+<td><a href="http://eepurl.com/cco_b5">List sign-up</a></td>
+<td><a href="http://us14.campaign-archive1.com/home/?u=2f0838d563cfad631e78b6925&amp;id=c2da00d149">View archive</a></td>
+</tr>
+<tr>
+<td>Information Security SIG</td>
+<td>For those concerned about information security and privacy issues related to the specifciations.</td>
+<td><a href="http://talk.testpoint.io/outreach-sig/channels/sig-infosec">Infosec chat</a></td>
+<td><a href="http://eepurl.com/ccpxuP">List sign-up</a></td>
+<td><a href="http://us14.campaign-archive1.com/home/?u=2f0838d563cfad631e78b6925&amp;id=ead9785a8f">View archive</a></td>
+</tr>
+<tr>
+<td>Ledger SIG</td>
+<td>For discussions related to Ledger implementation of semantic specifications</td>
+<td><a href="http://talk.testpoint.io/outreach-sig/channels/sig-ledger-services">Ledger chat</a></td>
+<td><a href="http://eepurl.com/ccpw3f">List sign-up</a></td>
+<td><a href="http://us14.campaign-archive2.com/home/?u=2f0838d563cfad631e78b6925&amp;id=285f23e3c4">View archive</a></td>
+</tr>
+<tr>
+<td>Trade Finance SIG</td>
+<td>For discussions about trade finance services that can leverage the specifciations</td>
+<td><a href="http://talk.testpoint.io/outreach-sig/channels/sig-trade-finance">Trade Finance chat</a></td>
+<td><a href="http://eepurl.com/ccpwOj">List sign-up</a></td>
+<td><a href="http://us14.campaign-archive1.com/home/?u=2f0838d563cfad631e78b6925&amp;id=16392307d7">View archive</a></td>
+</tr>
+</tbody>
+</table>
 
 <h1>
 <a id="specification-governance-model" class="anchor" href="#specification-governance-model" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Specification Governance Model</h1>
 
-<p>All technical specifications are developed using the <a href="http://rfc.unprotocols.org/spec:2/COSS/">COSS</a> (Consensus Oriented Specification System) governance model.  COSS ensures that any interested party can participate (because it imposes no restrictins on contributions). It also maximises consensus because, if the editor does not accept your contribution, you can always fork the specification and become the new editor (if others agree they'll follow, but if nobody else likes your fork then you'll be editor of a lonely specification that will wither on the vine).</p>
+<p>All technical specifications are developed using the <a href="http://rfc.unprotocols.org/spec:2/COSS/">COSS</a> (Consensus Oriented Specification System) governance model.  COSS ensures that any interested party can participate (because it imposes no restrictions on contributions). It also maximises consensus because, if the editor does not accept your contribution, you can always fork the specification and become the new editor (if others agree they'll follow, but if nobody else likes your fork then you'll be editor of a lonely specification that will wither on the vine).</p>
 
 <h2>
 <a id="how-to-participate" class="anchor" href="#how-to-participate" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to participate</h2>
