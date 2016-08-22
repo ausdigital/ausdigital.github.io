@@ -41,7 +41,7 @@ There are five technical specifications, each with it's own github repository.  
 ## The Identity Provider specification
 
 A federated set of one or more identity providers are the key source of trust for the network.  This specification defines a standard taxonomy of OIDC claims and scopes, together with a set of identity assurance levels and a standard way to link identity claims.
-* [IDP Github Working Group](https://github.com/ausdigital/identity-provider)
+* [IDP Working Group](https://github.com/ausdigital/identity-provider) GitHub repository.
 
 | Specification URL | Version | Status | API Definition | Test Service | Comments |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
@@ -52,7 +52,7 @@ A federated set of one or more identity providers are the key source of trust fo
 
 The framework assumes that there could be multiple metadata publishers (SMP) in the network and so the digital capability locator is essentially a DNS entry (NAPTR Record type) that is used to redirect a lookup query for a given business identifier to the correct SMP.
 
-* [DCL Working Group](https://github.com/ausdigital/capability-locator)
+* [DCL Working Group](https://github.com/ausdigital/capability-locator) GitHub repository.
 
 | Specification URL | Version | Status | API Definition | Test Service | Comments |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
@@ -63,7 +63,7 @@ The framework assumes that there could be multiple metadata publishers (SMP) in 
 
 The framework depends heavily on the ability to discover detailed service information for any given business identifier.  The SMP maintains a list of businesses, with a list of services for each business. Each service lists supported document formats and transport protocols and holds a digital certificate for message signing and encryption.
 
-* [SMP Working Group](https://github.com/ausdigital/metadata-publisher)
+* [SMP Working Group](https://github.com/ausdigital/metadata-publisher) GitHub repository.
 
 | Specification URL | Version | Status | API Definition | Test Service | Comments |
 | ----------------- | ------- | ------ | -------------- | ------------ | -------- |
@@ -73,7 +73,7 @@ The framework depends heavily on the ability to discover detailed service inform
 
 The ledger access point, is the service interface for a given business and so hosts the end-point to which business documents are sent. The access point is an avaialbility mediator (allowing specific businesses to have intermittent connectivity) and is responsible for signature validation and submitting transactions to the notary service.
 
-* [LAP Working Group](https://github.com/ausdigital/access-point])
+* [LAP Working Group](https://github.com/ausdigital/access-point]) GitHub repository.
 
 | Specification URL | Version | Status | API Definition | Test Service | Comments |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
@@ -83,7 +83,7 @@ The ledger access point, is the service interface for a given business and so ho
 
 The notary serivce provides an irrefutable history of a specific "contract" (eg an invoice and it's status lifecycle), recorded in a blockchain distributed ledger.  This service supports dispute resolution and provides the foundation platform for financial services such as debtor financing.
 
-* [NRY Working Group](https://github.com/ausdigital/notary)
+* [NRY Working Group](https://github.com/ausdigital/notary) GitHub repository.
 
 | Specification URL | Version | Status | API Definition | Test Service | Comments |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
@@ -103,7 +103,7 @@ Like the technical specifications, the semantic specification are developed usin
 
 The Billing Specifications are based on [OASIS UBL2.1](http://docs.oasis-open.org/ubl/UBL-2.1.html) [billing semantics](http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html#S-BILLING) and include the Invoice, Credit Note, Debit Note, and Application Response documents.  The process roles are buyer and seller.
 
-* [Billing Working Group](https://github.com/ausdigital/billing-semantics)
+* [Billing Working Group](https://github.com/ausdigital/billing-semantics) GitHub repository.
 
 | Specification URL | Version | Status | API Definition | Test Service | Comments |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
