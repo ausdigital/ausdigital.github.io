@@ -7,7 +7,7 @@ Exchange of buisness documents like invoices between business finance systems ou
 We want the simplest, lowest cost and most secure solution to these needs so we've developed a suite of RESTful API standards and thrown in strong identity measures that support end-to-end encryption and digital signatures.  This site supports implementers by providing:
 * A suite of technical specifications - including [identity-provider](#the-identity-provider-specification), [capability-lookup](#the-digital-capability-locator-specification), [metadata-publisher](#the-service-metadata-publisher-specification), [access-point](#the-access-point-specification), and [notary](#the-notary-specification)
 * A suite of semantic specifications -  initially [billing-semantics](#billing-semantics-specification) and, in future, [order-semantics](#purchase-order-semantics-specification), [shipping-semantics](#shipping-notice-semantics-specification)
-* A set of special interest groups including [development](#development-and-testing-interest-group), [engagement](#engagement-interest-group), [infoSec](#information-security-and-privacy-interest-group), [ledger services](#ledger-services-interest-group), and [trade finance](#trade-finance-interest-group)
+* A set of [special interest groups}(#the-special-interest-groups) including development, engagement, infoSec, ledger services, and trade finance
 * An open and transparent [governance and participation](#specification-governance-model) model that performs all work in the public domain and is open to participation by interested parties.
 
 # Background
@@ -45,7 +45,7 @@ A federated set of one or more identity providers are the key source of trust fo
 
 | Specification URL | Version | Status | API Definition | Test Service | Comments |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [IDP 1.0 spec](https://readthedocs.org/projects/identity-provider/en/latest/) | 1.0 | Raw  | [IDP 1.0 API](https://swaggerhub.com/api/ausdigital/identity-provider/1.0) | [idp.testpoint.io](https://idp.testpoint.io)  |   |
+| [IDP 1.0 spec](https://readthedocs.org/projects/identity-provider/en/latest/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [IDP 1.0 API](https://swaggerhub.com/api/ausdigital/identity-provider/1.0) | [idp.testpoint.io](https://idp.testpoint.io)  |   |
 
 
 ## The Digital Capability Locator specification
@@ -56,7 +56,7 @@ The framework assumes that there could be multiple metadata publishers (SMP) in 
 
 | Specification URL | Version | Status | API Definition | Test Service | Comments |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [DCL 1.0 spec](https://readthedocs.org/projects/capability-locator/en/latest/) | 1.0 | Raw  | [DCL 1.0 API](https://swaggerhub.com/api/ausdigital/capability-locator/1.0) | [dcp.testpoint.io](https://dcp.testpoint.io)  |   |
+| [DCL 1.0 spec](https://readthedocs.org/projects/capability-locator/en/latest/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [DCL 1.0 API](https://swaggerhub.com/api/ausdigital/capability-locator/1.0) | [dcp.testpoint.io](https://dcp.testpoint.io)  |   |
 
 
 ## The Service Metadata Publisher specification
@@ -67,7 +67,7 @@ The framework depends heavily on the ability to discover detailed service inform
 
 | Specification URL | Version | Status | API Definition | Test Service | Comments |
 | ----------------- | ------- | ------ | -------------- | ------------ | -------- |
-| [SMP 1.0 spec](http://metadata-publisher.readthedocs.io/en/latest/) | 1.0 | Draft | [SMP 1.0 API](https://swaggerhub.com/api/ausdigital/metadata-publisher/1.0)  | [smp.testpoint.io](https://smp.testpoint.io) |    |
+| [SMP 1.0 spec](http://metadata-publisher.readthedocs.io/en/latest/) | 1.0 | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) | [SMP 1.0 API](https://swaggerhub.com/api/ausdigital/metadata-publisher/1.0)  | [smp.testpoint.io](https://smp.testpoint.io) |    |
 
 ## The Ledger Access Point specification
 
@@ -77,7 +77,7 @@ The ledger access point, is the service interface for a given business and so ho
 
 | Specification URL | Version | Status | API Definition | Test Service | Comments |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [LAP 1.0 spec](http://access-point.readthedocs.io/en/latest/) | 1.0 | Draft  | [LAP 1.0 API](https://swaggerhub.com/api/ausdigital/access-point/1.0) | [lap.testpoint.io](https://lap.testpoint.io) |   |
+| [LAP 1.0 spec](http://access-point.readthedocs.io/en/latest/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [LAP 1.0 API](https://swaggerhub.com/api/ausdigital/access-point/1.0) | [lap.testpoint.io](https://lap.testpoint.io) |   |
 
 ## The Notary specification
 
@@ -87,7 +87,7 @@ The notary serivce provides an irrefutable history of a specific "contract" (eg 
 
 | Specification URL | Version | Status | API Definition | Test Service | Comments |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [NRY 1.0 spec](http://notary.readthedocs.io/en/latest/) | 1.0 | Draft  | [NRY 1.0 API](https://swaggerhub.com/api/ausdigital/notary/1.0) | [nry.testpoint.io](https://nry.testpoint.io)  |   |
+| [NRY 1.0 spec](http://notary.readthedocs.io/en/latest/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)   | [NRY 1.0 API](https://swaggerhub.com/api/ausdigital/notary/1.0) | [nry.testpoint.io](https://nry.testpoint.io)  |   |
 
 # The Business Document Semantic Specifications
 
@@ -107,7 +107,7 @@ The Billing Specifications are based on [OASIS UBL2.1](http://docs.oasis-open.or
 
 | Specification URL | Version | Status | API Definition | Test Service | Comments |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [Billing 1.0 spec](http://billing-semantics.readthedocs.io/en/latest/) | 1.0 | Draft  | [Billing 1.0 API](https://swaggerhub.com/api/ausdigital/billing/1.0) | [lap.testpoint.io](https://lap.testpoint.io)  |   |
+| [Billing 1.0 spec](http://billing-semantics.readthedocs.io/en/latest/) | 1.0 | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) | [Billing 1.0 API](https://swaggerhub.com/api/ausdigital/billing/1.0) | [lap.testpoint.io](https://lap.testpoint.io)  |   |
 
 ## Purchase Order semantics specification
 
@@ -121,39 +121,18 @@ Coming soon - let us know if you'd like to lead this group
 
 We value the support and opinions of special interest groups and so we provide some collaboration tools to facilitate consultation and collaboration.  If you'd like to participate (or just watch the conversation) of a particular group then please follow the links to subscribe to the chat channel or low volume mailing list.  If you'd like to create a new special interest group, please join the engagement group and raise your request there.
 
-## Development and testing interest group
+| Group Name | Purpose | Chat Room | Mailing List | Archive |
+| ---------- | ------- | --------- | ------------ | ------- |
+| Engagement SIG | For stakeholder engagement and outreach - to engage all interested parties.  | [Engagement chat](http://talk.testpoint.io/outreach-sig/channels/sig-development) | [List sign-up](http://eepurl.com/ccptxv) | [View archive](http://us14.campaign-archive1.com/home/?u=2f0838d563cfad631e78b6925&id=85aca3789a) |
+| Development SIG | For implementers that would like to share their experiences and get help | [Developer chat](http://talk.testpoint.io/outreach-sig/channels/sig-development) | [List sign-up](http://eepurl.com/cco_b5) | [View archive](http://us14.campaign-archive1.com/home/?u=2f0838d563cfad631e78b6925&id=c2da00d149) |
+| Information Security SIG | For those concerned about information security and privacy issues related to the specifciations. | [Infosec chat](http://talk.testpoint.io/outreach-sig/channels/sig-infosec) | [List sign-up](http://eepurl.com/ccpxuP) | [View archive](http://us14.campaign-archive1.com/home/?u=2f0838d563cfad631e78b6925&id=ead9785a8f) |
+| Ledger SIG | For discussions related to Ledger implementation of semantic specifications  | [Ledger chat](http://talk.testpoint.io/outreach-sig/channels/sig-ledger-services) | [List sign-up](http://eepurl.com/ccpw3f) | [View archive](http://us14.campaign-archive2.com/home/?u=2f0838d563cfad631e78b6925&id=285f23e3c4) |
+| Trade Finance SIG | For discussions about trade finance services that can leverage the specifciations | [Trade Finance chat](http://talk.testpoint.io/outreach-sig/channels/sig-trade-finance) | [List sign-up](http://eepurl.com/ccpwOj) | [View archive](http://us14.campaign-archive1.com/home/?u=2f0838d563cfad631e78b6925&id=16392307d7) |
 
-A special interest group for implementers that would like to share their experiences and get help from a community of implementers. 
-* Join the [development discussion group](http://talk.testpoint.io/outreach-sig/channels/sig-development)
-* Subscribe to the [development mailing list]( )
-
-## Engagement interest group
-
-A special interest group that is focussed on stakeholder engagement and outreach in order to ensure that all interested parties are aware and have the opportunity to participate.
-* Join the [engagement discussion group](http://talk.testpoint.io/outreach-sig/channels/sig-engagement)
-* Subscribe to the [engagement mailing list]( )
-
-## Information security and privacy interest group
-
-A special interest group for those concerned about information security and privacy issues related to the specifciations.
-* Join the [infosec discussion group](http://talk.testpoint.io/outreach-sig/channels/sig-infosec)
-* Subscribe to the [infosec mailing list]( )
-
-## Ledger services interest group
-
-A special interest group for financial software vendors to discuss an issues related to ledger systems and their support for the specification.
-* Join the [ledger services discussion group](http://talk.testpoint.io/outreach-sig/channels/sig-ledger-services)
-* Subscribe to the [ledger services mailing list]( )
-
-## Trade finance interest group
-
-A special interest group for financial software vendors to discuss an issues related to ledger systems and their support for the specification.
-* Join the [trade finance discussion group](http://talk.testpoint.io/outreach-sig/channels/sig-trade-finance)
-* Subscribe to the [trade finance mailing list]( )
 
 # Specification Governance Model
 
-All technical specifications are developed using the [COSS](http://rfc.unprotocols.org/spec:2/COSS/) (Consensus Oriented Specification System) governance model.  COSS ensures that any interested party can participate (because it imposes no restrictins on contributions). It also maximises consensus because, if the editor does not accept your contribution, you can always fork the specification and become the new editor (if others agree they'll follow, but if nobody else likes your fork then you'll be editor of a lonely specification that will wither on the vine).
+All technical specifications are developed using the [COSS](http://rfc.unprotocols.org/spec:2/COSS/) (Consensus Oriented Specification System) governance model.  COSS ensures that any interested party can participate (because it imposes no restrictions on contributions). It also maximises consensus because, if the editor does not accept your contribution, you can always fork the specification and become the new editor (if others agree they'll follow, but if nobody else likes your fork then you'll be editor of a lonely specification that will wither on the vine).
 
 ## How to participate
 
