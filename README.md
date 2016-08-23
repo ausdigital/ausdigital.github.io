@@ -43,9 +43,9 @@ There are five technical specifications, each with it's own github repository.  
 A federated set of one or more identity providers are the key source of trust for the network.  This specification defines a standard taxonomy of OIDC claims and scopes, together with a set of identity assurance levels and a standard way to link identity claims.
 * [IDP Working Group](https://github.com/ausdigital/identity-provider) GitHub repository.
 
-| Specification URL | Version | Status | API Definition | Test Service | Comments |
+| Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [IDP 1.0 spec](https://readthedocs.org/projects/identity-provider/en/latest/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [IDP 1.0 API](https://swaggerhub.com/api/ausdigital/identity-provider/1.0) | [idp.testpoint.io](https://idp.testpoint.io)  |   |
+| [IDP 1.0 spec](https://readthedocs.org/projects/identity-provider/en/latest/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [IDP 1.0 API](https://swaggerhub.com/api/ausdigital/identity-provider/1.0) | [idp.testpoint.io](https://idp.testpoint.io)  | [IDP 1.0 Issues](https://github.com/ausdigital/identity-provider/issues)  |
 
 
 ## The Digital Capability Locator specification
@@ -54,9 +54,9 @@ The framework assumes that there could be multiple metadata publishers (SMP) in 
 
 * [DCL Working Group](https://github.com/ausdigital/capability-locator) GitHub repository.
 
-| Specification URL | Version | Status | API Definition | Test Service | Comments |
+| Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [DCL 1.0 spec](https://readthedocs.org/projects/capability-locator/en/latest/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [DCL 1.0 API](https://swaggerhub.com/api/ausdigital/capability-locator/1.0) | [dcp.testpoint.io](https://dcp.testpoint.io)  |   |
+| [DCL 1.0 spec](https://readthedocs.org/projects/capability-locator/en/latest/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [DCL 1.0 API](https://swaggerhub.com/api/ausdigital/capability-locator/1.0) | [dcp.testpoint.io](https://dcp.testpoint.io)  | [DCL 1.0 Issues](https://github.com/ausdigital/capability-locator/issues)   |
 
 
 ## The Service Metadata Publisher specification
@@ -65,9 +65,9 @@ The framework depends heavily on the ability to discover detailed service inform
 
 * [SMP Working Group](https://github.com/ausdigital/metadata-publisher) GitHub repository.
 
-| Specification URL | Version | Status | API Definition | Test Service | Comments |
+| Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------- | ------ | -------------- | ------------ | -------- |
-| [SMP 1.0 spec](http://metadata-publisher.readthedocs.io/en/latest/) | 1.0 | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) | [SMP 1.0 API](https://swaggerhub.com/api/ausdigital/metadata-publisher/1.0)  | [smp.testpoint.io](https://smp.testpoint.io) |    |
+| [SMP 1.0 spec](http://metadata-publisher.readthedocs.io/en/latest/) | 1.0 | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) | [SMP 1.0 API](https://swaggerhub.com/api/ausdigital/metadata-publisher/1.0)  | [smp.testpoint.io](https://smp.testpoint.io) | [SMP 1.0 Issues](https://github.com/ausdigital/metadata-publisher/issues)    |
 
 ## The Ledger Access Point specification
 
@@ -75,9 +75,9 @@ The ledger access point, is the service interface for a given business and so ho
 
 * [LAP Working Group](https://github.com/ausdigital/access-point]) GitHub repository.
 
-| Specification URL | Version | Status | API Definition | Test Service | Comments |
+| Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [LAP 1.0 spec](http://access-point.readthedocs.io/en/latest/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [LAP 1.0 API](https://swaggerhub.com/api/ausdigital/access-point/1.0) | [lap.testpoint.io](https://lap.testpoint.io) |   |
+| [LAP 1.0 spec](http://access-point.readthedocs.io/en/latest/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [LAP 1.0 API](https://swaggerhub.com/api/ausdigital/access-point/1.0) | [lap.testpoint.io](https://lap.testpoint.io) | [LAP 1.0 Issues](https://github.com/ausdigital/access-point/issues)  |
 
 ## The Notary specification
 
@@ -85,9 +85,9 @@ The notary serivce provides an irrefutable history of a specific "contract" (eg 
 
 * [NRY Working Group](https://github.com/ausdigital/notary) GitHub repository.
 
-| Specification URL | Version | Status | API Definition | Test Service | Comments |
+| Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [NRY 1.0 spec](http://notary.readthedocs.io/en/latest/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)   | [NRY 1.0 API](https://swaggerhub.com/api/ausdigital/notary/1.0) | [nry.testpoint.io](https://nry.testpoint.io)  |   |
+| [NRY 1.0 spec](http://notary.readthedocs.io/en/latest/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)   | [NRY 1.0 API](https://swaggerhub.com/api/ausdigital/notary/1.0) | [nry.testpoint.io](https://nry.testpoint.io)  | [NRY 1.0 Issues](https://github.com/ausdigital/notary/issues)  |
 
 # The Business Document Semantic Specifications
 
@@ -105,17 +105,17 @@ The Billing Specifications are based on [OASIS UBL2.1](http://docs.oasis-open.or
 
 * [Billing Working Group](https://github.com/ausdigital/billing-semantics) GitHub repository.
 
-| Specification URL | Version | Status | API Definition | Test Service | Comments |
+| Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [Billing 1.0 spec](http://billing-semantics.readthedocs.io/en/latest/) | 1.0 | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) | [Billing 1.0 API](https://swaggerhub.com/api/ausdigital/billing/1.0) | [lap.testpoint.io](https://lap.testpoint.io)  |   |
+| [Billing 1.0 spec](http://billing-semantics.readthedocs.io/en/latest/) | 1.0 | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) | [Billing 1.0 API](https://swaggerhub.com/api/ausdigital/billing/1.0) | [lap.testpoint.io](https://lap.testpoint.io)  | [Billing 1.0 Issues](https://github.com/ausdigital/billing-semantics/issues)  |
 
 ## Purchase Order semantics specification
 
-Coming soon - let us know if you'd like to lead this group
+Coming soon - let us know by [raising a ticket](https://github.com/ausdigital/ordering-semantics/issues) in the ordering semantics repository if you'd like to lead this group
 
-## Shipping Notice semantics specification
+## Fulfillment semantics specification
 
-Coming soon - let us know if you'd like to lead this group
+Coming soon - let us know by [raising a ticket](https://github.com/ausdigital/fulfilment-semantics/issues) in the fulfilment semantics repository if you'd like to lead this group
 
 # The Special Interest Groups
 
@@ -137,12 +137,13 @@ All technical specifications are developed using the [COSS](http://rfc.unprotoco
 ## How to participate
 
 All specifications are developed in the public domain.  To make your voice heard, you can:
-* Raise a ticket on any of the relevant repositories
-* Participate in a special interest group.
+* To comment on a specification, click on the relevant "Issues List" link against any [technical specification](#the-technical-framework-specifications) and then hit "new issue" when you land in github.
+* To participate in a special interest group, click on the relevant "chat room" link in the [special interest group](#the-special-interest-groups) table.
+* If you just want to be kept informed, then click on relevant "Mailing list" link in the [special interest group](#the-special-interest-groups) table.
 
 A new technical specification can be launched at any time via the following process:
 
-1. [Raise a ticket](https://github.com/ausdigital/ausdigital.github.io/issues) with title “Proposed SPEC”.  Document a high level scope and purpose of the proposed spec in the issue.
+1. [Raise a ticket](https://github.com/ausdigital/ausdigital.github.io/issues) in the root ausdigital repository with title “Proposed SPEC”.  Document a high level scope and purpose of the proposed spec in the issue.
 2. Prove evidence of participation interest by collecting "+1" in the form of comments on the issue from at least 6 other people from at least 3 different organisations. 
 3. Nominate an Editor
 4. Indicate acceptance of the [COSS](http://rfc.unprotocols.org/spec:2/COSS/) governance model and the [http://semver.org/](SemVer) versioning model for specification development.
