@@ -45,7 +45,7 @@ A federated set of one or more identity providers are the key source of trust fo
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [IDP 1.0 spec](https://readthedocs.org/projects/identity-provider/en/latest/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [IDP 1.0 API](https://swaggerhub.com/api/ausdigital/identity-provider/1.0) | [idp.testpoint.io](https://idp.testpoint.io)  | [IDP 1.0 Issues](https://github.com/ausdigital/identity-provider/issues)  |
+| [IDP 1.0 spec](https://identity-provider.readthedocs.org/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [IDP 1.0 API](https://swaggerhub.com/api/ausdigital/identity-provider/1.0) | [idp.testpoint.io](https://idp.testpoint.io)  | [IDP 1.0 Issues](https://github.com/ausdigital/identity-provider/issues)  |
 
 
 ## The Digital Capability Locator specification
@@ -56,7 +56,7 @@ The framework assumes that there could be multiple metadata publishers (SMP) in 
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [DCL 1.0 spec](https://readthedocs.org/projects/capability-locator/en/latest/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [DCL 1.0 API](https://swaggerhub.com/api/ausdigital/capability-locator/1.0) | [dcp.testpoint.io](https://dcp.testpoint.io)  | [DCL 1.0 Issues](https://github.com/ausdigital/capability-locator/issues)   |
+| [DCL 1.0 spec](https://capability-locator.readthedocs.org) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [DCL 1.0 API](https://swaggerhub.com/api/ausdigital/capability-locator/1.0) | [dcp.testpoint.io](https://dcp.testpoint.io)  | [DCL 1.0 Issues](https://github.com/ausdigital/capability-locator/issues)   |
 
 
 ## The Service Metadata Publisher specification
@@ -67,7 +67,7 @@ The framework depends heavily on the ability to discover detailed service inform
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------- | ------ | -------------- | ------------ | -------- |
-| [SMP 1.0 spec](http://metadata-publisher.readthedocs.io/en/latest/) | 1.0 | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) | [SMP 1.0 API](https://swaggerhub.com/api/ausdigital/metadata-publisher/1.0)  | [smp.testpoint.io](https://smp.testpoint.io) | [SMP 1.0 Issues](https://github.com/ausdigital/metadata-publisher/issues)    |
+| [SMP 1.0 spec](http://metadata-publisher.readthedocs.io/) | 1.0 | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) | [SMP 1.0 API](https://swaggerhub.com/api/ausdigital/metadata-publisher/1.0)  | [smp.testpoint.io](https://smp.testpoint.io) | [SMP 1.0 Issues](https://github.com/ausdigital/metadata-publisher/issues)    |
 
 ## The Ledger Access Point specification
 
@@ -77,7 +77,7 @@ The ledger access point, is the service interface for a given business and so ho
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [LAP 1.0 spec](http://access-point.readthedocs.io/en/latest/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [LAP 1.0 API](https://swaggerhub.com/api/ausdigital/access-point/1.0) | [lap.testpoint.io](https://lap.testpoint.io) | [LAP 1.0 Issues](https://github.com/ausdigital/access-point/issues)  |
+| [LAP 1.0 spec](http://access-point.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [LAP 1.0 API](https://swaggerhub.com/api/ausdigital/access-point/1.0) | [lap.testpoint.io](https://lap.testpoint.io) | [LAP 1.0 Issues](https://github.com/ausdigital/access-point/issues)  |
 
 ## The Notary specification
 
@@ -87,7 +87,7 @@ The notary serivce provides an irrefutable history of a specific "contract" (eg 
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [NRY 1.0 spec](http://notary.readthedocs.io/en/latest/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)   | [NRY 1.0 API](https://swaggerhub.com/api/ausdigital/notary/1.0) | [nry.testpoint.io](https://nry.testpoint.io)  | [NRY 1.0 Issues](https://github.com/ausdigital/notary/issues)  |
+| [NRY 1.0 spec](http://notary.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)   | [NRY 1.0 API](https://swaggerhub.com/api/ausdigital/notary/1.0) | [nry.testpoint.io](https://nry.testpoint.io)  | [NRY 1.0 Issues](https://github.com/ausdigital/notary/issues)  |
 
 # The Business Document Semantic Specifications
 
@@ -107,7 +107,7 @@ The Billing Specifications are based on [OASIS UBL2.1](http://docs.oasis-open.or
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [Billing 1.0 spec](http://billing-semantics.readthedocs.io/en/latest/) | 1.0 | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) | [Billing 1.0 API](https://swaggerhub.com/api/ausdigital/billing/1.0) | [lap.testpoint.io](https://lap.testpoint.io)  | [Billing 1.0 Issues](https://github.com/ausdigital/billing-semantics/issues)  |
+| [Billing 1.0 spec](http://billing-semantics.readthedocs.io/) | 1.0 | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) | [Billing 1.0 API](https://swaggerhub.com/api/ausdigital/billing/1.0) | [lap.testpoint.io](https://lap.testpoint.io)  | [Billing 1.0 Issues](https://github.com/ausdigital/billing-semantics/issues)  |
 
 ## Purchase Order semantics specification
 
