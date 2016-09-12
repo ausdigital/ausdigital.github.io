@@ -146,7 +146,7 @@ A new technical specification can be launched at any time via the following proc
 1. [Raise a ticket](https://github.com/ausdigital/ausdigital.github.io/issues) in the root ausdigital repository with title “Proposed SPEC”.  Document a high level scope and purpose of the proposed spec in the issue.
 2. Prove evidence of participation interest by collecting "+1" in the form of comments on the issue from at least 6 other people from at least 3 different organisations. 
 3. Nominate an Editor
-4. Indicate acceptance of the [COSS](http://rfc.unprotocols.org/spec:2/COSS/) governance model and the [http://semver.org/](SemVer) versioning model for specification development.
+4. Indicate acceptance of the [COSS](http://rfc.unprotocols.org/spec:2/COSS/) governance model and the [SemVer](http://semver.org/) versioning model for specification development.
 5. Once steps 1 to 4 are complete, we will create the repository, give the editor write access, and add the default document template
 6. The new editor should then notify relevant special interest groups of issues or questions regarding the new SPEC
 
