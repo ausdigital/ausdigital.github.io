@@ -56,7 +56,7 @@ The framework assumes that there could be multiple metadata publishers (SMP) in 
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [DCL 1.0 spec](https://capability-locator.readthedocs.org) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [DCL 1.0 API](https://swaggerhub.com/api/ausdigital/capability-locator/1.0) | [dcp.testpoint.io](https://dcp.testpoint.io)  | [DCL 1.0 Issues](https://github.com/ausdigital/capability-locator/issues)   |
+| [DCL 1.0 spec](https://capability-locator.readthedocs.org) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [DCL 1.0 API](https://swaggerhub.com/api/ausdigital/capability-locator/1.0) | [dcl.testpoint.io](https://dcl.testpoint.io/)  | [DCL 1.0 Issues](https://github.com/ausdigital/capability-locator/issues)   |
 
 
 ## The Service Metadata Publisher specification
