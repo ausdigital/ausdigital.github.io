@@ -77,7 +77,7 @@ The ledger access point, is the service interface for a given business and so ho
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [LAP 1.0 spec](http://access-point.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [LAP 1.0 API](https://swaggerhub.com/api/ausdigital/access-point/1.0) | [lap.testpoint.io](https://lap.testpoint.io) | [LAP 1.0 Issues](https://github.com/ausdigital/access-point/issues)  |
+| [LAP 1.0 spec](http://access-point.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [LAP 1.0 API](https://swaggerhub.com/api/ausdigital/access-point/1.0) | [lap.testpoint.io](http://testpoint.io/lap.html) | [LAP 1.0 Issues](https://github.com/ausdigital/access-point/issues)  |
 
 ## The Notary specification
 
@@ -87,7 +87,7 @@ The notary serivce provides an irrefutable history of a specific "contract" (eg 
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [NRY 1.0 spec](http://notary.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)   | [NRY 1.0 API](https://swaggerhub.com/api/ausdigital/notary/1.0) | [nry.testpoint.io](https://nry.testpoint.io)  | [NRY 1.0 Issues](https://github.com/ausdigital/notary/issues)  |
+| [NRY 1.0 spec](http://notary.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)   | [NRY 1.0 API](https://swaggerhub.com/api/ausdigital/notary/1.0) | [nry.testpoint.io](http://testpoint.io/nry.html)  | [NRY 1.0 Issues](https://github.com/ausdigital/notary/issues)  |
 
 # The Business Document Semantic Specifications
 
