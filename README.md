@@ -107,7 +107,7 @@ The Billing Specifications are based on [OASIS UBL2.1](http://docs.oasis-open.or
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [Billing 1.0 spec](http://billing-semantics.readthedocs.io/) | 1.0 | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) | [Billing 1.0 API](https://swaggerhub.com/api/ausdigital/billing/1.0) | [lap.testpoint.io](https://lap.testpoint.io)  | [Billing 1.0 Issues](https://github.com/ausdigital/billing-semantics/issues)  |
+| [Billing 1.0 spec](http://billing-semantics.readthedocs.io/) | 1.0 | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) | [Billing 1.0 API](https://swaggerhub.com/api/ausdigital/billing/1.0) | [lap.testpoint.io](http://testpoint.io/lap.html)  | [Billing 1.0 Issues](https://github.com/ausdigital/billing-semantics/issues)  |
 
 ## Purchase Order semantics specification
 
@@ -167,5 +167,3 @@ As a software application vendor seeking compliance with the framework you;
 * MAY choose to support one or more processes for the given business document, and
 * MAY choose to support one or more roles (eg buyer or seller) in the relevant process, and
 * MUST publish all supported semantic documents, processes, and roles to an SMP
-
-
