@@ -12,25 +12,29 @@ We want the simplest, lowest cost and most secure solution to these needs so we'
 
 # Background
 
-The [Australian Digital Business Council](http://digitalbusinesscouncil.com.au/) has promised to publish an interoperability framework that aims to increase national productivity through automation of common buisness processes such as invoicing.  We anticipate that the published standards will be framed as Australian implementation profiles of the following OASIS standards;
-* A discovery model based on OASIS [BDX-L](http://docs.oasis-open.org/bdxr/BDX-Location/v1.0/cs01/BDX-Location-v1.0-cs01.html) and [SMP](http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/cs01/bdx-smp-v1.0-cs01.html) standards
-* A messaging model based on OASIS [ebMS3](http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/core/os/ebms_core-3.0-spec-os.html) and [AS4](http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/profiles/AS4-profile/v1.0/os/AS4-profile-v1.0-os.html) standards
-* A semantic model based on OASIS [UBL 2.1](http://docs.oasis-open.org/ubl/UBL-2.1.html) standards
+The [Australian Digital Business Council](http://digitalbusinesscouncil.com.au/) has published an interoperability framework that aims to increase national productivity through automation of common buisness processes such as invoicing. The standards are based on a "4 corner model" from Europe that depends heavily on traditional EDI hubs and includes the following specifications published to the [Interoperability Framework](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework) page;
+* A service discovery model based on based on OASIS [BDX-L](http://docs.oasis-open.org/bdxr/BDX-Location/v1.0/cs01/BDX-Location-v1.0-cs01.html) (DNS Lookup) and [BDX-SMP](http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/cs01/bdx-smp-v1.0-cs01.html) (detailed metadata) standards. The ADBC has published profiles of the OASIS specifications as the [DCL](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42401/download) and the [DCP](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42402/download) specifications.
+* A messaging model based on OASIS [ebMS3](http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/core/os/ebms_core-3.0-spec-os.html) and [AS4](http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/profiles/AS4-profile/v1.0/os/AS4-profile-v1.0-os.html) standards. The ADBC profile is published as the ["Access Point"](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42403/download) specifciation.
+* A semantic model based on OASIS [UBL 2.1](http://docs.oasis-open.org/ubl/UBL-2.1.html) standards.  The ADBC profile is published as the ["eInvoicing Semantic Model"](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42399/download).
 
-We will link to Australian profiles when they are published.  
+The ADBC specifications have a weak technical security model (no encryption, no signatures, and an identity model based on known customers of the EDI hubs).  As a consequence, the ADBC model demands high integrity behaviour from the Hubs.  This is implemented as a suite of accreditation and governance models operated and enforced by the ADBC:
+* The [Access Point Provider Agreement](http://digitalbusinesscouncil.com.au/accreditation/documents/42924/download) and
+* The [Digital Capability Publisher Provider Agreement](http://digitalbusinesscouncil.com.au/accreditation/documents/42923/download) and
+* Some internal governance rules that are not generally published. 
 
-The Digital Business Council has also created a RESTful working group that aims to provide a simpler and more secure implementation model based on ubiquitous internet standards such as REST.  This site is the repository for those specifications.  
+The Digital Business Council has also created a RESTful working group that aims to provide a simpler and more secure implementation model based on ubiquitous internet standards such as REST.  The RESTful model is also "secure by design" because it strongly separates the role of the identity provider from any service providers and includes end-to-end encryption and signatures.  COnsequently the RESTful model has no need for the complex governance arrangements.  This site is the repository for those specifications.  
 
-# How it Works
+# How it Works 
 
-Unlike single provider APIs (eg google or facebook), a B2B community needs all businesses to implement the same interface so that the same document format (e.g. an invoice) can be send from any business to any other business.  The many-to-many aspect of B2B transactions requires a few extra components in the framework as shown in the conceptual overview diagram.
+Unlike single provider APIs (eg google or facebook), a B2B community needs all businesses to implement the same interface so that the same document format (e.g. an invoice) can be sent from any business to any other business.  To do so securely also needs a key distribution model so that senders can find recipient public keys to encrypt messages and so that recipients can find sender public keys to verify signatures.  The Ausdigital.org RESTful framework therefore has some similarities and some key differences compared to the ADBC 4-corner model:
+* It is a Peer-to-Peer model so essentially a "2 corner model" that does not need traditional EDI hubs. 
+* It includes a "Transaction Access Point" (TAP) that is a high avaialbility end point proxy for encrypted messages and cannot inspect the payload.
+* It includes a new "Identity Provider" (IDP) framework that recognises the existence of an independent identity market that can be leveraged by the framework to provide identity confidence at different assurance levels.
+* It includes a service discovery framework that is backwards compatible with the ADBC DCL and DCP specifications but extends them to support distributed key management.
+* It includes a new "Notary" (NRY) specification that provides a blockchain based proof of existence of digital transactions that can be used for non-repudiable audit and new financial services (such as invoice financing for small & medium businesses).
+* It includes exactly the same invoice semantic model as the ADBC invlice specifications but uses a JSON representation and, more importantly, includes an invoice signed status response document from the buyer (eg "got your invoice and it's approved for payment in 60 days") that can be used for invoice financing purposes. 
 
 ![Framework Diagram](AusDigitalHomepage.png)
-
-* Ledger Access Points (LAPs) provide high availability end-points and logging services for business ledger systems.
-* Identity Providers (IDPs) provide trusted identity verification for business participants.
-* Service Metadata Publishers (SMPs) provide a lookup service for all service end-points for any given business.
-* Notary Services (NRYs) provide a non-repudiable record of transactions for audit and financial service providers.
 
 The success of the interoperability framework depends on uptake by the ledger software providers. Those systems must implement a number of interfaces in a consistent way - which requires clear standards, good test services, and easy to use tooling.  That is the purpose of this site.
 
@@ -69,7 +73,7 @@ The framework depends heavily on the ability to discover detailed service inform
 | ----------------- | ------- | ------ | -------------- | ------------ | -------- |
 | [SMP 1.0 spec](http://metadata-publisher.readthedocs.io/) | 1.0 | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) | [SMP 1.0 API](https://swaggerhub.com/api/ausdigital/metadata-publisher/1.0)  | [smp.testpoint.io](https://smp.testpoint.io) | [SMP 1.0 Issues](https://github.com/ausdigital/metadata-publisher/issues)    |
 
-## The Ledger Access Point specification
+## The Transaction Access Point specification
 
 The ledger access point, is the service interface for a given business and so hosts the end-point to which business documents are sent. The access point is an avaialbility mediator (allowing specific businesses to have intermittent connectivity) and is responsible for signature validation and submitting transactions to the notary service.
 
@@ -77,7 +81,7 @@ The ledger access point, is the service interface for a given business and so ho
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [LAP 1.0 spec](http://access-point.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [LAP 1.0 API](https://swaggerhub.com/api/ausdigital/access-point/1.0) | [lap.testpoint.io](http://testpoint.io/lap.html) | [LAP 1.0 Issues](https://github.com/ausdigital/access-point/issues)  |
+| [TAP 1.0 spec](http://access-point.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [TAP 1.0 API](https://swaggerhub.com/api/ausdigital/access-point/1.0) | [tap.testpoint.io](http://testpoint.io/lap.html) | [TAP 1.0 Issues](https://github.com/ausdigital/access-point/issues)  |
 
 ## The Notary specification
 
@@ -101,7 +105,7 @@ Like the technical specifications, the semantic specification are developed usin
 
 ## Billing Semantics specification
 
-The Billing Specifications are based on [OASIS UBL2.1](http://docs.oasis-open.org/ubl/UBL-2.1.html) [billing semantics](http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html#S-BILLING) and include the Invoice, Credit Note, Debit Note, and Application Response documents.  The process roles are buyer and seller.
+The Billing Specifications are based on [OASIS UBL2.1](http://docs.oasis-open.org/ubl/UBL-2.1.html) [billing semantics](http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html#S-BILLING) and include the Invoice, Credit Note, Debit Note, and Application Response documents.  The process roles are buyer and seller.  The invoice specification is semantically identical to the to [ADBC e-invoice semantic model](http://digitalbusinesscouncil.com.au/accreditation/documents/42381/download).
 
 * [Billing Working Group](https://github.com/ausdigital/billing-semantics) GitHub repository.
 
@@ -117,6 +121,10 @@ Coming soon - let us know by [raising a ticket](https://github.com/ausdigital/or
 
 Coming soon - let us know by [raising a ticket](https://github.com/ausdigital/fulfilment-semantics/issues) in the fulfilment semantics repository if you'd like to lead this group
 
+## SuperStream semantics specification
+
+There is a clear opportunity to simplify the current [Superstream Techncial Specifications](https://www.ato.gov.au/Super/SuperStream/In-detail/Legal-framework/Legislative-instrument/SuperStream-legislation,-standards-and-schedules/) by replacing the complex [XBRL payload](https://www.ato.gov.au/uploadedFiles/Content/SPR/downloads/SPR26583_ContributionsMessageImplementation-%20Guide%20v1%203.pdf) with a simple (but semantically equivalent) JSON model and by replacing the complex [ebMS3/AS4 4-corner messaging model](https://www.ato.gov.au/uploadedFiles/Content/SPR/downloads/SPR26583msgorchest.pdf) with the same simple and secure Peer to Peer RESTful model that is used for national e-invoicing.  Let us know by [raising a ticket](https://github.com/ausdigital/superannuation-semantics/issues) in the superannuation semantics repository if you'd like to lead this group.
+
 # The Special Interest Groups
 
 We value the support and opinions of special interest groups and so we provide some collaboration tools to facilitate consultation and collaboration.  If you'd like to participate (or just watch the conversation) of a particular group then please follow the links to subscribe to the chat channel or low volume mailing list.  If you'd like to create a new special interest group, please join the engagement group and raise your request there.
@@ -130,9 +138,17 @@ We value the support and opinions of special interest groups and so we provide s
 | Trade Finance SIG | For discussions about trade finance services that can leverage the specifciations | [Trade Finance chat](https://talk.ausdigital.org/outreach-sig/channels/sig-trade-finance) | [List sign-up](http://eepurl.com/ccpwOj) | [View archive](http://us14.campaign-archive1.com/home/?u=2f0838d563cfad631e78b6925&id=16392307d7) |
 
 
-# Specification Governance Model
+# Governance Model
 
-All technical specifications are developed using the [COSS](http://rfc.unprotocols.org/spec:2/COSS/) (Consensus Oriented Specification System) governance model.  COSS ensures that any interested party can participate (because it imposes no restrictions on contributions). It also maximises consensus because, if the editor does not accept your contribution, you can always fork the specification and become the new editor (if others agree they'll follow, but if nobody else likes your fork then you'll be editor of a lonely specification that will wither on the vine).
+## Specifciation Governance
+
+All technical specifications are developed in the public domain using the [COSS](http://rfc.unprotocols.org/spec:2/COSS/) (Consensus Oriented Specification System) governance model.  COSS ensures that any interested party can participate (because it imposes no restrictions on contributions). It also maximises consensus because, if the editor does not accept your contribution, you can always fork the specification and become the new editor (if others agree they'll follow, but if nobody else likes your fork then you'll be editor of a lonely specification that will wither on the vine).
+
+## Implementation Governance
+
+The secure-by-design nature of the framework eliminates the need for implementation governance or any provider accreditations. Furthermore, the use of independent identity providers such as banks, government, or other entities subject to ["know your customer" legisation](http://www.austrac.gov.au/businesses/obligations-and-compliance/customer-due-diligence) means that identity assurance is, by definition, not governed by the ADBC.  Therefore, implementation governance within this framework is reduced to;
+* Defining a set of assurance levels that are used to classify identity providers - so that particpants in the network can have a clear shared understanding of the identity integrity of any message sent or received.  This is the role of the [IDP Specification]((https://identity-provider.readthedocs.org/).
+* A key principle that relying parties (eg implementers of the SMP or TAP specifications) will stake their reputation on the strength of identity that they demand for their customers.
 
 ## How to participate
 
@@ -153,12 +169,12 @@ A new technical specification can be launched at any time via the following proc
 ## Compliance statement for technical specifications
 
 As a software application vendor seeking compliance with the framework you;
-* MUST support the AP specification, and
+* MUST support the TAP specification, and
 * MUST support the client role in the DCL specification, and
 * MUST support the client role in the SMP specification, and
-* SHOULD support the RP (Relying Party) role in the IDP specification, and
+* MUST support the RP (Relying Party) role in the IDP specification, and
 * MAY support the client role in the NRY specification, and
-* MAY choose to outsource these specification compliance requirements to a compliant third party
+* MAY choose to outsource these specification compliance requirements to a compliant third party services provider.
 
 ## Compliance statement for semantic specifications
 
