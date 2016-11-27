@@ -16,17 +16,17 @@ The [Australian Digital Business Council](http://digitalbusinesscouncil.com.au/)
 
 # How it Works 
 
-Unlike single provider APIs (eg google or facebook), a B2B community needs all businesses to implement the same interface so that the same document format (e.g. an invoice) can be sent from any business to any other business. It works like this;
-
-1. A business that wishes to participate in the network first proves their identity via an OIDC "log in with.." an identity provider service.  Different identity assurance levels are supported.  
-2. With an IDP token at given identity assurance level, the business publishes their service end-point and public key to a metadata publisher in accordance with the SMP specification.  So, for example, the the SMP will now show (with medium level of assurance) that "ACME" identified by ABN=12345678911 provides an e-invoice service at https://api.acme.com.au/v1/invoice 
-3. ACME's supplier "Widget Co" has also verified identity and published their services to the SMP. When Widget Co wants to send and invoice to ACME, then Widget Co will lookup ACME's service infomation (using ACME's ABN as the lookup key).
-4. Widget will digitally sign the invoice and then use ACME's public key to encrypt it.  Then Widget will POST the invocie to ACME's service end point in accordance with the TAP (Transaction Access Point) specification.
-5. ACME will verify Widget's signature, decrypt the invoice, and process it in ACME's financial system.  At each key stage in the invoice lifecycle (received, approved/disputed, paid), ACME will send an invoice response document to Widget Co.
-6. Both Widget and ACME will optionally record the signed invoices and responses in the blickchain using the Notary (NRY) specification.  This provides both a non-repudiable transaction audit log and can be used by authorised third parties to provide addiotnal services like invoice financing (so Widget Co can get paid immediately even though ACME's terms are 60 days net). 
-7. In most cases, all these steps 1 to 6 will be performed automatically by ACME's and Widget's financial software.  
+Unlike single provider APIs (eg google or facebook), a B2B community needs all businesses to implement the same interface so that the same document format (e.g. an invoice) can be sent from any business to any other business. The diagram shows how it works.
 
 ![Framework Diagram](AusDigitalHomepage.png)
+
+1. A business that wishes to participate in the network first proves their identity via an OIDC "log in with.." an identity provider service.  Different identity assurance levels are supported in an open identity market.  
+2. With an IDP token at given identity assurance level, the business publishes their service end-point and public key to a metadata publisher in accordance with the SMP specification.  So, for example, the the SMP will now show (with medium level of assurance) that "ACME" identified by ABN=12345678911 provides an e-invoice service at https://api.acme.com.au/v1/invoice 
+3. ACME's supplier "Widget Co" has also verified identity and published their services to the SMP. When Widget Co wants to send and invoice to ACME, then Widget Co will lookup ACME's service infomation (using ACME's ABN as the lookup key).
+4. Widget will digitally sign the invoice and then use ACME's public key to encrypt it.  Then Widget will POST the invoice to ACME's service end point in accordance with the TAP (Transaction Access Point) specification.
+5. ACME will verify Widget's signature, decrypt the invoice, and process it in ACME's financial system.  At each key stage in the invoice lifecycle (received, approved/disputed, paid), ACME will send an invoice response document to Widget Co.
+6. Both Widget and ACME will optionally record the signed invoices and responses in the blockchain using the Notary (NRY) specification.  This provides both a non-repudiable transaction audit log and can be used by authorised third parties to provide additional services like invoice financing (so Widget Co can get paid immediately even though ACME's terms are 60 days net). 
+7. In most cases, all these steps 1 to 6 will be performed automatically by ACME's and Widget's financial software.  
 
 The success of the interoperability framework depends on uptake by the ledger software providers. Those systems must implement a number of interfaces in a consistent way - which requires clear standards, good test services, and easy to use tooling.  That is the purpose of this site.
 
@@ -178,6 +178,8 @@ As a software application vendor seeking compliance with the framework you;
 
 # The 4-Corner Model and RESTful Model Compared.
 
+## 4-corner model
+
 The Australian Digital Business Council has published an e-invoicing framework that ias based on a similar model from Europe.  The framework assumes a "4 corner model" where messages flow from sender (corner 1), to sender's EDI hub (corder 2), to recipients EDI hub (corner 3), to the ultimate recipient (corner 4). The technical specifications are published to the [Interoperability Framework](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework) page and include;  
 * A service discovery model based on based on OASIS [BDX-L](http://docs.oasis-open.org/bdxr/BDX-Location/v1.0/cs01/BDX-Location-v1.0-cs01.html) (DNS Lookup) and [BDX-SMP](http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/cs01/bdx-smp-v1.0-cs01.html) (detailed metadata) standards. The ADBC has published profiles of the OASIS specifications as the [DCL](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42401/download) and the [DCP](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42402/download) specifications.
 * A messaging model based on OASIS [ebMS3](http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/core/os/ebms_core-3.0-spec-os.html) and [AS4](http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/profiles/AS4-profile/v1.0/os/AS4-profile-v1.0-os.html) standards. The ADBC profile is published as the ["Access Point"](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42403/download) specifciation.
@@ -188,6 +190,8 @@ The ADBC specifications have a weak technical security model (no encryption, no 
 * The [Digital Capability Publisher Provider Agreement](http://digitalbusinesscouncil.com.au/accreditation/documents/42923/download) and
 * Some internal governance rules that are not generally published. 
 
+## RESTful model
+
 The RESTful peer-to-peer model is secure by design and so needs no governance framework to ensure the integrity of network service providers. It is also cheaper to build and operate since it leverages ubiquitous web standards supported by every technology stack and does not depend on multiple hubs for routing messages.
 
 * It is a Peer-to-Peer model that does not need traditional EDI hubs. 
@@ -196,5 +200,7 @@ The RESTful peer-to-peer model is secure by design and so needs no governance fr
 * It includes a service discovery framework that is backwards compatible with the ADBC DCL and DCP specifications but extends them to support distributed key management.
 * It includes a new "Notary" (NRY) specification that provides a blockchain based proof of existence of digital transactions that can be used for non-repudiable audit and new financial services (such as invoice financing for small & medium businesses).
 * It includes exactly the same invoice semantic model as the ADBC invlice specifications but uses a JSON representation and, more importantly, includes an invoice signed status response document from the buyer (eg "got your invoice and it's approved for payment in 60 days") that can be used for invoice financing purposes. 
+
+## Working together
 
 It is quite feasible that both specifications can work together in the same network.  That is because the service discovery components are the same and the invoice semantics are the same.  The 4-corner model will work well to connect up existing EDI hubs (about 15% of the market) whilst the RESTful model will work well for the remaining 85%.  Connections between the two are achieved simply by the EDI hubs exposing a RESTful interface to bridge traffic.
