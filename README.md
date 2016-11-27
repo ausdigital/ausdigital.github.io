@@ -12,27 +12,19 @@ We want the simplest, lowest cost and most secure solution to these needs so we'
 
 # Background
 
-The [Australian Digital Business Council](http://digitalbusinesscouncil.com.au/) has published an interoperability framework that aims to increase national productivity through automation of common buisness processes such as invoicing. The standards are based on a "4 corner model" from Europe that depends heavily on traditional EDI hubs and includes the following specifications published to the [Interoperability Framework](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework) page;
-* A service discovery model based on based on OASIS [BDX-L](http://docs.oasis-open.org/bdxr/BDX-Location/v1.0/cs01/BDX-Location-v1.0-cs01.html) (DNS Lookup) and [BDX-SMP](http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/cs01/bdx-smp-v1.0-cs01.html) (detailed metadata) standards. The ADBC has published profiles of the OASIS specifications as the [DCL](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42401/download) and the [DCP](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42402/download) specifications.
-* A messaging model based on OASIS [ebMS3](http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/core/os/ebms_core-3.0-spec-os.html) and [AS4](http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/profiles/AS4-profile/v1.0/os/AS4-profile-v1.0-os.html) standards. The ADBC profile is published as the ["Access Point"](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42403/download) specifciation.
-* A semantic model based on OASIS [UBL 2.1](http://docs.oasis-open.org/ubl/UBL-2.1.html) standards.  The ADBC profile is published as the ["eInvoicing Semantic Model"](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42399/download).
-
-The ADBC specifications have a weak technical security model (no encryption, no signatures, and an identity model based on known customers of the EDI hubs).  As a consequence, the ADBC model demands high integrity behaviour from the Hubs.  This is implemented as a suite of accreditation and governance models operated and enforced by the ADBC:
-* The [Access Point Provider Agreement](http://digitalbusinesscouncil.com.au/accreditation/documents/42924/download) and
-* The [Digital Capability Publisher Provider Agreement](http://digitalbusinesscouncil.com.au/accreditation/documents/42923/download) and
-* Some internal governance rules that are not generally published. 
-
-The Digital Business Council has also created a RESTful working group that aims to provide a simpler and more secure implementation model based on ubiquitous internet standards such as REST.  The RESTful model is also "secure by design" because it strongly separates the role of the identity provider from any service providers and includes end-to-end encryption and signatures.  COnsequently the RESTful model has no need for the complex governance arrangements.  This site is the repository for those specifications.  
+The [Australian Digital Business Council](http://digitalbusinesscouncil.com.au/) has published an interoperability framework that aims to increase national productivity through automation of common buisness processes such as invoicing. The standards are based on a [4 corner model](#the-4-corner-model-and-restful-model-compared) from Europe that depends heavily on traditional EDI hubs and B2B standards like ebXML. Although workable, uptake has been slow in Europe and so the Digital Business Council has also created a RESTful working group that aims to provide a simpler and more secure peer-to-peer implementation model based on ubiquitous internet standards such as REST.  This site is the repository for those specifications. 
 
 # How it Works 
 
-Unlike single provider APIs (eg google or facebook), a B2B community needs all businesses to implement the same interface so that the same document format (e.g. an invoice) can be sent from any business to any other business.  To do so securely also needs a key distribution model so that senders can find recipient public keys to encrypt messages and so that recipients can find sender public keys to verify signatures.  The Ausdigital.org RESTful framework therefore has some similarities and some key differences compared to the ADBC 4-corner model:
-* It is a Peer-to-Peer model so essentially a "2 corner model" that does not need traditional EDI hubs. 
-* It includes a "Transaction Access Point" (TAP) that is a high avaialbility end point proxy for encrypted messages and cannot inspect the payload.
-* It includes a new "Identity Provider" (IDP) framework that recognises the existence of an independent identity market that can be leveraged by the framework to provide identity confidence at different assurance levels.
-* It includes a service discovery framework that is backwards compatible with the ADBC DCL and DCP specifications but extends them to support distributed key management.
-* It includes a new "Notary" (NRY) specification that provides a blockchain based proof of existence of digital transactions that can be used for non-repudiable audit and new financial services (such as invoice financing for small & medium businesses).
-* It includes exactly the same invoice semantic model as the ADBC invlice specifications but uses a JSON representation and, more importantly, includes an invoice signed status response document from the buyer (eg "got your invoice and it's approved for payment in 60 days") that can be used for invoice financing purposes. 
+Unlike single provider APIs (eg google or facebook), a B2B community needs all businesses to implement the same interface so that the same document format (e.g. an invoice) can be sent from any business to any other business. It works like this;
+
+1. A business that wishes to participate in the network first proves their identity via an OIDC "log in with.." an identity provider service.  Different identity assurance levels are supported.  
+2. With an IDP token at given identity assurance level, the business publishes their service end-point and public key to a metadata publisher in accordance with the SMP specification.  So, for example, the the SMP will now show (with medium level of assurance) that "ACME" identified by ABN=12345678911 provides an e-invoice service at https://api.acme.com.au/v1/invoice 
+3. ACME's supplier "Widget Co" has also verified identity and published their services to the SMP. When Widget Co wants to send and invoice to ACME, then Widget Co will lookup ACME's service infomation (using ACME's ABN as the lookup key).
+4. Widget will digitally sign the invoice and then use ACME's public key to encrypt it.  Then Widget will POST the invocie to ACME's service end point in accordance with the TAP (Transaction Access Point) specification.
+5. ACME will verify Widget's signature, decrypt the invoice, and process it in ACME's financial system.  At each key stage in the invoice lifecycle (received, approved/disputed, paid), ACME will send an invoice response document to Widget Co.
+6. Both Widget and ACME will optionally record the signed invoices and responses in the blickchain using the Notary (NRY) specification.  This provides both a non-repudiable transaction audit log and can be used by authorised third parties to provide addiotnal services like invoice financing (so Widget Co can get paid immediately even though ACME's terms are 60 days net). 
+7. In most cases, all these steps 1 to 6 will be performed automatically by ACME's and Widget's financial software.  
 
 ![Framework Diagram](AusDigitalHomepage.png)
 
@@ -183,3 +175,26 @@ As a software application vendor seeking compliance with the framework you;
 * MAY choose to support one or more processes for the given business document, and
 * MAY choose to support one or more roles (eg buyer or seller) in the relevant process, and
 * MUST publish all supported semantic documents, processes, and roles to an SMP
+
+# The 4-Corner Model and RESTful Model Compared.
+
+The Australian Digital Business Council has published an e-invoicing framework that ias based on a similar model from Europe.  The framework assumes a "4 corner model" where messages flow from sender (corner 1), to sender's EDI hub (corder 2), to recipients EDI hub (corner 3), to the ultimate recipient (corner 4). The technical specifications are published to the [Interoperability Framework](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework) page and include;  
+* A service discovery model based on based on OASIS [BDX-L](http://docs.oasis-open.org/bdxr/BDX-Location/v1.0/cs01/BDX-Location-v1.0-cs01.html) (DNS Lookup) and [BDX-SMP](http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/cs01/bdx-smp-v1.0-cs01.html) (detailed metadata) standards. The ADBC has published profiles of the OASIS specifications as the [DCL](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42401/download) and the [DCP](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42402/download) specifications.
+* A messaging model based on OASIS [ebMS3](http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/core/os/ebms_core-3.0-spec-os.html) and [AS4](http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/profiles/AS4-profile/v1.0/os/AS4-profile-v1.0-os.html) standards. The ADBC profile is published as the ["Access Point"](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42403/download) specifciation.
+* A semantic model based on OASIS [UBL 2.1](http://docs.oasis-open.org/ubl/UBL-2.1.html) standards.  The ADBC profile is published as the ["eInvoicing Semantic Model"](http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42399/download).
+
+The ADBC specifications have a weak technical security model (no encryption, no signatures, and an identity model based on known customers of the EDI hubs).  As a consequence, the ADBC model demands high integrity behaviour from the Hubs.  This is implemented as a suite of accreditation and governance models operated and enforced by the ADBC:
+* The [Access Point Provider Agreement](http://digitalbusinesscouncil.com.au/accreditation/documents/42924/download) and
+* The [Digital Capability Publisher Provider Agreement](http://digitalbusinesscouncil.com.au/accreditation/documents/42923/download) and
+* Some internal governance rules that are not generally published. 
+
+The RESTful peer-to-peer model is secure by design and so needs no governance framework to ensure the integrity of network service providers. It is also cheaper to build and operate since it leverages ubiquitous web standards supported by every technology stack and does not depend on multiple hubs for routing messages.
+
+* It is a Peer-to-Peer model that does not need traditional EDI hubs. 
+* It includes a "Transaction Access Point" (TAP) that is a high avaialbility end point proxy for encrypted messages and cannot inspect the payload.
+* It includes a new "Identity Provider" (IDP) framework that recognises the existence of an independent identity market that can be leveraged by the framework to provide identity confidence at different assurance levels.
+* It includes a service discovery framework that is backwards compatible with the ADBC DCL and DCP specifications but extends them to support distributed key management.
+* It includes a new "Notary" (NRY) specification that provides a blockchain based proof of existence of digital transactions that can be used for non-repudiable audit and new financial services (such as invoice financing for small & medium businesses).
+* It includes exactly the same invoice semantic model as the ADBC invlice specifications but uses a JSON representation and, more importantly, includes an invoice signed status response document from the buyer (eg "got your invoice and it's approved for payment in 60 days") that can be used for invoice financing purposes. 
+
+It is quite feasible that both specifications can work together in the same network.  That is because the service discovery components are the same and the invoice semantics are the same.  The 4-corner model will work well to connect up existing EDI hubs (about 15% of the market) whilst the RESTful model will work well for the remaining 85%.  Connections between the two are achieved simply by the EDI hubs exposing a RESTful interface to bridge traffic.
