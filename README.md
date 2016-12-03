@@ -69,7 +69,7 @@ The framework depends heavily on the ability to discover detailed service inform
 
 The ledger access point, is the service interface for a given business and so hosts the end-point to which business documents are sent. The access point is an avaialbility mediator (allowing specific businesses to have intermittent connectivity) and is responsible for signature validation and submitting transactions to the notary service.
 
-* [LAP Working Group](https://github.com/ausdigital/access-point]) GitHub repository.
+* [TAP Working Group](https://github.com/ausdigital/access-point) GitHub repository.
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
@@ -103,7 +103,7 @@ The Billing Specifications are based on [OASIS UBL2.1](http://docs.oasis-open.or
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [Billing 1.0 spec](http://billing-semantics.readthedocs.io/) | 1.0 | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) | [Billing 1.0 API](https://swaggerhub.com/api/ausdigital/billing/1.0) | [lap.testpoint.io](http://testpoint.io/lap.html)  | [Billing 1.0 Issues](https://github.com/ausdigital/billing-semantics/issues)  |
+| [Billing 1.0 spec](http://billing-semantics.readthedocs.io/) | 1.0 | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) | [Billing 1.0 API](https://swaggerhub.com/api/ausdigital/billing/1.0) | [billing.testpoint.io](http://testpoint.io/billing.html)  | [Billing 1.0 Issues](https://github.com/ausdigital/billing-semantics/issues)  |
 
 ## Purchase Order semantics specification
 
@@ -132,7 +132,7 @@ We value the support and opinions of special interest groups and so we provide s
 
 # Governance Model
 
-## Specifciation Governance
+## Specification Governance
 
 All technical specifications are developed in the public domain using the [COSS](http://rfc.unprotocols.org/spec:2/COSS/) (Consensus Oriented Specification System) governance model.  COSS ensures that any interested party can participate (because it imposes no restrictions on contributions). It also maximises consensus because, if the editor does not accept your contribution, you can always fork the specification and become the new editor (if others agree they'll follow, but if nobody else likes your fork then you'll be editor of a lonely specification that will wither on the vine).
 
