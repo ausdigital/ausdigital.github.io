@@ -18,7 +18,7 @@ The [Australian Digital Business Council](http://digitalbusinesscouncil.com.au/)
 
 Unlike single provider APIs (eg google or facebook), a B2B community needs all businesses to implement the same interface so that the same document format (e.g. an invoice) can be sent from any business to any other business. The diagram shows how it works.
 
-![Framework Diagram](AusDigitalHomepage.png)
+![Framework Diagram](images/AusDigitalHomepage.png)
 
 1. A business that wishes to participate in the network first proves their identity via an OIDC "log in with.." an identity provider service.  Different identity assurance levels are supported in an open identity market.  
 2. With an IDP token at given identity assurance level, the business publishes their service end-point and public key to a metadata publisher in accordance with the SMP specification.  So, for example, the the SMP will now show (with medium level of assurance) that "ACME" identified by ABN=12345678911 provides an e-invoice service at https://api.acme.com.au/v1/invoice 

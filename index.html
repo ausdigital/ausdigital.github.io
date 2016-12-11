@@ -1,246 +1,233 @@
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>AusDigital Standards by ausdigital</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">AusDigital Standards</h1>
-      <h2 class="project-tagline">Business to Business data exchange open standards community </h2>
-    </section>
+---
+layout: default
+---
 
-    <section class="main-content">
-      <h1>
-<a id="purpose-of-this-site" class="anchor" href="#purpose-of-this-site" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Purpose of this site</h1>
+
+<h1>
+    <a id="purpose-of-this-site" class="anchor" href="#purpose-of-this-site" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Purpose of this site</h1>
 
 <p>Exchange of buisness documents like invoices between business finance systems ought to be as simple as email.  This site provides some open specifications and test services designed to make that easy.</p>
 
 <ul>
-<li>As a business, I want to send electronic invoices to my customer systems and know the payment status so I can manage my cashflow and get cheap debtor financing if I need it.</li>
-<li>As a business I want all invoices and tax receipts from my authorised suppliers to be automatically loaded to my financial system ready for my approval so I can reduce my administration burden.</li>
+    <li>As a business, I want to send electronic invoices to my customer systems and know the payment status so I can manage my cashflow and get cheap debtor financing if I need it.</li>
+    <li>As a business I want all invoices and tax receipts from my authorised suppliers to be automatically loaded to my financial system ready for my approval so I can reduce my administration burden.</li>
 </ul>
 
 <p>We want the simplest, lowest cost and most secure solution to these needs so we've developed a suite of RESTful API standards and thrown in strong identity measures that support end-to-end encryption and digital signatures.  This site supports implementers by providing:</p>
 
 <ul>
-<li>A suite of <a href="#the-technical-framework-specifications">technical specifications</a> and free test points.</li>
-<li>A suite of <a href="#the-business-document-semantic-specifications">semantic specifications</a> and free test points.</li>
-<li>A set of <a href="#the-special-interest-groups">special interest groups</a> with collaboration tools.</li>
-<li>A transparent <a href="#specification-governance-model">governance model</a> with free participation for any interested party.</li>
+    <li>A suite of <a href="#the-technical-framework-specifications">technical specifications</a> and free test points.</li>
+    <li>A suite of <a href="#the-business-document-semantic-specifications">semantic specifications</a> and free test points.</li>
+    <li>A set of <a href="#the-special-interest-groups">special interest groups</a> with collaboration tools.</li>
+    <li>A transparent <a href="#specification-governance-model">governance model</a> with free participation for any interested party.</li>
 </ul>
 
 <h1>
-<a id="background" class="anchor" href="#background" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Background</h1>
+    <a id="background" class="anchor" href="#background" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Background</h1>
 
 <p>The <a href="http://digitalbusinesscouncil.com.au/">Australian Digital Business Council</a> has published an interoperability framework that aims to increase national productivity through automation of common buisness processes such as invoicing. The standards are based on a <a href="#the-4-corner-model-and-restful-model-compared">4 corner model</a> from Europe that depends heavily on traditional EDI hubs and B2B standards like ebXML. Although workable, uptake has been slow in Europe and so the Digital Business Council has also created a RESTful working group that aims to provide a simpler and more secure peer-to-peer implementation model based on ubiquitous internet standards such as REST.  This site is the repository for those specifications. </p>
 
 <h1>
-<a id="how-it-works" class="anchor" href="#how-it-works" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How it Works</h1>
+    <a id="how-it-works" class="anchor" href="#how-it-works" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How it Works</h1>
 
 <p>Unlike single provider APIs (eg google or facebook), a B2B community needs all businesses to implement the same interface so that the same document format (e.g. an invoice) can be sent from any business to any other business. The diagram shows how it works.</p>
 
-<p><img src="AusDigitalHomepage.png" alt="Framework Diagram"></p>
+<p><img src="images/AusDigitalHomepage.png" alt="Framework Diagram"></p>
 
 <ol>
-<li>A business that wishes to participate in the network first proves their identity via an OIDC "log in with.." an identity provider service.  Different identity assurance levels are supported in an open identity market.<br>
-</li>
-<li>With an IDP token at given identity assurance level, the business publishes their service end-point and public key to a metadata publisher in accordance with the SMP specification.  So, for example, the the SMP will now show (with medium level of assurance) that "ACME" identified by ABN=12345678911 provides an e-invoice service at <a href="https://api.acme.com.au/v1/invoice">https://api.acme.com.au/v1/invoice</a> </li>
-<li>ACME's supplier "Widget Co" has also verified identity and published their services to the SMP. When Widget Co wants to send and invoice to ACME, then Widget Co will lookup ACME's service infomation (using ACME's ABN as the lookup key).</li>
-<li>Widget will digitally sign the invoice and then use ACME's public key to encrypt it.  Then Widget will POST the invoice to ACME's service end point in accordance with the TAP (Transaction Access Point) specification.</li>
-<li>ACME will verify Widget's signature, decrypt the invoice, and process it in ACME's financial system.  At each key stage in the invoice lifecycle (received, approved/disputed, paid), ACME will send an invoice response document to Widget Co.</li>
-<li>Both Widget and ACME will optionally record the signed invoices and responses in the blockchain using the Notary (NRY) specification.  This provides both a non-repudiable transaction audit log and can be used by authorised third parties to provide additional services like invoice financing (so Widget Co can get paid immediately even though ACME's terms are 60 days net). </li>
-<li>In most cases, all these steps 1 to 6 will be performed automatically by ACME's and Widget's financial software.<br>
-</li>
+    <li>A business that wishes to participate in the network first proves their identity via an OIDC "log in with.." an identity provider service.  Different identity assurance levels are supported in an open identity market.<br>
+    </li>
+    <li>With an IDP token at given identity assurance level, the business publishes their service end-point and public key to a metadata publisher in accordance with the SMP specification.  So, for example, the the SMP will now show (with medium level of assurance) that "ACME" identified by ABN=12345678911 provides an e-invoice service at <a href="https://api.acme.com.au/v1/invoice">https://api.acme.com.au/v1/invoice</a> </li>
+    <li>ACME's supplier "Widget Co" has also verified identity and published their services to the SMP. When Widget Co wants to send and invoice to ACME, then Widget Co will lookup ACME's service infomation (using ACME's ABN as the lookup key).</li>
+    <li>Widget will digitally sign the invoice and then use ACME's public key to encrypt it.  Then Widget will POST the invoice to ACME's service end point in accordance with the TAP (Transaction Access Point) specification.</li>
+    <li>ACME will verify Widget's signature, decrypt the invoice, and process it in ACME's financial system.  At each key stage in the invoice lifecycle (received, approved/disputed, paid), ACME will send an invoice response document to Widget Co.</li>
+    <li>Both Widget and ACME will optionally record the signed invoices and responses in the blockchain using the Notary (NRY) specification.  This provides both a non-repudiable transaction audit log and can be used by authorised third parties to provide additional services like invoice financing (so Widget Co can get paid immediately even though ACME's terms are 60 days net). </li>
+    <li>In most cases, all these steps 1 to 6 will be performed automatically by ACME's and Widget's financial software.<br>
+    </li>
 </ol>
 
 <p>The success of the interoperability framework depends on uptake by the ledger software providers. Those systems must implement a number of interfaces in a consistent way - which requires clear standards, good test services, and easy to use tooling.  That is the purpose of this site.</p>
 
 <h1>
-<a id="the-technical-framework-specifications" class="anchor" href="#the-technical-framework-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Technical Framework Specifications</h1>
+    <a id="the-technical-framework-specifications" class="anchor" href="#the-technical-framework-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Technical Framework Specifications</h1>
 
 <p>There are five technical specifications, each with it's own github repository.  Ledger vendors must implement in accordance with the <a href="#compliance-statement-for-technical-specifications">compliance statement</a></p>
 
 <h2>
-<a id="the-identity-provider-specification" class="anchor" href="#the-identity-provider-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Identity Provider specification</h2>
+    <a id="the-identity-provider-specification" class="anchor" href="#the-identity-provider-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Identity Provider specification</h2>
 
 <p>A federated set of one or more identity providers are the key source of trust for the network.  This specification defines a standard taxonomy of OIDC claims and scopes, together with a set of identity assurance levels and a standard way to link identity claims.</p>
 
 <ul>
-<li>
-<a href="https://github.com/ausdigital/identity-provider">IDP Working Group</a> GitHub repository.</li>
+    <li>
+        <a href="https://github.com/ausdigital/identity-provider">IDP Working Group</a> GitHub repository.</li>
 </ul>
 
 <table>
-<thead>
-<tr>
-<th>Specification URL</th>
-<th>Version</th>
-<th>Status</th>
-<th>API Definition</th>
-<th>Test Service</th>
-<th>Issues List</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://identity-provider.readthedocs.org/">IDP 1.0 spec</a></td>
-<td>1.0</td>
-<td><img src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" alt="Raw"></td>
-<td><a href="https://swaggerhub.com/api/ausdigital/identity-provider/1.0">IDP 1.0 API</a></td>
-<td><a href="https://idp.testpoint.io">idp.testpoint.io</a></td>
-<td><a href="https://github.com/ausdigital/identity-provider/issues">IDP 1.0 Issues</a></td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>Specification URL</th>
+        <th>Version</th>
+        <th>Status</th>
+        <th>API Definition</th>
+        <th>Test Service</th>
+        <th>Issues List</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><a href="https://identity-provider.readthedocs.org/">IDP 1.0 spec</a></td>
+        <td>1.0</td>
+        <td><img src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" alt="Raw"></td>
+        <td><a href="https://swaggerhub.com/api/ausdigital/identity-provider/1.0">IDP 1.0 API</a></td>
+        <td><a href="https://idp.testpoint.io">idp.testpoint.io</a></td>
+        <td><a href="https://github.com/ausdigital/identity-provider/issues">IDP 1.0 Issues</a></td>
+    </tr>
+    </tbody>
 </table>
 
 <h2>
-<a id="the-digital-capability-locator-specification" class="anchor" href="#the-digital-capability-locator-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Digital Capability Locator specification</h2>
+    <a id="the-digital-capability-locator-specification" class="anchor" href="#the-digital-capability-locator-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Digital Capability Locator specification</h2>
 
 <p>The framework assumes that there could be multiple metadata publishers (SMP) in the network and so the digital capability locator is essentially a DNS entry (NAPTR Record type) that is used to redirect a lookup query for a given business identifier to the correct SMP.</p>
 
 <ul>
-<li>
-<a href="https://github.com/ausdigital/capability-locator">DCL Working Group</a> GitHub repository.</li>
+    <li>
+        <a href="https://github.com/ausdigital/capability-locator">DCL Working Group</a> GitHub repository.</li>
 </ul>
 
 <table>
-<thead>
-<tr>
-<th>Specification URL</th>
-<th>Version</th>
-<th>Status</th>
-<th>API Definition</th>
-<th>Test Service</th>
-<th>Issues List</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://capability-locator.readthedocs.org">DCL 1.0 spec</a></td>
-<td>1.0</td>
-<td><img src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" alt="Raw"></td>
-<td><a href="https://swaggerhub.com/api/ausdigital/capability-locator/1.0">DCL 1.0 API</a></td>
-<td><a href="https://dcl.testpoint.io/">dcl.testpoint.io</a></td>
-<td><a href="https://github.com/ausdigital/capability-locator/issues">DCL 1.0 Issues</a></td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>Specification URL</th>
+        <th>Version</th>
+        <th>Status</th>
+        <th>API Definition</th>
+        <th>Test Service</th>
+        <th>Issues List</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><a href="https://capability-locator.readthedocs.org">DCL 1.0 spec</a></td>
+        <td>1.0</td>
+        <td><img src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" alt="Raw"></td>
+        <td><a href="https://swaggerhub.com/api/ausdigital/capability-locator/1.0">DCL 1.0 API</a></td>
+        <td><a href="https://dcl.testpoint.io/">dcl.testpoint.io</a></td>
+        <td><a href="https://github.com/ausdigital/capability-locator/issues">DCL 1.0 Issues</a></td>
+    </tr>
+    </tbody>
 </table>
 
 <h2>
-<a id="the-service-metadata-publisher-specification" class="anchor" href="#the-service-metadata-publisher-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Service Metadata Publisher specification</h2>
+    <a id="the-service-metadata-publisher-specification" class="anchor" href="#the-service-metadata-publisher-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Service Metadata Publisher specification</h2>
 
 <p>The framework depends heavily on the ability to discover detailed service information for any given business identifier.  The SMP maintains a list of businesses, with a list of services for each business. Each service lists supported document formats and transport protocols and holds a digital certificate for message signing and encryption.</p>
 
 <ul>
-<li>
-<a href="https://github.com/ausdigital/metadata-publisher">SMP Working Group</a> GitHub repository.</li>
+    <li>
+        <a href="https://github.com/ausdigital/metadata-publisher">SMP Working Group</a> GitHub repository.</li>
 </ul>
 
 <table>
-<thead>
-<tr>
-<th>Specification URL</th>
-<th>Version</th>
-<th>Status</th>
-<th>API Definition</th>
-<th>Test Service</th>
-<th>Issues List</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://metadata-publisher.readthedocs.io/">SMP 1.0 spec</a></td>
-<td>1.0</td>
-<td><img src="http://rfc.unprotocols.org/spec:2/COSS/draft.svg" alt="Draft"></td>
-<td><a href="https://swaggerhub.com/api/ausdigital/metadata-publisher/1.0">SMP 1.0 API</a></td>
-<td><a href="https://smp.testpoint.io">smp.testpoint.io</a></td>
-<td><a href="https://github.com/ausdigital/metadata-publisher/issues">SMP 1.0 Issues</a></td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>Specification URL</th>
+        <th>Version</th>
+        <th>Status</th>
+        <th>API Definition</th>
+        <th>Test Service</th>
+        <th>Issues List</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><a href="http://metadata-publisher.readthedocs.io/">SMP 1.0 spec</a></td>
+        <td>1.0</td>
+        <td><img src="http://rfc.unprotocols.org/spec:2/COSS/draft.svg" alt="Draft"></td>
+        <td><a href="https://swaggerhub.com/api/ausdigital/metadata-publisher/1.0">SMP 1.0 API</a></td>
+        <td><a href="https://smp.testpoint.io">smp.testpoint.io</a></td>
+        <td><a href="https://github.com/ausdigital/metadata-publisher/issues">SMP 1.0 Issues</a></td>
+    </tr>
+    </tbody>
 </table>
 
 <h2>
-<a id="the-transaction-access-point-specification" class="anchor" href="#the-transaction-access-point-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Transaction Access Point specification</h2>
+    <a id="the-transaction-access-point-specification" class="anchor" href="#the-transaction-access-point-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Transaction Access Point specification</h2>
 
 <p>The ledger access point, is the service interface for a given business and so hosts the end-point to which business documents are sent. The access point is an avaialbility mediator (allowing specific businesses to have intermittent connectivity) and is responsible for signature validation and submitting transactions to the notary service.</p>
 
 <ul>
-<li>
-<a href="https://github.com/ausdigital/access-point">TAP Working Group</a> GitHub repository.</li>
+    <li>
+        <a href="https://github.com/ausdigital/access-point">TAP Working Group</a> GitHub repository.</li>
 </ul>
 
 <table>
-<thead>
-<tr>
-<th>Specification URL</th>
-<th>Version</th>
-<th>Status</th>
-<th>API Definition</th>
-<th>Test Service</th>
-<th>Issues List</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://access-point.readthedocs.io/">TAP 1.0 spec</a></td>
-<td>1.0</td>
-<td><img src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" alt="Raw"></td>
-<td><a href="https://swaggerhub.com/api/ausdigital/access-point/1.0">TAP 1.0 API</a></td>
-<td><a href="http://testpoint.io/lap.html">tap.testpoint.io</a></td>
-<td><a href="https://github.com/ausdigital/access-point/issues">TAP 1.0 Issues</a></td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>Specification URL</th>
+        <th>Version</th>
+        <th>Status</th>
+        <th>API Definition</th>
+        <th>Test Service</th>
+        <th>Issues List</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><a href="http://access-point.readthedocs.io/">TAP 1.0 spec</a></td>
+        <td>1.0</td>
+        <td><img src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" alt="Raw"></td>
+        <td><a href="https://swaggerhub.com/api/ausdigital/access-point/1.0">TAP 1.0 API</a></td>
+        <td><a href="http://testpoint.io/lap.html">tap.testpoint.io</a></td>
+        <td><a href="https://github.com/ausdigital/access-point/issues">TAP 1.0 Issues</a></td>
+    </tr>
+    </tbody>
 </table>
 
 <h2>
-<a id="the-notary-specification" class="anchor" href="#the-notary-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Notary specification</h2>
+    <a id="the-notary-specification" class="anchor" href="#the-notary-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Notary specification</h2>
 
 <p>The notary serivce provides an irrefutable history of a specific "contract" (eg an invoice and it's status lifecycle), recorded in a blockchain distributed ledger.  This service supports dispute resolution and provides the foundation platform for financial services such as debtor financing.</p>
 
 <ul>
-<li>
-<a href="https://github.com/ausdigital/notary">NRY Working Group</a> GitHub repository.</li>
+    <li>
+        <a href="https://github.com/ausdigital/notary">NRY Working Group</a> GitHub repository.</li>
 </ul>
 
 <table>
-<thead>
-<tr>
-<th>Specification URL</th>
-<th>Version</th>
-<th>Status</th>
-<th>API Definition</th>
-<th>Test Service</th>
-<th>Issues List</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://notary.readthedocs.io/">NRY 1.0 spec</a></td>
-<td>1.0</td>
-<td><img src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" alt="Raw"></td>
-<td><a href="https://swaggerhub.com/api/ausdigital/notary/1.0">NRY 1.0 API</a></td>
-<td><a href="http://testpoint.io/nry.html">nry.testpoint.io</a></td>
-<td><a href="https://github.com/ausdigital/notary/issues">NRY 1.0 Issues</a></td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>Specification URL</th>
+        <th>Version</th>
+        <th>Status</th>
+        <th>API Definition</th>
+        <th>Test Service</th>
+        <th>Issues List</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><a href="http://notary.readthedocs.io/">NRY 1.0 spec</a></td>
+        <td>1.0</td>
+        <td><img src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" alt="Raw"></td>
+        <td><a href="https://swaggerhub.com/api/ausdigital/notary/1.0">NRY 1.0 API</a></td>
+        <td><a href="http://testpoint.io/nry.html">nry.testpoint.io</a></td>
+        <td><a href="https://github.com/ausdigital/notary/issues">NRY 1.0 Issues</a></td>
+    </tr>
+    </tbody>
 </table>
 
 <h1>
-<a id="the-business-document-semantic-specifications" class="anchor" href="#the-business-document-semantic-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Business Document Semantic Specifications</h1>
+    <a id="the-business-document-semantic-specifications" class="anchor" href="#the-business-document-semantic-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Business Document Semantic Specifications</h1>
 
 <p>The technical framework exists only to provide the foundation for the secure and reliable interchange of business documents such as electronic invoices.  The specifications in this section describe the semantics of each business document.  Note that;</p>
 
 <ul>
-<li>the semantics can vary depending on the process context - for example "commercial invoice" and "reciptient created tax invoice" are two different processes that leverage the same document type.<br>
-</li>
-<li>each process has at least two roles (eg Buyer and Seller) with different requirements under the specification.<br>
-</li>
+    <li>the semantics can vary depending on the process context - for example "commercial invoice" and "reciptient created tax invoice" are two different processes that leverage the same document type.<br>
+    </li>
+    <li>each process has at least two roles (eg Buyer and Seller) with different requirements under the specification.<br>
+    </li>
 </ul>
 
 <p>Therefore the semantic specifictions group compliance requirements by process and role.</p>
@@ -248,222 +235,212 @@
 <p>Like the technical specifications, the semantic specification are developed using the <a href="http://rfc.unprotocols.org/spec:2/COSS/">COSS</a> (Consensus Oriented Specification System) governance model.</p>
 
 <h2>
-<a id="billing-semantics-specification" class="anchor" href="#billing-semantics-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Billing Semantics specification</h2>
+    <a id="billing-semantics-specification" class="anchor" href="#billing-semantics-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Billing Semantics specification</h2>
 
 <p>The Billing Specifications are based on <a href="http://docs.oasis-open.org/ubl/UBL-2.1.html">OASIS UBL2.1</a> <a href="http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html#S-BILLING">billing semantics</a> and include the Invoice, Credit Note, Debit Note, and Application Response documents.  The process roles are buyer and seller.  The invoice specification is semantically identical to the to <a href="http://digitalbusinesscouncil.com.au/accreditation/documents/42381/download">ADBC e-invoice semantic model</a>.</p>
 
 <ul>
-<li>
-<a href="https://github.com/ausdigital/billing-semantics">Billing Working Group</a> GitHub repository.</li>
+    <li>
+        <a href="https://github.com/ausdigital/billing-semantics">Billing Working Group</a> GitHub repository.</li>
 </ul>
 
 <table>
-<thead>
-<tr>
-<th>Specification URL</th>
-<th>Version</th>
-<th>Status</th>
-<th>API Definition</th>
-<th>Test Service</th>
-<th>Issues List</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://billing-semantics.readthedocs.io/">Billing 1.0 spec</a></td>
-<td>1.0</td>
-<td><img src="http://rfc.unprotocols.org/spec:2/COSS/draft.svg" alt="Draft"></td>
-<td><a href="https://swaggerhub.com/api/ausdigital/billing/1.0">Billing 1.0 API</a></td>
-<td><a href="http://testpoint.io/billing.html">billing.testpoint.io</a></td>
-<td><a href="https://github.com/ausdigital/billing-semantics/issues">Billing 1.0 Issues</a></td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>Specification URL</th>
+        <th>Version</th>
+        <th>Status</th>
+        <th>API Definition</th>
+        <th>Test Service</th>
+        <th>Issues List</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><a href="http://billing-semantics.readthedocs.io/">Billing 1.0 spec</a></td>
+        <td>1.0</td>
+        <td><img src="http://rfc.unprotocols.org/spec:2/COSS/draft.svg" alt="Draft"></td>
+        <td><a href="https://swaggerhub.com/api/ausdigital/billing/1.0">Billing 1.0 API</a></td>
+        <td><a href="http://testpoint.io/billing.html">billing.testpoint.io</a></td>
+        <td><a href="https://github.com/ausdigital/billing-semantics/issues">Billing 1.0 Issues</a></td>
+    </tr>
+    </tbody>
 </table>
 
 <h2>
-<a id="purchase-order-semantics-specification" class="anchor" href="#purchase-order-semantics-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Purchase Order semantics specification</h2>
+    <a id="purchase-order-semantics-specification" class="anchor" href="#purchase-order-semantics-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Purchase Order semantics specification</h2>
 
 <p>Coming soon - let us know by <a href="https://github.com/ausdigital/ordering-semantics/issues">raising a ticket</a> in the ordering semantics repository if you'd like to lead this group</p>
 
 <h2>
-<a id="fulfillment-semantics-specification" class="anchor" href="#fulfillment-semantics-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fulfillment semantics specification</h2>
+    <a id="fulfillment-semantics-specification" class="anchor" href="#fulfillment-semantics-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fulfillment semantics specification</h2>
 
 <p>Coming soon - let us know by <a href="https://github.com/ausdigital/fulfilment-semantics/issues">raising a ticket</a> in the fulfilment semantics repository if you'd like to lead this group</p>
 
 <h2>
-<a id="superstream-semantics-specification" class="anchor" href="#superstream-semantics-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SuperStream semantics specification</h2>
+    <a id="superstream-semantics-specification" class="anchor" href="#superstream-semantics-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SuperStream semantics specification</h2>
 
 <p>There is a clear opportunity to simplify the current <a href="https://www.ato.gov.au/Super/SuperStream/In-detail/Legal-framework/Legislative-instrument/SuperStream-legislation,-standards-and-schedules/">Superstream Techncial Specifications</a> by replacing the complex <a href="https://www.ato.gov.au/uploadedFiles/Content/SPR/downloads/SPR26583_ContributionsMessageImplementation-%20Guide%20v1%203.pdf">XBRL payload</a> with a simple (but semantically equivalent) JSON model and by replacing the complex <a href="https://www.ato.gov.au/uploadedFiles/Content/SPR/downloads/SPR26583msgorchest.pdf">ebMS3/AS4 4-corner messaging model</a> with the same simple and secure Peer to Peer RESTful model that is used for national e-invoicing.  Let us know by <a href="https://github.com/ausdigital/superannuation-semantics/issues">raising a ticket</a> in the superannuation semantics repository if you'd like to lead this group.</p>
 
 <h1>
-<a id="the-special-interest-groups" class="anchor" href="#the-special-interest-groups" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Special Interest Groups</h1>
+    <a id="the-special-interest-groups" class="anchor" href="#the-special-interest-groups" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Special Interest Groups</h1>
 
 <p>We value the support and opinions of special interest groups and so we provide some collaboration tools to facilitate consultation and collaboration.  If you'd like to participate (or just watch the conversation) of a particular group then please follow the links to subscribe to the chat channel or low volume mailing list.  If you'd like to create a new special interest group, please join the engagement group and raise your request there.</p>
 
 <table>
-<thead>
-<tr>
-<th>Group Name</th>
-<th>Purpose</th>
-<th>Chat Room</th>
-<th>Mailing List</th>
-<th>Archive</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Engagement SIG</td>
-<td>For stakeholder engagement and outreach - to engage all interested parties.</td>
-<td><a href="https://talk.ausdigital.org/outreach-sig/channels/sig-development">Engagement chat</a></td>
-<td><a href="http://eepurl.com/ccptxv">List sign-up</a></td>
-<td><a href="http://us14.campaign-archive1.com/home/?u=2f0838d563cfad631e78b6925&amp;id=85aca3789a">View archive</a></td>
-</tr>
-<tr>
-<td>Development SIG</td>
-<td>For implementers that would like to share their experiences and get help</td>
-<td><a href="https://talk.ausdigital.org/outreach-sig/channels/sig-development">Developer chat</a></td>
-<td><a href="http://eepurl.com/cco_b5">List sign-up</a></td>
-<td><a href="http://us14.campaign-archive1.com/home/?u=2f0838d563cfad631e78b6925&amp;id=c2da00d149">View archive</a></td>
-</tr>
-<tr>
-<td>Information Security SIG</td>
-<td>For those concerned about information security and privacy issues related to the specifciations.</td>
-<td><a href="https://talk.ausdigital.org/outreach-sig/channels/sig-infosec">Infosec chat</a></td>
-<td><a href="http://eepurl.com/ccpxuP">List sign-up</a></td>
-<td><a href="http://us14.campaign-archive1.com/home/?u=2f0838d563cfad631e78b6925&amp;id=ead9785a8f">View archive</a></td>
-</tr>
-<tr>
-<td>Ledger SIG</td>
-<td>For discussions related to Ledger implementation of semantic specifications</td>
-<td><a href="https://talk.ausdigital.org/outreach-sig/channels/sig-ledger-services">Ledger chat</a></td>
-<td><a href="http://eepurl.com/ccpw3f">List sign-up</a></td>
-<td><a href="http://us14.campaign-archive2.com/home/?u=2f0838d563cfad631e78b6925&amp;id=285f23e3c4">View archive</a></td>
-</tr>
-<tr>
-<td>Trade Finance SIG</td>
-<td>For discussions about trade finance services that can leverage the specifciations</td>
-<td><a href="https://talk.ausdigital.org/outreach-sig/channels/sig-trade-finance">Trade Finance chat</a></td>
-<td><a href="http://eepurl.com/ccpwOj">List sign-up</a></td>
-<td><a href="http://us14.campaign-archive1.com/home/?u=2f0838d563cfad631e78b6925&amp;id=16392307d7">View archive</a></td>
-</tr>
-</tbody>
+    <thead>
+    <tr>
+        <th>Group Name</th>
+        <th>Purpose</th>
+        <th>Chat Room</th>
+        <th>Mailing List</th>
+        <th>Archive</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Engagement SIG</td>
+        <td>For stakeholder engagement and outreach - to engage all interested parties.</td>
+        <td><a href="https://talk.ausdigital.org/outreach-sig/channels/sig-development">Engagement chat</a></td>
+        <td><a href="http://eepurl.com/ccptxv">List sign-up</a></td>
+        <td><a href="http://us14.campaign-archive1.com/home/?u=2f0838d563cfad631e78b6925&amp;id=85aca3789a">View archive</a></td>
+    </tr>
+    <tr>
+        <td>Development SIG</td>
+        <td>For implementers that would like to share their experiences and get help</td>
+        <td><a href="https://talk.ausdigital.org/outreach-sig/channels/sig-development">Developer chat</a></td>
+        <td><a href="http://eepurl.com/cco_b5">List sign-up</a></td>
+        <td><a href="http://us14.campaign-archive1.com/home/?u=2f0838d563cfad631e78b6925&amp;id=c2da00d149">View archive</a></td>
+    </tr>
+    <tr>
+        <td>Information Security SIG</td>
+        <td>For those concerned about information security and privacy issues related to the specifciations.</td>
+        <td><a href="https://talk.ausdigital.org/outreach-sig/channels/sig-infosec">Infosec chat</a></td>
+        <td><a href="http://eepurl.com/ccpxuP">List sign-up</a></td>
+        <td><a href="http://us14.campaign-archive1.com/home/?u=2f0838d563cfad631e78b6925&amp;id=ead9785a8f">View archive</a></td>
+    </tr>
+    <tr>
+        <td>Ledger SIG</td>
+        <td>For discussions related to Ledger implementation of semantic specifications</td>
+        <td><a href="https://talk.ausdigital.org/outreach-sig/channels/sig-ledger-services">Ledger chat</a></td>
+        <td><a href="http://eepurl.com/ccpw3f">List sign-up</a></td>
+        <td><a href="http://us14.campaign-archive2.com/home/?u=2f0838d563cfad631e78b6925&amp;id=285f23e3c4">View archive</a></td>
+    </tr>
+    <tr>
+        <td>Trade Finance SIG</td>
+        <td>For discussions about trade finance services that can leverage the specifciations</td>
+        <td><a href="https://talk.ausdigital.org/outreach-sig/channels/sig-trade-finance">Trade Finance chat</a></td>
+        <td><a href="http://eepurl.com/ccpwOj">List sign-up</a></td>
+        <td><a href="http://us14.campaign-archive1.com/home/?u=2f0838d563cfad631e78b6925&amp;id=16392307d7">View archive</a></td>
+    </tr>
+    </tbody>
 </table>
 
 <h1>
-<a id="governance-model" class="anchor" href="#governance-model" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Governance Model</h1>
+    <a id="governance-model" class="anchor" href="#governance-model" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Governance Model</h1>
 
 <h2>
-<a id="specification-governance" class="anchor" href="#specification-governance" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Specification Governance</h2>
+    <a id="specification-governance" class="anchor" href="#specification-governance" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Specification Governance</h2>
 
 <p>All technical specifications are developed in the public domain using the <a href="http://rfc.unprotocols.org/spec:2/COSS/">COSS</a> (Consensus Oriented Specification System) governance model.  COSS ensures that any interested party can participate (because it imposes no restrictions on contributions). It also maximises consensus because, if the editor does not accept your contribution, you can always fork the specification and become the new editor (if others agree they'll follow, but if nobody else likes your fork then you'll be editor of a lonely specification that will wither on the vine).</p>
 
 <h2>
-<a id="implementation-governance" class="anchor" href="#implementation-governance" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Implementation Governance</h2>
+    <a id="implementation-governance" class="anchor" href="#implementation-governance" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Implementation Governance</h2>
 
 <p>The secure-by-design nature of the framework eliminates the need for implementation governance or any provider accreditations. Furthermore, the use of independent identity providers such as banks, government, or other entities subject to <a href="http://www.austrac.gov.au/businesses/obligations-and-compliance/customer-due-diligence">"know your customer" legisation</a> means that identity assurance is, by definition, not governed by the ADBC.  Therefore, implementation governance within this framework is reduced to;</p>
 
 <ul>
-<li>Defining a set of assurance levels that are used to classify identity providers - so that particpants in the network can have a clear shared understanding of the identity integrity of any message sent or received.  This is the role of the [IDP Specification]((<a href="https://identity-provider.readthedocs.org/">https://identity-provider.readthedocs.org/</a>).</li>
-<li>A key principle that relying parties (eg implementers of the SMP or TAP specifications) will stake their reputation on the strength of identity that they demand for their customers.</li>
+    <li>Defining a set of assurance levels that are used to classify identity providers - so that particpants in the network can have a clear shared understanding of the identity integrity of any message sent or received.  This is the role of the [IDP Specification]((<a href="https://identity-provider.readthedocs.org/">https://identity-provider.readthedocs.org/</a>).</li>
+    <li>A key principle that relying parties (eg implementers of the SMP or TAP specifications) will stake their reputation on the strength of identity that they demand for their customers.</li>
 </ul>
 
 <h2>
-<a id="how-to-participate" class="anchor" href="#how-to-participate" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to participate</h2>
+    <a id="how-to-participate" class="anchor" href="#how-to-participate" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to participate</h2>
 
 <p>All specifications are developed in the public domain.  To make your voice heard, you can:</p>
 
 <ul>
-<li>To comment on a specification, click on the relevant "Issues List" link against any <a href="#the-technical-framework-specifications">technical specification</a> and then hit "new issue" when you land in github.</li>
-<li>To participate in a special interest group, click on the relevant "chat room" link in the <a href="#the-special-interest-groups">special interest group</a> table.</li>
-<li>If you just want to be kept informed, then click on relevant "Mailing list" link in the <a href="#the-special-interest-groups">special interest group</a> table.</li>
+    <li>To comment on a specification, click on the relevant "Issues List" link against any <a href="#the-technical-framework-specifications">technical specification</a> and then hit "new issue" when you land in github.</li>
+    <li>To participate in a special interest group, click on the relevant "chat room" link in the <a href="#the-special-interest-groups">special interest group</a> table.</li>
+    <li>If you just want to be kept informed, then click on relevant "Mailing list" link in the <a href="#the-special-interest-groups">special interest group</a> table.</li>
 </ul>
 
 <p>A new technical specification can be launched at any time via the following process:</p>
 
 <ol>
-<li>
-<a href="https://github.com/ausdigital/ausdigital.github.io/issues">Raise a ticket</a> in the root ausdigital repository with title “Proposed SPEC”.  Document a high level scope and purpose of the proposed spec in the issue.</li>
-<li>Prove evidence of participation interest by collecting "+1" in the form of comments on the issue from at least 6 other people from at least 3 different organisations. </li>
-<li>Nominate an Editor</li>
-<li>Indicate acceptance of the <a href="http://rfc.unprotocols.org/spec:2/COSS/">COSS</a> governance model and the <a href="http://semver.org/">SemVer</a> versioning model for specification development.</li>
-<li>Once steps 1 to 4 are complete, we will create the repository, give the editor write access, and add the default document template</li>
-<li>The new editor should then notify relevant special interest groups of issues or questions regarding the new SPEC</li>
+    <li>
+        <a href="https://github.com/ausdigital/ausdigital.github.io/issues">Raise a ticket</a> in the root ausdigital repository with title “Proposed SPEC”.  Document a high level scope and purpose of the proposed spec in the issue.</li>
+    <li>Prove evidence of participation interest by collecting "+1" in the form of comments on the issue from at least 6 other people from at least 3 different organisations. </li>
+    <li>Nominate an Editor</li>
+    <li>Indicate acceptance of the <a href="http://rfc.unprotocols.org/spec:2/COSS/">COSS</a> governance model and the <a href="http://semver.org/">SemVer</a> versioning model for specification development.</li>
+    <li>Once steps 1 to 4 are complete, we will create the repository, give the editor write access, and add the default document template</li>
+    <li>The new editor should then notify relevant special interest groups of issues or questions regarding the new SPEC</li>
 </ol>
 
 <h2>
-<a id="compliance-statement-for-technical-specifications" class="anchor" href="#compliance-statement-for-technical-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compliance statement for technical specifications</h2>
+    <a id="compliance-statement-for-technical-specifications" class="anchor" href="#compliance-statement-for-technical-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compliance statement for technical specifications</h2>
 
 <p>As a software application vendor seeking compliance with the framework you;</p>
 
 <ul>
-<li>MUST support the TAP specification, and</li>
-<li>MUST support the client role in the DCL specification, and</li>
-<li>MUST support the client role in the SMP specification, and</li>
-<li>MUST support the RP (Relying Party) role in the IDP specification, and</li>
-<li>MAY support the client role in the NRY specification, and</li>
-<li>MAY choose to outsource these specification compliance requirements to a compliant third party services provider.</li>
+    <li>MUST support the TAP specification, and</li>
+    <li>MUST support the client role in the DCL specification, and</li>
+    <li>MUST support the client role in the SMP specification, and</li>
+    <li>MUST support the RP (Relying Party) role in the IDP specification, and</li>
+    <li>MAY support the client role in the NRY specification, and</li>
+    <li>MAY choose to outsource these specification compliance requirements to a compliant third party services provider.</li>
 </ul>
 
 <h2>
-<a id="compliance-statement-for-semantic-specifications" class="anchor" href="#compliance-statement-for-semantic-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compliance statement for semantic specifications</h2>
+    <a id="compliance-statement-for-semantic-specifications" class="anchor" href="#compliance-statement-for-semantic-specifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compliance statement for semantic specifications</h2>
 
 <p>As a software application vendor seeking compliance with the framework you;</p>
 
 <ul>
-<li>SHOULD support one or more of the business document semantic specifications, and</li>
-<li>MAY choose to support one or more processes for the given business document, and</li>
-<li>MAY choose to support one or more roles (eg buyer or seller) in the relevant process, and</li>
-<li>MUST publish all supported semantic documents, processes, and roles to an SMP</li>
+    <li>SHOULD support one or more of the business document semantic specifications, and</li>
+    <li>MAY choose to support one or more processes for the given business document, and</li>
+    <li>MAY choose to support one or more roles (eg buyer or seller) in the relevant process, and</li>
+    <li>MUST publish all supported semantic documents, processes, and roles to an SMP</li>
 </ul>
 
 <h1>
-<a id="the-4-corner-model-and-restful-model-compared" class="anchor" href="#the-4-corner-model-and-restful-model-compared" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The 4-Corner Model and RESTful Model Compared.</h1>
+    <a id="the-4-corner-model-and-restful-model-compared" class="anchor" href="#the-4-corner-model-and-restful-model-compared" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The 4-Corner Model and RESTful Model Compared.</h1>
 
 <h2>
-<a id="4-corner-model" class="anchor" href="#4-corner-model" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4-corner model</h2>
+    <a id="4-corner-model" class="anchor" href="#4-corner-model" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4-corner model</h2>
 
 <p>The Australian Digital Business Council has published an e-invoicing framework that ias based on a similar model from Europe.  The framework assumes a "4 corner model" where messages flow from sender (corner 1), to sender's EDI hub (corder 2), to recipients EDI hub (corner 3), to the ultimate recipient (corner 4). The technical specifications are published to the <a href="http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework">Interoperability Framework</a> page and include;  </p>
 
 <ul>
-<li>A service discovery model based on based on OASIS <a href="http://docs.oasis-open.org/bdxr/BDX-Location/v1.0/cs01/BDX-Location-v1.0-cs01.html">BDX-L</a> (DNS Lookup) and <a href="http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/cs01/bdx-smp-v1.0-cs01.html">BDX-SMP</a> (detailed metadata) standards. The ADBC has published profiles of the OASIS specifications as the <a href="http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42401/download">DCL</a> and the <a href="http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42402/download">DCP</a> specifications.</li>
-<li>A messaging model based on OASIS <a href="http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/core/os/ebms_core-3.0-spec-os.html">ebMS3</a> and <a href="http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/profiles/AS4-profile/v1.0/os/AS4-profile-v1.0-os.html">AS4</a> standards. The ADBC profile is published as the <a href="http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42403/download">"Access Point"</a> specifciation.</li>
-<li>A semantic model based on OASIS <a href="http://docs.oasis-open.org/ubl/UBL-2.1.html">UBL 2.1</a> standards.  The ADBC profile is published as the <a href="http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42399/download">"eInvoicing Semantic Model"</a>.</li>
+    <li>A service discovery model based on based on OASIS <a href="http://docs.oasis-open.org/bdxr/BDX-Location/v1.0/cs01/BDX-Location-v1.0-cs01.html">BDX-L</a> (DNS Lookup) and <a href="http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/cs01/bdx-smp-v1.0-cs01.html">BDX-SMP</a> (detailed metadata) standards. The ADBC has published profiles of the OASIS specifications as the <a href="http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42401/download">DCL</a> and the <a href="http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42402/download">DCP</a> specifications.</li>
+    <li>A messaging model based on OASIS <a href="http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/core/os/ebms_core-3.0-spec-os.html">ebMS3</a> and <a href="http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/profiles/AS4-profile/v1.0/os/AS4-profile-v1.0-os.html">AS4</a> standards. The ADBC profile is published as the <a href="http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42403/download">"Access Point"</a> specifciation.</li>
+    <li>A semantic model based on OASIS <a href="http://docs.oasis-open.org/ubl/UBL-2.1.html">UBL 2.1</a> standards.  The ADBC profile is published as the <a href="http://digitalbusinesscouncil.com.au/einvoicing-interoperability-framework/documents/42399/download">"eInvoicing Semantic Model"</a>.</li>
 </ul>
 
 <p>The ADBC specifications have a weak technical security model (no encryption, no signatures, and an identity model based on known customers of the EDI hubs).  As a consequence, the ADBC model demands high integrity behaviour from the Hubs.  This is implemented as a suite of accreditation and governance models operated and enforced by the ADBC:</p>
 
 <ul>
-<li>The <a href="http://digitalbusinesscouncil.com.au/accreditation/documents/42924/download">Access Point Provider Agreement</a> and</li>
-<li>The <a href="http://digitalbusinesscouncil.com.au/accreditation/documents/42923/download">Digital Capability Publisher Provider Agreement</a> and</li>
-<li>Some internal governance rules that are not generally published. </li>
+    <li>The <a href="http://digitalbusinesscouncil.com.au/accreditation/documents/42924/download">Access Point Provider Agreement</a> and</li>
+    <li>The <a href="http://digitalbusinesscouncil.com.au/accreditation/documents/42923/download">Digital Capability Publisher Provider Agreement</a> and</li>
+    <li>Some internal governance rules that are not generally published. </li>
 </ul>
 
 <h2>
-<a id="restful-model" class="anchor" href="#restful-model" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RESTful model</h2>
+    <a id="restful-model" class="anchor" href="#restful-model" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RESTful model</h2>
 
 <p>The RESTful peer-to-peer model is secure by design and so needs no governance framework to ensure the integrity of network service providers. It is also cheaper to build and operate since it leverages ubiquitous web standards supported by every technology stack and does not depend on multiple hubs for routing messages.</p>
 
 <ul>
-<li>It is a Peer-to-Peer model that does not need traditional EDI hubs. </li>
-<li>It includes a "Transaction Access Point" (TAP) that is a high avaialbility end point proxy for encrypted messages and cannot inspect the payload.</li>
-<li>It includes a new "Identity Provider" (IDP) framework that recognises the existence of an independent identity market that can be leveraged by the framework to provide identity confidence at different assurance levels.</li>
-<li>It includes a service discovery framework that is backwards compatible with the ADBC DCL and DCP specifications but extends them to support distributed key management.</li>
-<li>It includes a new "Notary" (NRY) specification that provides a blockchain based proof of existence of digital transactions that can be used for non-repudiable audit and new financial services (such as invoice financing for small &amp; medium businesses).</li>
-<li>It includes exactly the same invoice semantic model as the ADBC invlice specifications but uses a JSON representation and, more importantly, includes an invoice signed status response document from the buyer (eg "got your invoice and it's approved for payment in 60 days") that can be used for invoice financing purposes. </li>
+    <li>It is a Peer-to-Peer model that does not need traditional EDI hubs. </li>
+    <li>It includes a "Transaction Access Point" (TAP) that is a high avaialbility end point proxy for encrypted messages and cannot inspect the payload.</li>
+    <li>It includes a new "Identity Provider" (IDP) framework that recognises the existence of an independent identity market that can be leveraged by the framework to provide identity confidence at different assurance levels.</li>
+    <li>It includes a service discovery framework that is backwards compatible with the ADBC DCL and DCP specifications but extends them to support distributed key management.</li>
+    <li>It includes a new "Notary" (NRY) specification that provides a blockchain based proof of existence of digital transactions that can be used for non-repudiable audit and new financial services (such as invoice financing for small &amp; medium businesses).</li>
+    <li>It includes exactly the same invoice semantic model as the ADBC invlice specifications but uses a JSON representation and, more importantly, includes an invoice signed status response document from the buyer (eg "got your invoice and it's approved for payment in 60 days") that can be used for invoice financing purposes. </li>
 </ul>
 
 <h2>
-<a id="working-together" class="anchor" href="#working-together" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Working together</h2>
+    <a id="working-together" class="anchor" href="#working-together" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Working together</h2>
 
 <p>It is quite feasible that both specifications can work together in the same network.  That is because the service discovery components are the same and the invoice semantics are the same.  The 4-corner model will work well to connect up existing EDI hubs (about 15% of the market) whilst the RESTful model will work well for the remaining 85%.  Connections between the two are achieved simply by the EDI hubs exposing a RESTful interface to bridge traffic.</p>
 
-      <footer class="site-footer">
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-  
-  </body>
-</html>
