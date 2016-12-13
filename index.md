@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Purpose of this site
 
 Exchange of buisness documents like invoices between business finance systems ought to be as simple as email.  This site provides some open specifications and test services designed to make that easy.
