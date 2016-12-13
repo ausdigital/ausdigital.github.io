@@ -20,7 +20,7 @@ We want the simplest, lowest cost and most secure solution to these needs so we'
  * A suite of semantic specifications and free test points.
    * [Billing Semantics](billing-semantics)
    * [Purchase Order Semantics](purchase-order-semantics)
-   * [Fulfillment Semantics](fulillment-semantics)
+   * [Fulfillment Semantics](fulfillment-semantics)
  * A transparent governance model where any stakeholder is free to participate.
 
 # Background
