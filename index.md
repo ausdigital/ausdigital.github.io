@@ -18,7 +18,7 @@ We want the simplest, lowest cost and most secure solution to these needs so we'
    * [Service Metadata Publisher](service-metadata-publisher)
    * [Transaction Access Point](transaction-access-point)
  * A suite of semantic specifications and free test points.
-   * [Billing Semantics] (billing-semantics)
+   * [Billing Semantics](billing-semantics)
    * [Purchase Order Semantics](purchase-order-semantics)
    * [Fulfillment Semantics](fuldillment-semantics)
  * A transparent governance model where any stakeholder is free to participate.
