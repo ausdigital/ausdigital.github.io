@@ -5,14 +5,16 @@ layout: default
 # Purpose of this site
 
 Exchange of buisness documents like invoices between business finance systems ought to be as simple as email.  This site provides some open specifications and test services designed to make that easy.
-* As a business, I want to send electronic invoices to my customer systems and know the payment status so I can manage my cashflow and get cheap debtor financing if I need it.
-* As a business I want all invoices and tax receipts from my authorised suppliers to be automatically loaded to my financial system ready for my approval so I can reduce my administration burden.
+
+ * As a business, I want to send electronic invoices to my customer systems and know the payment status so I can manage my cashflow and get cheap debtor financing if I need it.
+ * As a business I want all invoices and tax receipts from my authorised suppliers to be automatically loaded to my financial system ready for my approval so I can reduce my administration burden.
 
 We want the simplest, lowest cost and most secure solution to these needs so we've developed a suite of RESTful API standards and thrown in strong identity measures that support end-to-end encryption and digital signatures.  This site supports implementers by providing:
-* A suite of [technical specifications](#the-technical-framework-specifications) and free test points.
-* A suite of [semantic specifications](#the-business-document-semantic-specifications) and free test points.
-* A set of [special interest groups](#the-special-interest-groups) with collaboration tools.
-* A transparent [governance model](#specification-governance-model) with free participation for any interested party.
+
+ * A suite of [technical specifications](#the-technical-framework-specifications) and free test points.
+ * A suite of [semantic specifications](#the-business-document-semantic-specifications) and free test points.
+ * A set of [special interest groups](#the-special-interest-groups) with collaboration tools.
+ * A transparent [governance model](#specification-governance-model) with free participation for any interested party.
 
 # Background
 
