@@ -59,8 +59,6 @@ a {
   background-color: #159957;
   background-image: linear-gradient(120deg, #155799, #159957); }
 
-
-
 @media screen and (min-width: 64em) {
   .page-header {
     padding: 5rem 6rem; } }
@@ -81,15 +79,33 @@ a {
 
 @media screen and (min-width: 64em) {
     .detail-page-header  {
-        padding: 0.75rem 0.75rem; } }
+        padding: 0.75rem 0.75rem;
+    }
+    .detail-page-header a {
+        color: inherit;
+        text-decoration: none;
+    }
+}
 
 @media screen and (min-width: 42em) and (max-width: 64em) {
     .detail-page-header  {
-        padding: 0.75rem 0.75rem; } }
+        padding: 0.75rem 0.75rem;
+    }
+    .detail-page-header a {
+        color: inherit;
+        text-decoration: none;
+    }
+}
 
 @media screen and (max-width: 42em) {
     .detail-page-header {
-        padding: 0.75rem 0.75rem; } }
+        padding: 0.75rem 0.75rem;
+    }
+    .detail-page-header a {
+        color: inherit;
+        text-decoration: none;
+    }
+}
 
 .project-name {
   margin-top: 0;
