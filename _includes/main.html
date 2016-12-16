@@ -1,0 +1,32 @@
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="pure-menu">
+
+            <ul class="pure-menu-list">
+                <p>Technical</p>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Digital Capability Locator</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Identity Provider</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Notary</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Service Metadata Publisher</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Transaction Access Point</a></li>
+                <p>Semantics</p>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Billing</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Purchase Orders</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Fulfillment</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main">
+        <section class="main-content">
+            {{ content }}
+            {% include footer.html %}
+        </section>
+    </div>
+</div>
