@@ -11,21 +11,9 @@ Add transition to containers so they can push in and out.
     transition: all 0.2s ease-out;
 }
 
-/*
-This is the parent `<div>` that contains the menu and the content area.
-*/
-#layout {
-    position: relative;
-    padding-left: 0;
-}
-
-#layout.active #menu {
-    left: 200px;
-    width: 200px;
-}
 
 #layout.active .menu-link {
-    left: 0px;
+    left: 0;
     position: absolute;
 }
 /*
@@ -70,55 +58,69 @@ appears on the left side of the page.
 */
 
 #menu {
-    margin-left: -200px; /* "#menu" width */
+    display: none;
     width: 200px;
-    /*position: fixed;*/
     float: left;
-    top: 0;
-    left: 0;
-    bottom: 0;
     z-index: 1000; /* so the menu or its navicon stays above all content */
-    background-color: #888888;
-    color: black;
+    color: #000;
     overflow-y: auto;
+    background: #fff;
     -webkit-overflow-scrolling: touch;
+    margin: 2rem 0 0 1rem;
 }
+
+#menu.active{
+    position: fixed;
+    left: 34px;
+    top: 0;
+    display: block;
+    margin-top: 0;
+}
+
 /*
 All anchors inside the menu should be styled like this.
 */
 #menu a {
     color: #111;
     border: none;
-    padding: 0.6em 0 0.6em 0.6em;
+    padding: 0.6em 0 0.6em 0.7em;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
-    padding-left: 1.5rem;
+    border-top: 1px solid #15965A;
+    border-bottom: 1px solid #15965A;
 }
 
-#menu p {
-    color: black;
-    border: none;
-    padding: 0.6em 0 0.6em 0.6em;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-/*
-Remove all background/borders, since we are applying them to #menu.
-*/
 #menu .pure-menu,
 #menu .pure-menu ul {
     border: none;
-    background: transparent;
+}
+
+#menu .pure-menu li{
+    border-left: 1px solid #15965A;
+    border-right: 1px solid #15965A;
+    margin-top: -1px;
+}
+
+
+#menu .pure-menu-title{
+    padding: 0.6em;
+    background: #15965A;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
 }
 
 /*
 Change color of the anchor links on hover/focus.
 */
 #menu .pure-menu li a:hover,
-#menu .pure-menu li a:focus {
-    background-color: #969896;
+#menu .pure-menu li a:focus{
+    text-decoration: none;
+}
+#menu .pure-menu li.active a{
+    background-color: #155A96;
+    color: #fff;
+    text-decoration: none;
 }
 
 /*
@@ -161,17 +163,12 @@ small screens.
     display: block; /* show this onabsolutely on small screens */
     top: 0;
     left: 0; /* "#menu width" */
-    background-color: #888888;
+    background-color: #159957;
     font-size: 10px; /* change this value to increase/decrease button size */
     z-index: 10;
     width: 5em;
     height: auto;
-    padding: 2.1em 1.6em;
-}
-
-.menu-link:hover,
-.menu-link:focus {
-    background-color: #888888;
+    padding: 1.9em 1.6em;
 }
 
 .menu-link span {
@@ -210,14 +207,13 @@ Hides the menu at `48em`, but modify this based on your app's needs.
         padding-left: 2em;
         padding-right: 2em;
     }
+    #main{
+        max-width: 64em;
+        margin: 0 auto;
+    }
 
     #layout {
-        padding-left: 200px; /* left col width "#menu" */
         left: 0;
-    }
-    #menu {
-        left: 200px;
-
     }
 
     .menu-link {
@@ -226,9 +222,15 @@ Hides the menu at `48em`, but modify this based on your app's needs.
         display: none;
     }
 
+    #menu{
+        display: block;
+    }
+
+    .main-content{
+        margin-left: 200px;
+    }
+
     #layout.active .menu-link {
-        left: 200px;
-        position: absolute;
     }
 }
 
@@ -239,9 +241,9 @@ Hides the menu at `48em`, but modify this based on your app's needs.
         * Tap the menu to trigger the active state.
         * Make the window large again.
     */
-    #layout.active {
-        position: relative;
-        left: 200px;
-    }
+    /*#layout.active {*/
+        /*position: relative;*/
+        /*left: 200px;*/
+    /*}*/
 }
 
