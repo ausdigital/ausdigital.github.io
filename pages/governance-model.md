@@ -22,6 +22,7 @@ All specifications are developed in the public domain. To make your voice heard,
  * If you just want to be kept informed, then click on relevant "Mailing list" link in the special interest group table.
 
 A new technical specification can be launched at any time via the following process:
+
  1. Raise a ticket in the root ausdigital repository with title “Proposed SPEC”. Document a high level scope and purpose of the proposed spec in the issue.
  2. Prove evidence of participation interest by collecting "+1" in the form of comments on the issue from at least 6 other people from at least 3 different organisations.
  3. Nominate an Editor
