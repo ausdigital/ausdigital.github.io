@@ -1,3 +1,8 @@
+---
+layout: page
+title: Governance Model
+permalink: /governance-model/
+---
 # Governance Model
 
 ## Specification Governance
