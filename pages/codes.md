@@ -1,0 +1,17 @@
+---
+layout: page
+title: code lists
+permalink: /codes/
+---
+
+# Code lists specification
+
+This specification defines
+* A framework for the expression of context specific UBL code lists in JSON syntax as web resources
+* The the library of default UBL code lists
+
+* [Codes Working Group](https://github.com/ausdigital/codes) GitHub repository.
+
+| Specification URL | Version | Status | API Definition | Test Service | Issues List |
+| ----------------- | ------  | ------ | -------------- | ------------ | -------- |
+| [codes 1.0 spec](http://codes.readthedocs.io/) | 1.0 | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) | [codes 1.0 API](https://swaggerhub.com/api/ausdigital/codes/1.0) | [codes.testpoint.io](http://testpoint.io/codes.html)  | [Codes 1.0 Issues](https://github.com/ausdigital/codes/issues)  |
