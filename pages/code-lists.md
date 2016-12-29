@@ -3,14 +3,14 @@ layout: page
 title: code lists
 permalink: /code-lists/
 ---
-
 # Code lists specification
 
-This specification defines
-* A framework for the expression of context specific UBL code lists in JSON syntax as web resources
-* The the library of default UBL code lists
+This specification defines:
 
-* [Codes Working Group](https://github.com/ausdigital/code-lists) GitHub repository.
+ * A framework for the expression of context specific UBL code lists in JSON syntax as web resources
+ * The the library of default UBL code lists
+ * [Codes Working Group](https://github.com/ausdigital/code-lists) GitHub repository.
+
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
