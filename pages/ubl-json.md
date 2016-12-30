@@ -19,4 +19,4 @@ The intent is to provide developers with a much simpler implementation model tha
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [UBL JSON 1.0 spec](http://ubl-json.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [Transformation 1.0 API](https://swaggerhub.com/api/ausdigital/transformation/1.0) | [transformation testpoint](http://testpoint.io/btransformation.html)  | [ubl-json 1.0 Issues](https://github.com/ausdigital/ubl-json/issues)  |
+| [UBL JSON 1.0 spec](http://ubl-json.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [UBL JSON 1.0 API](https://app.swaggerhub.com/api/ausdigital/ubl-json/1.0.0) | [transformation testpoint](http://testpoint.io/btransformation.html)  | [ubl-json 1.0 Issues](https://github.com/ausdigital/ubl-json/issues)  |
