@@ -4,7 +4,7 @@ title: ubl-json specification
 permalink: /ubl-json/
 ---
 
-# UBL JSON Represenations Specification
+# UBL JSON Represenation Specification
 
 This specification describes a JSON based syntax and processing model for UBL semantics. It includes
 
