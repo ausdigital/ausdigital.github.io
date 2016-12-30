@@ -7,6 +7,7 @@ permalink: /ubl-json/
 # UBL JSON Represenations Specification
 
 This specification describes a JSON based syntax and processing model for UBL semantics. It includes
+
 * A simple JSON syntax model for UBL semantics.
 * A lossless transformation model between UBL XML and JSON representations.
 * A simple JSON processing model based on a RESTful Validation API
