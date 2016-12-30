@@ -12,4 +12,4 @@ The framework depends heavily on the ability to discover detailed service inform
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------- | ------ | -------------- | ------------ | -------- |
-| [SMP 1.0 spec](http://metadata-publisher.readthedocs.io/) | 1.0 | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) | [SMP 1.0 API](https://swaggerhub.com/api/ausdigital/metadata-publisher/1.0)  | [smp.testpoint.io](https://smp.testpoint.io) | [SMP 1.0 Issues](https://github.com/ausdigital/metadata-publisher/issues)    |
+| [SMP 1.0 spec](http://metadata-publisher.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [SMP 1.0 API](https://swaggerhub.com/api/ausdigital/metadata-publisher/1.0)  | [smp.testpoint.io](https://smp.testpoint.io) | [SMP 1.0 Issues](https://github.com/ausdigital/metadata-publisher/issues)    |
