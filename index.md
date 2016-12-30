@@ -12,15 +12,7 @@ Exchange of buisness documents like invoices between business finance systems ou
 We want the simplest, lowest cost and most secure solution to these needs so we've developed a suite of RESTful API standards and thrown in strong identity measures that support end-to-end encryption and digital signatures.  This site supports implementers by providing:
 
  * A suite of technical specifications with free test points:
-   * [Digital Capability Locator](digital-capability-locator)
-   * [Identity Provider](identity-provider)
-   * [Notary](notary)
-   * [Service Metadata Publisher](service-metadata-publisher)
-   * [Transaction Access Point](transaction-access-point)
  * A suite of semantic specifications and free test points.
-   * [Billing Semantics](billing-semantics)
-   * [Purchase Order Semantics](purchase-order-semantics)
-   * [Fulfillment Semantics](fulfillment-semantics)
  * A transparent governance model where any stakeholder is free to participate.
 
 The semantic and technical specifications are open community processes based around the GitHub collaborative development environment. Business stakeholders may prefer to sign up for a <a href="http://eepurl.com/ctZ6hf">AusDigital general announcement</a> newsletter.
