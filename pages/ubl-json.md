@@ -14,8 +14,8 @@ This specification describes a JSON based syntax and processing model for UBL se
 
 The intent is to provide developers with a much simpler implementation model than the XSD/Schematron/Genericode alternative whilst maintianing interoperability with the UBL XML standard..
 
-* [JSON GitHub repository](https://github.com/ausdigital/ubl-json)
-* [JSON Slack channel](https://ausdigital.slack.com/messages/spec-json/)
+* [UBL JSON GitHub repository](https://github.com/ausdigital/ubl-json)
+* [UBL JSON Slack channel](https://ausdigital.slack.com/messages/spec-json/)
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
