@@ -13,4 +13,4 @@ This specification defines a framework for the expression of context specific UB
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [codes lists 1.0 spec](http://code-lists.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [code lists 1.0 API](https://app.swaggerhub.com/api/ausdigital/ubl-codes/1.0.0) | [codes testpoint](http://testpoint.io/code-lists.html)  | [Code lists 1.0 Issues](https://github.com/ausdigital/code-lists/issues)  |
+| [codes lists 1.0 spec](http://code-lists.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) |Not applicable | Not applicable (covered by validation service) | [Code lists 1.0 Issues](https://github.com/ausdigital/code-lists/issues)  |
