@@ -28,20 +28,27 @@ The secure-by-design nature of the framework eliminates the need for implementat
 
 ## Compliance statement for technical specifications
 
-As a software application vendor seeking compliance with the framework you;
+As a network service provider seeking compliance with the framework you;
 
- * MUST support the TAP specification, and
- * MUST support the client role in the DCL specification, and
- * MUST support the client role in the SMP specification, and
- * MUST support the RP (Relying Party) role in the IDP specification, and
- * MAY support the client role in the NRY specification, and
- * MAY choose to outsource these specification compliance requirements to a compliant third party services provider.
+ * MUST provide a TAP service
+ * MUST provide the TAP-GW interface
+ * MUST implement a DCL client (there is only one DCL provider)
+ * MUST provide a DCP service (or choose a DCP service provider)
+ * MAY provide a NRY service
+
+As a business software application vendor seeking compliance with the framework you;
+
+ * MUST implement a TAP client (to send messages), and
+ * MAY implement a TAP-GW client (if not implementing your own haigh availability TAP service), and
+ * MUST implement a DCL client, and
+ * MUST implement a DCP client, and
+ * MUST support at least one IDP as relying party, and
+ * MAY implement an NRY client
 
 ## Compliance statement for semantic specifications
 
 As a software application vendor seeking compliance with the framework you;
 
- * SHOULD support one or more of the business document semantic specifications, and
- * MAY choose to support one or more processes for the given business document, and
- * MAY choose to support one or more roles (eg buyer or seller) in the relevant process, and
- * MUST publish all supported semantic documents, processes, and roles to an SMP
+ * MUST support one or more of the semantic specifications in at least one role (eg buyer or seller), and
+ * MUST support the JSON and CODE specifications (because all semantic specifications depend on them), and
+ * MUST publish all supported semantic services to a DCP.
