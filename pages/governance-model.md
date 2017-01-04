@@ -26,29 +26,32 @@ A new specification can be launched at any time via the following process:
 ## Implementation Governance
 The secure-by-design nature of the framework eliminates the need for implementation governance or any provider accreditations. Furthermore, the use of independent identity providers such as banks, government, or other entities subject to "know your customer" legislation means that identity assurance is, by definition, governed outside of this specification. Therefore, implementation governance within this framework is reduced to defining a set of assurance levels that are used to classify identity providers - so that particpants in the network can have a clear shared understanding of the identity integrity of any message sent or received. This is the role of the [IDP Specification](https://identity-provider.readthedocs.org/).
 
-## Compliance statement for technical specifications
+
+## Compliance statement for business software vendors
+
+As a software application vendor seeking compliance with the framework you;
+
+ * MUST implement IDP, TAP, TAP-GW, DCL, and DCP clients.
+ * MAY implement an NRY client.
+ * MUST support one or more of the semantic specifications in at least one role (eg buyer or seller), and
+ * MUST support the JSON and CODE specifications (because all semantic specifications depend on them), and
+ * MUST publish all supported semantic services to a DCP.
+ 
+## Compliance statement for network service providers
 
 As a network service provider seeking compliance with the framework you;
 
  * MUST provide a TAP service
- * MUST provide the TAP-GW interface
- * MUST implement a DCL client (there is only one DCL provider)
+ * MUST provide a TAP-GW service
  * MUST provide a DCP service (or choose a DCP service provider)
+ * MUST implement a DCL client (there is only one DCL provider)
+ * MUST implement an IDP client (identity providers are logically seaprate services)
  * MAY provide a NRY service
 
-As a business software application vendor seeking compliance with the framework you;
+## Compliance statement for identity providers
 
- * MUST implement a TAP client (to send messages), and
- * MAY implement a TAP-GW client (if not implementing your own haigh availability TAP service), and
- * MUST implement a DCL client, and
- * MUST implement a DCP client, and
- * MUST support at least one IDP as relying party, and
- * MAY implement an NRY client
+As an identity provider seeking compliance with the framework you;
 
-## Compliance statement for semantic specifications
-
-As a software application vendor seeking compliance with the framework you;
-
- * MUST support one or more of the semantic specifications in at least one role (eg buyer or seller), and
- * MUST support the JSON and CODE specifications (because all semantic specifications depend on them), and
- * MUST publish all supported semantic services to a DCP.
+* MUST provide an OIDC IDP service with the scopes and claims defined in the IDP specification, and
+* MUST provide evidence to support claims at any identity asurance levwl above zero.
+* MUST provide an open framework to adopt relying parties such as business software and network service providers.
