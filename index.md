@@ -23,16 +23,19 @@ The [Australian Digital Business Council](http://digitalbusinesscouncil.com.au/)
 
 ## How it Works 
 
-Unlike single provider APIs (eg google or facebook), a B2B community needs all businesses to implement the same interface so that the same document format (e.g. an invoice) can be sent from any business to any other business. The diagram shows how it works.
+Unlike single provider APIs (eg google or facebook), a B2B community needs all businesses to implement the same interface so that the same document format (e.g. an invoice) can be sent from any business to any other business. The diagram shows how it works.  The technical and semantic specifications are positioned on the diagram via the blue and green tags.
 
 ![Framework Diagram](images/AusDigitalHomepage.png)
 
-1. A business that wishes to participate in the network first proves their identity via an OIDC "log in with.." an identity provider service.  Different identity assurance levels are supported in an open identity market.  
-2. With an IDP token at given identity assurance level, the business publishes their service end-point and public key to a metadata publisher in accordance with the SMP specification.  So, for example, the the SMP will now show (with medium level of assurance) that "ACME" identified by ABN=12345678911 provides an e-invoice service at https://api.acme.com.au/v1/invoice 
-3. ACME's supplier "Widget Co" has also verified identity and published their services to the SMP. When Widget Co wants to send and invoice to ACME, then Widget Co will lookup ACME's service infomation (using ACME's ABN as the lookup key).
-4. Widget will digitally sign the invoice and then use ACME's public key to encrypt it.  Then Widget will POST the invoice to ACME's service end point in accordance with the TAP (Transaction Access Point) specification.
-5. ACME will verify Widget's signature, decrypt the invoice, and process it in ACME's financial system.  At each key stage in the invoice lifecycle (received, approved/disputed, paid), ACME will send an invoice response document to Widget Co.
-6. Both Widget and ACME will optionally record the signed invoices and responses in the blockchain using the Notary (NRY) specification.  This provides both a non-repudiable transaction audit log and can be used by authorised third parties to provide additional services like invoice financing (so Widget Co can get paid immediately even though ACME's terms are 60 days net). 
-7. In most cases, all these steps 1 to 6 will be performed automatically by ACME's and Widget's financial software.  
+1. A business that wishes to participate in the network first proves their identity via an OIDC "log in with.." an identity provider service.  Different identity assurance levels are supported in an open identity market as defined by the the **IDP** specification.  
+2. With an IDP token at given identity assurance level, the business publishes their service end-point and public key to a metadata publisher in accordance with the **DCL** and **DCP** specifications.  So, for example, the the DCP will now show (with medium level of assurance) that "ACME" identified by ABN=12345678911 provides an e-invoice service at https://api.acme.com.au/v1/invoice 
+3. ACME's supplier "Widget Co" has also verified identity and published their services to a **DCP** register. When Widget Co wants to send and invoice to ACME, then Widget Co will lookup ACME's service infomation (using ACME's ABN as the **DCL** lookup key).
+4. Widget will digitally sign the invoice and then use ACME's public key to encrypt it.  Then Widget will POST the invoice to ACME's service end point in accordance with the **TAP** (Transaction Access Point) specification.
+5. ACME's **TAP** will receive the invoice and verify Widget's signature. ACME will get the invoice via the **TAP-GW** protocol, decrypt the invoice, and process it in ACME's financial system.   
+6. At each key stage in the invoice lifecycle (received, approved/disputed, paid), ACME will send an invoice response document to Widget Co.
+7. Both Widget and ACME will optionally record the signed invoices and responses in the blockchain using the Notary (NRY) specification.  This provides both a non-repudiable transaction audit log and can be used by authorised third parties to provide additional services like invoice financing (so Widget Co can get paid immediately even though ACME's terms are 60 days net). 
+8. In most cases, all these steps 1 to 7 will be performed automatically by ACME's and Widget's financial software.  
+
+In many cases, the network infrastructure will be provided by a network service provider (which implements all the blue technical specifications), leaving the ledger softwre to focus on the green semantic specifications.  The standardised TAP-GW protocol allows businesses like ACME or Widget Co to change network service providers at any time with minimal transfer cost.
 
 The success of the interoperability framework depends on uptake by the ledger software providers. Those systems must implement a number of interfaces in a consistent way - which requires clear standards, good test services, and easy to use tooling.  That is the purpose of this site.
