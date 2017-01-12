@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="css/docson.css">
     <script src="javascripts/docson-lib/require.js"></script>
     <script>
-        require(["docson", "lib/jquery"], function(docson) {
+        require(["docson", "javascripts/docson-lib/jquery"], function(docson) {
             $(function () {
                 var embedded = window.parent !== window;
                 if (embedded) {
@@ -59,7 +59,7 @@
 
                             if(/\.ts$/.test(segments[0])) {
                                 require.config( { baseUrl: "../typson" } );
-                                require(["lib/typson-schema"], function(typson) {
+                                require(["javascripts/docson-lib/typson-schema"], function(typson) {
                                     typson.definitions(segments[0]).done(render);
                                 });
                             } else {
