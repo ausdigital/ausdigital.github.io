@@ -1,0 +1,347 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2#",
+  "type": "object",
+  "definitions": {
+    "DocumentResponseType": {
+      "description": "A class to describe an application-level response to a document.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["response", "documentReference"],
+      "properties": {
+        "response": {
+          "description": "A response to the document as a whole.",
+          "$ref": "#/definitions/ResponseType"
+        },
+        "documentReference": {
+          "minItems": 1,
+          "description": "A referenced document.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DocumentReferenceType"
+          }
+        },
+        "lineResponse": {
+          "minItems": 0,
+          "description": "A response to a particular line in the document.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LineResponseType"
+          }
+        }
+      }
+    },
+    "PartyNameType": {
+      "description": "A class for defining the name of a party.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "description": "The name of the party.",
+          "type": "string"
+        }
+      }
+    },
+    "LineReferenceType": {
+      "description": "A class to define a reference to a line in a document.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["lineID"],
+      "properties": {
+        "lineID": {
+          "description": "Identifies the referenced line in the document.",
+          "type": "string"
+        },
+        "documentReference": {
+          "description": "A reference to the document containing the referenced line.",
+          "$ref": "#/definitions/DocumentReferenceType"
+        }
+      }
+    },
+    "PartyIDType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "GLN": {
+          "description": "GLN.",
+          "type": "string"
+        },
+        "ABN": {
+          "description": "ABN.",
+          "type": "string"
+        }
+      }
+    },
+    "IdentifierType": {
+      "description": "A character string to identify and distinguish uniquely, one instance of an object in an identification scheme from all other objects in the same scheme together with relevant supplementary information.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "schemeDataURI": {
+          "format": "uri",
+          "description": "The Uniform Resource Identifier that identifies where the identification scheme data is located.",
+          "type": "string"
+        },
+        "schemeURI": {
+          "format": "uri",
+          "description": "The Uniform Resource Identifier that identifies where the identification scheme is located.",
+          "type": "string"
+        },
+        "schemeName": {
+          "description": "The name of the identification scheme.",
+          "type": "string"
+        },
+        "schemeAgencyID": {
+          "description": "The identification of the agency that maintains the identification scheme.",
+          "type": "string"
+        },
+        "schemeID": {
+          "description": "The identification of the identification scheme.",
+          "type": "string"
+        },
+        "value": {
+          "description": "The value of the identifier",
+          "type": "string"
+        },
+        "schemeVersionID": {
+          "description": "The version of the identification scheme.",
+          "type": "string"
+        },
+        "schemeAgencyName": {
+          "description": "The name of the agency that maintains the identification scheme.",
+          "type": "string"
+        }
+      }
+    },
+    "ResponseType": {
+      "description": "A class to describe an application-level response to a document.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "description": {
+          "minItems": 0,
+          "description": "Text describing this response.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "responseCode": {
+          "description": "A code signifying the type of response.",
+          "type": "string"
+        },
+        "status": {
+          "minItems": 0,
+          "description": "A status report associated with this response.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StatusType"
+          }
+        }
+      }
+    },
+    "LineResponseType": {
+      "description": "A class to describe responses to a line in a document.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["lineReference", "response"],
+      "properties": {
+        "response": {
+          "minItems": 1,
+          "description": "A response to the referenced line.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResponseType"
+          }
+        },
+        "lineReference": {
+          "description": "A reference to the line being responded to.",
+          "$ref": "#/definitions/LineReferenceType"
+        }
+      }
+    },
+    "UBLExtensionsType": {
+      "description": "A container for all extensions present in the document.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["ublExtension"],
+      "properties": {
+        "ublExtension": {
+          "minItems": 1,
+          "description": "A single extension for private use.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UBLExtensionType"
+          }
+        }
+      }
+    },
+    "StatusType": {
+      "description": "A class to describe the condition or position of an object.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "statusReasonCode": {
+          "description": "The reason for this status condition or position, expressed as a code.",
+          "type": "string"
+        }
+      }
+    },
+    "DocumentReferenceType": {
+      "description": "A class to define a reference to a document.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "documentType": {
+          "description": "The type of document being referenced, expressed as text.",
+          "type": "string"
+        },
+        "id": {
+          "description": "An identifier for the referenced document.",
+          "type": "string"
+        }
+      }
+    },
+    "UBLExtensionType": {
+      "description": "A single extension for private use.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["extensionContent"],
+      "properties": {
+        "extensionAgencyID": {
+          "description": "An agency that maintains one or more Extensions.",
+          "type": "string"
+        },
+        "extensionURI": {
+          "description": "A URI for the Extension.",
+          "type": "string"
+        },
+        "name": {
+          "description": "A name for the Extension assigned by the creator of the extension.",
+          "type": "string"
+        },
+        "extensionReason": {
+          "description": "A description of the reason for the Extension.",
+          "type": "string"
+        },
+        "id": {
+          "description": "An identifier for the Extension assigned by the creator of the extension.",
+          "type": "string"
+        },
+        "extensionVersionID": {
+          "description": "The version of the Extension.",
+          "type": "string"
+        },
+        "extensionAgencyURI": {
+          "description": "A URI for the Agency that maintains the Extension.",
+          "type": "string"
+        },
+        "extensionAgencyName": {
+          "description": "The name of the agency that maintains the Extension.",
+          "type": "string"
+        },
+        "extensionReasonCode": {
+          "description": "A code for reason the Extension is being included.",
+          "type": "string"
+        },
+        "extensionContent": {
+          "description": "The definition of the extension content.",
+          "type": "string"
+        }
+      }
+    },
+    "ApplicationResponseType": {
+      "description": "A document used to response to request payment.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["id", "issueDate", "issueTime", "senderParty", "receiverParty", "documentResponse"],
+      "properties": {
+        "customizationID": {
+          "description": "Identifies a user-defined customization of UBL for a specific use. Identifies the specification of content and rules that apply to the transaction. Identifying the customisation/implementation guide/contextualization of the syntax message and its extension that applies to the invoice transaction, enables the receiver to apply the correct validation to the received document as well as to route the document to an appropriate service for processing.",
+          "type": "string"
+        },
+        "ublExtensions": {
+          "description": "A container for all extensions present in the document.",
+          "$ref": "#/definitions/UBLExtensionsType"
+        },
+        "issueTime": {
+          "format": "time",
+          "description": "The date, assigned by the sender, on which this document was issued. The date on which the Invoice was created.",
+          "type": "string"
+        },
+        "profileID": {
+          "description": "Identifies a user-defined profile of the customization of UBL being used. Identifies the DBC profile or business process context in which the transaction appears.",
+          "type": "string"
+        },
+        "senderParty": {
+          "description": "The date, assigned by the sender, on which this document was issued. The date on which the Invoice was created.",
+          "$ref": "#/definitions/PartyType"
+        },
+        "ublVersionID": {
+          "description": "Identifies the earliest version of the UBL 2 schema for this document type that defines all of the elements that might be encountered in the current instance.",
+          "type": "string"
+        },
+        "documentResponse": {
+          "minItems": 1,
+          "description": "A response to a document.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DocumentResponseType"
+          }
+        },
+        "id": {
+          "description": "An identifier for this document, assigned by the sender. An invoice identifier enables positive referencing the document instance for various purposes including referencing between documents that are part of the same process.",
+          "type": "string"
+        },
+        "issueDate": {
+          "format": "date",
+          "description": "The date, assigned by the sender, on which this document was issued. The date on which the Invoice was created.",
+          "type": "string"
+        },
+        "profileExecutionID": {
+          "description": "Identifies an instance of executing a profile, to associate all transactions in a collaboration allowing control of its relation to other documents exchanged as part of the same process.",
+          "type": "string"
+        },
+        "receiverParty": {
+          "description": "The date, assigned by the sender, on which this document was issued. The date on which the Invoice was created.",
+          "$ref": "#/definitions/PartyType"
+        }
+      }
+    },
+    "PartyType": {
+      "description": "A class to describe an organization, sub-organization, or individual fulfilling a role in a business\n                process.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "endpointID": {
+          "description": "An identifier for the end point of the routing service (e.g., EAN Location Number, GLN).",
+          "type": "string"
+        },
+        "partyName": {
+          "minItems": 0,
+          "description": "A name for this party.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyNameType"
+          }
+        },
+        "partyIdentification": {
+          "minItems": 0,
+          "description": "An identifier for this party.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyIDType"
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "ApplicationResponse": {
+      "$ref": "#/definitions/ApplicationResponseType"
+    }
+  },
+  "required": ["ApplicationResponse"]
+}
