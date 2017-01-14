@@ -413,13 +413,13 @@ define(["javascripts/docson-lib/jquery", "javascripts/docson-lib/handlebars", "j
                 });
                 element.find(".expand-button").click(function() {
                     if($(this).attr("expanded")) {
-                        $(this).parent().parent().find(".expand-button").html(" + ").attr("title", "Expand all");
+                        $(this).parent().parent().find(".expand-button").html(" &#9656; ").attr("title", "Expand all");
                         $(this).parent().parent().find(".signature-type-expandable").removeClass("signature-type-expanded");
                         $(this).parent().parent().find(".box-container").hide( resizeHandler ? 0 : 300);
                         $(this).parent().parent().find(".expand-button").removeAttr("expanded");
                         resized();
                     } else {
-                        $(this).parent().parent().find(".expand-button").html(" - ").attr("title", "Collapse all");
+                        $(this).parent().parent().find(".expand-button").html(" &#9662; ").attr("title", "Collapse all");
                         $(this).parent().parent().find(".signature-type-expandable").addClass("signature-type-expanded");
                         $(this).parent().parent().find(".box-container").show(resizeHandler ? 0 : 300);
                         $(this).parent().parent().find(".expand-button").attr("expanded", true);
