@@ -73,7 +73,7 @@
                             }
                         }
                         function receiveMessage(event) {
-                            console.log(">", event)
+                            console.log(">", event);
                             if(event.data.id && event.data.id == "docson") {
                                 if(event.data.type) {
                                     try {
@@ -88,7 +88,7 @@
                                     $("#doc").get(0).resized();
                                 }
                                 if(event.data.font) {
-                                    console.log(event.data.font)
+                                    console.log(event.data.font);
                                     $("#doc").css("font-family", event.data.font);
                                 }
                             }
@@ -106,7 +106,7 @@
 
                 function maybeExpand(segments) {
                     if(segments.indexOf("expand") >0 ) {
-                        $("#doc").find(".expand-button").html(" - ").attr("title", "Collapse all");
+                        $("#doc").find(".expand-button").html(" &#9662; ").attr("title", "Collapse all");
                         $("#doc").find(".signature-type-expandable").addClass("signature-type-expanded");
                         $("#doc").find(".box-container").show();
                         $("#doc").find(".expand-button").attr("expanded", true);
@@ -129,26 +129,6 @@
             });
         });
     </script>
-    <style>
-        body {
-            font-family: verdana, helvetica;
-        }
-
-        #form {
-            display: none;
-        }
-
-        #form input[type=text] {
-            border-radius: 6px;
-            -moz-border-radius: 6px;
-            -webkit-border-radius: 6px;
-        }
-
-        .embedded {
-            margin: 0px;
-            padding: 0px;
-        }
-    </style>
 </head>
 <body>
 <div id="form">
@@ -157,11 +137,8 @@
     <a href="/docson.html#schemas/Invoice.json">Invoice.json</a>
     <br>
     <a href="/docson.html#schemas/Response.json">Response.json</a>
-
 </div>
-<div id="back">
-</div>
-<div id="doc">
-</div>
+<div id="back"></div>
+<div id="doc"></div>
 </body>
 </html>

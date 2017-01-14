@@ -22,30 +22,31 @@
 
 .docson .box {
     position: relative;
-    float: left;
+    /*float: left;*/
     background-color:rgba(255, 255, 255, 0.2);
     border: 1px solid lightgrey;
     border-radius: 4px;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
-    padding-bottom: 10px;
-    -moz-box-shadow:    1px 1px 1px darkgray;
-    -webkit-box-shadow: 1px 1px 1px darkgray;
-    box-shadow:         1px 1px 1px darkgray;
+    padding-bottom: 15px;
+    margin: 10px 0 0 0;
+    /*-moz-box-shadow:    1px 1px 1px darkgray;*/
+    /*-webkit-box-shadow: 1px 1px 1px darkgray;*/
+    /*box-shadow:         1px 1px 1px darkgray;*/
 }
 
 .docson .expand-button {
     position: absolute;
-    margin-top: 15px;
+    margin-top: 2px;
     padding: 2px;
-    right: 2px;
-    float: right;
+    left: 2px;
+    float: left;
     width: 18px;
     text-align: center;
     cursor: pointer;
     font-weight: bold;
     font-family: "Lucida Console", Monaco, monospace;
-    font-size: 15px;
+    font-size: 20px;
     color: darkgray;
     display: none;
 }
@@ -71,7 +72,7 @@
     border-top-right-radius: 4px;
     border-bottom: 1px solid lightgrey;
     background: whitesmoke;
-    display: none;
+    /*display: none;*/
    /* background: -webkit-linear-gradient(ghostwhite, whitesmoke, whitesmoke, gainsboro);
     background: -moz-linear-gradient(ghostwhite, whitesmoke, whitesmoke, gainsboro);*/
 }
@@ -93,8 +94,8 @@
 
 .docson .box-description {
     color: dimgray;
-    float: left;
-    max-width: 600px;
+    /*max-width: 600px;*/
+    padding: 5px 0;
 }
 
 .docson .end {
@@ -166,14 +167,25 @@
 
 .docson .signature-header {
     padding-top: 3px;
-    height: 20px;
+    /*height: 20px;*/
     line-height: 24px;
 }
 
 .docson .property-name {
     float: left;
+    width: 25%;
     font-family: "Lucida Console", Monaco, monospace;
     min-width: 130px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+    .docson .property-name {
+        width: 50%;
+    }
 }
 
 .docson .required {
@@ -205,8 +217,16 @@
 .docson .signature-type {
     padding-left: 6px;
     float: left;
-    min-width: 160px;
-    max-width: 320px;
+    width: 20%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+    .docson .signature-type {
+        width: 50%;
+    }
 }
 
 .docson .signature-type-any {
@@ -268,15 +288,21 @@
 
 .docson .signature-type-ref {
     color: darkblue;
+    white-space: nowrap;
+}
+
+.docson .signature-type-ref:after {
+    content: "\25BE ";
 }
 
 .docson .signature-type-expanded {
-    padding: 5px 3px 3px 5px;
     vertical-align: -1px;
     opacity: 0.6;
-    -moz-box-shadow:    inset 1px 1px 1px darkgray;
-    -webkit-box-shadow: inset 1px 1px 1px darkgray;
-    box-shadow:         inset 1px 1px 1px darkgray;
+}
+
+.docson .signature-type-expanded:after{
+    content: "\25B4 ";
+    display: inline-block;
 }
 
 .docson .signature-description {
@@ -284,7 +310,18 @@
     padding-bottom: 3px;
     color: dimgray;
     float: left;
-    max-width: 600px;
+    /*max-width: 600px;*/
+    width: 55%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+    .docson .signature-description{
+        float: none;
+        width: 100%;
+    }
 }
 
 .docson .signature-box-container {
@@ -292,7 +329,7 @@
 }
 
 .docson .box-container {
-    float: left;
+    /*float: left;*/
     padding-top: 4px;
     padding-left: 8px;
 }
@@ -474,3 +511,21 @@
     font-style: italic;
 }
 
+body {
+    font-family: Verdana, Helvetica, sans-serif;
+}
+
+#form {
+    display: none;
+}
+
+#form input[type=text] {
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+
+.embedded {
+    margin: 0;
+    padding: 0;
+}
