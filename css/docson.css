@@ -48,7 +48,7 @@
     font-family: "Lucida Console", Monaco, monospace;
     font-size: 20px;
     color: darkgray;
-    display: none;
+    /*display: none;*/
 }
 
 .docson .source-button {
@@ -67,7 +67,7 @@
 }
 
 .docson .box-header {
-    padding: 6px;
+    padding: 6px 6px 6px 20px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom: 1px solid lightgrey;
@@ -169,6 +169,7 @@
     padding-top: 3px;
     /*height: 20px;*/
     line-height: 24px;
+    position: relative;
 }
 
 .docson .property-name {
@@ -176,10 +177,10 @@
     width: 25%;
     font-family: "Lucida Console", Monaco, monospace;
     min-width: 130px;
-    padding-left: 15px;
-    box-sizing: border-box;
+    padding-left: 22px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 @media screen and (max-width: 1024px) {
@@ -218,9 +219,10 @@
     padding-left: 6px;
     float: left;
     width: 20%;
-    box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    min-height: 24px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -280,19 +282,22 @@
 
 .docson .signature-button {
     cursor: pointer;
-    padding: 4px;
-    border-radius: 4px;
-    border: 1px solid lightgrey;
-    -moz-border-radius: 4px;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 .docson .signature-type-ref {
-    color: darkblue;
     white-space: nowrap;
+    font-size: 21px;
+    color: #000;
 }
 
 .docson .signature-type-ref:after {
-    content: "\25BE ";
+    content: "\25B8 ";
+    padding-top: 2px;
+    margin-left: -4px;
+    display: inline-block;
 }
 
 .docson .signature-type-expanded {
@@ -301,8 +306,8 @@
 }
 
 .docson .signature-type-expanded:after{
-    content: "\25B4 ";
-    display: inline-block;
+    content: "\25BE ";
+    padding-top: 2px;
 }
 
 .docson .signature-description {
