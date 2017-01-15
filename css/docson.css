@@ -177,10 +177,10 @@
     width: 25%;
     font-family: "Lucida Console", Monaco, monospace;
     min-width: 130px;
-    padding-left: 25px;
-    box-sizing: border-box;
+    padding-left: 22px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 @media screen and (max-width: 1024px) {
@@ -219,9 +219,10 @@
     padding-left: 6px;
     float: left;
     width: 20%;
-    box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    min-height: 24px;
 }
 
 @media screen and (max-width: 1024px) {
