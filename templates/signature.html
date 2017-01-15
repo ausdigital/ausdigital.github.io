@@ -30,11 +30,11 @@
                 <span boxid="{{boxId}}" class="box-{{boxId}} signature-type-{{__type}} signature-button signature-type-expandable signature-type-expanded button">{{__type}}</span>
             {{/box}}
         {{/complex}}
-        <!--{{#ref this}}
+        {{#ref this}}
             {{#box this}}
-                <span boxid="{{boxId}}" class="box-{{boxId}} signature-type-ref signature-button signature-type-expandable signature-type-expanded button">{{__name}}</span>
+                <span boxid="{{boxId}}" class="signature-type-ref signature-button signature-type-expandable signature-type-expanded button">&nbsp;</span>
             {{/box}}
-        {{/ref}}-->
+        {{/ref}}
         {{#if pattern}}
             <span class="type-pattern">/{{pattern}}/</span>
         {{/if}}
@@ -60,11 +60,11 @@
                {{range minLength maxLength "" "" false false ".."}}{{range minimum maximum "-∞" "∞" exclusiveMinimum exclusiveMaximum ";"}}
             </span>
         {{/primitive}}
-        <!--{{#ref this}}
+        {{#ref this}}
             {{#box this}}
-                <span boxid="{{boxId}}" class="box-{{boxId}} signature-type-ref signature-button signature-type-expandable signature-type-expanded button">{{__name}}</span>
+                <span boxid="{{boxId}}" class="signature-type-ref signature-button signature-type-expandable signature-type-expanded button">&nbsp;</span>
             {{/box}}
-        {{/ref}}-->
+        {{/ref}}
         {{#obj this}}
             {{#box this}}
                 <span boxid="{{boxId}}" class="box-{{boxId}} signature-type-{{__type}} signature-button signature-type-expandable signature-type-expanded button">{{__type}}</span>
