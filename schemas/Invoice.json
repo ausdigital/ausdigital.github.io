@@ -3,766 +3,6 @@
   "id": "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2#",
   "type": "object",
   "definitions": {
-    "PeriodType": {
-      "description": "A class to describe a period of time.",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "endDate": {
-          "format": "date",
-          "description": "The date on which this period ends.",
-          "type": "string"
-        },
-        "startDate": {
-          "format": "date",
-          "description": "The date on which this period begins.",
-          "type": "string"
-        }
-      }
-    },
-    "PartyNameType": {
-      "description": "A class for defining the name of a party.",
-      "additionalProperties": false,
-      "type": "object",
-      "required": ["name"],
-      "properties": {
-        "name": {
-          "description": "The name of the party.",
-          "type": "string"
-        }
-      }
-    },
-    "ContactType": {
-      "description": "A class to describe a contactable person or department in an organization.",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "electronicMail": {
-          "description": "The primary email address of this contact.",
-          "type": "string"
-        },
-        "telephone": {
-          "description": "The primary telephone number of this contact.",
-          "type": "string"
-        },
-        "id": {
-          "description": "An identifier for this contact.",
-          "type": "string"
-        }
-      }
-    },
-    "ItemType": {
-      "description": "A class to describe an item of trade. It includes a generic description applicable to all examples of the item together with optional subsidiary descriptions of any number of actual instances of the type.",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "additionalInformation": {
-          "minItems": 0,
-          "description": "Further details regarding this item (e.g., the URL of a relevant web page).",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "standardItemIdentification": {
-          "description": "Identifying information for this item, assigned according to a standard system.",
-          "$ref": "#/definitions/ItemIDType"
-        },
-        "name": {
-          "description": "A short name optionally given to this item, such as a name from a catalogue, as distinct from a description.",
-          "type": "string"
-        },
-        "description": {
-          "minItems": 0,
-          "description": "Text describing this item.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "commodityClassification": {
-          "minItems": 0,
-          "description": "A classification of this item according to a specific system for classifying commodities.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CommodityClassificationType"
-          }
-        },
-        "additionalItemProperty": {
-          "minItems": 0,
-          "description": "An additional property of this item.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ItemPropertyType"
-          }
-        },
-        "sellersItemIdentification": {
-          "description": "Identifying information for this item, assigned by the seller.",
-          "type": "string"
-        }
-      }
-    },
-    "AddressLineType": {
-      "description": "A class to define an unstructured address line.",
-      "additionalProperties": false,
-      "type": "object",
-      "required": ["line"],
-      "properties": {
-        "line": {
-          "description": "An address line expressed as unstructured text.",
-          "type": "string"
-        }
-      }
-    },
-    "ItemPropertyType": {
-      "description": "A class to describe a specific property of an item.",
-      "additionalProperties": false,
-      "type": "object",
-      "required": ["name"],
-      "properties": {
-        "name": {
-          "description": "The name of this item property.",
-          "type": "string"
-        },
-        "value": {
-          "description": "The value of this item property, expressed as text.",
-          "type": "string"
-        }
-      }
-    },
-    "FinancialAccountType": {
-      "description": "A class to describe a financial account.",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "financialInstitutionBranch": {
-          "description": "The branch of the financial institution associated with this financial account.",
-          "$ref": "#/definitions/BranchType"
-        },
-        "id": {
-          "description": "The identifier for this financial account; the bank account number.",
-          "type": "string"
-        }
-      }
-    },
-    "ExternalReferenceType": {
-      "description": "A class to describe an external object, such as a document stored at a remote location.",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "documentHash": {
-          "description": "Document hash.",
-          "type": "string"
-        },
-        "hashAlgorithmMethod": {
-          "description": "Document hash algorithm method.",
-          "type": "string"
-        },
-        "uri": {
-          "description": "The Uniform Resource Identifier (URI) that identifies the external object as an Internet resource.",
-          "type": "string"
-        }
-      }
-    },
-    "UBLExtensionsType": {
-      "description": "A container for all extensions present in the document.",
-      "additionalProperties": false,
-      "type": "object",
-      "required": ["ublExtension"],
-      "properties": {
-        "ublExtension": {
-          "minItems": 1,
-          "description": "A single extension for private use.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/UBLExtensionType"
-          }
-        }
-      }
-    },
-    "PartyTaxSchemeType": {
-      "description": "A class to describe a taxation scheme applying to a party.",
-      "additionalProperties": false,
-      "type": "object",
-      "required": ["taxScheme"],
-      "properties": {
-        "taxLevelCode": {
-          "description": "A code signifying the tax level applicable to the party within this taxation scheme.",
-          "type": "string"
-        },
-        "companyID": {
-          "description": "An identifier for the party assigned for tax purposes by the taxation authority.",
-          "$ref": "#/definitions/CompanyIDType"
-        },
-        "taxScheme": {
-          "description": "The taxation scheme applicable to the party.",
-          "type": "string"
-        }
-      }
-    },
-    "DeliveryType": {
-      "description": "A class to describe a delivery.",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "actualDeliveryDate": {
-          "format": "date",
-          "description": "The actual date of delivery.",
-          "type": "string"
-        },
-        "deliveryAddress": {
-          "description": "The delivery address.",
-          "$ref": "#/definitions/AddressType"
-        },
-        "deliveryParty": {
-          "description": "The party to whom the goods are delivered.",
-          "$ref": "#/definitions/PartyType"
-        }
-      }
-    },
-    "ItemIDType": {
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "GTIN": {
-          "description": "GTIN.",
-          "type": "string"
-        }
-      }
-    },
-    "TaxCategoryType": {
-      "description": "A class to describe one of the tax categories within a taxation scheme (e.g., High Rate VAT, Low Rate VAT).",
-      "additionalProperties": false,
-      "type": "object",
-      "required": ["taxScheme"],
-      "properties": {
-        "taxScheme": {
-          "description": "The taxation scheme within which this tax category is defined.",
-          "type": "string"
-        },
-        "taxExemptionReason": {
-          "minItems": 0,
-          "description": "The reason for tax being exempted, expressed as text.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "id": {
-          "description": "An identifier for this tax category.",
-          "type": "string"
-        },
-        "percent": {
-          "description": "The tax rate for this category, expressed as a percentage.",
-          "type": "number"
-        }
-      }
-    },
-    "PartyLegalEntityType": {
-      "description": "A class to describe a party as a legal entity.",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "companyID": {
-          "description": "An identifier for the party as registered within a company registration scheme.",
-          "$ref": "#/definitions/CompanyIDType"
-        },
-        "registrationName": {
-          "description": "The name of the party as registered with the relevant legal authority.",
-          "type": "string"
-        }
-      }
-    },
-    "PartyIDType": {
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "GLN": {
-          "description": "GLN.",
-          "type": "string"
-        },
-        "ABN": {
-          "description": "ABN.",
-          "type": "string"
-        }
-      }
-    },
-    "IdentifierType": {
-      "description": "A character string to identify and distinguish uniquely, one instance of an object in an identification scheme from all other objects in the same scheme together with relevant supplementary information.",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "schemeDataURI": {
-          "format": "uri",
-          "description": "The Uniform Resource Identifier that identifies where the identification scheme data is located.",
-          "type": "string"
-        },
-        "schemeURI": {
-          "format": "uri",
-          "description": "The Uniform Resource Identifier that identifies where the identification scheme is located.",
-          "type": "string"
-        },
-        "schemeName": {
-          "description": "The name of the identification scheme.",
-          "type": "string"
-        },
-        "schemeAgencyID": {
-          "description": "The identification of the agency that maintains the identification scheme.",
-          "type": "string"
-        },
-        "schemeID": {
-          "description": "The identification of the identification scheme.",
-          "type": "string"
-        },
-        "value": {
-          "description": "The value of the identifier",
-          "type": "string"
-        },
-        "schemeVersionID": {
-          "description": "The version of the identification scheme.",
-          "type": "string"
-        },
-        "schemeAgencyName": {
-          "description": "The name of the agency that maintains the identification scheme.",
-          "type": "string"
-        }
-      }
-    },
-    "PaymentMeansType": {
-      "description": "A class to describe a means of payment.",
-      "additionalProperties": false,
-      "type": "object",
-      "required": ["paymentMeansCode"],
-      "properties": {
-        "paymentMeansCode": {
-          "description": "A code signifying the type of this means of payment.",
-          "type": "string"
-        },
-        "payerFinancialAccount": {
-          "description": "The payer's financial account.",
-          "$ref": "#/definitions/FinancialAccountType"
-        },
-        "payeeFinancialAccount": {
-          "description": "The payee's financial account.",
-          "$ref": "#/definitions/FinancialAccountType"
-        },
-        "instructionID": {
-          "description": "An identifier for the payment instruction.",
-          "type": "string"
-        },
-        "id": {
-          "description": "An identifier for this means of payment.",
-          "type": "string"
-        }
-      }
-    },
-    "BinaryObjectType": {
-      "description": "A set of finite-length sequences of binary octets.",
-      "additionalProperties": false,
-      "type": "object",
-      "required": ["mimeCode"],
-      "properties": {
-        "encodingCode": {
-          "description": "Specifies the decoding algorithm of the binary object.",
-          "type": "string"
-        },
-        "filename": {
-          "description": "The filename of the binary object.",
-          "type": "string"
-        },
-        "format": {
-          "description": "The format of the binary content.",
-          "type": "string"
-        },
-        "characterSetCode": {
-          "description": "The character set of the binary object if the mime type is text.",
-          "type": "string"
-        },
-        "value": {
-          "description": "The value of the binaryobject",
-          "type": "string"
-        },
-        "uri": {
-          "format": "uri",
-          "description": "The Uniform Resource Identifier that identifies where the binary object is located.",
-          "type": "string"
-        },
-        "mimeCode": {
-          "description": "The mime type of the binary object.",
-          "type": "string"
-        }
-      }
-    },
-    "QuantityType": {
-      "description": "A counted number of non-monetary units possibly including fractions.",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "unitCode": {
-          "description": "The unit of the quantity",
-          "type": "string"
-        },
-        "value": {
-          "description": "The value of the quantity",
-          "type": "number"
-        }
-      }
-    },
-    "DocumentReferenceType": {
-      "description": "A class to define a reference to a document.",
-      "additionalProperties": false,
-      "type": "object",
-      "required": ["id"],
-      "properties": {
-        "attachment": {
-          "description": "The referenced document as an attachment to the document from which it is referenced.",
-          "$ref": "#/definitions/AttachmentType"
-        },
-        "documentType": {
-          "description": "The type of document being referenced, expressed as text.",
-          "type": "string"
-        },
-        "id": {
-          "description": "An identifier for the referenced document.",
-          "type": "string"
-        }
-      }
-    },
-    "TaxTotalType": {
-      "description": "A class to describe the total tax for a particular taxation scheme.",
-      "additionalProperties": false,
-      "type": "object",
-      "required": ["taxAmount"],
-      "properties": {
-        "taxSubtotal": {
-          "minItems": 0,
-          "description": "One of the subtotals the sum of which equals the total tax amount for a particular taxation scheme.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/TaxSubtotalType"
-          }
-        },
-        "taxAmount": {
-          "description": "The total tax amount for a particular taxation scheme, e.g., VAT; the sum of the tax subtotals for each tax category within the taxation scheme.",
-          "type": "number"
-        }
-      }
-    },
-    "PriceType": {
-      "description": "A class to describe a price, expressed in a data structure containing multiple properties (compare with UnstructuredPrice).",
-      "additionalProperties": false,
-      "type": "object",
-      "required": ["priceAmount"],
-      "properties": {
-        "baseQuantity": {
-          "description": "The quantity at which this price applies.",
-          "$ref": "#/definitions/QuantityType"
-        },
-        "priceAmount": {
-          "description": "The amount of the price.",
-          "type": "number"
-        }
-      }
-    },
-    "CommodityClassificationType": {
-      "description": "A class to describe the classification of a commodity.",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "itemClassificationCode": {
-          "description": "A code signifying the trade classification of the commodity.",
-          "type": "string"
-        }
-      }
-    },
-    "BranchIDType": {
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "BSB": {
-          "description": "BSB.",
-          "type": "string"
-        }
-      }
-    },
-    "InvoiceLineType": {
-      "description": "A class to define a line in an Invoice.",
-      "additionalProperties": false,
-      "type": "object",
-      "required": ["id", "lineExtensionAmount", "item"],
-      "properties": {
-        "lineExtensionAmount": {
-          "description": "The total amount for this invoice line, including allowance charges but net of taxes.",
-          "type": "number"
-        },
-        "note": {
-          "minItems": 0,
-          "description": "Free-form text conveying information that is not contained explicitly in other structures.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "item": {
-          "description": "The item associated with this invoice line.",
-          "$ref": "#/definitions/ItemType"
-        },
-        "accountingCost": {
-          "description": "The buyer's accounting cost centre for this invoice line, expressed as text.",
-          "type": "string"
-        },
-        "invoicePeriod": {
-          "minItems": 0,
-          "description": "An invoice period to which this invoice line applies.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/PeriodType"
-          }
-        },
-        "price": {
-          "description": "The price of the item associated with this invoice line.",
-          "$ref": "#/definitions/PriceType"
-        },
-        "taxTotal": {
-          "minItems": 0,
-          "description": "A total amount of taxes of a particular kind applicable to this invoice line.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/TaxTotalType"
-          }
-        },
-        "documentReference": {
-          "minItems": 0,
-          "description": "A reference to a document associated with this invoice line.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/DocumentReferenceType"
-          }
-        },
-        "id": {
-          "description": "An identifier for this invoice line.",
-          "type": "string"
-        },
-        "invoicedQuantity": {
-          "description": "The quantity (of items) on this invoice line.",
-          "$ref": "#/definitions/QuantityType"
-        },
-        "allowanceCharge": {
-          "minItems": 0,
-          "description": "An allowance or charge associated with this invoice line.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AllowanceChargeType"
-          }
-        }
-      }
-    },
-    "TaxSubtotalType": {
-      "description": "A class to define the subtotal for a particular tax category within a particular taxation scheme, such as standard rate within VAT.",
-      "additionalProperties": false,
-      "type": "object",
-      "required": ["taxAmount", "taxCategory"],
-      "properties": {
-        "taxableAmount": {
-          "description": "The net amount to which the tax percent (rate) is applied to calculate the tax amount.",
-          "type": "number"
-        },
-        "taxAmount": {
-          "description": "The amount of this tax subtotal.",
-          "type": "number"
-        },
-        "taxCategory": {
-          "description": "The tax category applicable to this subtotal.",
-          "$ref": "#/definitions/TaxCategoryType"
-        }
-      }
-    },
-    "MonetaryTotalType": {
-      "description": "A class to define a monetary total.",
-      "additionalProperties": false,
-      "type": "object",
-      "required": ["payableAmount"],
-      "properties": {
-        "lineExtensionAmount": {
-          "description": "The monetary amount of an extended transaction line, net of tax and settlement discounts, but inclusive of any applicable rounding amount.",
-          "type": "number"
-        },
-        "chargeTotalAmount": {
-          "description": "The total monetary amount of all charges.",
-          "type": "number"
-        },
-        "taxExclusiveAmount": {
-          "description": "The monetary amount of an extended transaction line, exclusive of taxes.",
-          "type": "number"
-        },
-        "allowanceTotalAmount": {
-          "description": "The total monetary amount of all allowances.",
-          "type": "number"
-        },
-        "taxInclusiveAmount": {
-          "description": "The monetary amount including taxes; the sum of payable amount and prepaid amount.",
-          "type": "number"
-        },
-        "payableAmount": {
-          "description": "The amount of the monetary total to be paid.",
-          "type": "number"
-        }
-      }
-    },
-    "UBLExtensionType": {
-      "description": "A single extension for private use.",
-      "additionalProperties": false,
-      "type": "object",
-      "required": ["extensionContent"],
-      "properties": {
-        "extensionAgencyID": {
-          "description": "An agency that maintains one or more Extensions.",
-          "type": "string"
-        },
-        "extensionURI": {
-          "description": "A URI for the Extension.",
-          "type": "string"
-        },
-        "name": {
-          "description": "A name for the Extension assigned by the creator of the extension.",
-          "type": "string"
-        },
-        "extensionReason": {
-          "description": "A description of the reason for the Extension.",
-          "type": "string"
-        },
-        "id": {
-          "description": "An identifier for the Extension assigned by the creator of the extension.",
-          "type": "string"
-        },
-        "extensionVersionID": {
-          "description": "The version of the Extension.",
-          "type": "string"
-        },
-        "extensionAgencyURI": {
-          "description": "A URI for the Agency that maintains the Extension.",
-          "type": "string"
-        },
-        "extensionAgencyName": {
-          "description": "The name of the agency that maintains the Extension.",
-          "type": "string"
-        },
-        "extensionReasonCode": {
-          "description": "A code for reason the Extension is being included.",
-          "type": "string"
-        },
-        "extensionContent": {
-          "description": "The definition of the extension content.",
-          "type": "string"
-        }
-      }
-    },
-    "PartyType": {
-      "description": "A class to describe an organization, sub-organization, or individual fulfilling a role in a business process.",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "postalAddress": {
-          "description": "The party's postal address.",
-          "$ref": "#/definitions/AddressType"
-        },
-        "partyTaxScheme": {
-          "minItems": 0,
-          "description": "A tax scheme applying to this party.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/PartyTaxSchemeType"
-          }
-        },
-        "endpointID": {
-          "description": "An identifier for the end point of the routing service (e.g., EAN Location Number, GLN).",
-          "type": "string"
-        },
-        "partyName": {
-          "minItems": 0,
-          "description": "A name for this party.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/PartyNameType"
-          }
-        },
-        "partyIdentification": {
-          "minItems": 0,
-          "description": "An identifier for this party.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/PartyIDType"
-          }
-        },
-        "partyLegalEntity": {
-          "minItems": 0,
-          "description": "A description of this party as a legal entity.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/PartyLegalEntityType"
-          }
-        }
-      }
-    },
-    "CompanyIDType": {
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "GLN": {
-          "description": "GLN.",
-          "type": "string"
-        },
-        "ABN": {
-          "description": "ABN.",
-          "type": "string"
-        }
-      }
-    },
-    "SupplierPartyType": {
-      "description": "A class to describe a supplier party.",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "party": {
-          "description": "The supplier party itself.",
-          "$ref": "#/definitions/PartyType"
-        },
-        "sellerContact": {
-          "description": "The primary contact for this supplier party.",
-          "$ref": "#/definitions/ContactType"
-        }
-      }
-    },
-    "AttachmentType": {
-      "description": "A class to describe an attached document. An attachment can refer to an external document or be included with the document being exchanged.",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "externalReference": {
-          "description": "A reference to an attached document that is external to the document(s) being exchanged.",
-          "$ref": "#/definitions/ExternalReferenceType"
-        },
-        "embeddedDocumentBinaryObject": {
-          "description": "A binary large object containing an attached document.",
-          "$ref": "#/definitions/BinaryObjectType"
-        }
-      }
-    },
-    "BranchType": {
-      "description": "A class to describe a branch or a division of an organization.",
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "name": {
-          "description": "The name of this branch or division of an organization.",
-          "type": "string"
-        },
-        "id": {
-          "description": "An identifier for this branch or division of an organization.",
-          "$ref": "#/definitions/BranchIDType"
-        }
-      }
-    },
     "InvoiceType": {
       "description": "A document used to request payment.",
       "additionalProperties": false,
@@ -929,6 +169,390 @@
         }
       }
     },
+    "UBLExtensionsType": {
+      "description": "A container for all extensions present in the document.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["ublExtension"],
+      "properties": {
+        "ublExtension": {
+          "minItems": 1,
+          "description": "A single extension for private use.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UBLExtensionType"
+          }
+        }
+      }
+    },
+    "UBLExtensionType": {
+      "description": "A single extension for private use.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["extensionContent"],
+      "properties": {
+        "extensionAgencyID": {
+          "description": "An agency that maintains one or more Extensions.",
+          "type": "string"
+        },
+        "extensionURI": {
+          "description": "A URI for the Extension.",
+          "type": "string"
+        },
+        "name": {
+          "description": "A name for the Extension assigned by the creator of the extension.",
+          "type": "string"
+        },
+        "extensionReason": {
+          "description": "A description of the reason for the Extension.",
+          "type": "string"
+        },
+        "id": {
+          "description": "An identifier for the Extension assigned by the creator of the extension.",
+          "type": "string"
+        },
+        "extensionVersionID": {
+          "description": "The version of the Extension.",
+          "type": "string"
+        },
+        "extensionAgencyURI": {
+          "description": "A URI for the Agency that maintains the Extension.",
+          "type": "string"
+        },
+        "extensionAgencyName": {
+          "description": "The name of the agency that maintains the Extension.",
+          "type": "string"
+        },
+        "extensionReasonCode": {
+          "description": "A code for reason the Extension is being included.",
+          "type": "string"
+        },
+        "extensionContent": {
+          "description": "The definition of the extension content.",
+          "type": "string"
+        }
+      }
+    },
+    "IdentifierType": {
+      "description": "A character string to identify and distinguish uniquely, one instance of an object in an identification scheme from all other objects in the same scheme together with relevant supplementary information.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "schemeDataURI": {
+          "format": "uri",
+          "description": "The Uniform Resource Identifier that identifies where the identification scheme data is located.",
+          "type": "string"
+        },
+        "schemeURI": {
+          "format": "uri",
+          "description": "The Uniform Resource Identifier that identifies where the identification scheme is located.",
+          "type": "string"
+        },
+        "schemeName": {
+          "description": "The name of the identification scheme.",
+          "type": "string"
+        },
+        "schemeAgencyID": {
+          "description": "The identification of the agency that maintains the identification scheme.",
+          "type": "string"
+        },
+        "schemeID": {
+          "description": "The identification of the identification scheme.",
+          "type": "string"
+        },
+        "value": {
+          "description": "The value of the identifier",
+          "type": "string"
+        },
+        "schemeVersionID": {
+          "description": "The version of the identification scheme.",
+          "type": "string"
+        },
+        "schemeAgencyName": {
+          "description": "The name of the agency that maintains the identification scheme.",
+          "type": "string"
+        }
+      }
+    },
+    "PeriodType": {
+      "description": "A class to describe a period of time.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "endDate": {
+          "format": "date",
+          "description": "The date on which this period ends.",
+          "type": "string"
+        },
+        "startDate": {
+          "format": "date",
+          "description": "The date on which this period begins.",
+          "type": "string"
+        }
+      }
+    },
+    "DocumentReferenceType": {
+      "description": "A class to define a reference to a document.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "attachment": {
+          "description": "The referenced document as an attachment to the document from which it is referenced.",
+          "$ref": "#/definitions/AttachmentType"
+        },
+        "documentType": {
+          "description": "The type of document being referenced, expressed as text.",
+          "type": "string"
+        },
+        "id": {
+          "description": "An identifier for the referenced document.",
+          "type": "string"
+        }
+      }
+    },
+    "AttachmentType": {
+      "description": "A class to describe an attached document. An attachment can refer to an external document or be included with the document being exchanged.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "externalReference": {
+          "description": "A reference to an attached document that is external to the document(s) being exchanged.",
+          "$ref": "#/definitions/ExternalReferenceType"
+        },
+        "embeddedDocumentBinaryObject": {
+          "description": "A binary large object containing an attached document.",
+          "$ref": "#/definitions/BinaryObjectType"
+        }
+      }
+    },
+    "BinaryObjectType": {
+      "description": "A set of finite-length sequences of binary octets.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["mimeCode"],
+      "properties": {
+        "encodingCode": {
+          "description": "Specifies the decoding algorithm of the binary object.",
+          "type": "string"
+        },
+        "filename": {
+          "description": "The filename of the binary object.",
+          "type": "string"
+        },
+        "format": {
+          "description": "The format of the binary content.",
+          "type": "string"
+        },
+        "characterSetCode": {
+          "description": "The character set of the binary object if the mime type is text.",
+          "type": "string"
+        },
+        "value": {
+          "description": "The value of the binaryobject",
+          "type": "string"
+        },
+        "uri": {
+          "format": "uri",
+          "description": "The Uniform Resource Identifier that identifies where the binary object is located.",
+          "type": "string"
+        },
+        "mimeCode": {
+          "description": "The mime type of the binary object.",
+          "type": "string"
+        }
+      }
+    },
+    "ExternalReferenceType": {
+      "description": "A class to describe an external object, such as a document stored at a remote location.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "documentHash": {
+          "description": "Document hash.",
+          "type": "string"
+        },
+        "hashAlgorithmMethod": {
+          "description": "Document hash algorithm method.",
+          "type": "string"
+        },
+        "uri": {
+          "description": "The Uniform Resource Identifier (URI) that identifies the external object as an Internet resource.",
+          "type": "string"
+        }
+      }
+    },
+    "SupplierPartyType": {
+      "description": "A class to describe a supplier party.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "party": {
+          "description": "The supplier party itself.",
+          "$ref": "#/definitions/PartyType"
+        },
+        "sellerContact": {
+          "description": "The primary contact for this supplier party.",
+          "$ref": "#/definitions/ContactType"
+        }
+      }
+    },
+    "PartyType": {
+      "description": "A class to describe an organization, sub-organization, or individual fulfilling a role in a business process.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "postalAddress": {
+          "description": "The party's postal address.",
+          "$ref": "#/definitions/AddressType"
+        },
+        "partyTaxScheme": {
+          "minItems": 0,
+          "description": "A tax scheme applying to this party.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyTaxSchemeType"
+          }
+        },
+        "endpointID": {
+          "description": "An identifier for the end point of the routing service (e.g., EAN Location Number, GLN).",
+          "type": "string"
+        },
+        "partyName": {
+          "minItems": 0,
+          "description": "A name for this party.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyNameType"
+          }
+        },
+        "partyIdentification": {
+          "minItems": 0,
+          "description": "An identifier for this party.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyIDType"
+          }
+        },
+        "partyLegalEntity": {
+          "minItems": 0,
+          "description": "A description of this party as a legal entity.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyLegalEntityType"
+          }
+        }
+      }
+    },
+    "PartyNameType": {
+      "description": "A class for defining the name of a party.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "description": "The name of the party.",
+          "type": "string"
+        }
+      }
+    },
+    "AddressType": {
+      "description": "A class to define common information related to an address.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "countrySubentity": {
+          "description": "The political or administrative division of a country in which this address is located, such as the name of its county, province, or state, expressed as text.",
+          "type": "string"
+        },
+        "country": {
+          "description": "The country in which this address is situated.",
+          "type": "string"
+        },
+        "cityName": {
+          "description": "The name of a city, town, or village.",
+          "type": "string"
+        },
+        "addressLine": {
+          "minItems": 0,
+          "description": "An unstructured address line.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AddressLineType"
+          }
+        },
+        "postalZone": {
+          "description": "The postal identifier for this address according to the relevant national postal service, such as a ZIP code or Post Code.",
+          "type": "string"
+        }
+      }
+    },
+    "AddressLineType": {
+      "description": "A class to define an unstructured address line.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["line"],
+      "properties": {
+        "line": {
+          "description": "An address line expressed as unstructured text.",
+          "type": "string"
+        }
+      }
+    },
+    "PartyTaxSchemeType": {
+      "description": "A class to describe a taxation scheme applying to a party.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["taxScheme"],
+      "properties": {
+        "taxLevelCode": {
+          "description": "A code signifying the tax level applicable to the party within this taxation scheme.",
+          "type": "string"
+        },
+        "companyID": {
+          "description": "An identifier for the party assigned for tax purposes by the taxation authority.",
+          "$ref": "#/definitions/CompanyIDType"
+        },
+        "taxScheme": {
+          "description": "The taxation scheme applicable to the party.",
+          "type": "string"
+        }
+      }
+    },
+    "PartyLegalEntityType": {
+      "description": "A class to describe a party as a legal entity.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "companyID": {
+          "description": "An identifier for the party as registered within a company registration scheme.",
+          "$ref": "#/definitions/CompanyIDType"
+        },
+        "registrationName": {
+          "description": "The name of the party as registered with the relevant legal authority.",
+          "type": "string"
+        }
+      }
+    },
+    "ContactType": {
+      "description": "A class to describe a contactable person or department in an organization.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "electronicMail": {
+          "description": "The primary email address of this contact.",
+          "type": "string"
+        },
+        "telephone": {
+          "description": "The primary telephone number of this contact.",
+          "type": "string"
+        },
+        "id": {
+          "description": "An identifier for this contact.",
+          "type": "string"
+        }
+      }
+    },
     "CustomerPartyType": {
       "description": "A class to describe a customer party.",
       "additionalProperties": false,
@@ -941,6 +565,84 @@
         "buyerContact": {
           "description": "A customer contact for purchasing.",
           "$ref": "#/definitions/ContactType"
+        }
+      }
+    },
+    "DeliveryType": {
+      "description": "A class to describe a delivery.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "actualDeliveryDate": {
+          "format": "date",
+          "description": "The actual date of delivery.",
+          "type": "string"
+        },
+        "deliveryAddress": {
+          "description": "The delivery address.",
+          "$ref": "#/definitions/AddressType"
+        },
+        "deliveryParty": {
+          "description": "The party to whom the goods are delivered.",
+          "$ref": "#/definitions/PartyType"
+        }
+      }
+    },
+    "PaymentMeansType": {
+      "description": "A class to describe a means of payment.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["paymentMeansCode"],
+      "properties": {
+        "paymentMeansCode": {
+          "description": "A code signifying the type of this means of payment.",
+          "type": "string"
+        },
+        "payerFinancialAccount": {
+          "description": "The payer's financial account.",
+          "$ref": "#/definitions/FinancialAccountType"
+        },
+        "payeeFinancialAccount": {
+          "description": "The payee's financial account.",
+          "$ref": "#/definitions/FinancialAccountType"
+        },
+        "instructionID": {
+          "description": "An identifier for the payment instruction.",
+          "type": "string"
+        },
+        "id": {
+          "description": "An identifier for this means of payment.",
+          "type": "string"
+        }
+      }
+    },
+    "FinancialAccountType": {
+      "description": "A class to describe a financial account.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "financialInstitutionBranch": {
+          "description": "The branch of the financial institution associated with this financial account.",
+          "$ref": "#/definitions/BranchType"
+        },
+        "id": {
+          "description": "The identifier for this financial account; the bank account number.",
+          "type": "string"
+        }
+      }
+    },
+    "BranchType": {
+      "description": "A class to describe a branch or a division of an organization.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The name of this branch or division of an organization.",
+          "type": "string"
+        },
+        "id": {
+          "description": "An identifier for this branch or division of an organization.",
+          "$ref": "#/definitions/BranchIDType"
         }
       }
     },
@@ -992,33 +694,331 @@
         }
       }
     },
-    "AddressType": {
-      "description": "A class to define common information related to an address.",
+    "TaxCategoryType": {
+      "description": "A class to describe one of the tax categories within a taxation scheme (e.g., High Rate VAT, Low Rate VAT).",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["taxScheme"],
+      "properties": {
+        "taxScheme": {
+          "description": "The taxation scheme within which this tax category is defined.",
+          "type": "string"
+        },
+        "taxExemptionReason": {
+          "minItems": 0,
+          "description": "The reason for tax being exempted, expressed as text.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "id": {
+          "description": "An identifier for this tax category.",
+          "type": "string"
+        },
+        "percent": {
+          "description": "The tax rate for this category, expressed as a percentage.",
+          "type": "number"
+        }
+      }
+    },
+    "TaxTotalType": {
+      "description": "A class to describe the total tax for a particular taxation scheme.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["taxAmount"],
+      "properties": {
+        "taxSubtotal": {
+          "minItems": 0,
+          "description": "One of the subtotals the sum of which equals the total tax amount for a particular taxation scheme.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TaxSubtotalType"
+          }
+        },
+        "taxAmount": {
+          "description": "The total tax amount for a particular taxation scheme, e.g., VAT; the sum of the tax subtotals for each tax category within the taxation scheme.",
+          "type": "number"
+        }
+      }
+    },
+    "TaxSubtotalType": {
+      "description": "A class to define the subtotal for a particular tax category within a particular taxation scheme, such as standard rate within VAT.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["taxAmount", "taxCategory"],
+      "properties": {
+        "taxableAmount": {
+          "description": "The net amount to which the tax percent (rate) is applied to calculate the tax amount.",
+          "type": "number"
+        },
+        "taxAmount": {
+          "description": "The amount of this tax subtotal.",
+          "type": "number"
+        },
+        "taxCategory": {
+          "description": "The tax category applicable to this subtotal.",
+          "$ref": "#/definitions/TaxCategoryType"
+        }
+      }
+    },
+    "MonetaryTotalType": {
+      "description": "A class to define a monetary total.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["payableAmount"],
+      "properties": {
+        "lineExtensionAmount": {
+          "description": "The monetary amount of an extended transaction line, net of tax and settlement discounts, but inclusive of any applicable rounding amount.",
+          "type": "number"
+        },
+        "chargeTotalAmount": {
+          "description": "The total monetary amount of all charges.",
+          "type": "number"
+        },
+        "taxExclusiveAmount": {
+          "description": "The monetary amount of an extended transaction line, exclusive of taxes.",
+          "type": "number"
+        },
+        "allowanceTotalAmount": {
+          "description": "The total monetary amount of all allowances.",
+          "type": "number"
+        },
+        "taxInclusiveAmount": {
+          "description": "The monetary amount including taxes; the sum of payable amount and prepaid amount.",
+          "type": "number"
+        },
+        "payableAmount": {
+          "description": "The amount of the monetary total to be paid.",
+          "type": "number"
+        }
+      }
+    },
+    "InvoiceLineType": {
+      "description": "A class to define a line in an Invoice.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["id", "lineExtensionAmount", "item"],
+      "properties": {
+        "lineExtensionAmount": {
+          "description": "The total amount for this invoice line, including allowance charges but net of taxes.",
+          "type": "number"
+        },
+        "note": {
+          "minItems": 0,
+          "description": "Free-form text conveying information that is not contained explicitly in other structures.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "item": {
+          "description": "The item associated with this invoice line.",
+          "$ref": "#/definitions/ItemType"
+        },
+        "accountingCost": {
+          "description": "The buyer's accounting cost centre for this invoice line, expressed as text.",
+          "type": "string"
+        },
+        "invoicePeriod": {
+          "minItems": 0,
+          "description": "An invoice period to which this invoice line applies.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PeriodType"
+          }
+        },
+        "price": {
+          "description": "The price of the item associated with this invoice line.",
+          "$ref": "#/definitions/PriceType"
+        },
+        "taxTotal": {
+          "minItems": 0,
+          "description": "A total amount of taxes of a particular kind applicable to this invoice line.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TaxTotalType"
+          }
+        },
+        "documentReference": {
+          "minItems": 0,
+          "description": "A reference to a document associated with this invoice line.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DocumentReferenceType"
+          }
+        },
+        "id": {
+          "description": "An identifier for this invoice line.",
+          "type": "string"
+        },
+        "invoicedQuantity": {
+          "description": "The quantity (of items) on this invoice line.",
+          "$ref": "#/definitions/QuantityType"
+        },
+        "allowanceCharge": {
+          "minItems": 0,
+          "description": "An allowance or charge associated with this invoice line.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AllowanceChargeType"
+          }
+        }
+      }
+    },
+    "QuantityType": {
+      "description": "A counted number of non-monetary units possibly including fractions.",
       "additionalProperties": false,
       "type": "object",
       "properties": {
-        "countrySubentity": {
-          "description": "The political or administrative division of a country in which this address is located, such as the name of its county, province, or state, expressed as text.",
+        "unitCode": {
+          "description": "The unit of the quantity",
           "type": "string"
         },
-        "country": {
-          "description": "The country in which this address is situated.",
-          "type": "string"
-        },
-        "cityName": {
-          "description": "The name of a city, town, or village.",
-          "type": "string"
-        },
-        "addressLine": {
+        "value": {
+          "description": "The value of the quantity",
+          "type": "number"
+        }
+      }
+    },
+    "ItemType": {
+      "description": "A class to describe an item of trade. It includes a generic description applicable to all examples of the item together with optional subsidiary descriptions of any number of actual instances of the type.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "additionalInformation": {
           "minItems": 0,
-          "description": "An unstructured address line.",
+          "description": "Further details regarding this item (e.g., the URL of a relevant web page).",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/AddressLineType"
+            "type": "string"
           }
         },
-        "postalZone": {
-          "description": "The postal identifier for this address according to the relevant national postal service, such as a ZIP code or Post Code.",
+        "standardItemIdentification": {
+          "description": "Identifying information for this item, assigned according to a standard system.",
+          "$ref": "#/definitions/ItemIDType"
+        },
+        "name": {
+          "description": "A short name optionally given to this item, such as a name from a catalogue, as distinct from a description.",
+          "type": "string"
+        },
+        "description": {
+          "minItems": 0,
+          "description": "Text describing this item.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "commodityClassification": {
+          "minItems": 0,
+          "description": "A classification of this item according to a specific system for classifying commodities.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommodityClassificationType"
+          }
+        },
+        "additionalItemProperty": {
+          "minItems": 0,
+          "description": "An additional property of this item.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ItemPropertyType"
+          }
+        },
+        "sellersItemIdentification": {
+          "description": "Identifying information for this item, assigned by the seller.",
+          "type": "string"
+        }
+      }
+    },
+    "CommodityClassificationType": {
+      "description": "A class to describe the classification of a commodity.",
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "itemClassificationCode": {
+          "description": "A code signifying the trade classification of the commodity.",
+          "type": "string"
+        }
+      }
+    },
+    "ItemPropertyType": {
+      "description": "A class to describe a specific property of an item.",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "description": "The name of this item property.",
+          "type": "string"
+        },
+        "value": {
+          "description": "The value of this item property, expressed as text.",
+          "type": "string"
+        }
+      }
+    },
+    "PriceType": {
+      "description": "A class to describe a price, expressed in a data structure containing multiple properties (compare with UnstructuredPrice).",
+      "additionalProperties": false,
+      "type": "object",
+      "required": ["priceAmount"],
+      "properties": {
+        "baseQuantity": {
+          "description": "The quantity at which this price applies.",
+          "$ref": "#/definitions/QuantityType"
+        },
+        "priceAmount": {
+          "description": "The amount of the price.",
+          "type": "number"
+        }
+      }
+    },
+    "ItemIDType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "GTIN": {
+          "description": "GTIN.",
+          "type": "string"
+        }
+      }
+    },
+    "PartyIDType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "GLN": {
+          "description": "GLN.",
+          "type": "string"
+        },
+        "ABN": {
+          "description": "ABN.",
+          "type": "string"
+        }
+      }
+    },
+    "BranchIDType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "BSB": {
+          "description": "BSB.",
+          "type": "string"
+        }
+      }
+    },
+    "CompanyIDType": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "GLN": {
+          "description": "GLN.",
+          "type": "string"
+        },
+        "ABN": {
+          "description": "ABN.",
           "type": "string"
         }
       }
