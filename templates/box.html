@@ -60,7 +60,7 @@
         {{/sub}}
         {{#if properties}}
             {{#each properties}}
-            <div class="signature 123">
+            <div class="signature">
                 <div class="signature-header">
                     <div class="property-name {{#contains ../required @key}}required{{/contains}}">{{@key}}</div>
                     <div class="signature-type">
@@ -101,7 +101,7 @@
 
         {{#if patternProperties}}
             {{#each patternProperties}}
-            <div class="signature 345">
+            <div class="signature">
                 <div class="signature-header">
                     <div class="property-name type-pattern">{{@key}}</div>
                     <div class="signature-type">

@@ -26,8 +26,6 @@
                 if (embedded) {
                     $("body").addClass("embedded");
                     $("doc").addClass("embedded");
-                    $("back").addClass("embedded");
-                    $("#back").show();
                     $("#form").hide();
                     $(".expand-button").html(" - ").attr("title", "Collapse all");
           }
@@ -96,10 +94,8 @@
                         window.addEventListener("message", receiveMessage, false);
                         var host = window.opener || window.parent;
                         host.postMessage( { id: "docson", action: "ready", url: url}, "*");
-                           $("#back").show();
                  } else {
                         $("#doc").empty();
-                        $("#back").hide();
                         $("#form").show();
                     }
                 }
@@ -132,13 +128,9 @@
 </head>
 <body>
 <div id="form">
-    Please choose a schema:
-    <br>
-    <a href="/docson.html#schemas/Invoice.json">Invoice.json</a>
-    <br>
-    <a href="/docson.html#schemas/Response.json">Response.json</a>
+    Please enter a schema URL:
+    <input type="text" id="url" size="60">
 </div>
-<div id="back"></div>
 <div id="doc"></div>
 </body>
 </html>
