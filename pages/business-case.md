@@ -1,3 +1,9 @@
+---
+layout: page
+title: Business Case
+permalink: /business-case/
+---
+
 # The e-Invoicing Business Case
 
 Businesses in the Australian economy exchange approximately 1 Billion invoices per year to a total value of around $4 Trillion and, on average, payment is made 55 days after the invoice is issued.    
