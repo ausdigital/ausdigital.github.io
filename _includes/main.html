@@ -10,6 +10,8 @@
             <div class="pure-menu">
                 <ul class="pure-menu-list">
                     {% assign current = page.url | downcase | split: '/' %}
+                    <li class="pure-menu-title">Benefits</li>
+                    <li class="pure-menu-item{% if current[1] == 'business-case' %} active{% endif %}"><a href="/business-case/" class="pure-menu-link">A Business Case</a></li>
                     <li class="pure-menu-title">Technical</li>
                     <li class="pure-menu-item{% if current[1] == 'identity-provider' %} active{% endif %}"><a href="/identity-provider/" class="pure-menu-link">Identity Provider (IDP)</a></li>
                     <li class="pure-menu-item{% if current[1] == 'digital-capability-locator' %} active{% endif %}"><a href="/digital-capability-locator/" class="pure-menu-link">Capability Locator (DCL)</a></li>
