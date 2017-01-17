@@ -8,10 +8,10 @@ permalink: /business-case/
 
 ## Executive Summary
 
-Businesses in the Australian economy exchange approximately 1 Billion invoices per year to a total value of around $4 Trillion and, on average, payment is made 55 days after the invoice is issued.    
+Businesses in the Australian economy exchange approximately 1 Billion invoices per year to a total value of around AUD $4 trillion and, on average, payment is made 55 days after the invoice is issued.    
 
 * Each invoice costs an average of $20 AUD to process due to manual handling (re-keying) and errors (mis-keying). If all invoices were exchanged automatically between buyer and seller financial systems then there is a potential to avoid mistakes and re-keying and consequently improve mational productivity by up to $20 billion per year.
-* Around $600 billion ($4Tn x 55/365 days) is held in accounts payable processes at any time and about 20% of that is debt to cashflow contrained small business suppliers that have no alternative than to fund cashflow from homeloans and credit cards.  If every invoice and invoice response were digitally signed and written to the block-chain then small business would have access to a new trade financing instrument that could inject an additional $100 Billion of growth-funding cashflow into the national economy.
+* Around $600 billion ($4 trillion x 55/365 days) is held in accounts payable processes at any time and about 20% of that is debt to cashflow contrained small business suppliers that have no alternative than to fund cashflow from homeloans and credit cards.  If every invoice and invoice response were digitally signed and written to the block-chain then small business would have access to a new trade financing instrument that could inject an additional $100 Billion of growth-funding cashflow into the national economy.
 
 But the uptake of e-invoicing in Australia is approximately 10% to 15% and almost none of them are suitable for trade financing.  By world standards, Australia is a laggard.   [Ausdigital standards](http://ausdigital.org/) represent the most modern and lowest cost model for e-invoicing that, if adopted widely, would allow Australia to leapfrog the rest of the world.
 
@@ -20,6 +20,7 @@ Numbers like $20Bn of annual productivity gains and $100Bn of additional cashflo
 ## e-Invoicing and efficiency
 
 e-Invoicing efficiency gains are mostly derived from accounts payable (AP) automation;
+
 * Straight-through-processing for the invoice recipient means there is no manual re-keying.
 * Straight through processing of strucutured invoice data is also less error prone than bulk scanning & OCR processes.
 * Automated reconciliation against orders and goods reciepts allows for automated internal AP workflows.
@@ -40,26 +41,26 @@ However, if implemented correctly, an e-invoicing framework can deliver new cash
 * Invoice response documents (eg "I got your invoice number 1234 and have approved it for payment in 60 days") must also be digitally signed by the buyer using a trusted identity provider.
 * Both the invoice and response messages must be notarised by an independent third party so that the conversation is on a permanent and non-repudiable record.  
 
-The signed and notarised invocing conversation is effectively a financial grade tradeable instrument and allows lenders to make a risk assessment based on the likelihood that the buyer will pay.  The user experience for the SME seller can be that payment from trade financers can be made immediately after receiving a signed invoice response - irrespective of the actual buyer payment terms.  
+The signed and notarised invocing conversation is effectively a financial grade tradeable instrument and allows lenders to make a risk assessment based on the likelihood that the buyer will pay rather than seeking peronsal equity collateral from the seller.  The user experience for the SME seller can be that payment from trade financers can be made immediately after receiving a signed invoice response - irrespective of the actual buyer payment terms.  
 
 ## e-invoicing solution choices do matter!
 
 Although the benefits sound compelling, there is a significant risk that they may not be realised.  
 
 * Although there are efficiency savings in the order of $20 per invoice, if the transaction costs imposed by the e-invoicing framework are of a similar order of magnitude then the net benefit to the economy is zero. Frameorks such as the european "4-corner model" that are based on connecting up traditional EDI hubs are costly.  Some of the largest EDI hubs in operation today charge trasaction fees as a % of invoice value at prices that are only a little less than the potential efficiency savings.  
-* Cashflow financing for SME sellers will be optimised when signed and notarised invoice messages are tradeable in a financial competitive market. Although invoice factoring is a service that is often available via EDI hubs, it is usually within a closed market of value-add services from the Hub provider, which inevitably increases the finance costs to the seller.
+* Cashflow financing for SME sellers will be optimised when signed and notarised invoice messages are tradeable in a competitive financial market. Although invoice factoring is a service that is often available via EDI hubs, it is usually within a closed market of value-add services from the Hub provider, which inevitably increases the finance costs to the seller.
 
 The Ausdigital specifications published on this site avoid both these problems;
 
-* Messaging is peer-to-peer between ledger systems and uses ubiquitous internet protocols.  There is no lock-in opportunity and fees from network service providers will reflect a commodity style "race to the bottom" to be the best value provider.  Our modelling indicates that transactions costs should be no mroe than a few cents per invoice.
+* Messaging is peer-to-peer between ledger systems and uses ubiquitous internet protocols.  There is no lock-in opportunity and fees from network service providers will reflect a commodity style "race to the bottom" to be the best value provider.  Our modelling indicates that transactions costs should be no more than a few cents per invoice.
 * Digital signatures from independant trust providers (typically banks or government) coupled with independent notarisation to the block-chain avoids lock in by any factoring provider and allows the seller to seek the best funding terms from a competitive market using a very high quality record. Financial service providers have confirmed that the market would offer immediate payment of notarised invoices for around 1% of invoice value.
 
 ## The role for government
 
-e-Invocing is very much a business-to-business process so it's tempting to think that there should be no government "interference".  Whuilst it is certainly true that the market is likely to deliver the best technical solutions at the lowest cost, there are two important things that a government can do to help realise the efficiency and cashflow potential described here.
+e-Invocing is very much a business-to-business process so it's tempting to think that there should be no government "interference".  Whilst it is certainly true that the market is likely to deliver the best technical solutions at the lowest cost, there are two important things that a government can do to help realise the efficiency and cashflow potential described here.
 
 * Identity services.  As the authoritative registrar of business identifers (ie the ABN), the government is uniquely positioned to provide the highest integrity identity services at the lowest cost to the economy.  Identity is a foundational service and would be much more costly for any provider other than government to implement. Fortunately, the Australian government already has the necessary infrastructure in the form of the [VANguard](http://www.vanguard.business.gov.au/Pages/default.aspx) service from the Department of Industry.  Unfirtunately, although technically VANguard is immediately usable, policy constraints currently limit it's to B2G transactions only.  We hope that this constraint will be removed very soon.
-* implement the Ausdigital standards as a large buyer.  This would stimulate the market and provide incentives for ledger vendors to support the standard so that their customers can send electronic inviices to government.  Notarised responses from government buyers would also stimulate the trade financing market with a high value (government represents around 15% of the economy) and very low risk buyer. Aside from the national economy benefits, government as a large buyer would recover any implementation costs very quickly as it will enjoy the same AP automation benefits that any commercial buyer would experience.
+* implement the Ausdigital standards as a large buyer.  This would stimulate the market and provide incentives for ledger vendors to support the standard so that their customers can send electronic invoices to government.  Notarised responses from government buyers would also stimulate the trade financing market with a high value (government represents around 15% of the economy) and very low risk buyer. Aside from the national economy benefits, government as a large buyer would recover any implementation costs very quickly as it will enjoy the same AP automation benefits that any commercial buyer would experience.
 
 There should be no need for any government mandate of any e-invoicing framework.  Just leadership by example.
 
