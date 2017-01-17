@@ -12,8 +12,8 @@ Significantly, the TAP layer can (and therefor should) be kept out of the ledger
 
 Supporting the TAP-GW specification helps to driving trust out of the TAP layer, concentrating it at the ledger systems. This maximises autonomy and security of network participants.
 
-* [TAP GitHub repository](https://github.com/ausdigital/ausdigital-tap-gw)
-* [TAP Slack channel](https://ausdigital.slack.com/messages/spec-tap-gw/)
+* [TAP-GW GitHub repository](https://github.com/ausdigital/ausdigital-tap-gw)
+* [TAP-GW Slack channel](https://ausdigital.slack.com/messages/spec-tap-gw/)
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
