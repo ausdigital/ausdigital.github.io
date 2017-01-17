@@ -6,4 +6,4 @@ permalink: /purchase-order-semantics/
 
 # Purchase Order semantics specification
 
-Coming soon - let us know by [raising a ticket](https://github.com/ausdigital/ordering-semantics/issues) in the ordering semantics repository if you'd like to lead this group
+Coming soon - let us know by [raising a ticket](https://github.com/ausdigital/ausdigital-order/issues) in the ordering semantics repository if you'd like to lead this group
