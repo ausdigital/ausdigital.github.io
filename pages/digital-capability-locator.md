@@ -13,4 +13,4 @@ The framework assumes that there could be multiple capability publishers (DCP) i
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [DCL 1.0 spec](https://ausdigital-dcl.readthedocs.org) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [DCL 1.0 API](https://swaggerhub.com/api/ausdigital/capability-locator/1.0) | [dcl testpoint](https://dcl.testpoint.io/)  | [DCL 1.0 Issues](https://github.com/ausdigital/ausdigital-dcl/issues)   |
+| [DCL 1.0 spec](https://ausdigital-dcl.readthedocs.org) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [DCL 1.0 API](https://swaggerhub.com/api/ausdigital/ausdigital-dcl/1.0) | [dcl testpoint](https://dcl.testpoint.io/)  | [DCL 1.0 Issues](https://github.com/ausdigital/ausdigital-dcl/issues)   |

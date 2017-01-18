@@ -13,4 +13,4 @@ The framework depends heavily on the ability to discover detailed service inform
 
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------- | ------ | -------------- | ------------ | -------- |
-| [DCP 1.0 spec](http://ausdigital-dcp.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [DCP 1.0 API](https://swaggerhub.com/api/ausdigital/metadata-publisher/1.0)  | N/A (yet) | [DCP 1.0 Issues](https://github.com/ausdigital/ausdigital-dcp/issues)    |
+| [DCP 1.0 spec](http://ausdigital-dcp.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [DCP 1.0 API](https://swaggerhub.com/api/ausdigital/ausdigital-dcp/1.0)  | N/A (yet) | [DCP 1.0 Issues](https://github.com/ausdigital/ausdigital-dcp/issues)    |
