@@ -14,3 +14,12 @@ The framework assumes that there could be multiple capability publishers (DCP) i
 | Specification URL | Version | Status | API Definition | Test Service | Issues List |
 | ----------------- | ------  | ------ | -------------- | ------------ | -------- |
 | [DCL 1.0 spec](https://ausdigital-dcl.readthedocs.org) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [DCL 1.0 API](https://swaggerhub.com/api/ausdigital/ausdigital-dcl/1.0) | [dcl testpoint](https://dcl.testpoint.io/)  | [DCL 1.0 Issues](https://github.com/ausdigital/ausdigital-dcl/issues)   |
+
+## Implementations
+
+Since there is usually only one DCL for a given national economy, the DCL service is normally implemented by a statutory authority - usually the issuer and registrar of the relevant business identifier.  In the Australian case, the identifer is the ABN and the DCL operator is expected to tbe the ATO.
+
+Known implementations (open source or otherwise) are listed here.  Please modify this page and make a pull request to add your own.
+
+* [Open Source DCL from testpoint.io](https://github.com/test-point/testpoint-dcl)
+
