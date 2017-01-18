@@ -159,7 +159,7 @@ how it works:
 small screens.
 */
 .menu-link {
-    position: fixed;
+    position: absolute;
     display: block; /* show this onabsolutely on small screens */
     top: 0;
     left: 0; /* "#menu width" */
@@ -217,7 +217,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
     }
 
     .menu-link {
-        position: fixed;
+        position: absolute;
         left: 200px;
         display: none;
     }
