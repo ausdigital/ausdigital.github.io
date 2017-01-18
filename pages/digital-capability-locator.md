@@ -6,7 +6,7 @@ permalink: /digital-capability-locator/
 
 # The Digital Capability Locator specification
 
-The framework assumes that there could be multiple capability publishers (DCP) in the network and so the digital capability locator is essentially a DNS entry (NAPTR Record type) that is used to redirect a lookup query for a given business identifier to the correct DCP.
+The framework assumes that there could be multiple publishers of business meta-data and e-business capabilites.  Therefore a simple way to ask "where can I find information about the e-business capabilities of business X ?" is needed.  That is the purpose of the DCL.  CDL is essentially a DNS lookup (NAPTR Record) using a business identifier (eg ABN) as the query and it returns the URL of the detailed metadata about that business.  In a given economy, there is usually only one DCL - often operated by a government authority.
 
 * [DCL Github Repository](https://github.com/ausdigital/ausdigital-dcl)
 * [DCL Slack Channel](https://ausdigital.slack.com/messages/spec-dcl/)
