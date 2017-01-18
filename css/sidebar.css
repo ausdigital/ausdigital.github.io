@@ -70,7 +70,7 @@ appears on the left side of the page.
 }
 
 #menu.active{
-    position: fixed;
+    position: absolute;
     left: 34px;
     top: 0;
     display: block;
