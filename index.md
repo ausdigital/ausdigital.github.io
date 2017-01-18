@@ -3,7 +3,7 @@ layout: default
 ---
 # Let's make business document exchange simple
 
-Legacy EDI is complicated and insecure. This community is developing open specifications and free test services with the goal of making it as simple as email.
+Legacy EDI is complicated and insecure. This community is developing open specifications and free test services based on ubiquitous internet protocols with the goal of making it simple, secure, and cheap.  The [business case](/pages/business-case.md) is compelling.
 
  * As a business, I want to send electronic invoices to my customer systems and know the payment status so I can manage my cashflow and get cheap debtor financing if I need it.
  * As a business I want all invoices and tax receipts from my authorised suppliers to be automatically loaded to my financial system, ready for my approval so I can reduce my administration burden.
@@ -12,7 +12,7 @@ We want the simplest, lowest cost and most secure solution to these needs so we'
 
  * A suite of technical specifications with free test points.
  * A suite of semantic specifications and free test points.
- * A transparent governance model where any stakeholder is free to participate.
+ * A transparent [governance model](/pages/governance-model.md) where any stakeholder is free to participate.
 
 The semantic and technical specifications are open community processes based around the GitHub collaborative development environment. Business stakeholders may prefer to sign up for a <a href="http://eepurl.com/ctZ6hf">AusDigital general announcement</a> newsletter.
 
