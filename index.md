@@ -3,23 +3,19 @@ layout: default
 ---
 # Let's make business document exchange simple
 
-Legacy EDI is complicated and insecure. This community is developing open specifications and free test services based on ubiquitous internet protocols with the goal of making it simple, secure, and cheap.  The [business case](/pages/business-case.md) is compelling.
+## Purpose of this site
+
+This site is for financial software developers and network service providers who would like to add support for the national e-invoicing framework to their products and services.  The [business case](/pages/business-case.md) for doing so is compelling.  Established by the [Digital Business Council](http://digitalbusinesscouncil.com.au/), this site defines a suite of open standards and supporting test services that will allow invoices and (in future) other business documents to be securely exchanged between different financial software products.  
 
  * As a business, I want to send electronic invoices to my customer systems and know the payment status so I can manage my cashflow and get cheap debtor financing if I need it.
  * As a business I want all invoices and tax receipts from my authorised suppliers to be automatically loaded to my financial system, ready for my approval so I can reduce my administration burden.
 
-We want the simplest, lowest cost and most secure solution to these needs so we've developed a suite of RESTful API standards and thrown in strong identity measures that support end-to-end encryption and digital signatures.  This site supports implementers by providing:
+Electronic Document Exchange (EDI) is nothing new but has traditonally been complex, expensive, and implemented as hub-based and incompatible "islands of automation". Participants often have to connect to many traditonal EDI hubs in order to interact with their trading partners.  This site defines an alternative peer-to-peer document exchange framework that is seamntically equivalent (and therefore interoperable) with legacy EDI but is based on modern and ubiquitous internet protocols such as REST, JSON, and OIDC. The result is a simpler, cheaper, and more secure framework.
 
- * A suite of technical specifications with free test points.
- * A suite of semantic specifications and free test points.
- * A transparent [governance model](/pages/governance-model.md) where any stakeholder is free to participate.
+All specification development is done as an open community processes based around the GitHub collaborative development environment using a transparent [governance model](/pages/governance-model.md) where any stakeholder is free to participate. 
 
-The semantic and technical specifications are open community processes based around the GitHub collaborative development environment. Business stakeholders may prefer to sign up for a <a href="http://eepurl.com/ctZ6hf">AusDigital general announcement</a> newsletter.
-
-
-## Background
-
-The [Australian Digital Business Council](http://digitalbusinesscouncil.com.au/) has published an interoperability framework that aims to increase national productivity through automation of common buisness processes such as invoicing. The standards are based on a "4 corner model" from Europe that depends heavily on traditional EDI hubs and B2B standards like ebXML. Although workable, uptake has been slow in Europe and so the Digital Business Council has also created a RESTful working group that aims to provide a simpler and more secure peer-to-peer implementation model based on ubiquitous internet standards such as REST.  This site is the repository for those specifications. 
+* To contribute to the open development effort or keep a close watch on our work, please join the slack channel and github team for any of the technical or semantic specifications.
+* To keep yourself informed, just sign up for our spam free <a href="http://eepurl.com/ctZ6hf">AusDigital general announcement</a> newsletter. 
 
 ## How it Works 
 
