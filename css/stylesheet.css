@@ -381,6 +381,44 @@ a:hover {
     }
 }
 
+.site-footer .footer-menu {
+    list-style: none;
+    margin: 17px 0 10px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.site-footer .footer-menu li {
+    display: block;
+}
+
+.site-footer .footer-menu li a {
+    text-decoration: none;
+    line-height: 25px;
+}
+
+.site-footer .footer-menu li a:hover{
+    text-decoration: underline;
+}
+
+@media (min-width: 640px) {
+    .site-footer .footer-menu li {
+        display: inline;
+    }
+
+    .site-footer .footer-menu li:before {
+        display: inline-block;
+        content: '|';
+        padding: 0 15px;
+        color: #606c71;
+    }
+}
+
+.site-footer .footer-menu li:first-child:before {
+    display: none;
+}
+
+
 
 @media print { /* Стиль для печати */
     @page {
