@@ -29,13 +29,23 @@ The secure-by-design nature of the framework eliminates the need for implementat
 
 ## Compliance statement for business software vendors
 
-As a software application vendor seeking compliance with the framework you;
+Business software systems (eg ledgers) are the ultimate sender and receivers of business messages such as invoices. 
 
- * MUST implement IDP, TAP, TAP-GW, DCL, and DCP clients.
- * MAY implement an NRY client.
- * MUST support one or more of the semantic specifications in at least one role (eg buyer or seller), and
- * MUST support the JSON and CODE specifications (because all semantic specifications depend on them), and
- * MUST publish all supported semantic services to a DCP.
+As a minimum, business sofware systems;
+
+ * MUST implement a TAP-GW client.
+ * MUST implement the IDP relying party client.
+ * MUST support one or more semantic specifications - eg the BILL specification for invoicing.
+ 
+Business software systems that choose to develop their own access point and capability register ;
+
+ * MUST implement the TAP service as a receiver of messages.
+ * MUST implement the TAP client as a sender of messages.
+ * MUST implement the DCP service as a register of capabilites.
+ * MUST implement the IDP relying party client.
+ * MUST implement the DCL and DCP clients to discover capabilites.
+ * MAY implement the NRY client to notarise messages.
+ * MUST support one or more semantic specifications - eg the BILL specification for invoicing.
  
 ## Compliance statement for network service providers
 
