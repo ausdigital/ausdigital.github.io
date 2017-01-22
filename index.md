@@ -18,7 +18,7 @@ All specification development is done as an open community processes based aroun
 
 ## How it Works 
 
-Unlike single provider APIs (eg google or facebook), a B2B community needs all businesses to implement the same interface so that the same document format (e.g. an invoice) can be sent from any business to any other business. It also needs a way to discover the service end point ofr any specifci business. The diagram shows how it works. The Ausdigital technical and semantic specifications are positioned on the diagram via the blue and green tags.
+Unlike single provider APIs (eg google or facebook), a B2B community needs all businesses to implement the same interface so that the same document format (e.g. an invoice) can be sent from any business to any other business. There also needs to be a way to discover the service end point for any specific business so that the sender system knows where to send messages. The diagram shows how it works. The Ausdigital technical and semantic specifications are positioned on the diagram via the blue and green tags.
 
 ![Framework Diagram](images/AusDigitalHomepage.png)
 
