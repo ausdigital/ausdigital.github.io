@@ -400,6 +400,7 @@ a:hover {
     margin: 17px 0 10px 0;
     width: 100%;
     text-align: center;
+    padding: 0;
 }
 
 .site-footer .footer-menu li {
