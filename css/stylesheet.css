@@ -95,6 +95,15 @@ a:hover {
     }
 }
 
+.page-header .logo{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.page-header .header-content{
+    display: inline-block;
+}
+
 .detail-page-header {
     color: #fff;
     text-align: center;
@@ -133,6 +142,11 @@ a:hover {
         color: inherit;
         text-decoration: none;
     }
+}
+
+.detail-page-header .logo img{
+    vertical-align: middle;
+    max-height: 45px;
 }
 
 .project-name {
