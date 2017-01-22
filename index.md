@@ -43,6 +43,7 @@ The success of the interoperability framework depends on uptake by the ledger so
 ## How to Participate
 
 There are several levels of participation that you can choose from.  Pick any or all of the following:
-* **Keep Informed**.  [Subscribe](http://eepurl.com/ctZ6hf) to the regualr Ausdigital standards newsletter.  We'll update you about the latest developments and opportunities at most once per week and you can un-subscribe anytime.
-* **Join the conversation**,  [Join](http://chat.ausdigital.org/) the Ausdigital slack team and subscribe to as many channels as you wish (there's one for each spec and a general channel).  You can join the conversation, make suggestions, or ask questions and get help.
-* **Help with development**.  [Github](https://github.com/ausdigital) is our main tool for development of the Ausdigital specifications and reference implementations. It's all in the open.  Raise issues or clone the repositories and make your contributions to either spec or code by making pull requests. 
+
+* **Keep Informed**.  [Subscribe](http://eepurl.com/ctZ6hf) to the regular Ausdigital newsletter.  We'll update you about the latest developments and opportunities at most once per week and you can un-subscribe anytime.
+* **Join the conversation**,  [Join](http://chat.ausdigital.org/) the Ausdigital Slack team and subscribe to as many channels as you wish (there's one for each spec and a general channel).  You can join the conversation, make suggestions, or ask questions and get help.
+* **Help with development**.  [Github](https://github.com/ausdigital) is our main tool for development of the Ausdigital specifications and reference implementations. It's all in the open and all open source.  Raise issues or clone the repositories and make your contributions to either spec or code by making pull requests. 
