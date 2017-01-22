@@ -53,7 +53,7 @@ Although the benefits sound compelling, there is a significant risk that they ma
 The Ausdigital specifications published on this site avoid both these problems;
 
 * Messaging is peer-to-peer between ledger systems and uses ubiquitous internet protocols.  There is no lock-in opportunity and fees from network service providers will reflect a commodity style "race to the bottom" allowing ledger software vendors to choose the best value provider.  Our modelling indicates that transactions costs should be no more than a few cents per invoice.
-* Digital signatures from independant trust providers (typically banks or government) coupled with independent notarisation to the block-chain avoids lock in by any factoring provider and allows the seller to seek the best funding terms from a competitive market using a very high quality record. Financial service providers have confirmed that the market would offer immediate payment of notarised invoices for around 1% of invoice value.
+* Digital signatures from independant trust providers (typically banks or government) coupled with independent notarisation avoids lock in by any factoring provider and allows the seller to seek the best funding terms from a competitive market using a very high quality record. Financial service providers have confirmed that the market would offer immediate payment of notarised invoices for around 1% of invoice value.
 
 ## The role for government
 
