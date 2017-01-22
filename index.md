@@ -3,27 +3,22 @@ layout: default
 ---
 # Let's make business document exchange simple
 
-Legacy EDI is complicated and insecure. This community is developing open specifications and free test services based on ubiquitous internet protocols with the goal of making it simple, secure, and cheap.  The [business case](/pages/business-case.md) is compelling.
+## Purpose of this site
+
+This site is for financial software developers and network service providers who would like to add support for the national e-invoicing framework to their products and services.  The [business case](/pages/business-case.md) for doing so is compelling.  
+
+Established by the [Digital Business Council](http://digitalbusinesscouncil.com.au/), this site defines a suite of open standards and supporting test services that will allow invoices and (in future) other business documents to be securely exchanged between different financial software products;
 
  * As a business, I want to send electronic invoices to my customer systems and know the payment status so I can manage my cashflow and get cheap debtor financing if I need it.
  * As a business I want all invoices and tax receipts from my authorised suppliers to be automatically loaded to my financial system, ready for my approval so I can reduce my administration burden.
 
-We want the simplest, lowest cost and most secure solution to these needs so we've developed a suite of RESTful API standards and thrown in strong identity measures that support end-to-end encryption and digital signatures.  This site supports implementers by providing:
+Electronic Document Exchange (EDI) is nothing new but has traditionally been complex, expensive, and implemented as hub-based and incompatible "islands of automation". Participants often have to connect to many traditonal EDI hubs in order to interact with their trading partners.  This site defines an alternative **peer-to-peer** document exchange framework that is semantically equivalent (and therefore interoperable) with legacy EDI but is based on modern and ubiquitous internet protocols such as REST, JSON, and OIDC. The result is a simpler, cheaper, and more secure framework.
 
- * A suite of technical specifications with free test points.
- * A suite of semantic specifications and free test points.
- * A transparent [governance model](/pages/governance-model.md) where any stakeholder is free to participate.
-
-The semantic and technical specifications are open community processes based around the GitHub collaborative development environment. Business stakeholders may prefer to sign up for a <a href="http://eepurl.com/ctZ6hf">AusDigital general announcement</a> newsletter.
-
-
-## Background
-
-The [Australian Digital Business Council](http://digitalbusinesscouncil.com.au/) has published an interoperability framework that aims to increase national productivity through automation of common buisness processes such as invoicing. The standards are based on a "4 corner model" from Europe that depends heavily on traditional EDI hubs and B2B standards like ebXML. Although workable, uptake has been slow in Europe and so the Digital Business Council has also created a RESTful working group that aims to provide a simpler and more secure peer-to-peer implementation model based on ubiquitous internet standards such as REST.  This site is the repository for those specifications. 
+All specification development is done as an open community processes based around the [GitHub](https://github.com/ausdigital) collaborative development environment using a transparent [governance model](/pages/governance-model.md). You can [help with development](https://github.com/ausdigital) or [join the conversation](http://chat.ausdigital.org/), or just [keep yourself infomrmed](http://eepurl.com/ctZ6hf).
 
 ## How it Works 
 
-Unlike single provider APIs (eg google or facebook), a B2B community needs all businesses to implement the same interface so that the same document format (e.g. an invoice) can be sent from any business to any other business. The diagram shows how it works.  The technical and semantic specifications are positioned on the diagram via the blue and green tags.
+Unlike single provider APIs (eg google or facebook), a B2B community needs all businesses to implement the same interface so that the same document format (e.g. an invoice) can be sent from any business to any other business. There also needs to be a way to discover the service end point for any specific business so that the sender system knows where to send messages. The diagram shows how it works. The Ausdigital technical and semantic specifications are positioned on the diagram via the blue and green tags.
 
 ![Framework Diagram](images/AusDigitalHomepage.png)
 
@@ -41,3 +36,11 @@ The network infrastructure will be often provided by a network service provider 
 The **JSON**  and **CODE** specification define some common foundation standards that all the semantic specifications (eg **BILL**, **PO**, and **SHIP**) depend upon.
 
 The success of the interoperability framework depends on uptake by the ledger software providers. Those systems must implement a number of interfaces in a consistent way - which requires clear standards, good test services, and easy to use tooling.  That is the purpose of this site.
+
+## How to Participate
+
+There are several levels of participation that you can choose from.  Pick any or all of the following:
+
+* **Keep Informed**.  [Subscribe](http://eepurl.com/ctZ6hf) to the regular Ausdigital newsletter.  We'll update you about the latest developments and opportunities at most once per week and you can un-subscribe anytime.
+* **Join the conversation**,  [Join](http://chat.ausdigital.org/) the Ausdigital Slack team and subscribe to as many channels as you wish (there's one for each spec and a general channel).  You can join the conversation, make suggestions, or ask questions and get help.
+* **Help with development**.  [Github](https://github.com/ausdigital) is our main tool for development of the Ausdigital specifications and reference implementations. It's all in the open and all open source.  Raise issues or clone the repositories and make your contributions to either spec or code by making pull requests. 
