@@ -27,5 +27,5 @@ Known implementations (open source or otherwise) are listed here.  Please modify
 
 |Provider|Implementation URL|Comments|
 |--------|------------------|--------|
-|[testpoint.io](http://testpoint.io/) | [JSON UBL testpoint](https://testpoint.io/json)| Free UBL-JSON transformation service and docker container|
+|[testpoint.io](http://testpoint.io/) | [JSON UBL testpoint](http://testpoint.io/json)| Free UBL-JSON transformation service and docker container|
 |  |  |  |

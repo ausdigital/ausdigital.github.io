@@ -23,6 +23,6 @@ Known implementations (open source or otherwise) are listed here.  Please modify
 
 |Provider|Implementation URL|Comments|
 |--------|------------------|--------|
-|[testpoint.io](http://testpoint.io/) | [dcl testpoint](https://testpoint.io/dcl)| Free test service and open source implementation|
+|[testpoint.io](http://testpoint.io/) | [dcl testpoint](http://testpoint.io/dcl)| Free test service and open source implementation|
 |  |  |  |
 

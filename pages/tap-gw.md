@@ -25,5 +25,5 @@ Known implementations (open source or otherwise) are listed here.  Please modify
 
 |Provider|Implementation URL|Comments|
 |--------|------------------|--------|
-|[testpoint.io](http://testpoint.io/) | [gateway testpoint](https://testpoint.io/tap-gw)| Free gateway testing service coming soon|
+|[testpoint.io](http://testpoint.io/) | [gateway testpoint](http://testpoint.io/tap-gw)| Free gateway testing service coming soon|
 |  |  |  |

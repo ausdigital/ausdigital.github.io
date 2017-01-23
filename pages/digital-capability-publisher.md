@@ -23,4 +23,3 @@ Known implementations (open source or otherwise) are listed here.  Please modify
 |--------|------------------|--------|
 |[testpoint.io](http://testpoint.io/) | [dcp testpoint](http://testpoint.io/dcp)| Free dcp service and open source implementation|
 |  |  |  |
-

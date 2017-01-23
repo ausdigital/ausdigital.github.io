@@ -21,6 +21,6 @@ Known implementations (open source or otherwise) are listed here.  Please modify
 
 |Provider|Implementation URL|Comments|
 |--------|------------------|--------|
-|[testpoint.io](http://testpoint.io/) | [nry testpoint](https://testpoint.io/nry)| Free Notary service coming soon|
+|[testpoint.io](http://testpoint.io/) | [nry testpoint](http://testpoint.io/nry)| Free Notary service coming soon|
 |  |  |  |
 
