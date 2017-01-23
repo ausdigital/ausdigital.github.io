@@ -10,7 +10,7 @@ All technical specifications are developed in the public domain using the COSS (
 
 All specifications are developed in the public domain. To make your voice heard, you can:
 
- * To comment on a specification, click on the relevant "Issues List" link against any technical specification and then hit "new issue" when you land in github.
+ * To comment on a specification, click on the relevant "Issues List" link against any technical specification and then hit "new issue" when you land in github.  If the discussion around your ticket indicates that it's a good idea likely to be accepted then feel free to make a corresponding pull request referencing your ticket.
  * Join the conversation by clicking on the slack channel link link in each specification page.
  * If you just want to be kept informed, then click on the Newsletter sign up link on the left hand menu.
 
