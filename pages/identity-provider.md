@@ -21,6 +21,6 @@ Known implementations (open source or otherwise) are listed here.  Please modify
 
 |Provider|Implementation URL|Comments|
 |--------|------------------|--------|
-|[testpoint.io](http://testpoint.io/) | [idp testpoint](https://testpoint.io/idp)| Free IDP service and open source implementation|
+|[testpoint.io](http://testpoint.io/) | [idp testpoint](http://testpoint.io/idp)| Free IDP service and open source implementation|
 |  |  |  |
 
