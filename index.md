@@ -14,7 +14,7 @@ Established by the [Digital Business Council](http://digitalbusinesscouncil.com.
 
 Electronic Document Exchange (EDI) is nothing new but has traditionally been complex, expensive, and implemented as hub-based and incompatible "islands of automation". Participants often have to connect to many traditonal EDI hubs in order to interact with their trading partners.  This site defines an alternative **peer-to-peer** document exchange framework that is semantically equivalent (and therefore interoperable) with legacy EDI but is based on modern and ubiquitous internet protocols such as REST, JSON, and OIDC. The result is a simpler, cheaper, and more secure framework.
 
-All specification development is done as an open community processes based around the [GitHub](https://github.com/ausdigital) collaborative development environment using a transparent [governance model](/pages/governance-model.md). You can [help with development](https://github.com/ausdigital) or [join the conversation](http://chat.ausdigital.org/), or just [keep yourself infomrmed](http://eepurl.com/ctZ6hf).
+All specification development is done as an open community processes based around the [GitHub](https://github.com/ausdigital) collaborative development environment using a transparent [governance model](/pages/governance-model.md). You can [help with development](https://github.com/ausdigital) or [join the conversation](http://chat.ausdigital.org/), or just [keep yourself informed](http://eepurl.com/ctZ6hf).
 
 ## How it Works 
 
