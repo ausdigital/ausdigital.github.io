@@ -11,6 +11,16 @@ The Billing Specifications are based on [OASIS UBL2.1](http://docs.oasis-open.or
 * [Billing GitHub repository](https://github.com/ausdigital/ausdigital-bill)
 * [Billing Slack Channel](https://ausdigital.slack.com/messages/spec-bill/)
 
-| Specification URL | Version | Status | API Definition | Test Service | Issues List |
-| ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [Billing 1.0 spec](http://ausdigital-bill.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [Billing 1.0 API](https://swaggerhub.com/api/ausdigital/ausdigital-bill/1.0) | [billing testpoint](http://testpoint.io/bill)  | [Billing 1.0 Issues](https://github.com/ausdigital/ausdigital-bill/issues)  |
+| Specification URL | Version | Status | API Definition | Issues List |
+| ----------------- | ------  | ------ | -------------- | ----------- |
+| [Billing 1.0 spec](http://ausdigital-bill.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [Billing 1.0 API](https://swaggerhub.com/api/ausdigital/ausdigital-bill/1.0) |  [Billing 1.0 Issues](https://github.com/ausdigital/ausdigital-bill/issues)  |
+
+## Known Implementations
+
+Known implementations (open source or otherwise) are listed here.  Please modify this page and make a pull request to add your own.
+
+|Provider|Implementation URL|Comments|
+|--------|------------------|--------|
+|[testpoint.io](http://testpoint.io/) | [dcl testpoint](https://testpoint.io/bill)| Free document validator and message sender|
+|  |  |  |
+
