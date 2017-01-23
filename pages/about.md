@@ -11,6 +11,9 @@ Electronic Data Interchange (EDI) is not new but has seen relatively slow uptake
 
 In order to facilitate broad scale adoption, the Digital Business Council has established a technical working group at ausdigital.org that aims to leverage modern ubiquitous web standards such as REST, JSON, and OAuth to deliver a low cost peer-to-peer framework that can bring the benefits of end-to-end invoicing automation to all Australian businesses whilst maintaining interoperability with legacy EDI networks.
 
-Digital Business Council
-Barton, ACT 2600
+REST-JSON Working Group
+Digital Business Council Secreatariat
+Australian Business Register
+Canberra, ACT 2600
+
 hi@ausdigital.org
