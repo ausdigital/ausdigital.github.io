@@ -15,14 +15,15 @@ Supporting the TAP-GW specification helps to commoditise the network so that led
 * [TAP-GW GitHub repository](https://github.com/ausdigital/ausdigital-tap-gw)
 * [TAP-GW Slack channel](https://ausdigital.slack.com/messages/spec-tap-gw/)
 
-| Specification URL | Version | Status | API Definition | Test Service | Issues List |
-| ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [TAP-GW 0.1 spec](http://ausdigital-tap-gw.readthedocs.io/) | 0.1 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | N/A | [tap-gw testpoint](http://testpoint.io/tap-gw) | [TAP-GW Issues](https://github.com/ausdigital/ausdigital-tap-gw/issues)  |
+| Specification URL | Version | Status | API Definition |  Issues List |
+| ----------------- | ------  | ------ | -------------- |  ----------- |
+| [TAP-GW 0.1 spec](http://ausdigital-tap-gw.readthedocs.io/) | 0.1 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | coming soon | [TAP-GW Issues](https://github.com/ausdigital/ausdigital-tap-gw/issues)  |
 
-## Implementations
+## Known Implementations
 
-Since each network service provider that offers a TAP service SHOULD also also support the TAP-GW protocol, the list of implementations here should match the list at the [Access Point Specification](http://ausdigital.org/transaction-access-point/) page.
+Known implementations (open source or otherwise) are listed here.  Please modify this page and make a pull request to add your own.
 
-Known implementations (open source or otherwise) are listed here. Please modify this page and make a pull request to add your own.
-
-* [Open source reference implementation from testpoint.io](https://github.com/test-point/testpoint-tap-gw)
+|Provider|Implementation URL|Comments|
+|--------|------------------|--------|
+|[testpoint.io](http://testpoint.io/) | [gateway testpoint](https://testpoint.io/tap-gw)| Free gateway testing service coming soon|
+|  |  |  |
