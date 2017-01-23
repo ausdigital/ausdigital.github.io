@@ -11,6 +11,15 @@ The ledger access point, is the service interface for a given business and so ho
 * [TAP GitHub repository](https://github.com/ausdigital/ausdigital-tap)
 * [TAP Slack channel](https://ausdigital.slack.com/messages/spec-tap/)
 
-| Specification URL | Version | Status | API Definition | Test Service | Issues List |
-| ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [TAP 1.0 spec](http://ausdigital-tap.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [TAP 1.0 API](https://swaggerhub.com/api/ausdigital/ausdigital-tap/1.0) | [tap testpoint](http://testpoint.io/tap) | [TAP 1.0 Issues](https://github.com/ausdigital/ausdigital-tap/issues)  |
+| Specification URL | Version | Status | API Definition | Issues List |
+| ----------------- | ------  | ------ | -------------- |  ---------- |
+| [TAP 1.0 spec](http://ausdigital-tap.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [TAP 1.0 API](https://swaggerhub.com/api/ausdigital/ausdigital-tap/1.0) |  [TAP 1.0 Issues](https://github.com/ausdigital/ausdigital-tap/issues)  |
+
+## Known Implementations
+
+Known implementations (open source or otherwise) are listed here.  Please modify this page and make a pull request to add your own.
+
+|Provider|Implementation URL|Comments|
+|--------|------------------|--------|
+|[testpoint.io](http://testpoint.io/) | [access point testpoint](https://testpoint.io/tap)| Free access point testing service coming soon|
+|  |  |  |
