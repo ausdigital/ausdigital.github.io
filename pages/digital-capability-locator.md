@@ -11,9 +11,9 @@ The framework assumes that there could be multiple publishers of business meta-d
 * [DCL Github Repository](https://github.com/ausdigital/ausdigital-dcl)
 * [DCL Slack Channel](https://ausdigital.slack.com/messages/spec-dcl/)
 
-| Specification URL | Version | Status | API Definition | Test Service | Issues List |
-| ----------------- | ------  | ------ | -------------- | ------------ | -------- |
-| [DCL 1.0 spec](https://ausdigital-dcl.readthedocs.org) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [DCL 1.0 API](https://swaggerhub.com/api/ausdigital/ausdigital-dcl/1.0) | [dcl testpoint](https://testpoint.io/dcl)  | [DCL 1.0 Issues](https://github.com/ausdigital/ausdigital-dcl/issues)   |
+| Specification URL | Version | Status | API Definition | Issues List |
+| ----------------- | ------  | ------ | -------------- | -------- |
+| [DCL 1.0 spec](https://ausdigital-dcl.readthedocs.org) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [DCL 1.0 API](https://swaggerhub.com/api/ausdigital/ausdigital-dcl/1.0) | [DCL 1.0 Issues](https://github.com/ausdigital/ausdigital-dcl/issues)   |
 
 ## Implementations
 
@@ -21,5 +21,8 @@ Since there is usually only one DCL for a given national economy, the DCL servic
 
 Known implementations (open source or otherwise) are listed here.  Please modify this page and make a pull request to add your own.
 
-* [Open Source DCL from testpoint.io](https://github.com/test-point/testpoint-dcl)
+|Provider|Implementation URL|Comments|
+|--------|------------------|--------|
+|[testpoint.io](http://testpoint.io/) | [dcl testpoint](https://testpoint.io/dcl)| Free test service and open source implementation|
+|  |  |  |
 
