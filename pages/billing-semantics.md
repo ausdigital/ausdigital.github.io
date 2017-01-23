@@ -21,6 +21,6 @@ Known implementations (open source or otherwise) are listed here.  Please modify
 
 |Provider|Implementation URL|Comments|
 |--------|------------------|--------|
-|[testpoint.io](http://testpoint.io/) | [dcl testpoint](https://testpoint.io/bill)| Free document validator and message sender|
+|[testpoint.io](http://testpoint.io/) | [billing testpoint](https://testpoint.io/bill)| Free document validator and message sender|
 |  |  |  |
 
