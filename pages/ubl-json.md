@@ -14,12 +14,12 @@ This specification describes a JSON based syntax and processing model for UBL se
 
 The intent is to provide developers with a much simpler implementation model than the XSD/Schematron/Genericode alternative whilst maintianing interoperability with the UBL XML standard..
 
-* [UBL JSON GitHub repository](https://github.com/ausdigital/ausdigital-json)
+* [UBL JSON GitHub repository](https://github.com/ausdigital/ausdigital-ubl-json)
 * [UBL JSON Slack channel](https://ausdigital.slack.com/messages/spec-json/)
 
 | Specification URL | Version | Status | API Definition | Issues List |
 | ----------------- | ------  | ------ | -------------- | ----------- |
-| [UBL JSON 1.0 spec](http://ausdigital-json.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [UBL JSON 1.0 API](https://app.swaggerhub.com/api/ausdigital/ausdigital-json/1.0.0)   | [ubl-json 1.0 Issues](https://github.com/ausdigital/ausdigital-json/issues)  |
+| [UBL JSON 1.0 spec](http://ausdigital-ubl-json.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [UBL JSON 1.0 API](https://app.swaggerhub.com/api/ausdigital/ausdigital-ubl-json/1.0.0)   | [ubl-json 1.0 Issues](https://github.com/ausdigital/ausdigital-ubl-json/issues)  |
 
 ## Known Implementations
 
@@ -27,5 +27,5 @@ Known implementations (open source or otherwise) are listed here.  Please modify
 
 |Provider|Implementation URL|Comments|
 |--------|------------------|--------|
-|[testpoint.io](http://testpoint.io/) | [JSON UBL testpoint](http://testpoint.io/json)| Free UBL-JSON transformation service and docker container|
+|[testpoint.io](http://testpoint.io/) | [JSON UBL testpoint](http://testpoint.io/ubl-json)| Free UBL-JSON transformation service and docker container|
 |  |  |  |
