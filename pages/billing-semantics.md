@@ -13,7 +13,7 @@ The Billing Specifications are based on [OASIS UBL2.1](http://docs.oasis-open.or
 
 | Specification URL | Version | Status | API Definition | Issues List |
 | ----------------- | ------  | ------ | -------------- | ----------- |
-| [Billing 1.0 spec](http://ausdigital-bill.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [Billing 1.0 API](https://swaggerhub.com/api/ausdigital/ausdigital-bill/1.0) |  [Billing 1.0 Issues](https://github.com/ausdigital/ausdigital-bill/issues)  |
+| [Billing 1.0 spec](http://ausdigital-bill.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [Billing 1.0 API](https://swaggerhub.com/api/ausdigital/ausdigital-ubl-json/1.0) |  [Billing 1.0 Issues](https://github.com/ausdigital/ausdigital-bill/issues)  |
 
 ## Known Implementations
 
