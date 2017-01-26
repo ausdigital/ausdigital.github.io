@@ -10,14 +10,14 @@ This specification describes a XML based syntax and processing model for UBL sem
 
 * An XML syntax model for UBL semantics.
 
-The XSD/Schematron/Genericode alternative to [UBL JSON Representation](http://ausdigital.org/ubl-json).
+There is an alternative for it - [UBL JSON Representation](http://ausdigital.org/ubl-json).
 
 * [UBL XML GitHub repository](https://github.com/ausdigital/ausdigital-ubl-xml)
 * [UBL XML Slack channel](https://ausdigital.slack.com/messages/spec-ubl-xml/)
 
 | Specification URL | Version | Status | API Definition | Issues List |
 | ----------------- | ------  | ------ | -------------- | ----------- |
-| [UBL XML 1.0 spec](http://ausdigital-ubl-xml.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | N/A   | [ubl-xml 1.0 Issues](https://github.com/ausdigital/ausdigital-ubl-xml/issues)  |
+| [UBL XML 1.0 spec](http://ausdigital-ubl-xml.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | N/A   | [UBL XML 1.0 Issues](https://github.com/ausdigital/ausdigital-ubl-xml/issues)  |
 
 ## Known Implementations
 
