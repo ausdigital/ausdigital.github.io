@@ -52,7 +52,7 @@ Business software systems that choose to develop their own access point and capa
 As a network service provider seeking compliance with the framework you;
 
  * MUST provide a TAP service
- * MUST provide a TAP-GW service
+ * SHOULD provide a TAP-GW service
  * MUST provide a DCP service (or choose a DCP service provider)
  * MUST implement a DCL client (there is only one DCL provider)
  * MUST implement an IDP client (identity providers are logically seaprate services)
