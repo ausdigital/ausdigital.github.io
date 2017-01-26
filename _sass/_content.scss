@@ -33,12 +33,14 @@
 
   p{
     margin: 0 0 29px 0;
+    text-align: justify;
   }
 
   ul, ol{
     margin: 0 0 15px 35px;
     padding: 0;
     color: $app-red;
+    text-align: justify;
 
     li{
       color: $app-grey;
@@ -74,7 +76,6 @@
   }
 
   ol{
-
     li{
       padding: 15px 0;
     }
