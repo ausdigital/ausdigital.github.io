@@ -44,40 +44,11 @@
 
     li{
       color: $app-grey;
-    }
-  }
-
-  ul{
-    list-style: none;
-
-    li{
-      position: relative;
       padding: 15px 0;
-
-      &:before{
-        position: absolute;
-        content: "\26AB";
-        color: $app-red;
-        left: -28px;
-        top: 15px;
-      }
 
       &:first-child{
         padding-top: 0;
-
-        &:before{
-          top: 0;
-        }
       }
-
-
-
-    }
-  }
-
-  ol{
-    li{
-      padding: 15px 0;
     }
   }
 
