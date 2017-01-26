@@ -13,7 +13,8 @@ The ledger access point, is the service interface for a given business and so ho
 
 | Specification URL | Version | Status | API Definition | Issues List |
 | ----------------- | ------  | ------ | -------------- |  ---------- |
-| [TAP 1.0 spec](http://ausdigital-tap.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [TAP 1.0 API](https://swaggerhub.com/api/ausdigital/ausdigital-tap/1.0) |  [TAP 1.0 Issues](https://github.com/ausdigital/ausdigital-tap/issues)  |
+| [TAP 1.0 spec](http://ausdigital-tap-v1.readthedocs.io/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | N/A |  [TAP 1.0 Issues](https://github.com/ausdigital/ausdigital-tap-v1/issues)  |
+| [TAP 2.0 spec](http://ausdigital-tap.readthedocs.io/) | 2.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [TAP 1.0 API](https://swaggerhub.com/api/ausdigital/ausdigital-tap/2.0) |  [TAP 2.0 Issues](https://github.com/ausdigital/ausdigital-tap/issues)  |
 
 ## Known Implementations
 
