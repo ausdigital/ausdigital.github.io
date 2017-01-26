@@ -1,0 +1,25 @@
+<ul class="sidebar-menu">
+    {% assign current = page.url | downcase | split: '/' %}
+    <li class="menu-title">Benefits</li>
+    <li><a {% if current[1] == 'business-case' %}class="active"{% endif %} href="/business-case/">A Business Case</a></li>
+    <li class="menu-title">Technical Specs</li>
+    <li><a {% if current[1] == 'identity-provider' %}class="active"{% endif %} href="/identity-provider/">Identity Provider (IDP)</a></li>
+    <li><a {% if current[1] == 'digital-capability-locator' %}class="active"{% endif %} href="/digital-capability-locator/">Capability Locator (DCL)</a></li>
+    <li><a {% if current[1] == 'digital-capability-publisher' %}class="active"{% endif %} href="/digital-capability-publisher/">Capability Publisher (DCP)</a></li>
+    <li><a {% if current[1] == 'transaction-access-point' %}class="active"{% endif %} href="/transaction-access-point/">Access Point (TAP)</a></li>
+    <li><a {% if current[1] == 'tap-gateway' %}class="active"{% endif %} href="/tap-gateway/">TAP Gateway (TAP-GW)</a></li>
+    <li><a {% if current[1] == 'notary' %}class="active"{% endif %} href="/notary/">Notary (NRY)</a></li>
+    <li><a {% if current[1] == 'ubl-json' %}class="active"{% endif %} href="/ubl-json/">JSON Syntax (UBL-JSON)</a></li>
+    <li><a {% if current[1] == 'ubl-xml' %}class="active"{% endif %} href="/ubl-xml/">XML Syntax (UBL-XML)</a></li>
+    <li class="menu-title">Semantic Specs</li>
+    <li><a {% if current[1] == 'code-lists' %}class="active"{% endif %} href="/code-lists/">Code Lists Mgmt (CODE)</a></li>
+    <li><a {% if current[1] == 'billing-semantics' %}class="active"{% endif %} href="/billing-semantics/">Billing Process (BILL)</a></li>
+    <li><a {% if current[1] == 'purchase-order-semantics' %}class="active"{% endif %} href="/purchase-order-semantics/">Purchase Orders (PO)</a></li>
+    <li><a {% if current[1] == 'fulfillment-semantics' %}class="active"{% endif %} href="/fulfillment-semantics/">Fulfillment (SHIP)</a></li>
+    <li class="menu-title">Governance</li>
+    <li><a {% if current[1] == 'governance-model' %}class="active"{% endif %} href="/governance-model/">Governance Model</a></li>
+    <li class="menu-title">Community</li>
+    <li><a href="http://eepurl.com/ctZ6hf" target="_blank">Newsletter (subscribe)</a></li>
+    <li><a href="http://chat.ausdigital.org" target="_blank">Chat (join team)</a></li>
+    <li><a href="https://github.com/ausdigital/" target="_blank">GitHub</a></li>
+</ul>

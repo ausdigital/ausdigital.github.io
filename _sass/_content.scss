@@ -1,0 +1,116 @@
+.page-content{
+  color: $app-grey;
+  font-size: 18px;
+  line-height: 29px;
+
+  h1{
+    font-size: 33px;
+    font-weight: 700;
+    margin: 0 0 40px 0;
+    padding: 10px 0 0 0;
+  }
+
+  h2{
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+    padding: 0;
+  }
+
+  h3{
+    font-size: 23px;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+    padding: 0;
+  }
+
+  h4{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    padding: 0;
+  }
+
+  p{
+    margin: 0 0 29px 0;
+  }
+
+  ul, ol{
+    margin: 0 0 15px 35px;
+    padding: 0;
+    color: $app-red;
+
+    li{
+      color: $app-grey;
+    }
+  }
+
+  ul{
+    list-style: none;
+
+    li{
+      position: relative;
+      padding: 15px 0;
+
+      &:before{
+        position: absolute;
+        content: "\26AB";
+        color: $app-red;
+        left: -28px;
+        top: 15px;
+      }
+
+      &:first-child{
+        padding-top: 0;
+
+        &:before{
+          top: 0;
+        }
+      }
+
+
+
+    }
+  }
+
+  ol{
+
+    li{
+      padding: 15px 0;
+    }
+  }
+
+  a{
+    color: $app-red;
+    text-decoration: none;
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
+
+  table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    word-break: normal;
+    word-break: keep-all;
+    margin: 0 0 29px 0;
+
+    th {
+      font-weight: bold;
+      font-size: 0.9em;
+    }
+
+    th, td {
+      padding: 6px 8px;
+      border: 1px solid $app-light-grey;
+    }
+
+  }
+
+
+
+
+}
