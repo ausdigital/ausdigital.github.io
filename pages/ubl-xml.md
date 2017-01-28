@@ -4,7 +4,7 @@ title: ubl-xml specification
 permalink: /ubl-xml/
 ---
 
-# UBL XML Represenation Specification
+# UBL XML Representation Specification
 
 This specification describes a XML based syntax and processing model for UBL semantics. It includes
 
