@@ -6,7 +6,7 @@ permalink: /transaction-access-point/
 
 # The Transaction Access Point specification
 
-The ledger access point, is the service interface for a given business and so hosts the end-point to which business documents are sent. The access point is an avaialbility mediator (allowing specific businesses to have intermittent connectivity) and is responsible for signature validation and submitting transactions to the notary service.
+The ledger access point, is the service interface for a given business and so hosts the end-point to which business documents are sent. The access point is an availability mediator (allowing specific businesses to have intermittent connectivity) and is responsible for signature validation and submitting transactions to the notary service.
 
 * [TAP GitHub repository](https://github.com/ausdigital/ausdigital-tap)
 * [TAP Slack channel](https://ausdigital.slack.com/messages/spec-tap/)
