@@ -1,13 +1,15 @@
- * Spec ID: ausdigital.org/ausdigital-bill/1.0
- * ![raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)
- * Editor: [Steven Capell](mailto:steven.capell@gosource.com.au)
- * Contributors: 
-
-# AusDigital Billing Semantics (BILL) 1.0 Specification
+---
+title: "AusDigital Billing Semantics (BILL) 1.0 Specification"
+permalink: /ausdigital-bill/1.0/
+specID: ausdigital.org/ausdigital-bill/1.0/
+status: ![raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)
+editors: [Steven Capell](mailto:steven.capell@gosource.com.au)
+contributors: 
+---
 
 ## Introduction
 
-This document describes the AusDigital BIlling Sematics (BILL) 1.0 Specification. TBA.
+This document describes the AusDigital Billing Semantics (BILL) 1.0 Specification. TBA.
 
 
 ## Goals
@@ -21,7 +23,7 @@ These are achieved by:
 
 ## Status
 
-This spec is an early draft for consuiltation.
+This spec is an early draft for consultation.
 
 This specification aims to support the Australian Digital Business Council
 [eInvoicing initiative](http://ausdigital.org), and is under active
@@ -79,9 +81,9 @@ in this document are to be interpreted as described in RFC 2119.
  * Recipient created tax invoice from buyer to seller ("ProfileID":"dbc:rcti")
  * Tax receipt sent from seller to buyer after payment has been made - usually for POS or online purchases ("ProfileID":"dbc:taxreceipt")
  * Credit note sent from seller to buyer that references an earlier standard invoice ("ProfileID":"dbc:creditnote")
- * Debiit note sent from buyer to seller that references an earlier RCTI ("ProfileID":"dbc:debitnote")
+ * Debit note sent from buyer to seller that references an earlier RCTI ("ProfileID":"dbc:debitnote")
 
-The detailed business vlaidation rules for each invoice profile are defined in [Validation Rules](#validation-rules).
+The detailed business validation rules for each invoice profile are defined in [Validation Rules](#validation-rules).
 
 ## Document Response Codes
 
@@ -89,23 +91,23 @@ A UBL document response provides a means for the receiver party to update the se
 
  * Acknowledged - confirms receipt of the invoice (but does not imply approval to pay).
  * Approved - means that the payer has approved the invoice for (future) payment in accordance with payment terms.
- * Disputed - means that the payer has not accepted the inovice and will dispute some or all of the invoice.
+ * Disputed - means that the payer has not accepted the invoice and will dispute some or all of the invoice.
  * Rejected - means that the payer has rejected the entire invoice and will not be paying.  
 
 ## State Lifecycle
 
-The diagram shows the allowed set of states for an invoice as understood by both parties in the collaborative process.  Every transition from one state to another is triggered by the echange of a business message - which could be either an invoice (one of six profiles) or a response document (with one of four response codes).
+The diagram shows the allowed set of states for an invoice as understood by both parties in the collaborative process.  Every transition from one state to another is triggered by the exchange of a business message - which could be either an invoice (one of six profiles) or a response document (with one of four response codes).
 
 ![Billing State Lifecycle](Billing-StateLifecycle.png)
 
  * The TaxReceipt has the simplest lifecycle because it is just a record of a previous payment and so there is only a single invoice (profileID=taxreceipt) sent from seller to buyer and the state is "paid".  No document response needed.
  * The receipt of an RCTI (profileID=rcti) by a seller from a buyer takes the state directly to "approved" because this is a payer initiated transaction.  However the payer may subsequently send an invoice (profileID=debitnote) to make an adjustment to the rcti prior to eventual payment is accordance with payment terms.
- * The standard inovice that is a demand for future payment from seller to buyer is the most complex lifecycle becuase there can be 
+ * The standard invoice that is a demand for future payment from seller to buyer is the most complex lifecycle because there can be 
   - various response documents indicating buyer processing status (acknowledged, approved, disputed, rejected)
   - a re-issue of the invoice with changes (profileID = adjustment) from seller to buyer - usually in response to a disputed status.
   - an issue of a credit note against an existing invoice (profileID = creditnote) - also usually in response to a disputed status.
   - an outright rejection of the invoice by the buyer which leads to a cancelled end-state.
- * The "success" end state in all cases is "paid" - indicated by the receipt of a payment record from a bank reconcilation file (outside of the scope of this specificaiton).
+ * The "success" end state in all cases is "paid" - indicated by the receipt of a payment record from a bank reconciliation file (outside of the scope of this specification).
 
 # UBL Syntax 1.0 Billing Document Specifications
 
