@@ -1,9 +1,9 @@
 ---
 title: "AusDigital Billing Semantics (BILL) 1.0 Specification"
 permalink: /ausdigital-bill/1.0/
-specID: ausdigital.org/ausdigital-bill/1.0/
-status: ![raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)
-editors: [Steven Capell](mailto:steven.capell@gosource.com.au)
+specID: "ausdigital.org/ausdigital-bill/1.0/"
+status: "![raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)"
+editors: "[Steven Capell](mailto:steven.capell@gosource.com.au)"
 contributors: 
 ---
 
@@ -158,6 +158,7 @@ The response document is a generic structure for all UBL document responses.  Th
 Validation rules from the [ADBC eInvoicing Semantic Model](https://github.com/ausdigital/ausdigital-bill/blob/master/docs/1.0/eInvoicing_Semantic_Model_v1.0.pdf) are re-stated here but are broken down according to the invoice document usage context as identified by the ProfielID element.  
 
 ### Validation Rules - Common
+
 | Rule | Mandatory | Optional | Extension |
 |------|-----------|----------| ----------|
 | An Invoice of more than $82.50 (including GST) to a GST-registered Buyer MUST be a Tax Invoice. | X | | |
@@ -240,11 +241,13 @@ Validation rules from the [ADBC eInvoicing Semantic Model](https://github.com/au
 | An Invoice MUST have a Payee Business Name if Payee Business Name is not the same as the Suppliers Business Name. | X | | |
   
 ### Validation Rules - "ProfileID":"Invoice"
+
 | Rule | Mandatory | Optional | Extension |
 |------|-----------|----------| ----------|
 | A Tax Invoice for goods or services that do not all include GST (mixed supplies) shall indicate which goods or services do not include GST. | X | | |
   
 ### Validation Rules - "ProfileID":"rcti"
+
 | Rule | Mandatory | Optional | Extension |
 |------|-----------|----------| ----------|
 | A Recipient Created Tax Invoice MUST contain either the Business Name or the ABN of the Buyer. | X | | |
@@ -255,11 +258,13 @@ Validation rules from the [ADBC eInvoicing Semantic Model](https://github.com/au
  tbd
   
 ### Validation Rules - "ProfileID":"adjustment"
+
 | Rule | Mandatory | Optional | Extension |
 |------|-----------|----------| ----------|
 | An Invoice MUST contain a Document Type Code indicating it is an adjustment document. | X | | |
   
 ### Validation Rules - "ProfileID":"creditnote"
+
 | Rule | Mandatory | Optional | Extension |
 |------|-----------|----------| ----------|
 | A Credit Note MAY have a Related Invoice Identifier. | | X | |
