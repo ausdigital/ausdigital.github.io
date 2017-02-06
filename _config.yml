@@ -11,8 +11,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 
 markdown: kramdown
 
-gems:
-  - jekyll-toc
+gems: [jekyll-toc]
 
 defaults:
   -
