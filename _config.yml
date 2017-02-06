@@ -9,3 +9,16 @@
 title: ausdigital
 baseurl: "" # the subpath of your site, e.g. /blog
 
+markdown: kramdown
+
+gems:
+  - jekyll-toc
+
+defaults:
+  -
+    scope:
+      path: "specs"
+      type: "pages"
+    values:
+      layout: "specs"
+      toc: true

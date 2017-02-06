@@ -1,4 +1,4 @@
-.page-content{
+.page-content, .docs-content{
   color: $app-grey;
   font-size: 18px;
   line-height: 29px;
@@ -85,4 +85,23 @@
 
 
 
+}
+
+.docs-content{
+  line-height: normal;
+  padding-bottom: 50px;
+
+  p{
+    margin-bottom: 10px;
+  }
+
+  ul, ol {
+    margin: 0 0 5px 35px;
+
+    li{
+      padding: 0;
+      line-height: normal;
+    }
+
+  }
 }
