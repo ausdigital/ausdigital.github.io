@@ -10,6 +10,8 @@ title: ausdigital
 baseurl: "" # the subpath of your site, e.g. /blog
 
 markdown: kramdown
+kramwdown:
+  parse_block_html: true
 
 gems: [jekyll-toc]
 
