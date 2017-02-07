@@ -125,6 +125,7 @@ Is defined by the DBC [Document Response XML Schema](https://github.com/ausdigit
  * **[Response Sample](https://github.com/ausdigital/ausdigital-bill/blob/master/resources/ausdigital-syn/1.0/samples/Response/SampleResponse-ConformantResponse.xml)**
 
 The response document is a generic structure for all UBL document responses.  The generic response becomes a meaningful invoice response via the correct population of two key fields:
+
  * "profileID" which MUST be one of the 6 invoice profiles define in the [billing process](#invoice-document-profiles)
  * "statusReasonCode" which MUST contain one of the 4 values defined in the [invoice response codes](#document-response-codes) 
  
