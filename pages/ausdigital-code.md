@@ -1,7 +1,6 @@
 ---
 layout: page
 title: code lists
-permalink: /ausdigital-code/
 ---
 # Code Lists specification
 
