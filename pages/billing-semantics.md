@@ -1,7 +1,7 @@
 ---
 layout: page
 title: billing semantics
-permalink: /billing-semantics/
+permalink: /ausdigital-bill/
 ---
 
 # Billing Semantics specification
