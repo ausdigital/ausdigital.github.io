@@ -1,7 +1,6 @@
 ---
 title: "AusDigital Billing Semantics (BILL) 1.0 Specification"
-permalink: /ausdigital-bill/1.0/
-specID: "ausdigital.org/ausdigital-bill/1.0/"
+specID: "ausdigital-bill/1"
 status: "![raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)"
 editors: "[Steven Capell](mailto:steven.capell@gosource.com.au)"
 contributors: 
@@ -98,7 +97,7 @@ A UBL document response provides a means for the receiver party to update the se
 
 The diagram shows the allowed set of states for an invoice as understood by both parties in the collaborative process.  Every transition from one state to another is triggered by the exchange of a business message - which could be either an invoice (one of six profiles) or a response document (with one of four response codes).
 
-![Billing State Lifecycle](Billing-StateLifecycle.png)
+![Billing State Lifecycle](./Billing-StateLifecycle.png)
 
  * The TaxReceipt has the simplest lifecycle because it is just a record of a previous payment and so there is only a single invoice (profileID=taxreceipt) sent from seller to buyer and the state is "paid".  No document response needed.
  * The receipt of an RCTI (profileID=rcti) by a seller from a buyer takes the state directly to "approved" because this is a payer initiated transaction.  However the payer may subsequently send an invoice (profileID=debitnote) to make an adjustment to the rcti prior to eventual payment is accordance with payment terms.
