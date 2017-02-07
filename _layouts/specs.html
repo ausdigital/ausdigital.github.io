@@ -7,18 +7,22 @@
 
 {% include header.html %}
 <div class="main-wrapper">
-    <div class="docs-content">
-        <div class="spec-header">
-            {% assign page.specs_assets = page.specs_assets | append: page.url %}
-            <ul>
-                <li>Spec ID: {{ page.specID | markdownify}}</li>
-                <li>{{ page.status | markdownify}}</li>
-                <li>Editor: {{ page.editors | markdownify}}</li>
-                <li>Contributors: {{ page.contributors | markdownify}}</li>
-            </ul>
+    <div class="main-content">
+        <div class="page-sidebar">
+            {% include sidebar-menu.html %}
         </div>
-        {% include toc.html %}
-        {{ content }}
+        <div class="docs-content">
+            <div class="spec-header">
+                {% assign page.specs_assets = page.specs_assets | append: page.url %}
+                <ul>
+                    <li>Spec ID: {{ page.specID | markdownify}}</li>
+                    <li>{{ page.status | markdownify}}</li>
+                    <li>Editor: {{ page.editors | markdownify}}</li>
+                    <li>Contributors: {{ page.contributors | markdownify}}</li>
+                </ul>
+            </div>
+            {{ content }}
+        </div>
     </div>
 </div>
 {% include footer.html %}
