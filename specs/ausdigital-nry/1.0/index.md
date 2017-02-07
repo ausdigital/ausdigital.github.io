@@ -345,7 +345,7 @@ If the DCP document type / process type of the `HOC_HEADER` list item's `NETWORK
 |-----------------|---------|------------|------------------|---------------------------------|
 | ausdigital-nry/1 | 0      | Public     | Public           | Transparently auditable open data (e.g. public HOC documents). |
 | ausdigital-nry/1 | 1      | Public     | Private          | Independently auditable secret data (e.g. business transaction records, such as eInvoices). |
-| ausdigital-nry/1 | 2      | Private    | Public           | Plausibly auditable open data (that can be subsequently rendered transparently auditable by publishing the HOC Detail). |
+| ausdigital-nry/1 | 2      | Private    | Public           | Plausibly deniable open data (that can be subsequently rendered transparently auditable by publishing the HOC Detail). |
 | ausdigital-nry/1 | 3      | Private    | Private          | Privately auditable secret data (e.g. Corporate records). |
 | [other] | [any] | [either] | [either] | If Access Protocol is not `ausdital-nry/1` (or later), arbitrary (locally meaningful) `AC_CODE` may be used. |
 
