@@ -1,7 +1,9 @@
 ---
 layout: page
 title: code lists
+permalink: /ausdigital-code/
 ---
+
 # Code Lists specification
 
 This specification defines a framework for the expression of context specific UBL code lists in JSON syntax as web resources. It also provides actual JSON web resources for the library of default UBL code lists such as currency codes, payment means, and so on.
