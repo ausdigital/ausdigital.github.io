@@ -1,9 +1,12 @@
- * Spec ID: ausdigital.org/ausdigital-nry/1.0
- * ![raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)
- * Editor: [Chris Gough](mailto:christopher.d.gough@gmail.com)
- * Contributors:
+---
+title: "AusDigital Notary (NRY) 1.0 Specification"
+specID: "ausdigital-nry/1"
+status: "![raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)"
+editors: "[Chris Gough](mailto:christopher.d.gough@gmail.com)"
+contributors: 
+---
 
-# AusDigital Notary (NRY) 1.0 Specification
+## Introduction 
  
 This document describes the Notary (NRY) specification, which provides an irrefutable
 history of a specific "contract" (e.g. an invoice and it's status lifecycle), pegged to
@@ -63,9 +66,9 @@ Comments and feedback are encouraged and welcome. Pull requests with improvement
 Phrase | Definition
 ------------ | -------------
 ausdigital-nry/1 | This specification.
-ausdigital-dcl/1 | Version 1 of the [AusDigtial](http://ausdigital.org) [Digital Capability Lookup (DCL)](https://ausdigital-dcl.readthedocs.io) specification
-ausdigital-dcp/1 | Version 1 of the AusDigtial [Digital Capability Provider (DCP)](https://ausdigital-dcp.readthedocs.io) specification
-ausdigital-idp/1 | Version 1 of the AusDigital [Identity Provider (IDP)](https://ausdigital-idp.readthedocs.io) specification.
+ausdigital-dcl/1 | Version 1 of the [AusDigtial](http://ausdigital.org) [Digital Capability Lookup (DCL)](http://ausdigital.org/specs/ausdigital-dcl/1.0) specification
+ausdigital-dcp/1 | Version 1 of the AusDigtial [Digital Capability Provider (DCP)](http://ausdigital.org/specs/ausdigital-dcp/1.0) specification
+ausdigital-idp/1 | Version 1 of the AusDigital [Identity Provider (IDP)](http://ausdigital.org/specs/ausdigital-idp/1.0) specification.
 ausdigital-tap/1 | Version 1 of the AusDigital [Transaction Access Point(TAP)](http://ausdigital.org/transaction-access-point) specification.
 
 This service depends on `ausdigital-dcl/1`, `ausdigital-dcp/1` and `ausdigital-idp/1`.
@@ -285,7 +288,7 @@ If `proof.json` and `proof.sig` both exist and neither exceed MAZ_SIZE, the next
 jsonschema -i proof.json proof.schema
 ```
 
-If the schema is valid, it will have a `NOTARY` element containing the business identifier of the party responsible for notarisation. The value of this attribute is a business identifier which can be resolved via the AusDigital [Digital Capability Lookup](https://ausdigital-dcl.readthedocs.io), which will yield an AusDigital [Digital Capability Provider](https://ausdigital-dcp.readthedocs.io) where the public keys of that organisation can be discovered.
+If the schema is valid, it will have a `NOTARY` element containing the business identifier of the party responsible for notarisation. The value of this attribute is a business identifier which can be resolved via the AusDigital [Digital Capability Lookup](http://ausdigital.org/specs/ausdigital-dcl/1.0), which will yield an AusDigital [Digital Capability Provider](http://ausdigital.org/specs/ausdigital-dcp/1.0) where the public keys of that organisation can be discovered.
 
 Note:
 
