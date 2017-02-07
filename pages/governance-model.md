@@ -24,7 +24,7 @@ A new specification can be launched at any time via the following process:
  6. The new editor should then notify relevant special interest groups of issues or questions regarding the new SPEC
 
 ## Implementation Governance
-The secure-by-design nature of the framework eliminates the need for implementation governance or any provider accreditations. Furthermore, the use of independent identity providers such as banks, government, or other entities subject to "know your customer" legislation means that identity assurance is, by definition, governed outside of this specification. Therefore, implementation governance within this framework is reduced to defining a set of assurance levels that are used to classify identity providers - so that participants in the network can have a clear shared understanding of the identity integrity of any message sent or received. This is the role of the [IDP Specification](https://ausdigital-idp.readthedocs.org/).
+The secure-by-design nature of the framework eliminates the need for implementation governance or any provider accreditations. Furthermore, the use of independent identity providers such as banks, government, or other entities subject to "know your customer" legislation means that identity assurance is, by definition, governed outside of this specification. Therefore, implementation governance within this framework is reduced to defining a set of assurance levels that are used to classify identity providers - so that participants in the network can have a clear shared understanding of the identity integrity of any message sent or received. This is the role of the [IDP Specification](http://ausdigital.org/specs/ausdigital-idp/1.0/).
 
 
 ## Compliance statement for business software vendors
