@@ -36,8 +36,8 @@ Phrase | Definition
 ------------ | -------------
 ausdigital-code/1 | This specification.
 ausdigital-bill/1 | Version 1 of the AusDigital [BILL](http://ausdigital.org/ausdigital-bill) specification.
-ausdigital-syn/1 | Version 1 of the AusDigital [UBL Syntax(SYN)](http://ausdigital.org/syn) specification.
-ausdigital-syn/2 | Version 2 of the AusDigital [UBL Syntax(SYN)](http://ausdigital.org/syn) specification.
+ausdigital-syn/1 | Version 1 of the AusDigital [UBL Syntax(SYN)](http://ausdigital.org/ausdigital-syn) specification.
+ausdigital-syn/2 | Version 2 of the AusDigital [UBL Syntax(SYN)](http://ausdigital.org/ausdigital-syn) specification.
 
 This service depends on - TBA.
 
