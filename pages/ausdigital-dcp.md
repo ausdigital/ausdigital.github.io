@@ -1,10 +1,10 @@
 ---
 layout: page
-title: digital capability publisher
-permalink: /digital-capability-publisher/
+title: Digital Capability Publisher (DCP) Specification
+permalink: /ausdigital-dcp/
 ---
 
-# The Digital Capability Publisher specification
+# Digital Capability Publisher (DCP) Specification
 
 The framework depends heavily on the ability to discover detailed service information for any given business identifier.  The DCP maintains a list of businesses, with a list of services for each business. Each service lists supported document formats and transport protocols and holds a digital certificate for message signing and encryption.
 

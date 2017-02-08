@@ -1,12 +1,12 @@
 ---
 layout: page
-title: notary
-permalink: /notary/
+title: Notary (NRY) Specification
+permalink: /ausdigital-nry/
 ---
 
-# The Notary specification
+# Notary (NRY) Specification
 
-The notary service provides an irrefutable history of a specific "contract" (eg an invoice and it's status lifecycle), recorded in a blockchain distributed ledger.  This service supports dispute resolution and provides the foundation platform for financial services such as debtor financing.
+The Notary service provides an irrefutable history of a specific "contract" (eg an invoice and it's status lifecycle), recorded in a blockchain distributed ledger.  This service supports dispute resolution and provides the foundation platform for financial services such as debtor financing.
 
 * [NRY GitHub repository](https://github.com/ausdigital/ausdigital-nry)
 * [NRY Slack channel](https://ausdigital.slack.com/messages/spec-nry/)

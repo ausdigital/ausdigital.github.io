@@ -1,7 +1,7 @@
 ---
 layout: page
 title: TAP Gateway
-permalink: /tap-gateway/
+permalink: /ausdigital-tap-gw/
 ---
 
 # The TAP Gateway specification

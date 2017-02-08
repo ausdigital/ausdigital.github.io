@@ -1,10 +1,10 @@
 ---
 layout: page
-title: syn specification
-permalink: /syn/
+title: UBL Syntax (SYN) Specification
+permalink: /ausdigital-syn/
 ---
 
-# UBL Syntax Specification
+# UBL Syntax (SYN) Specification
 
 This specification describes a syntax and processing model for UBL semantics. 
 
