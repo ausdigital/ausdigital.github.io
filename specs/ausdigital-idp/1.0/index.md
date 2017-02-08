@@ -47,9 +47,9 @@ Phrase | Definition
 ausdigital-idp/1 | This specification.
 ausdigital-dcl/1 | Version 1 of the AusDigtial [Digital Capability Locator (DCL)](http://ausdigital.org/specs/ausdigital-dcl/1.0) specification
 ausdigital-dcp/1 | Version 1 of the AusDigital [Digital Capability Publisher (IDP)](http://ausdigital.org/specs/ausdigital-dcp/1.0) specification.
-ausdigital-tap/1 | Version 1 of the AusDigital [Transaction Access Point(TAP)](http://ausdigital.org/transaction-access-point) specification.
-ausdigital-tap/2 | Version 2 of the AusDigital [Transaction Access Point(TAP)](http://ausdigital.org/transaction-access-point) specification.
-ausdigital-nry/1 | Version 1 of the AusDigital [Notary (NRY)](http://ausdigital.org/notary/) specification.
+ausdigital-tap/1 | Version 1 of the AusDigital [Transaction Access Point(TAP)](http://ausdigital.org/ausdigital-tap) specification.
+ausdigital-tap/2 | Version 2 of the AusDigital [Transaction Access Point(TAP)](http://ausdigital.org/ausdigital-tap) specification.
+ausdigital-nry/1 | Version 1 of the AusDigital [Notary (NRY)](http://ausdigital.org/ausdigital-nry) specification.
 
 The IDP service depends on TBA and TBA.
 
