@@ -3,6 +3,7 @@ layout: default
 ---
 # Let's make business document exchange simple
 
+
 ## Purpose of this site
 
 This site is for financial software developers and network service providers who would like to add support for the national e-invoicing framework to their products and services.  The [business case](/pages/business-case.md) for doing so is compelling.  
