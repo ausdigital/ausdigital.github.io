@@ -196,13 +196,13 @@ The `DOC_ID` returned in the body of successful POSTs (HTTP code 200 responses) 
 
 There are two search interfaces:
 
- * `GET /public/?{filter}/`
- * `GET /private/?{filter}/`
+ * `GET /public/?{filter}`
+ * `GET /private/?{filter}`
 
 Both return a list of `DOC_ID`s that match the `{filter}`.
 
- * The `GET /private/?{filter}/` form MUST use an API token issued by an `ausdigital-idp/1` Identity Provider.
- * The `GET /public/?{filter}/` form MAY use an API token.
+ * The `GET /private/?{filter}` form MUST use an API token issued by an `ausdigital-idp/1` Identity Provider.
+ * The `GET /public/?{filter}` form MAY use an API token.
 
 
 The filter may inclued the following parameters:
@@ -282,7 +282,7 @@ For example, assuming the blockchain contains `/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemt
  * test for the existence of `/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/proof.sig`
  * if the proof.sig is larger than `MAX_SIZE`, it is not valid. There is no need to download more than `MAX_SIZE + 1 byte` in this step.
 
-If `proof.json` and `proof.sig` both exist and neither exceed MAZ_SIZE, the next step is to ensure that `proof.json` validates agains the json schema. Assuming `proof.json` and [`proof.schema`](https://github.com/ausdigital/ausdigital-nry/blob/master/docs/resources/1.0/spec/proof.schema) are both in the current working directory, the `jsonschema` program could be used like this:
+If `proof.json` and `proof.sig` both exist and neither exceed MAX_SIZE, the next step is to ensure that `proof.json` validates agains the json schema. Assuming `proof.json` and [`proof.schema`](https://github.com/ausdigital/ausdigital-nry/blob/master/docs/resources/1.0/spec/proof.schema) are both in the current working directory, the `jsonschema` program could be used like this:
 
 ```bash
 jsonschema -i proof.json proof.schema
