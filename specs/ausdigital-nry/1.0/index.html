@@ -212,7 +212,6 @@ Gateway that it uses.</p>
   <li>Leverage the strongest consensus product available (maximise resistance to Sybl attacks).</li>
   <li>Leverage the most efficient proof market available (minimise cost of proof at the given consensus-strength).</li>
   <li>Avoid single point of failure in the network that stores and distributes existance proof.</li>
-  <li></li>
 </ul>
 
 <p>These are achieved by:</p>
@@ -250,11 +249,11 @@ development at
     </tr>
     <tr>
       <td>ausdigital-dcl/1</td>
-      <td>Version 1 of the <a href="http://ausdigital.org">AusDigtial</a> <a href="http://ausdigital.org/specs/ausdigital-dcl/1.0">Digital Capability Lookup (DCL)</a> specification</td>
+      <td>Version 1 of the <a href="http://ausdigital.org">AusDigital</a> <a href="http://ausdigital.org/specs/ausdigital-dcl/1.0">Digital Capability Lookup (DCL)</a> specification</td>
     </tr>
     <tr>
       <td>ausdigital-dcp/1</td>
-      <td>Version 1 of the AusDigtial <a href="http://ausdigital.org/specs/ausdigital-dcp/1.0">Digital Capability Provider (DCP)</a> specification</td>
+      <td>Version 1 of the AusDigital <a href="http://ausdigital.org/specs/ausdigital-dcp/1.0">Digital Capability Provider (DCP)</a> specification</td>
     </tr>
     <tr>
       <td>ausdigital-idp/1</td>
@@ -276,7 +275,7 @@ development at
 <p>Copyright (c) 2016 the Editor and Contributors. All rights reserved.</p>
 
 <p>This Specification is free software; you can redistribute it and/or modify it under the
-terms of the GNU General Public License as published by the Free Software Foundation; 
+terms of the GNU General Public License as published by the Free Software Foundation;
 either version 3 of the License, or (at your option) any later version.</p>
 
 <p>This Specification is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -384,7 +383,7 @@ RFC 2119.</p>
 <p>The <code class="highlighter-rouge">param.json</code> file:</p>
 
 <ul>
-  <li>MUST be a JSON file that is valid per <a href="https://github.com/ausdigital/ausdigital-nry/blob/master/docs/resources/1.0/spec/nry_post_param.schema"><code class="highlighter-rouge">nry_post_param.schema</code></a> JSON schema.</li>
+  <li>MUST be a JSON file that is valid per <a href="https://github.com/ausdigital/ausdigital-nry/blob/master/resources/1.0/spec/nry_post_param.schema"><code class="highlighter-rouge">nry_post_param.schema</code></a> JSON schema.</li>
   <li>MUST contain a <code class="highlighter-rouge">durability</code> attribute that is an ISO 8601 formatted date string</li>
   <li>The <code class="highlighter-rouge">durability</code> date MUST be not less than one month in the future</li>
   <li>MUST contain a <code class="highlighter-rouge">network</code> attribute that is a valid business identifier URN per <code class="highlighter-rouge">ausdigital-dcp/1</code> specification.</li>
@@ -403,7 +402,7 @@ RFC 2119.</p>
 <ul>
   <li>place notarised object in a system of record (unless the <code class="highlighter-rouge">param.json</code> <code class="highlighter-rouge">network</code> value is not a business identifier of the notary, in which case the notary MAY place the notarised object in a system of record)</li>
   <li>reference API Spec (return HTTP 200 response code, headers, etc)</li>
-  <li>return HTTP body that is JSON document that is valid per <a href="https://github.com/ausdigital/ausdigital-nry/blob/master/docs/resources/1.0/spec/nry_post_response.schema"><code class="highlighter-rouge">nry_post_response.schema</code></a> JSON schema.</li>
+  <li>return HTTP body that is JSON document that is valid per <a href="https://github.com/ausdigital/ausdigital-nry/blob/master/resources/1.0/spec/nry_post_response.schema"><code class="highlighter-rouge">nry_post_response.schema</code></a> JSON schema.</li>
   <li>The body must contain a <code class="highlighter-rouge">doc_id</code> attribute containing a verifyable content-address of the notarised object, using a hash and encoding scheme that is a valid IPFS address.</li>
 </ul>
 
@@ -494,11 +493,11 @@ RFC 2119.</p>
 
 <ul>
   <li>The Gazetted address MUST contain a HOC Proof, comprised of two files, <code class="highlighter-rouge">proof.json</code> and <code class="highlighter-rouge">proof.sig</code>.</li>
-  <li><code class="highlighter-rouge">proof.json</code> MUST be valid per the <a href="https://github.com/ausdigital/ausdigital-nry/blob/master/docs/resources/1.0/spec/proof.schema"><code class="highlighter-rouge">proof.schema</code></a> JSON schema specification.</li>
-  <li><code class="highlighter-rouge">proof.json</code> MUST contain a PROTOCOL attribute, which identifies the protocol for processing the Merkle-DAG. The value of the PROTOCOL attribute MUST be <code class="highlighter-rouge">ausditigal-nry/1.0</code>.</li>
+  <li><code class="highlighter-rouge">proof.json</code> MUST be valid per the <a href="https://github.com/ausdigital/ausdigital-nry/blob/master/resources/1.0/spec/proof.schema"><code class="highlighter-rouge">proof.schema</code></a> JSON schema specification.</li>
+  <li><code class="highlighter-rouge">proof.json</code> MUST contain a PROTOCOL attribute, which identifies the protocol for processing the Merkle-DAG. The value of the PROTOCOL attribute MUST be <code class="highlighter-rouge">ausdigital-nry/1.0</code>.</li>
   <li><code class="highlighter-rouge">proof.json</code> MUST contain a SIG_DATE attribute containing an ISO 8601 formatted date and time string identifying when the notary notionally created the <code class="highlighter-rouge">proof.sig</code></li>
   <li><code class="highlighter-rouge">proof.json</code> MUST contain a NOTARY attribute, which references the business identifier of the notary in URN format consistent with AusDigital DCL and DCP specifications.</li>
-  <li><code class="highlighter-rouge">proof.json</code> MUST contain a <code class="highlighter-rouge">pub_key</code> attribute, which contains a public key (<strong>TODO</strong>: what format? how encoded?)</li>
+  <li><code class="highlighter-rouge">proof.json</code> MUST contain a <code class="highlighter-rouge">pub_key</code> attribute, which contains a public key (<strong>TODO</strong>: what format? how encoded? gpg2 armor format?)</li>
   <li>The public key in the <code class="highlighter-rouge">pub_key</code> attribute of <code class="highlighter-rouge">proof.json</code> MUST be published in the DCP entry of the NOTARY business, as a valid (not revoked) key on SIG_DATE</li>
   <li><code class="highlighter-rouge">proof.sig</code> MUST be a valid signature of <code class="highlighter-rouge">proof.json</code>, using the public key identified in <code class="highlighter-rouge">proof.json</code></li>
   <li><code class="highlighter-rouge">proof.json</code> MUST contain a <code class="highlighter-rouge">durability</code> attribute, the value of which is an ISO 8601 formatted date string.</li>
@@ -520,7 +519,7 @@ RFC 2119.</p>
   <li>if the proof.sig is larger than <code class="highlighter-rouge">MAX_SIZE</code>, it is not valid. There is no need to download more than <code class="highlighter-rouge">MAX_SIZE + 1 byte</code> in this step.</li>
 </ul>
 
-<p>If <code class="highlighter-rouge">proof.json</code> and <code class="highlighter-rouge">proof.sig</code> both exist and neither exceed MAX_SIZE, the next step is to ensure that <code class="highlighter-rouge">proof.json</code> validates agains the json schema. Assuming <code class="highlighter-rouge">proof.json</code> and <a href="https://github.com/ausdigital/ausdigital-nry/blob/master/docs/resources/1.0/spec/proof.schema"><code class="highlighter-rouge">proof.schema</code></a> are both in the current working directory, the <code class="highlighter-rouge">jsonschema</code> program could be used like this:</p>
+<p>If <code class="highlighter-rouge">proof.json</code> and <code class="highlighter-rouge">proof.sig</code> both exist and neither exceed MAX_SIZE, the next step is to ensure that <code class="highlighter-rouge">proof.json</code> validates agains the json schema. Assuming <code class="highlighter-rouge">proof.json</code> and <a href="https://github.com/ausdigital/ausdigital-nry/blob/master/resources/1.0/spec/proof.schema"><code class="highlighter-rouge">proof.schema</code></a> are both in the current working directory, the <code class="highlighter-rouge">jsonschema</code> program could be used like this:</p>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>jsonschema -i proof.json proof.schema
 </code></pre>
@@ -561,7 +560,7 @@ RFC 2119.</p>
 
 <ul>
   <li>The Full HOC (directory-like content-address, gazetted to the blockchain) MUST contain a file with a valid content-address, that is referenced by the <code class="highlighter-rouge">hoc_head</code> attribute of <code class="highlighter-rouge">proof.json</code> (the <code class="highlighter-rouge">hoc_head</code> file)</li>
-  <li>The contents of the <code class="highlighter-rouge">hoc_head</code> file MUST be json that is valid per <a href="https://github.com/ausdigital/ausdigital-nry/blob/master/docs/resources/1.0/spec/hoc_head.schema"><code class="highlighter-rouge">hoc_head.schema</code></a> JSON schema</li>
+  <li>The contents of the <code class="highlighter-rouge">hoc_head</code> file MUST be json that is valid per <a href="https://github.com/ausdigital/ausdigital-nry/blob/master/resources/1.0/spec/hoc_head.schema"><code class="highlighter-rouge">hoc_head.schema</code></a> JSON schema</li>
   <li><code class="highlighter-rouge">hoc_head</code> MUST contain a list of one or more elements.</li>
   <li>Each element in <code class="highlighter-rouge">hoc_head</code> list MUST contain a <code class="highlighter-rouge">hoc_detail</code>attribute, which is a valid content-address of a file.</li>
   <li>Each element in <code class="highlighter-rouge">hoc_head</code> list MUST contain a <code class="highlighter-rouge">durability</code> attribute.</li>
@@ -691,7 +690,7 @@ RFC 2119.</p>
 
 <ul>
   <li>The HOC Detail MUST contain a list of one or more elements.</li>
-  <li>The HOC Detail MUST be validated against the <a href="https://github.com/ausdigital/ausdigital-nry/blob/master/docs/resources/1.0/spec/hoc_detail.schema"><code class="highlighter-rouge">hoc_detail.schema</code></a> JSON schema.</li>
+  <li>The HOC Detail MUST be validated against the <a href="https://github.com/ausdigital/ausdigital-nry/blob/master/resources/1.0/spec/hoc_detail.schema"><code class="highlighter-rouge">hoc_detail.schema</code></a> JSON schema.</li>
 </ul>
 
 <p>Every element in the HOC Detail list:</p>
