@@ -159,20 +159,84 @@
     <!--<div class="specs-toc-title">Table of contents</div>-->
     <ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#introduction">Introduction</a></li>
-<li class="toc-entry toc-h2"><a href="#glossary">Glossary:</a></li>
+<li class="toc-entry toc-h1"><a href="#introduction-1">Introduction</a></li>
+<li class="toc-entry toc-h2"><a href="#goals">Goals</a></li>
 <li class="toc-entry toc-h2"><a href="#status">Status</a></li>
+<li class="toc-entry toc-h2"><a href="#glossary">Glossary:</a></li>
 <li class="toc-entry toc-h2"><a href="#licence">Licence</a></li>
 <li class="toc-entry toc-h2"><a href="#change-process">Change Process</a></li>
 <li class="toc-entry toc-h2"><a href="#language">Language</a></li>
+<li class="toc-entry toc-h1"><a href="#manage-endpoints">Manage Endpoints</a></li>
+<li class="toc-entry toc-h1"><a href="#receive-messages">Receive Messages</a></li>
+<li class="toc-entry toc-h1"><a href="#send-messages">Send Messages</a></li>
 <li class="toc-entry toc-h1"><a href="#related-material">Related Material</a></li>
 </ul>
 </div>
             <h2 id="introduction">Introduction</h2>
 
-<p>This document describes the access point gateway (TAP-GW), which is an optional extension
-to the ausdigital-tap/2. The TAP-GW allows ledger implementers to standardise
-interfaces and protocols for communication between trusted/secure ledger systems and
-public-facing TAP services.</p>
+<p>This document describes the access point gateway (TAP-GW), which is an optional
+extension to the ADBC access point (TAP). The TAP-GW allows ledger implementers
+to use standard interfaces and protocols for communication between
+trusted/secure ledger systems and public-facing TAP services.</p>
+
+<h1 id="introduction-1">Introduction</h1>
+
+<p>There are various reasons why a business system architect may want a structural
+separation between their trusted components (e.g. ledger service, ERP system,
+etc) and their externally facing components, such as a TAP Gateway. These
+include performance, reliability and security objectives, as well as a desire to
+focus on features that differentiate their system while outsourcing generic
+functionality to services with low-cost utility characteristics. The TAPGW
+sub-protocol is designed to ensure Gateway services are generic and
+interchangeable commodities.</p>
+
+<p>A TAP Gateway service is an availability mediator (allowing trusted business
+system components to have intermittent connectivity, and/or to sit behind a
+firewall). It is however more than a simple asynchronous proxy
+(store-and-forward service); additionally, it performs functions such as message
+validation, logging, access control, and protocol callbacks (including to Notary
+services).</p>
+
+<p>Cryptography is used to prevent TAP Gateways from being able to inspect or
+manipulate the content of business messages. A TAP Gateway is not custodian of
+any business key material, it is only trusted to reliably send and receive
+messages. Message signing and encryption/decryption is performed by systems
+behind TAPs. The TAP is unable to verify signatures that have been encrypted,
+but can verify signatures that are not encrypted.</p>
+
+<p>Notarisation to the blockchain makes it possible for the business system to
+audit the reliability of any TAP Gateway that it uses.</p>
+
+<p>This specification aims to support the Australian Digital Business Council
+<a href="https://ausdigital.org">eInvoicing initiative</a>, as an extension of the
+<a href="https://github.com/ausdigital/ausdigital-tap">https://github.com/ausdigital/ausdigital-tap</a>.
+It is under active development at
+<a href="https://github.com/ausdigital/ausdigital-tap-gw">https://github.com/ausdigital/ausdigital-tap-gw</a>.</p>
+
+<h2 id="goals">Goals</h2>
+
+<ul>
+  <li>Standard interface for administering an ausdigital-tap service, so that
+TAP services can be interchangeable commodities (prevent vendor lock-in).</li>
+  <li>Clearly delineate the boundary between private trusted systems and commodity
+message processing infrastructure.</li>
+  <li>Provide safe and convenient methods for managing a potentially large number
+of TAP endpoints, including bespoke metadata.</li>
+  <li>Provide safe and convenient methods for processing messages.</li>
+  <li>Abstract integrity assurance (notary service) away from the message handling
+protocol, so that they support auditing and verification requirements without
+adding complexity to message handling.</li>
+</ul>
+
+<h2 id="status">Status</h2>
+
+<p>This spec is a requirement for consultation.</p>
+
+<p>This spec is optional: If a trusted business system is persistently connected to
+the internet and natively supports the TAP protocol, then it has no need for a
+TAP-GW interface, either as a client or server. Gateways are not necessary in
+the TAP protocol, the TAPGW sub-protocol is described as an optional extension
+to the TAP protocol.</p>
 
 <h2 id="glossary">Glossary:</h2>
 
@@ -185,74 +249,135 @@ public-facing TAP services.</p>
   </thead>
   <tbody>
     <tr>
+      <td>ausdigital-tapgw/1</td>
+      <td>This document</td>
+    </tr>
+    <tr>
       <td>ausdigital-tap/2</td>
       <td>Version 2 of the <a href="http://ausdigital.org">AusDigtial</a> <a href="http://ausdigital.org/specs/ausdigital-tap/2.0/">TAP</a> specification</td>
     </tr>
+    <tr>
+      <td>ausdigital-bill/1</td>
+      <td>Version 1 of the <a href="http://ausdigital.org">AusDigtial</a> <a href="http://ausdigital.org/specs/ausdigital-bill/1.0/">BILL</a> specification</td>
+    </tr>
+    <tr>
+      <td>ausdigital-dcl/1</td>
+      <td>Version 1 of the <a href="http://ausdigital.org">AusDigtial</a> <a href="http://ausdigital.org/specs/ausdigital-dcl/1.0">DCL</a> specification</td>
+    </tr>
+    <tr>
+      <td>ausdigital-dcp/1</td>
+      <td>Version 1 of the <a href="http://ausdigital.org">AusDigtial</a> <a href="http://ausdigital.org/specs/ausdigital-dcp/1.0">DCP</a> specification</td>
+    </tr>
+    <tr>
+      <td>ausdigital-nry/1</td>
+      <td>Version 1 of the <a href="http://ausdigital.org">AusDigtial</a> <a href="http://ausdigital.org/specs/ausdigital-nry/1.0/">NRY</a> specification</td>
+    </tr>
+    <tr>
+      <td>ausdigital-idp/1</td>
+      <td>Version 1 of the <a href="http://ausdigital.org">AusDigtial</a> <a href="http://ausdigital.org/specs/ausdigital-idp/1.0/">IDP</a> specification</td>
+    </tr>
   </tbody>
 </table>
-
-<h2 id="status">Status</h2>
-
-<p>This spec is a requirement for consultation.</p>
-
-<p>If a trusted business system is persistently connected to the internet and natively
-supports the TAP protocol, then it has no need for TAPGW interface, either as a client
-or server. Gateways are not necessary in the TAP protocol, the TAPGW sub-protocol is
-described as an optional extension to the TAP protocol.</p>
-
-<p>There are various reasons why a business system architect may want a structural
-separation between their trusted components (e.g. ledger service, ERP system, etc) and
-their externally facing components, such as a TAP Gateway. These include performance,
-reliability and security objectives, as well as a desire to focus on features that
-differentiate their system while outsourcing generic functionality to services with
-low-cost utility characteristics. The TAPGW sub-protocol is designed to ensure Gateway
-services are generic and interchangeable commodities.</p>
-
-<p>A TAP Gateway service is an availability mediator (allowing trusted business system
-components to have intermittent connectivity, and/or to sit behind a firewall). It is
-however more than a simple asynchronous proxy (store-and-forward service); additionally,
-it performs functions such as message validation, logging, access control, and protocol
-callbacks (including to Notary services).</p>
-
-<p>Cryptography is used to prevent TAP Gateways from being able to inspect or manipulate
-the content of business messages. A TAP Gateway is not custodian of any business key
-material, it is only trusted to reliably send and receive messages. Message signing and
-encryption/decryption is performed by systems behind TAPs. The TAP is unable to verify
-signatures that have been encrypted, but can verify signatures that are not encrypted.</p>
-
-<p>Notarisation to the blockchain makes it possible for the business system to audit the
-reliability of any TAP Gateway that it uses.</p>
-
-<p>This specification aims to support the Australian Digital Business Council
-<a href="https://ausdigital.github.io">eInvoicing initiative</a>, as an extension of the
-<a href="https://github.com/ausdigital/ausdigital-tap">https://github.com/ausdigital/ausdigital-tap</a>.
-It is under active development at
-<a href="https://github.com/ausdigital/ausdigital-tap-gw">https://github.com/ausdigital/ausdigital-tap-gw</a>.</p>
 
 <h2 id="licence">Licence</h2>
 
 <p>Copyright (c) 2016 the Editor and Contributors. All rights reserved.</p>
 
-<p>This Specification is free software; you can redistribute it and/or modify it under the
-terms of the GNU General Public License as published by the Free Software Foundation; 
-either version 3 of the License, or (at your option) any later version.</p>
+<p>This Specification is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the Free
+Software Foundation; either version 3 of the License, or (at your option) any
+later version.</p>
 
-<p>This Specification is distributed in the hope that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-PURPOSE. See the GNU General Public License for more details.</p>
+<p>This Specification is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+details.</p>
 
-<p>You should have received a copy of the GNU General Public License along with this program;
-if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<p>You should have received a copy of the GNU General Public License along with
+this program; if not, see
+<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 
 <h2 id="change-process">Change Process</h2>
 
-<p>This document is governed by the <a href="http://rfc.unprotocols.org/spec:2/COSS/">2/COSS</a> (COSS).</p>
+<p>This document is governed by the
+<a href="http://rfc.unprotocols.org/spec:2/COSS/">2/COSS</a> (COSS).</p>
 
 <h2 id="language">Language</h2>
 
-<p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”,
-“RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in
-RFC 2119.</p>
+<p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”,
+“SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be
+interpreted as described in RFC 2119.</p>
+
+<h1 id="manage-endpoints">Manage Endpoints</h1>
+
+<p>The ausdigital-tap specification describes how a multipart/form-data message
+is sent to an HTTPS endpoint (TAP_URL) with a POST verb. The TAP-GW sub-protocol
+provides methods for creating, configuring and deleting these endpoints.</p>
+
+<p>These endpoints are identified with a URL, comprised of an the TAP-GW provider’s
+DNS domain followed by an RFC 4122 Universally Unique Identifier (GUID).</p>
+
+<p>For example:
+<code class="highlighter-rouge">
+https://tap.testpoint.io/886313e1-3b8a-5372-9b90-0c9aee199e5d/
+</code></p>
+
+<p>This endpoint does not directly reveal any information about the message
+receiving party, however the ausdigital-dcp reference to the endpoint will.</p>
+
+<p>TODO: as a TAP-GW user:
+ * list my endpoints, filter on bespoke metadata (arbitrary key/values
+   associated with the endpoints) <code class="highlighter-rouge">GET /endpoints/?{filter}</code>
+ * GET endpoint details <code class="highlighter-rouge">GET /endpoints/{uuid}</code>
+ * PUT new endpoint details <code class="highlighter-rouge">PUT {details} /endpoints/{uuid}</code>
+ * create endpoint <code class="highlighter-rouge">POST {details} /endpoints/</code></p>
+
+<p>schema of endpoint details:
+ * does not include uuid (that is generated by the TAP-GW)
+ * includes endpoint_type (this implies validation rules, allowable value
+   currently limited to <code class="highlighter-rouge">ausdigital-tap/2</code>)
+ * includes notary policy (durability, default 1 year)
+ * includes arbitrary metadata <code class="highlighter-rouge"><span class="p">{</span><span class="err">'k1':'v1',</span><span class="w"> </span><span class="err">'k2':'v2',</span><span class="w"> </span><span class="err">...</span><span class="p">}</span></code>
+ * ‘status’ metadata keyword is forbidden (used internally by the TAP-GW,
+   see bellow)</p>
+
+<p>Note:
+ * do we use a different domain for tap-gw? I think so
+ * basepath like <code class="highlighter-rouge">https://tap-gw.testpoint.io/api/v0/</code> ?</p>
+
+<h1 id="receive-messages">Receive Messages</h1>
+
+<p>This is done on a per-endpoint basis.</p>
+
+<ul>
+  <li>get list of new messages with <code class="highlighter-rouge">GET /endpoints/{uuid}/{filter}</code>. This returns a
+simple collection of message_id, datetime received, size in bytes.</li>
+  <li>get individual message with <code class="highlighter-rouge">GET /messages/{uuid}</code></li>
+  <li>view message status (new/read) with <code class="highlighter-rouge">GET /messages/{uuid}/metadata</code></li>
+  <li>mark message as read with <code class="highlighter-rouge">PATCH {'status':'read'} /messages/{uuid}/metadata</code></li>
+  <li>mark message as new/unread with <code class="highlighter-rouge">PATCH {'status':'new'} /messages/{uuid}/metadata</code></li>
+  <li>update message metadata with <code class="highlighter-rouge">PATCH {'k1':'v3', 'k2':'v5'}</code> /messages/{uuid}/metadata`</li>
+</ul>
+
+<h1 id="send-messages">Send Messages</h1>
+
+<p>There is no need to send messages via the TAP-GW, even if the TAP-GW is being
+used to receive messages. However, it is possible</p>
+
+<ul>
+  <li><code class="highlighter-rouge">POST {base64 encoded message, TAP_URL} /sender</code></li>
+  <li>this will return a UUID, subsequently</li>
+  <li><code class="highlighter-rouge">GET /sender/{uuid}</code> will return status of the message (still trying, sent,
+failed)</li>
+</ul>
+
+<p>TODO:</p>
+
+<ul>
+  <li>add callback for unsuccessful sends</li>
+  <li>is base64 encoding right, or should this be multipart/form-data with new
+parts? is that how we include callback(s)?</li>
+</ul>
 
 <h1 id="related-material">Related Material</h1>
 
@@ -262,6 +387,7 @@ RFC 2119.</p>
   <li>Free, Open-Source Software <a href="https://github.com/test-point/testpoint-tap-gw">TAP-GW implementation</a>.</li>
   <li>An automated <a href="https://github.com/test-point/testpoint-tap-gw">TAP-GW test suite</a>.</li>
 </ul>
+
 
         </div>
     </div>
