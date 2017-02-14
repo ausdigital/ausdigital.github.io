@@ -158,28 +158,26 @@
             <div class="specs-toc">
     <!--<div class="specs-toc-title">Table of contents</div>-->
     <ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#introduction">Introduction</a></li>
-<li class="toc-entry toc-h1"><a href="#introduction-1">Introduction</a></li>
+<li class="toc-entry toc-h1"><a href="#introduction">Introduction</a></li>
 <li class="toc-entry toc-h2"><a href="#goals">Goals</a></li>
 <li class="toc-entry toc-h2"><a href="#status">Status</a></li>
-<li class="toc-entry toc-h2"><a href="#glossary">Glossary:</a></li>
+<li class="toc-entry toc-h2"><a href="#glossary">Glossary</a></li>
 <li class="toc-entry toc-h2"><a href="#licence">Licence</a></li>
 <li class="toc-entry toc-h2"><a href="#change-process">Change Process</a></li>
 <li class="toc-entry toc-h2"><a href="#language">Language</a></li>
 <li class="toc-entry toc-h1"><a href="#manage-endpoints">Manage Endpoints</a></li>
+<li class="toc-entry toc-h1"><a href="#endpoint-publishing">Endpoint Publishing</a></li>
 <li class="toc-entry toc-h1"><a href="#receive-messages">Receive Messages</a></li>
 <li class="toc-entry toc-h1"><a href="#send-messages">Send Messages</a></li>
 <li class="toc-entry toc-h1"><a href="#related-material">Related Material</a></li>
 </ul>
 </div>
-            <h2 id="introduction">Introduction</h2>
-
-<p>This document describes the access point gateway (TAP-GW), which is an optional
+            <p>This document describes the access point gateway (TAP-GW), which is an optional
 extension to the ADBC access point (TAP). The TAP-GW allows ledger implementers
 to use standard interfaces and protocols for communication between
 trusted/secure ledger systems and public-facing TAP services.</p>
 
-<h1 id="introduction-1">Introduction</h1>
+<h1 id="introduction">Introduction</h1>
 
 <p>There are various reasons why a business system architect may want a structural
 separation between their trusted components (e.g. ledger service, ERP system,
@@ -238,7 +236,7 @@ TAP-GW interface, either as a client or server. Gateways are not necessary in
 the TAP protocol, the TAPGW sub-protocol is described as an optional extension
 to the TAP protocol.</p>
 
-<h2 id="glossary">Glossary:</h2>
+<h2 id="glossary">Glossary</h2>
 
 <table>
   <thead>
@@ -255,10 +253,6 @@ to the TAP protocol.</p>
     <tr>
       <td>ausdigital-tap/2</td>
       <td>Version 2 of the <a href="http://ausdigital.org">AusDigtial</a> <a href="http://ausdigital.org/specs/ausdigital-tap/2.0/">TAP</a> specification</td>
-    </tr>
-    <tr>
-      <td>ausdigital-bill/1</td>
-      <td>Version 1 of the <a href="http://ausdigital.org">AusDigtial</a> <a href="http://ausdigital.org/specs/ausdigital-bill/1.0/">BILL</a> specification</td>
     </tr>
     <tr>
       <td>ausdigital-dcl/1</td>
@@ -315,7 +309,7 @@ is sent to an HTTPS endpoint (TAP_URL) with a POST verb. The TAP-GW sub-protocol
 provides methods for creating, configuring and deleting these endpoints.</p>
 
 <p>These endpoints are identified with a URL, comprised of an the TAP-GW provider’s
-DNS domain followed by an RFC 4122 Universally Unique Identifier (GUID).</p>
+DNS domain followed by an RFC 4122 Universally Unique Identifier (UUID).</p>
 
 <p>For example:
 <code class="highlighter-rouge">
@@ -323,7 +317,7 @@ https://tap.testpoint.io/886313e1-3b8a-5372-9b90-0c9aee199e5d/
 </code></p>
 
 <p>This endpoint does not directly reveal any information about the message
-receiving party, however the ausdigital-dcp reference to the endpoint will.</p>
+receiving party, however the <code class="highlighter-rouge">ausdigital-dcp</code> reference to the endpoint will.</p>
 
 <p>TODO: as a TAP-GW user:
  * list my endpoints, filter on bespoke metadata (arbitrary key/values
@@ -343,7 +337,56 @@ receiving party, however the ausdigital-dcp reference to the endpoint will.</p>
 
 <p>Note:
  * do we use a different domain for tap-gw? I think so
- * basepath like <code class="highlighter-rouge">https://tap-gw.testpoint.io/api/v0/</code> ?</p>
+ * basepath like <code class="highlighter-rouge">https://tap-gw.testpoint.io/api/v0/</code> ?
+ * For creating endpoints, authentication to TAP-GW uses JWT from the TAP-GW
+   client (the TAP-GW is the RP)?</p>
+
+<p>TAP-GW customers can create an arbitrary number of endpoints, however these
+endpoints are “anonymous” until they are mapped to the integration surface of an identified business (via endpoint publishing mechanism)</p>
+
+<h1 id="endpoint-publishing">Endpoint Publishing</h1>
+
+<p>When endpoints are first created they are anonymous (there is not public
+information associated with them). Anonymous endpoints can receive messages, but
+they are a “dark channel” (not discoverable) until they have metadata published
+about them in an <code class="highlighter-rouge">ausdigital-dcp</code>.</p>
+
+<p>The TAP-GW protocol provides a simplified interface for associating an endpoint
+with a business identity, service group and purpose.</p>
+
+<p>TODO: document <code class="highlighter-rouge">PUT /endpoints/{uuid}/business</code>.
+Schema:
+ * JWT required
+ * business identifier URN?
+ * which ServiceGroup?
+ * Which endpoint type?
+ * requires an appropriate JWT for the business and DCP (update business
+   metadata scope)</p>
+
+<p>Notes/Rules:
+ * The TAP-GW uses <code class="highlighter-rouge">ausdigital-dcl</code> to identify which DCP to post the change to.
+ * the JWT must come from an <code class="highlighter-rouge">ausdigital-idp</code> that the DCP is a client of, in
+   other words the DCP is the RP (not the TAP_GW)
+ * The JWT must contain a claim matching the URN</p>
+
+<p>Question: Do we (or the DCP) prevent  a business from associating the same
+endpoint with multiple businesses, multiple service groups, or multiple endpoint
+types?</p>
+
+<ul>
+  <li>pro: forcing endpoint uniqueness (within a DCP) protects ledger customers
+from lock-in.</li>
+  <li>con: it’s not our problem, but we wear the cost of the complexity.</li>
+  <li>I propose we do force endpoint uniqueness, but we should discuss this a bit
+more widely.</li>
+</ul>
+
+<p>When a valid <code class="highlighter-rouge">PUT /endpoints/{uuid}/business</code> is received by the TAP-GW, the
+TAP-GW will use the JWT to interact with the DCP and configure the endpoint
+appropriately (for that message type, in the specified service group, for the
+identified URN).</p>
+
+<p>That should problably be asynchronous, so PUTting should return a status URL, which can be used to check the status of the update (in progress, complete, failed).</p>
 
 <h1 id="receive-messages">Receive Messages</h1>
 
@@ -387,7 +430,6 @@ parts? is that how we include callback(s)?</li>
   <li>Free, Open-Source Software <a href="https://github.com/test-point/testpoint-tap-gw">TAP-GW implementation</a>.</li>
   <li>An automated <a href="https://github.com/test-point/testpoint-tap-gw">TAP-GW test suite</a>.</li>
 </ul>
-
 
         </div>
     </div>
