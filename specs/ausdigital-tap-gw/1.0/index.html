@@ -218,12 +218,14 @@ It is under active development at
 TAP services can be interchangeable commodities (prevent vendor lock-in).</li>
   <li>Clearly delineate the boundary between private trusted systems and commodity
 message processing infrastructure.</li>
-  <li>Provide safe and convenient methods for managing a potentially large number
-of TAP endpoints, including bespoke metadata.</li>
+  <li>Manage a potentially large number of TAP endpoints, including bespoke
+metadata that supports custom search features.</li>
   <li>Provide safe and convenient methods for processing messages.</li>
-  <li>Abstract integrity assurance (notary service) away from the message handling
-protocol, so that they support auditing and verification requirements without
-adding complexity to message handling.</li>
+  <li>Abstract <code class="highlighter-rouge">ausdigital-ney</code> away from the message handling protocol, so that
+they support auditing and verification requirements without adding complexity
+to message handling.</li>
+  <li>Abstract <code class="highlighter-rouge">ausdigital-dcl</code>, <code class="highlighter-rouge">ausdigital-dcp</code> and <code class="highlighter-rouge">ausdigital-idp</code> behind safe
+and convenient API methods for publishing endpoints.</li>
 </ul>
 
 <h2 id="status">Status</h2>
@@ -402,7 +404,9 @@ TAP-GW will use the JWT to interact with the DCP and configure the endpoint
 appropriately (for that message type, in the specified service group, for the
 identified URN).</p>
 
-<p>That should problably be asynchronous, so PUTting should return a status URL, which can be used to check the status of the update (in progress, complete, failed).</p>
+<p>That should probably be asynchronous, so PUTting should return a status URL,
+which can be used to check the status of the update (in progress, complete,
+failed).</p>
 
 <h1 id="receive-messages">Receive Messages</h1>
 
