@@ -317,7 +317,8 @@ https://tap.testpoint.io/886313e1-3b8a-5372-9b90-0c9aee199e5d/
 </code></p>
 
 <p>This endpoint does not directly reveal any information about the message
-receiving party, however the <code class="highlighter-rouge">ausdigital-dcp</code> reference to the endpoint will.</p>
+receiving party, however the <code class="highlighter-rouge">ausdigital-dcp</code> reference to the endpoint will (if
+metadata about the endpoint has been published).</p>
 
 <p>TODO: as a TAP-GW user:</p>
 
@@ -408,13 +409,15 @@ identified URN).</p>
 <p>This is done on a per-endpoint basis.</p>
 
 <ul>
-  <li>get list of new messages with <code class="highlighter-rouge">GET /endpoints/{uuid}/{filter}</code>. This returns a
-simple collection of message_id, datetime received, size in bytes.</li>
+  <li>get list of new messages with <code class="highlighter-rouge">GET /endpoints/{uuid}/{filter}</code>. This returns
+a simple collection of message_id, datetime received, size in bytes.</li>
   <li>get individual message with <code class="highlighter-rouge">GET /messages/{uuid}</code></li>
   <li>view message status (new/read) with <code class="highlighter-rouge">GET /messages/{uuid}/metadata</code></li>
   <li>mark message as read with <code class="highlighter-rouge">PATCH {'status':'read'} /messages/{uuid}/metadata</code></li>
-  <li>mark message as new/unread with <code class="highlighter-rouge">PATCH {'status':'new'} /messages/{uuid}/metadata</code></li>
-  <li>update message metadata with <code class="highlighter-rouge">PATCH {'k1':'v3', 'k2':'v5'}</code> /messages/{uuid}/metadata`</li>
+  <li>mark message as new/unread with
+<code class="highlighter-rouge">PATCH {'status':'new'} /messages/{uuid}/metadata</code></li>
+  <li>update message metadata with
+<code class="highlighter-rouge">PATCH {'k1':'v3', 'k2':'v5'}</code> /messages/{uuid}/metadata`</li>
 </ul>
 
 <h1 id="send-messages">Send Messages</h1>
