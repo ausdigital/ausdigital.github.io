@@ -167,6 +167,8 @@
 <li class="toc-entry toc-h2"><a href="#language">Language</a></li>
 <li class="toc-entry toc-h1"><a href="#manage-endpoints">Manage Endpoints</a></li>
 <li class="toc-entry toc-h1"><a href="#endpoint-publishing">Endpoint Publishing</a></li>
+<li class="toc-entry toc-h2"><a href="#directly-updated-dcp-and-dcl">Directly updated DCP and DCL</a></li>
+<li class="toc-entry toc-h2"><a href="#updating-dcp-and-dcl-via-tap-gw">Updating DCP and DCL via TAP-GW</a></li>
 <li class="toc-entry toc-h1"><a href="#receive-messages">Receive Messages</a></li>
 <li class="toc-entry toc-h1"><a href="#send-messages">Send Messages</a></li>
 <li class="toc-entry toc-h1"><a href="#related-material">Related Material</a></li>
@@ -361,10 +363,65 @@ endpoints are “anonymous” until they are mapped to the integration surface o
 <p>When endpoints are first created they are anonymous (there is not public
 information associated with them). Anonymous endpoints can receive messages, but
 they are a “dark channel” (not discoverable) until they have metadata published
-about them in an <code class="highlighter-rouge">ausdigital-dcp</code>.</p>
+about them in a DCP (see <code class="highlighter-rouge">ausdigital-dcp</code>) and DCL (see <code class="highlighter-rouge">ausdigital-dcl</code>).</p>
 
-<p>The TAP-GW protocol provides a simplified interface for associating an endpoint
-with a business identity, service group and purpose.</p>
+<p>There are two ways to publish metadata about an endpoint in a DCP:</p>
+
+<ul>
+  <li>Directly, via the DCP or DCL interface</li>
+  <li>Indirectly, via TAP-GW convenience methods.</li>
+</ul>
+
+<h2 id="directly-updated-dcp-and-dcl">Directly updated DCP and DCL</h2>
+
+<p>Publicly associating an endpoints with a service interface for a business
+identity, directly in the DCP requires an appropriate authorisation token from
+an IDP (see <code class="highlighter-rouge">ausdigital-idp</code> for details). Similarly, associating a DCP with a
+business identity requires an appropriate authorisation token from an IDP (see
+<code class="highlighter-rouge">ausdigital-dcl</code> for details).</p>
+
+<p>If the TAP-GW interface is used to create an endpoint, and the DCL and DCP are
+directly updated to reference this endpoint, no further action is required (the
+endpoint is published)</p>
+
+<h2 id="updating-dcp-and-dcl-via-tap-gw">Updating DCP and DCL via TAP-GW</h2>
+
+<p>In addition to directly updating the DCL and DCP, it is also possible to use the
+TAP-GW to update the DCL and DCP indirectly, via a convenience interface that
+abstracts <code class="highlighter-rouge">ausdigital-dcl</code> and <code class="highlighter-rouge">ausdigital-dcp</code> away from the integrated system.</p>
+
+<p>While the TAP-GW interface for updating DCL and DCP is simple, it still requires
+an appropriate authorisation token per <code class="highlighter-rouge">ausdigital-idp</code>. There is more than one
+way to accomplish this:</p>
+
+<ul>
+  <li>The TAP-GW may be a client of an IDP, which is trusted to an appropriate
+level of assurance by the resource (DCP or DCL). If the business identity
+provides authorisation to the TAP-GW, the IDP will issue a token to the
+TAP-GW authorising it to update that business metadata associated with that
+business identity in the resource. This requires the business to authenticate themselves directly to the IDP, and then provide authorisation directly to
+the IDP.</li>
+  <li>The user of the TAP-GW may operate a private (or 3rd party IDP) which is
+trusted by the resource (DCP or DCL) with an appropriate level of assurance,
+including certification for known customer relationship authorisations. If
+the TAP-GW is a Relying Party of this IDP, then the user may use the known
+customer interface of the IDP to issue tokens to the TAP-GW, that the TAP-GW
+can then use to update the resource.</li>
+  <li>The TAP-GW may operate a private IDP on behalf of the user, which is trusted
+by the resource (DCP or DCL) at an appropriate level of assurance. This would
+require the TAP-GW to prove to the satisfaction of the resource that their
+user has ‘known customer relationship’ with their clients (the TAP-GW’s
+customer’s customer), and that the TAP-GW is authorised to operate the
+private IDP on behalf of their client. In this situation, the TAP-GW could be
+an OIDC relying party of the private, trusted IDP and use it to issue tokens
+with business identity claims associated with the TAP-GW’s customer’s
+customer, to the TAP-GW, on behalf of the TAP-GW’s customer.</li>
+</ul>
+
+<p>Assuming the TAP-GW has access to appropriate authorisation tokens, the simplest
+way to publish metadata about the endpoint in the DCP (or DCL) is to use the
+convenience methods in the TAP-GW. This provides a simplified interface for
+associating an endpoint with a business identity, service group and purpose.IDP.</p>
 
 <p>TODO: document <code class="highlighter-rouge">PUT /endpoints/{uuid}/business</code>.
 Schema:</p>
@@ -389,7 +446,7 @@ other words the DCP is the RP (not the TAP_GW)</li>
 
 <p>Question: Do we (or the DCP) prevent  a business from associating the same
 endpoint with multiple businesses, multiple service groups, or multiple endpoint
-types?</p>
+types? - that’s a question for the DCP spec.</p>
 
 <ul>
   <li>pro: forcing endpoint uniqueness (within a DCP) protects ledger customers
