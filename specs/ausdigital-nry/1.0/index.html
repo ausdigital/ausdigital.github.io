@@ -149,7 +149,7 @@
 </li>
                     <li><p><img src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" alt="raw" /></p>
 </li>
-                    <li>Editor: <p><a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#104;&#114;&#105;&#115;&#116;&#111;&#112;&#104;&#101;&#114;&#046;&#100;&#046;&#103;&#111;&#117;&#103;&#104;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">Chris Gough</a></p>
+                    <li>Editor: <p><a href="mailto:christopher.d.gough@gmail.com">Chris Gough</a></p>
 </li>
                     <li>Contributors: 
 </li>
@@ -477,12 +477,12 @@ RFC 2119.</p>
 
 <p>The public parts of the HOC are published in a directory-like structure with a content-address in its path. Two parts have fixed names (<code class="highlighter-rouge">proof.json</code> and <code class="highlighter-rouge">proof.sig</code>), while all the other parts names are consistent with their content-addresses (meaning the file name is equivalent to the IPFS address of the file contents).</p>
 
-<p>Content-addressing is consistent with the IPFS content-addresses format, for example <code class="highlighter-rouge">QmNn2peeUaJFxnPVsFjriVxnPZKkh4y2EfRqpEHQ8EYXQr</code>. Content addresses may refer to individual files or directory-like collections of files (and subdirectories, recursively).</p>
+<p>Content-addressing is consistent with the IPFS content-addresses format, for example <code class="highlighter-rouge">QmS5EogHn2MtSBsQ4wXFEPeiA1zWPfaEbumWEJJNsUWuW2</code>. Content addresses may refer to individual files or directory-like collections of files (and subdirectories, recursively).</p>
 
 <p>The following examples assume that this address is the address of the directory-like structure that has been gazetted in the blockchain:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/</code></li>
+  <li><code class="highlighter-rouge">/ipfs/QmS5EogHn2MtSBsQ4wXFEPeiA1zWPfaEbumWEJJNsUWuW2/</code></li>
 </ul>
 
 <h2 id="hoc-proof">HOC Proof</h2>
@@ -510,12 +510,12 @@ RFC 2119.</p>
 
 <p>The first step in validating the Merkle-Dag is to check that the proof.json exists and is no larger than MAX_SIZE.</p>
 
-<p>For example, assuming the blockchain contains <code class="highlighter-rouge">/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/</code>, the validation begins with:</p>
+<p>For example, assuming the blockchain contains <code class="highlighter-rouge">/ipfs/QmS5EogHn2MtSBsQ4wXFEPeiA1zWPfaEbumWEJJNsUWuW2/</code>, the validation begins with:</p>
 
 <ul>
-  <li>test for the existence of <code class="highlighter-rouge">/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/proof.json</code></li>
+  <li>test for the existence of <code class="highlighter-rouge">/ipfs/QmS5EogHn2MtSBsQ4wXFEPeiA1zWPfaEbumWEJJNsUWuW2/proof.json</code></li>
   <li>if the proof.json is larger than <code class="highlighter-rouge">MAX_SIZE</code>, it is not valid. There is no need to download more than <code class="highlighter-rouge">MAX_SIZE + 1 byte</code> in this step.</li>
-  <li>test for the existence of <code class="highlighter-rouge">/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/proof.sig</code></li>
+  <li>test for the existence of <code class="highlighter-rouge">/ipfs/QmS5EogHn2MtSBsQ4wXFEPeiA1zWPfaEbumWEJJNsUWuW2/proof.sig</code></li>
   <li>if the proof.sig is larger than <code class="highlighter-rouge">MAX_SIZE</code>, it is not valid. There is no need to download more than <code class="highlighter-rouge">MAX_SIZE + 1 byte</code> in this step.</li>
 </ul>
 
@@ -568,8 +568,8 @@ RFC 2119.</p>
   <li>Each element in <code class="highlighter-rouge">hoc_head</code> list MUST contain a <code class="highlighter-rouge">network</code> attribute.</li>
   <li>The value of <code class="highlighter-rouge">network</code> attribute MUST be a valid business identifier URN per the DCP and DCL specifications.</li>
   <li>Each element in <code class="highlighter-rouge">hoc_head</code> list MUST contain an <code class="highlighter-rouge">ac_code</code> attribute.</li>
-  <li>The HOC Header MAY be published directly with its content-address (e.g. <code class="highlighter-rouge">/ipfs/QmNn2peeUaJFxnPVsFjriVxnPZKkh4y2EfRqpEHQ8EYXQr</code>).</li>
-  <li>The HOC Header MUST be published with its content-address as its name within the directory-like collection that was gazetted to the blockchain (e.g. <code class="highlighter-rouge">/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/QmNn2peeUaJFxnPVsFjriVxnPZKkh4y2EfRqpEHQ8EYXQr</code>).</li>
+  <li>The HOC Header MAY be published directly with its content-address (e.g. <code class="highlighter-rouge">/ipfs/Qmcov9Bx5SiAT281UmCQUCyGUKU2VFYYSK31XqXq8S8edu</code>).</li>
+  <li>The HOC Header MAY be published with its content-address as its name within the directory-like collection that was gazetted to the blockchain (e.g. <code class="highlighter-rouge">/ipfs/QmS5EogHn2MtSBsQ4wXFEPeiA1zWPfaEbumWEJJNsUWuW2/Qmcov9Bx5SiAT281UmCQUCyGUKU2VFYYSK31XqXq8S8edu</code>).</li>
 </ul>
 
 <p>The <code class="highlighter-rouge">ac_code</code> partially defines the protocol for accessing the record referenced in the <code class="highlighter-rouge">hoc_detail</code> attribute. The meaning of the <code class="highlighter-rouge">ac_code</code> is dependent on the <code class="highlighter-rouge">network</code>. In other words, the <code class="highlighter-rouge">ac_code</code> is interpreted in the context of the <code class="highlighter-rouge">network</code>.</p>
@@ -644,8 +644,8 @@ RFC 2119.</p>
 <p>If <code class="highlighter-rouge">ac_code</code> is 0 or 1:</p>
 
 <ul>
-  <li>If the <code class="highlighter-rouge">hoc_header</code> item <code class="highlighter-rouge">durability</code> is a future date, the content-address MUST be directly available (for example <code class="highlighter-rouge">/ipfs/QmNn2peeUaJFxnPVsFjriVxnPZKkh4y2EfRqpEHQ8EYXQr</code></li>
-  <li>If the <code class="highlighter-rouge">hoc_header</code> item <code class="highlighter-rouge">durability</code> is a future date, and the <code class="highlighter-rouge">proof.json</code> <code class="highlighter-rouge">durability</code> is also a future date, the content address MUST be available within the directory-like container of the Full HOC (for example <code class="highlighter-rouge">/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/QmNn2peeUaJFxnPVsFjriVxnPZKkh4y2EfRqpEHQ8EYXQr</code>)</li>
+  <li>If the <code class="highlighter-rouge">hoc_header</code> item <code class="highlighter-rouge">durability</code> is a future date, the content-address MUST be directly available (for example <code class="highlighter-rouge">/ipfs/Qmcov9Bx5SiAT281UmCQUCyGUKU2VFYYSK31XqXq8S8edu</code></li>
+  <li>If the <code class="highlighter-rouge">hoc_header</code> item <code class="highlighter-rouge">durability</code> is a future date, and the <code class="highlighter-rouge">proof.json</code> <code class="highlighter-rouge">durability</code> is also a future date, the content address MAY be available within the directory-like container of the Full HOC (for example <code class="highlighter-rouge">/ipfs/QmS5EogHn2MtSBsQ4wXFEPeiA1zWPfaEbumWEJJNsUWuW2/Qmcov9Bx5SiAT281UmCQUCyGUKU2VFYYSK31XqXq8S8edu</code>)</li>
 </ul>
 
 <p>If <code class="highlighter-rouge">ac_code</code> is 2 or 3:</p>

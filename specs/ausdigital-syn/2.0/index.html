@@ -149,7 +149,7 @@
 </li>
                     <li><p><img src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" alt="raw" /></p>
 </li>
-                    <li>Editor: <p><a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#115;&#116;&#101;&#118;&#101;&#110;&#046;&#099;&#097;&#112;&#101;&#108;&#108;&#064;&#103;&#111;&#115;&#111;&#117;&#114;&#099;&#101;&#046;&#099;&#111;&#109;&#046;&#097;&#117;">Steven Capell</a></p>
+                    <li>Editor: <p><a href="mailto:steven.capell@gosource.com.au">Steven Capell</a></p>
 </li>
                     <li>Contributors: 
 </li>
@@ -314,9 +314,11 @@ development at
 
 <h2 id="ccts-property-mapping">CCTS Property Mapping</h2>
 
-<p>All UBL types inherit from the UN/CEFACT Core Component Technical Specification (CCTS) set of 10 core data types. Each CCTS data type has a number of optional properties that are implemented as UBL XML element attributes - for details please refer to the <a href="https://docs.oasis-open.org/ubl/cs-UBL-2.0/xsd/common/CCTS_CCT_SchemaModule-2.0.xsd">UBL CCTS Schema Module</a>.  There are two concerns with mapping CCTS properties to JSON.
-* JSON has no equivalent of XML element attributes
-* All the CCTS attributes are optional with often overlapping definitions and little implementation guidance for allowed values.  This leads to confusion and interoperability problems. For example, 8 of the 9 attributes of the CCTS “Code” type all serve to identify different attributes of the code list scheme (listID, listAgencyID, listAgencyName, listName, listVersionID, listURI, listSchemeURI).  A single unique identifier of the code list scheme would be sufficient.</p>
+<p>All UBL types inherit from the UN/CEFACT Core Component Technical Specification (CCTS) set of 10 core data types. Each CCTS data type has a number of optional properties that are implemented as UBL XML element attributes - for details please refer to the <a href="https://docs.oasis-open.org/ubl/cs-UBL-2.0/xsd/common/CCTS_CCT_SchemaModule-2.0.xsd">UBL CCTS Schema Module</a>.  There are two concerns with mapping CCTS properties to JSON.</p>
+<ul>
+  <li>JSON has no equivalent of XML element attributes</li>
+  <li>All the CCTS attributes are optional with often overlapping definitions and little implementation guidance for allowed values.  This leads to confusion and interoperability problems. For example, 8 of the 9 attributes of the CCTS “Code” type all serve to identify different attributes of the code list scheme (listID, listAgencyID, listAgencyName, listName, listVersionID, listURI, listSchemeURI).  A single unique identifier of the code list scheme would be sufficient.</li>
+</ul>
 
 <p>In mapping UBL to JSON there is a balance to be struck between a simple mapping algorithm (leading to relatively more complex JSON) and a more complex set of mapping rules (that could deliver simpler JSON).  This specification prioritises simple JSON even at the cost of more complex mapping rules when transforming to/from UBL XML.</p>
 

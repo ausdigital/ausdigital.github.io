@@ -149,7 +149,7 @@
 </li>
                     <li><p><img src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" alt="raw" /></p>
 </li>
-                    <li>Editor: <p><a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#115;&#116;&#101;&#118;&#101;&#110;&#046;&#099;&#097;&#112;&#101;&#108;&#108;&#064;&#103;&#111;&#115;&#111;&#117;&#114;&#099;&#101;&#046;&#099;&#111;&#109;&#046;&#097;&#117;">Steven Capell</a></p>
+                    <li>Editor: <p><a href="mailto:steven.capell@gosource.com.au">Steven Capell</a></p>
 </li>
                     <li>Contributors: 
 </li>
@@ -344,19 +344,19 @@ Scenario: Check reference values
 
 <p>There are potentially two user-stories for the DCL Management API:</p>
 
-<p>Self Service
-<code class="highlighter-rouge">
-As an Australian Business
+<p>Self Service</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>As an Australian Business
 I need the ability to update my DCP specification in the DCL
 So that I have control over my own DCP provider 
-</code></p>
+</code></pre>
+</div>
 
-<p>Service Provider
-<code class="highlighter-rouge">
-As a Service Provider
+<p>Service Provider</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>As a Service Provider
 I need the ability to update my customer's DCP specification in the DCL
 So that I can configure the DCL on their behalf
-</code></p>
+</code></pre>
+</div>
 
 <p>The current AusDigital specification is in a raw status (not yet draft). Please contribute to the discussion at the <a href="https://github.com/ausdigital/ausdigital-dcl/issues/">DCL issue system</a>.</p>
 
@@ -380,69 +380,71 @@ Then I am able to update my DCP entry
 </code></pre>
 </div>
 
-<p>The current DCL reference implementation:
- * Uses an OIDC Identity Provider as a simulation of a trusted business identity provider that is loosely decoupled from the DCL and enables consent-based authorisation.
- * Assumes Australian Businesses (or providers acting on their behalf) will be able to nominate arbitrary DCPs, rather than assuming a authorised or certified list of DCPs.
- * Assumes Australian Businesses will be able to directly control their own DCL records. It does not have a restrict access to a group of Accredited Access Points</p>
+<p>The current DCL reference implementation:</p>
+<ul>
+  <li>Uses an OIDC Identity Provider as a simulation of a trusted business identity provider that is loosely decoupled from the DCL and enables consent-based authorisation.</li>
+  <li>Assumes Australian Businesses (or providers acting on their behalf) will be able to nominate arbitrary DCPs, rather than assuming a authorised or certified list of DCPs.</li>
+  <li>Assumes Australian Businesses will be able to directly control their own DCL records. It does not have a restrict access to a group of Accredited Access Points</li>
+</ul>
 
 <p>This simplified Web User Interface (Web UI) has been specified to support integration testing, and possibly as a “minimum viable product” for the self-service user-story.  It is not meant to imply that a DCL Management API is unnecessary, and the Simplified Web UI may be become redundant once a satisfactory Management API Specification has been agreed to.</p>
 
-<p>The following Simplified Web UI SPEC is proposed as an interim measure
-```
-Feature: Simplified DCP update
+<p>The following Simplified Web UI SPEC is proposed as an interim measure</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>Feature: Simplified DCP update
     As an eInvoicing participant,
     I need to update my DCP entry with the simplified DCL web interface
-    So that I can chose my DCP provider</p>
+    So that I can chose my DCP provider
 
-<p>Scenario: Log in and see the update form
+Scenario: Log in and see the update form
     Given I have ABN credentials at the DCL web interface
     When I authenticate
-    Then I see “Update DCP”
-    Then I click “Update DCP”
-    Then I see “Here you can change your DCP to any domain name.”
-    And I see “New DCP Value”</p>
+    Then I see "Update DCP"
+    Then I click "Update DCP"
+    Then I see "Here you can change your DCP to any domain name."
+    And I see "New DCP Value"
 
-<p>Scenario: Update DCP value
+Scenario: Update DCP value
     Given I have ABN credentials at the DCL web interface
     When I authenticate
-    Then I see “Update DCP”
-    Then I click “Update DCP”
-    Then I see “Here you can change your DCP to any domain name.”
-    And I see “New DCP Value”
-    Then I fill the ‘new_dcp_value’ field by ‘just.another.dcp.testpoint.io’ value
+    Then I see "Update DCP"
+    Then I click "Update DCP"
+    Then I see "Here you can change your DCP to any domain name."
+    And I see "New DCP Value"
+    Then I fill the 'new_dcp_value' field by 'just.another.dcp.testpoint.io' value
     Then I submit the form
-    And I see “Value update scheduled”</p>
+    And I see "Value update scheduled"
 
-<p>Scenario: Check the update form
+Scenario: Check the update form
     Given I have ABN credentials at the DCL web interface
     When I authenticate
-    And click the “update my DCP” button
-    Then I see the DCP update form</p>
+    And click the "update my DCP" button
+    Then I see the DCP update form
 
-<p>Scenario: Check the save button
+Scenario: Check the save button
     Given I have ABN credentials at the DCL web interface
     When I authenticate
-    And click the “update my DCP” button
+    And click the "update my DCP" button
     And I enter new value in the DCP update form
-    Then I see “save” button</p>
+    Then I see "save" button
 
-<p>Scenario: Check the confirm button
+Scenario: Check the confirm button
     Given I have ABN credentials at the DCL web interface
     When I authenticate
-    And click the “update my DCP” button
+    And click the "update my DCP" button
     And I enter new value in the DCP update form
-    And then I click the “save” button
-    Then I see the “confirm” button</p>
+    And then I click the "save" button
+    Then I see the "confirm" button
 
-<p>Scenario: Save changes to the DCP
+Scenario: Save changes to the DCP
     Given I have ABN credentials at the DCL web interface
     When I authenticate
-    And click the “update my DCP” button
+    And click the "update my DCP" button
     And I enter new value in the DCP update form
-    And then I click the “save” button
-    And I click the “confirm” button
-    Then I see “DCP updated” message
-```</p>
+    And then I click the "save" button
+    And I click the "confirm" button
+    Then I see "DCP updated" message
+</code></pre>
+</div>
 
 <h1 id="normative-examples">Normative Examples</h1>
 
