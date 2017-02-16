@@ -312,7 +312,7 @@ RFC 2119.</p>
 
 <p>The notary API is comprised of two REST/JSON resources, <code class="highlighter-rouge">/public/</code> and <code class="highlighter-rouge">/private/</code>. These work in similar ways, but have different access control rules. Separate endpoints are used (rather than a parameter) to minimise risk of accidentally publishing private objects (“poka-yolk” principle).</p>
 
-<p>Implementations  MAY be allow users to restrict client access to one or the other endpoint on a per-API token basis.</p>
+<p>Implementations MAY allow users to restrict client access to one or the other endpoint on a per-JWT Token basis.</p>
 
 <table>
   <thead>
@@ -434,19 +434,17 @@ RFC 2119.</p>
 <p>Both return a list of <code class="highlighter-rouge">doc_id</code>s that match the <code class="highlighter-rouge"><span class="p">{</span><span class="err">filter</span><span class="p">}</span></code>.</p>
 
 <ul>
-  <li>The <code class="highlighter-rouge">GET /private/?{filter}</code> form MUST use an API token issued by an <code class="highlighter-rouge">ausdigital-idp/1</code> Identity Provider.</li>
-  <li>The <code class="highlighter-rouge">GET /public/?{filter}</code> form MAY use an API token.</li>
+  <li>The <code class="highlighter-rouge">GET /private/?{filter}</code> form MUST use an JWT Token issued by an <code class="highlighter-rouge">ausdigital-idp/1</code> Identity Provider.</li>
+  <li>The <code class="highlighter-rouge">GET /public/?{filter}</code> form MAY use an JWT Token.</li>
 </ul>
 
 <p>The filter may inclued the following parameters:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">restrict_list=&lt;STR&gt;</code>, where <STR> is a comma separated list of URN business identifiers per `ausdigital-dcp/1`. This filter is applied to businesses in the restrict_list POST parameter of the objects. Where multiple URNs are provided, they are combined with logical AND. This parameter is optional, if not supplied the business identifier claim in the API Token JWT is used (meaning "restrict to message I am authorised to see")</STR></li>
+  <li><code class="highlighter-rouge">restrict_list=&lt;STR&gt;</code>, where <STR> is a comma separated list of URN business identifiers per `ausdigital-dcp/1`. This filter is applied to businesses in the restrict_list POST parameter of the objects. Where multiple URNs are provided, they are combined with logical AND. This parameter is optional, if not supplied the business identifier claim in the JWT Token JWT is used (meaning "restrict to message I am authorised to see")</STR></li>
   <li><code class="highlighter-rouge">submitted_after=&lt;STR&gt;</code>, where <STR> is an ISO 8601 datetime. Only objects after this datetime will be returned.</STR></li>
   <li><code class="highlighter-rouge">submitted_before=&lt;STR&gt;</code></li>
 </ul>
-
-<p>If the <code class="highlighter-rouge">restrict_list</code> filter is specified, but the business identifier claim in the JWT is not included in the <code class="highlighter-rouge">restrict_list</code> filter, then the API MUST return an 403 error response.</p>
 
 <h2 id="access-notarised-objects">Access Notarised Objects</h2>
 
@@ -454,7 +452,7 @@ RFC 2119.</p>
 
 <ul>
   <li>Any <code class="highlighter-rouge">doc_id</code> listed in the response from a <code class="highlighter-rouge">GET /public/?{filter}</code> query MUST be available with <code class="highlighter-rouge">GET /public/{doc_id}/</code></li>
-  <li>Any <code class="highlighter-rouge">doc_id</code> listed in the response from a <code class="highlighter-rouge">GET /private/?{filter}</code> query MUST be available with <code class="highlighter-rouge">GET /private/{doc_id}/</code>, if the same API token is used for both queries.</li>
+  <li>Any <code class="highlighter-rouge">doc_id</code> listed in the response from a <code class="highlighter-rouge">GET /private/?{filter}</code> query MUST be available with <code class="highlighter-rouge">GET /private/{doc_id}/</code>, if the same JWT Token is used for both queries.</li>
   <li>The notarised object MAY also be available via IPFS using the ipfs standalone client or any http-ipfs gateway.</li>
 </ul>
 
@@ -462,7 +460,7 @@ RFC 2119.</p>
 
 <ul>
   <li>Any <code class="highlighter-rouge">doc_id</code> listed in the response from a <code class="highlighter-rouge">GET /public/?{filter}</code> query MAY be available with <code class="highlighter-rouge">GET /public/{doc_id}/</code>, or it MAY return an HTTP 404 response.</li>
-  <li>Any <code class="highlighter-rouge">doc_id</code> listed in the response from a <code class="highlighter-rouge">GET /private/?{filter}</code> query MAY be available with <code class="highlighter-rouge">GET /private/{doc_id}/</code> (if the same API token is used for both queries), or it MAY return an HTTP 404 response.</li>
+  <li>Any <code class="highlighter-rouge">doc_id</code> listed in the response from a <code class="highlighter-rouge">GET /private/?{filter}</code> query MAY be available with <code class="highlighter-rouge">GET /private/{doc_id}/</code> (if the same JWT Token is used for both queries), or it MAY return an HTTP 404 response.</li>
   <li>The notarised object MAY also be available via IPFS using the ipfs standalone client or any http-ipfs gateway.</li>
 </ul>
 
@@ -565,12 +563,12 @@ RFC 2119.</p>
 <p>The HOC Header is processed after the HOC Proof has been validated. It is essentially an arbitrarily long list of references to HOC Detail records. It also contains metadata about access and availability of HOC Detail records.</p>
 
 <ul>
-  <li>The Full HOC (directory-like content-address, gazetted to the blockchain) MUST contain a file with a valid content-address, that is referenced by the <code class="highlighter-rouge">hoc_head</code> attribute of <code class="highlighter-rouge">proof.json</code> (the <code class="highlighter-rouge">hoc_head</code> file)</li>
+  <li>The Full HOC (or HocArchive, directory-like structure with content-address gazetted to the blockchain) MAY contain a file with a valid content-address, that is referenced by the <code class="highlighter-rouge">hoc_head</code> attribute of <code class="highlighter-rouge">proof.json</code> (the <code class="highlighter-rouge">hoc_head</code> file)</li>
   <li>The contents of the <code class="highlighter-rouge">hoc_head</code> file MUST be json that is valid per <a href="https://github.com/ausdigital/ausdigital-nry/blob/master/resources/1.0/spec/hoc_head.schema"><code class="highlighter-rouge">hoc_head.schema</code></a> JSON schema</li>
   <li><code class="highlighter-rouge">hoc_head</code> MUST contain a list of one or more elements.</li>
-  <li>Each element in <code class="highlighter-rouge">hoc_head</code> list MUST contain a <code class="highlighter-rouge">hoc_detail</code>attribute, which is a valid content-address of a file.</li>
+  <li>Each element in <code class="highlighter-rouge">hoc_head</code> list MUST contain a <code class="highlighter-rouge">hoc_detail</code> attribute, which is a valid content-address of a json file.</li>
   <li>Each element in <code class="highlighter-rouge">hoc_head</code> list MUST contain a <code class="highlighter-rouge">durability</code> attribute.</li>
-  <li>The value of <code class="highlighter-rouge">durability</code> attribute MUST be an ISO 8601 formatted string describing the DATE until which the HOC Detail is promised available.</li>
+  <li>The value of <code class="highlighter-rouge">durability</code> attribute MUST be an ISO 8601 formatted string describing the date and time with timezone until which the HOC Detail is promised available.</li>
   <li>Each element in <code class="highlighter-rouge">hoc_head</code> list MUST contain a <code class="highlighter-rouge">network</code> attribute.</li>
   <li>The value of <code class="highlighter-rouge">network</code> attribute MUST be a valid business identifier URN per the DCP and DCL specifications.</li>
   <li>Each element in <code class="highlighter-rouge">hoc_head</code> list MUST contain an <code class="highlighter-rouge">ac_code</code> attribute.</li>
@@ -642,36 +640,51 @@ RFC 2119.</p>
 <p>For each <code class="highlighter-rouge">hoc_header</code> list item:</p>
 
 <ul>
-  <li>If the <code class="highlighter-rouge">network</code> is not equal to the <code class="highlighter-rouge">proof.json</code> NOTARY, and if DCP lookup of RECORD ACCESS PROTOCOL for the <code class="highlighter-rouge">network</code> does not resolve to <code class="highlighter-rouge">ausdigital-nry/1</code>, then this specification does not describe how to validate that <code class="highlighter-rouge">hoc_detail</code> record. Refer to the appropriate protocol specification for interpretation of <code class="highlighter-rouge">ac_code</code> values in that context. Do not proceed with validating the listed HOC Header or any HOC Details it seems to refer to (even if the syntax seems identicaly compatabled with <code class="highlighter-rouge">ausdigital-nry/1</code> protocol).</li>
+  <li>If the <code class="highlighter-rouge">network</code> is not equal to the <code class="highlighter-rouge">proof.json</code> NOTARY, and if DCP lookup of <code class="highlighter-rouge">RECORD_ACCESS_PROTOCOL</code> for the <code class="highlighter-rouge">network</code> does not resolve to <code class="highlighter-rouge">ausdigital-nry/1</code>, then this specification does not describe how to validate that <code class="highlighter-rouge">hoc_detail</code> record. Refer to the appropriate protocol specification for interpretation of <code class="highlighter-rouge">ac_code</code> values in that context. Do not proceed with validating the listed HOC Header or any HOC Details it seems to refer to (even if the syntax seems identicaly compatabled with <code class="highlighter-rouge">ausdigital-nry/1</code> protocol).</li>
 </ul>
 
-<p>If the <code class="highlighter-rouge">network</code> is equal to the <code class="highlighter-rouge">proof.json</code> NOTARY, or if the DCL lookup of RECORD ACCESS PROTOCOL for the <code class="highlighter-rouge">network</code> resolves to <code class="highlighter-rouge">ausdigital-nry/1</code>, then apply the following validation rules:</p>
+<p>If the <code class="highlighter-rouge">network</code> is equal to the <code class="highlighter-rouge">proof.json</code> NOTARY, or if the DCL lookup of <code class="highlighter-rouge">RECORD_ACCESS_PROTOCOL</code> for the <code class="highlighter-rouge">network</code> resolves to <code class="highlighter-rouge">ausdigital-nry/1</code>, then apply the following validation rules:</p>
 
 <p>If <code class="highlighter-rouge">ac_code</code> is 0 or 1:</p>
 
 <ul>
-  <li>If the <code class="highlighter-rouge">hoc_header</code> item <code class="highlighter-rouge">durability</code> is a future date, the content-address MUST be directly available (for example <code class="highlighter-rouge">/ipfs/Qmcov9Bx5SiAT281UmCQUCyGUKU2VFYYSK31XqXq8S8edu</code></li>
+  <li>If the <code class="highlighter-rouge">hoc_header</code> item <code class="highlighter-rouge">durability</code> is a future date, the content-address of the <code class="highlighter-rouge">hoc_detail</code> object MUST be directly available (for example <code class="highlighter-rouge">/ipfs/Qmcov9Bx5SiAT281UmCQUCyGUKU2VFYYSK31XqXq8S8edu</code></li>
   <li>If the <code class="highlighter-rouge">hoc_header</code> item <code class="highlighter-rouge">durability</code> is a future date, and the <code class="highlighter-rouge">proof.json</code> <code class="highlighter-rouge">durability</code> is also a future date, the content address MAY be available within the directory-like container of the Full HOC (for example <code class="highlighter-rouge">/ipfs/QmS5EogHn2MtSBsQ4wXFEPeiA1zWPfaEbumWEJJNsUWuW2/Qmcov9Bx5SiAT281UmCQUCyGUKU2VFYYSK31XqXq8S8edu</code>)</li>
 </ul>
 
 <p>If <code class="highlighter-rouge">ac_code</code> is 2 or 3:</p>
 
 <ul>
-  <li>If the <code class="highlighter-rouge">hoc_header</code> item <code class="highlighter-rouge">durability</code> is a future date, and the API Token has valid identity claim, the content-address MAY be available via the notary API (<code class="highlighter-rouge">GET /private/{content_address}</code>).</li>
-  <li>If the <code class="highlighter-rouge">hoc_header</code> item <code class="highlighter-rouge">durability</code> is a future date, and the API Token has valid identity claim, and the API Token identity claim matches the <code class="highlighter-rouge">proof.json</code> NOTARY, the content-address MUST be available via the notary API (<code class="highlighter-rouge">GET /private/{content_address}/</code>).
+  <li>If the <code class="highlighter-rouge">hoc_header</code> item <code class="highlighter-rouge">durability</code> is a future date, and the JWT Token has valid identity claim, the content-address MAY be available via the notary API (<code class="highlighter-rouge">GET /private/{content_address}</code>).</li>
+  <li>If the <code class="highlighter-rouge">hoc_header</code> item <code class="highlighter-rouge">durability</code> is a future date, and the JWT Token has valid identity claim, and the JWT Token identity claim matches the <code class="highlighter-rouge">proof.json</code> NOTARY, the content-address MUST be available via the notary API (<code class="highlighter-rouge">GET /private/{content_address}/</code>).
  To the business identity of the <code class="highlighter-rouge">network</code>, the content-address MUST be available via the notary API (<code class="highlighter-rouge">GET /private/{content_address}</code>).</li>
 </ul>
 
-<p>When notarised objects are submitted to the notary API with <code class="highlighter-rouge">ac_code</code> 1, 2 or 3 (e.g. <code class="highlighter-rouge">POST {object+params} /private/</code>), the <code class="highlighter-rouge">restrict_list</code> parameter contains a list of business identifiers permitted to access the object. This restrict_list lists the business identifiers of all parties with rights to access the record.</p>
+<p>When notarised objects are submitted to the notary API with <code class="highlighter-rouge">ac_code</code> referring to private objects (see table) (e.g. <code class="highlighter-rouge">POST {object+params} /private/</code>), the <code class="highlighter-rouge">restrict_list</code> parameter contains a list of business identifiers permitted to access the object. This restrict_list lists the business identifiers of all parties with rights to access the record.</p>
 
-<p>When notarised objects are submitted to the notary API with <code class="highlighter-rouge">ac_code</code> 1, the <code class="highlighter-rouge">restrict_list</code> attribute only applies to the notarised object. When notarised objects are submitted to the notary API with <code class="highlighter-rouge">ac_code</code> 2 or 3, the <code class="highlighter-rouge">restrict_list</code> parameter MUST be applied to both the <code class="highlighter-rouge">hoc_detail</code> and the notarised object. This means:</p>
+<p><code class="highlighter-rouge">restrict_list</code> only applies to private objects (see ac_code table above).</p>
+
+<p>If object is public (object - HocDetail or notarized document itself):</p>
 
 <ul>
-  <li>If the <code class="highlighter-rouge">hoc_header</code> item <code class="highlighter-rouge">durability</code> is a future date, and the API Token has valid identity claim, and the API Token identity claim matches one of the identities in the records <code class="highlighter-rouge">restrict_list</code>, and the <code class="highlighter-rouge">ac_code</code> is 3, then the <code class="highlighter-rouge">hoc_detail</code> content-address MUST be available via the notary API (<code class="highlighter-rouge">GET /private/{content_address}/</code>)</li>
-  <li>If the <code class="highlighter-rouge">hoc_header</code> item <code class="highlighter-rouge">durability</code> is a future date, and the API Token has valid identity claim, and the <code class="highlighter-rouge">ac_code</code> is 1, 2 or 3; then the <code class="highlighter-rouge">hoc_detail</code> content-address MUST be available via the notary API (<code class="highlighter-rouge">GET /public/{content_address}/</code>)</li>
-  <li><strong>TODO</strong>: cross reference API spec (request notarisation on the API)</li>
-  <li><strong>TODO</strong>: ensure API spec includes <code class="highlighter-rouge">ac_code</code> parameter (validate if /private/ <code class="highlighter-rouge">ac_code</code> in (2,3), if /public/ <code class="highlighter-rouge">ac_code</code> in (0,1), if <code class="highlighter-rouge">ac_code==0</code> <code class="highlighter-rouge">restrict_list</code> empty (no restrictions), if <code class="highlighter-rouge">ac_code!=0</code> <code class="highlighter-rouge">restrict_list</code> must not be empty).</li>
+  <li>item MUST be available as /public/{content_address}/ before durability date</li>
+  <li>item MAY be available as /public/{content_address}/ after durability date</li>
 </ul>
+
+<p>If object is private:</p>
+
+<ul>
+  <li>item MUST be available only to client with valid JWT token with valid identity claim and this identity claim can be found in target object restrict_list</li>
+  <li>item MUST NOT be available for any other client</li>
+  <li>item MUST be available as /private/{content_address}/ before durability date for users who can see it</li>
+  <li>item MAY be available as /private/{content_address}/ after durability date for users who can see it</li>
+  <li>item MUST NOT be available as /public/{content_address}/ for any user</li>
+  <li>item MUST NOT be published to public IPFS or any other network by this notarizer (3rd party still can do it if it has access to it)</li>
+</ul>
+
+<p><strong>TODO</strong>: cross reference API spec (request notarisation on the API)</p>
+
+<p><strong>TODO</strong>: ensure API spec includes <code class="highlighter-rouge">ac_code</code> parameter (validate if /private/ <code class="highlighter-rouge">ac_code</code> in (2,3), if /public/ <code class="highlighter-rouge">ac_code</code> in (0,1), if <code class="highlighter-rouge">ac_code==0</code> <code class="highlighter-rouge">restrict_list</code> empty (no restrictions), if <code class="highlighter-rouge">ac_code!=0</code> <code class="highlighter-rouge">restrict_list</code> must not be empty).</p>
 
 <h3 id="notary-reputation">Notary Reputation</h3>
 
@@ -704,16 +717,16 @@ RFC 2119.</p>
 <ul>
   <li>MUST contain a <code class="highlighter-rouge">durability</code> attribute, which contains an ISO 8601 formatted date string.</li>
   <li>The <code class="highlighter-rouge">durability</code> date MUST NOT be less than one month ahead of the <code class="highlighter-rouge">proof.json</code> SIG_DATE attribute.</li>
-  <li>The <code class="highlighter-rouge">durability</code> date MUST NOT be less than the corresponding <code class="highlighter-rouge">hoc_header</code> durability date.</li>
+  <li>The <code class="highlighter-rouge">durability</code> date MUST NOT be more than the corresponding <code class="highlighter-rouge">hoc_header</code> durability date.</li>
   <li>MUST contain an <code class="highlighter-rouge">object</code> attribute, which contains a content-address of some notarised object.</li>
 </ul>
 
 <p>The elements in the HOC Detail inherits an <code class="highlighter-rouge">ac_code</code> and <code class="highlighter-rouge">network</code> from the reference to the HOC Detail in the HOC Header.</p>
 
-<ul>
-  <li>If the inherited <code class="highlighter-rouge">ac_code</code> is “0”, and <code class="highlighter-rouge">proof.json</code> NOTARY identifies the same business as the inherited <code class="highlighter-rouge">network</code>, and the listed <code class="highlighter-rouge">durability</code> date is in the future, then the <code class="highlighter-rouge">object</code> this HOC Detail must be available through the API (e.g. <code class="highlighter-rouge">GET /public/{content_address}</code>)</li>
-  <li>If the inherited <code class="highlighter-rouge">ac_code</code> is “1”, “2” or “3”; and <code class="highlighter-rouge">proof.json</code> NOTARY identifies the same business as the inherited <code class="highlighter-rouge">network</code>, and the listed <code class="highlighter-rouge">durability</code> date is in the future, and the API Token has a valid identity claim, and the identity in the API token identifies a business in the restrict_list of the object, then the <code class="highlighter-rouge">object</code> this HOC Detail MUST be available through the API (e.g. <code class="highlighter-rouge">GET /private/{content_address}</code>)</li>
-</ul>
+<p>If the <code class="highlighter-rouge">ac_code</code> says that notarized object public then notarized object MUST be available as <code class="highlighter-rouge">/public/{content_address}</code>
+If the <code class="highlighter-rouge">ac_code</code> says that notarized object private then notarized object MUST be available as <code class="highlighter-rouge">/private/{content_address}</code> to capable users (see “Validating HOC Header” section for details about private/public objects).</p>
+
+<p>Same is applicable for HocDetail object.</p>
 
 <p># Related Material</p>
 
