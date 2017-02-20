@@ -151,7 +151,7 @@
 </li>
                     <li>Editor: <p><a href="mailto:christopher.d.gough@gmail.com">Chris Gough</a></p>
 </li>
-                    <li>Contributors: 
+                    <li>Contributors: <p><a href="mailto:korotaev@arkadiy.net">Arkadiy Korotaev</a></p>
 </li>
                 </ul>
             </div>
@@ -726,26 +726,8 @@ If not supplied the business identifier claim in the JWT Token JWT is used (mean
 <p>For any object:</p>
 
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>item MUST be available as /public</td>
-          <td>private/{content_address} before durability date</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>item MAY be available as /public</td>
-          <td>private/{content_address} after durability date</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>item MUST be available as <code class="highlighter-rouge">/public|private/{content_address}</code> before durability date</li>
+  <li>item MAY be available as <code class="highlighter-rouge">/public|private/{content_address}</code> after durability date</li>
 </ul>
 
 <p>If object is private:</p>
@@ -824,8 +806,7 @@ Every element in the HOC Detail list MUST reference either individual notarized 
 
 <p>Example of HOC Detail, which references objects and nested Hoc Details:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>```
-[
+<div class="highlighter-rouge"><pre class="highlight"><code>[
   {
       "object": "QmNotarizedObject001ContentAddress",
       "durability": "2018-03-10T00:00:00+00:00"
@@ -840,7 +821,6 @@ Every element in the HOC Detail list MUST reference either individual notarized 
   },
   ....
 ]
-```
 </code></pre>
 </div>
 
