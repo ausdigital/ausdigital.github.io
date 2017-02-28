@@ -426,16 +426,6 @@ and service endpoint addresses.</p>
 
 <h4 id="note-about-published-keys">Note about published keys</h4>
 
-<p>(this should actually be in the DCP spec)</p>
-
-<p>Under RFC4880, exported public keys (such as <code class="highlighter-rouge">recipient.gpg</code> file above) MAY contain notation data pertaining to the owner of the keypair (TAP endpoint). This notation data contains a registered IETF namespace and a user namespace. The user namespace resembles an email address with a string, then the “@” character, and then a DNS name. When keys are used to represent individuals, this identifying information is usually name and email address.</p>
-
-<p>Public Keys issues in the DCP MUST have a user namespace identifier that is unique to the published endpoint. The dns part of the user namespace is the DNS address of the DCP (and also the NAPTR record of the business discoverable via DCL). The string on the left of the “@” character should be a SHA256 hash of the endpoint URL, exactly as it is published in the DCP.</p>
-
-<p>This user namespace identifier of the public key is used to access the key from a keyring.</p>
-
-<p>(end of note about public keys)</p>
-
 <p>Once the recipient’s key has been added to the sender’s keyring, and assuming the current working directory contains a signed document <code class="highlighter-rouge">signed_doc.txt</code>, and the user namespace identifier of the recipient public key is <code class="highlighter-rouge">91f68ffafa1288ad55cb3e61e937870fb5598cc098e125fe29412ab3047f15e1@smp.testpoint.io</code> then cyphertext of signed business document can be created with:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>gpg2 --armour \
