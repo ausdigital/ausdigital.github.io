@@ -22,4 +22,5 @@ Known implementations (open source or otherwise) are listed here.  Please modify
 |Provider|Implementation URL|Comments|
 |--------|------------------|--------|
 |[testpoint.io](http://testpoint.io/) | [dcp testpoint](http://testpoint.io/dcp)| Free dcp service and open source implementation|
+|[Philip Helger](https://github.com/phax) | [phoss SMP](https://github.com/phax/peppol-smp-server)| Java based OSS solution (Apache2) that can be [configured](https://github.com/phax/peppol-smp-server/wiki/AusDigital-DCP) to run as DCP |
 |  |  |  |
