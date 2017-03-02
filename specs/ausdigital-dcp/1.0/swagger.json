@@ -1,0 +1,463 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Digital Capability Publisher (DCP) interface specification",
+    "description": "The \"Digital Capability Publisher\" (DCP) provides the ability to discover detailed service information and associated digital certificates for any known business identifier. \n\nPlease mind the test installation and ensure data validity - some of such installations have data like in production, with real businesses, but this data is not guaranteed to be valid and may be changed in development purposes; do not rely on data from specific hostname to real-world production installation until service owners specifically said it's true and valid. For example, any *.testpoint.io installations have the test data and can't be used in production.\n\nThis API specification should be valid for all supporting installations and implementations.\n\nIf you want OASIS XML output:\n* pass Accept header with 'application/xml' or 'text/xml' value\n* pass ?format=xml as GET query parameter\n\nOASIS-compliant urls also supported (but it is strongy recommended to implement json, just because JSON is more flexible and contains more information). Examples:\n\n* https://dcp.testpoint.io/urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::22341388307?format=xml\n* https://dcp.testpoint.io/urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::22341388307/service/dbc::invoice?format=xml\n  \nPlease note that JSON format differs from specification XML and has more data in it.\n\nIf you want to do any authenticated test requests then it's better to use CURL, not Swaggerhub website.\n"
+  },
+  "host": "dcp.testpoint.io",
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/",
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "oauth2",
+      "authorizationUrl": "http://idp.testpoint.io/authorize",
+      "flow": "implicit",
+      "description": "Bearer token value and raw JWT token may be found on /security/integration/"
+    },
+    "Apikey": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization: ApiKey",
+      "description": "Api token from /security/integration/ page"
+    }
+  },
+  "produces": [
+    "application/json",
+    "application/xml",
+    "text/html",
+    "text/xml"
+  ],
+  "parameters": {
+    "participantIdUrlParameter": {
+      "name": "participant_id",
+      "in": "path",
+      "description": "The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.",
+      "required": true,
+      "type": "string",
+      "default": "urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::22341388307"
+    },
+    "documentIdUrlParameter": {
+      "name": "document_id",
+      "in": "path",
+      "description": "Represents the type of document that the recipient is able to receive. The document is represented by an identifier (identifying the document type) and an identifier scheme, which the format of the identifier itself.",
+      "required": true,
+      "type": "string",
+      "default": "dbc::invoice"
+    },
+    "acceptHeader": {
+      "name": "Accept",
+      "in": "header",
+      "description": "accept header",
+      "required": false,
+      "type": "string",
+      "default": "application/json",
+      "enum": [
+        "application/json",
+        "application/xml",
+        "text/html",
+        "text/xml"
+      ]
+    },
+    "contentTypeHeader": {
+      "name": "Content-Type",
+      "in": "header",
+      "description": "content type header",
+      "required": true,
+      "type": "string",
+      "default": "application/json",
+      "enum": [
+        "application/json",
+        "application/xml",
+        "text/html",
+        "text/xml"
+      ]
+    }
+  },
+  "responses": {
+    "201": {
+      "description": "The request has been fulfilled and has resulted in one or more new resources being created.",
+      "headers": {
+        "location": {
+          "type": "string",
+          "description": "The location of the created resource. Should match the resource location used to create it."
+        },
+        "date": {
+          "type": "string",
+          "description": "The date and time that the message was originated."
+        }
+      }
+    },
+    "204-create": {
+      "description": "The resource already existed and nothing happened if the body was empty. If the body was not empty and the participant identifier matched the UR, the resource is updated.",
+      "headers": {
+        "date": {
+          "type": "string",
+          "description": "The date and time that the message was originated."
+        }
+      }
+    },
+    "204-delete": {
+      "description": "The resource has been removed.",
+      "headers": {
+        "date": {
+          "type": "string",
+          "description": "The date and time that the message was originated."
+        }
+      }
+    },
+    "400": {
+      "description": "The server cannot or will not process the request due to something that is perceived to be a client error."
+    },
+    "403": {
+      "description": "The server understood the request, but is refusing to fulfill it. Return this if there is a problem with the client certificate."
+    },
+    "404": {
+      "description": "The origin server did not find a current representation of the target resource or is not willing to disclose that one exists."
+    },
+    "406": {
+      "description": "The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to the accept headers sent in the request."
+    },
+    "500": {
+      "description": "Internal server error; no action required; may help to retry request later or contact support."
+    }
+  },
+  "paths": {
+    "/{participant_id}": {
+      "get": {
+        "tags": [
+          "service group"
+        ],
+        "summary": "Sevice Group Info",
+        "description": "Get Sevice Group Info",
+        "operationId": "getServiceGroup",
+        "parameters": [
+          {
+            "$ref": "#/parameters/participantIdUrlParameter"
+          },
+          {
+            "$ref": "#/parameters/acceptHeader"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Participant Information",
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/serviceGroup"
+            }
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "service group"
+        ],
+        "summary": "Create/Update Sevice Group Info",
+        "description": "Create/Update Sevice Group Info",
+        "operationId": "createServiceGroup",
+        "parameters": [
+          {
+            "$ref": "#/parameters/participantIdUrlParameter"
+          },
+          {
+            "$ref": "#/parameters/contentTypeHeader"
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/responses/201"
+          },
+          "204": {
+            "$ref": "#/responses/204-create"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "403": {
+            "$ref": "#/responses/403"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "service group"
+        ],
+        "summary": "Delete Sevice Group Info",
+        "description": "Delete Sevice Group Info",
+        "operationId": "deleteServiceGroup",
+        "parameters": [
+          {
+            "$ref": "#/parameters/participantIdUrlParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204-delete"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "403": {
+            "$ref": "#/responses/403"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      }
+    },
+    "/{participant_id}/service/{document_id}": {
+      "get": {
+        "tags": [
+          "service metadata"
+        ],
+        "summary": "Service Metadata",
+        "description": "Get Signed Service Metadata",
+        "operationId": "getSignedServiceMetadata",
+        "parameters": [
+          {
+            "$ref": "#/parameters/participantIdUrlParameter"
+          },
+          {
+            "$ref": "#/parameters/documentIdUrlParameter"
+          },
+          {
+            "$ref": "#/parameters/acceptHeader"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Service Metadata Information",
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/serviceMetadata"
+            }
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "406": {
+            "$ref": "#/responses/406"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "service metadata"
+        ],
+        "summary": "Create/Update Sevice Metadata",
+        "description": "Create/Update Sevice Metadata",
+        "operationId": "createServiceMetadata",
+        "parameters": [
+          {
+            "$ref": "#/parameters/participantIdUrlParameter"
+          },
+          {
+            "$ref": "#/parameters/documentIdUrlParameter"
+          },
+          {
+            "$ref": "#/parameters/contentTypeHeader"
+          }
+        ],
+        "responses": {
+          "201": {
+            "$ref": "#/responses/201"
+          },
+          "204": {
+            "$ref": "#/responses/204-create"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "403": {
+            "$ref": "#/responses/403"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "service metadata"
+        ],
+        "summary": "Delete Sevice Group Info",
+        "description": "Delete Sevice Group Info",
+        "operationId": "deleteServiceMetadata",
+        "parameters": [
+          {
+            "$ref": "#/parameters/participantIdUrlParameter"
+          },
+          {
+            "$ref": "#/parameters/documentIdUrlParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204-delete"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "403": {
+            "$ref": "#/responses/403"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "serviceGroup": {
+      "properties": {
+        "serviceMetadataReferenceCollection": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "extension": {
+          "type": "object"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "serviceMetadata": {
+      "required": [
+        "participantIdentifier"
+      ],
+      "properties": {
+        "participantIdentifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/participantIdentifier"
+          }
+        },
+        "documentIdentifier": {
+          "$ref": "#/definitions/documentIdentifier"
+        },
+        "processList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/process"
+          }
+        }
+      }
+    },
+    "process": {
+      "properties": {
+        "processIdentifier": {
+          "$ref": "#/definitions/processIdentifier"
+        },
+        "serviceEndpointList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/serviceEndpoint"
+          }
+        }
+      }
+    },
+    "serviceEndpoint": {
+      "properties": {
+        "transportProfile": {
+          "type": "string"
+        },
+        "endpointURI": {
+          "type": "string"
+        },
+        "requireBusinessLevelSignature": {
+          "type": "string"
+        },
+        "minimumAuthenticationLevel": {
+          "type": "number"
+        },
+        "certificate": {
+          "type": "string"
+        },
+        "serviceDescription": {
+          "type": "string"
+        },
+        "technicalInformationUrl": {
+          "type": "string"
+        },
+        "serviceActivationDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "serviceExpirationDate": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "processIdentifier": {
+      "properties": {
+        "scheme": {
+          "type": "string",
+          "description": "The scheme of the identifier"
+        },
+        "value": {
+          "type": "string",
+          "description": "The unique ID within the scheme"
+        }
+      }
+    },
+    "documentIdentifier": {
+      "properties": {
+        "scheme": {
+          "type": "string",
+          "description": "The scheme of the identifier"
+        },
+        "value": {
+          "type": "string",
+          "description": "The unique ID within the scheme"
+        }
+      }
+    },
+    "participantIdentifier": {
+      "properties": {
+        "scheme": {
+          "type": "string",
+          "description": "The scheme of the identifier"
+        },
+        "value": {
+          "type": "string",
+          "description": "The unique ID within the scheme"
+        }
+      }
+    }
+  }
+}
