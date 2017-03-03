@@ -1,0 +1,9 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Ledger Access Point (LAP) protocol interfaces",
+    "description" : "The \"Ledger Access Point\" (LAP) specification defines a standard protocol for RESTful exchange of e-business documents between ledger systems"
+  },
+  "paths" : { }
+}
