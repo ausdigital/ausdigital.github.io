@@ -1,0 +1,367 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "APIs for validation of the various billing documents (invoice, credit note, ..)",
+    "version" : "1.0",
+    "title" : "Billing document validation API"
+  },
+  "host" : "api.e-invoice.com",
+  "basePath" : "/validator",
+  "paths" : {
+    "/invoice" : {
+      "post" : {
+        "summary" : "Validate an invoice",
+        "description" : "Validate an invoice",
+        "operationId" : "validate",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "invoice",
+          "description" : "invoice to be sent",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Invoice"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          },
+          "403" : {
+            "description" : "Forbidden Error"
+          },
+          "500" : {
+            "description" : "Any appropriate HTTP server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Invoice" : {
+      "required" : [ "BuyerReference", "DueDate", "InvoiceTypeCode", "IssueDate", "OrderReference" ],
+      "properties" : {
+        "IssueDate" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "DueDate" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "InvoiceTypeCode" : {
+          "type" : "string"
+        },
+        "Note" : {
+          "type" : "string"
+        },
+        "DocumentCurrencyCode" : {
+          "type" : "string"
+        },
+        "BuyerReference" : {
+          "type" : "string"
+        },
+        "OrderReference" : {
+          "$ref" : "#/definitions/ID"
+        },
+        "AccountingSupplierParty" : {
+          "$ref" : "#/definitions/Suppier Party"
+        },
+        "AccountingCustomerParty" : {
+          "$ref" : "#/definitions/Buyer Party"
+        },
+        "Delivery" : {
+          "$ref" : "#/definitions/Delivery Details"
+        },
+        "PaymentMeans" : {
+          "$ref" : "#/definitions/Playment"
+        },
+        "TaxTotal" : {
+          "$ref" : "#/definitions/TaxAmount"
+        },
+        "LegalMonetaryTotal" : {
+          "$ref" : "#/definitions/LegalMonetaryTotal"
+        },
+        "InvoiceLine" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/InvoiceLine"
+          }
+        }
+      },
+      "title" : "NewInvoice"
+    },
+    "InvoiceLine" : {
+      "properties" : {
+        "ID" : {
+          "type" : "string"
+        },
+        "Note" : {
+          "type" : "string"
+        },
+        "InvoicedQuantity" : {
+          "type" : "string",
+          "format" : "integer"
+        },
+        "LineExtensionAmount" : {
+          "$ref" : "#/definitions/Currency"
+        },
+        "TaxTotal" : {
+          "$ref" : "#/definitions/TaxTotal"
+        },
+        "Item" : {
+          "$ref" : "#/definitions/Item Identification"
+        },
+        "Price" : {
+          "$ref" : "#/definitions/Item Price"
+        }
+      },
+      "title" : "InvoiceLine"
+    },
+    "Currency" : {
+      "required" : [ "currency", "value" ],
+      "properties" : {
+        "currency" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      },
+      "title" : "Currency"
+    },
+    "Party" : {
+      "required" : [ "PartyIdentification", "PartyName" ],
+      "properties" : {
+        "PartyIdentification" : {
+          "$ref" : "#/definitions/ID"
+        },
+        "PartyName" : {
+          "$ref" : "#/definitions/Name"
+        },
+        "PostalAddress" : {
+          "$ref" : "#/definitions/Address"
+        },
+        "PartyLegalEntity" : {
+          "$ref" : "#/definitions/CompanyID"
+        }
+      },
+      "title" : "Party Details"
+    },
+    "Contact" : {
+      "properties" : {
+        "ID" : {
+          "type" : "string"
+        },
+        "Telephone" : {
+          "type" : "string"
+        },
+        "ElectronicMail" : {
+          "type" : "string"
+        }
+      },
+      "title" : "Contact"
+    },
+    "CompanyID" : {
+      "required" : [ "CompanyID" ],
+      "properties" : {
+        "CompanyID" : {
+          "type" : "string"
+        }
+      },
+      "title" : "Company ID"
+    },
+    "Address" : {
+      "properties" : {
+        "CityName" : {
+          "type" : "string"
+        },
+        "PostalZone" : {
+          "type" : "string"
+        },
+        "CountrySubentity" : {
+          "type" : "string"
+        },
+        "AddressLine" : {
+          "$ref" : "#/definitions/AddressLine"
+        },
+        "Country" : {
+          "$ref" : "#/definitions/Country"
+        }
+      },
+      "title" : "Address"
+    },
+    "Country" : {
+      "properties" : {
+        "IdentificationCode" : {
+          "type" : "string",
+          "description" : "Country Code"
+        }
+      },
+      "title" : "Country"
+    },
+    "AddressLine" : {
+      "properties" : {
+        "Line" : {
+          "type" : "string"
+        }
+      },
+      "title" : "Address Line"
+    },
+    "Name" : {
+      "required" : [ "Name" ],
+      "properties" : {
+        "Name" : {
+          "type" : "string"
+        }
+      },
+      "title" : "Name"
+    },
+    "ID" : {
+      "required" : [ "ID" ],
+      "properties" : {
+        "ID" : {
+          "type" : "string"
+        }
+      },
+      "title" : "Identification GUID"
+    },
+    "Suppier Party" : {
+      "properties" : {
+        "Party" : {
+          "$ref" : "#/definitions/Party"
+        }
+      }
+    },
+    "Buyer Party" : {
+      "properties" : {
+        "Party" : {
+          "$ref" : "#/definitions/Party"
+        },
+        "BuyerContact" : {
+          "$ref" : "#/definitions/Contact"
+        }
+      }
+    },
+    "Delivery Details" : {
+      "properties" : {
+        "ActualDeliveryDate" : {
+          "type" : "string"
+        },
+        "DeliveryAddress" : {
+          "$ref" : "#/definitions/Address"
+        }
+      }
+    },
+    "FinancialInstitutionBranch" : {
+      "properties" : {
+        "ID" : {
+          "type" : "string"
+        },
+        "Name" : {
+          "type" : "string"
+        }
+      }
+    },
+    "PayeeFinancialAccount" : {
+      "properties" : {
+        "FinancialInstitutionBranch" : {
+          "$ref" : "#/definitions/FinancialInstitutionBranch"
+        },
+        "ID" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Playment" : {
+      "properties" : {
+        "PayeeFinancialAccount" : {
+          "$ref" : "#/definitions/PayeeFinancialAccount"
+        },
+        "InstructionID" : {
+          "type" : "string"
+        },
+        "ID" : {
+          "type" : "string"
+        },
+        "PaymentMeansCode" : {
+          "type" : "string"
+        }
+      }
+    },
+    "TaxAmount" : {
+      "required" : [ "TaxAmount" ],
+      "properties" : {
+        "TaxAmount" : {
+          "$ref" : "#/definitions/Currency"
+        }
+      }
+    },
+    "LegalMonetaryTotal" : {
+      "properties" : {
+        "TaxInclusiveAmount" : {
+          "$ref" : "#/definitions/Currency"
+        },
+        "LineExtensionAmount" : {
+          "$ref" : "#/definitions/Currency"
+        },
+        "TaxExclusiveAmount" : {
+          "$ref" : "#/definitions/Currency"
+        },
+        "PayableAmount" : {
+          "$ref" : "#/definitions/Currency"
+        }
+      }
+    },
+    "TaxCategory" : {
+      "properties" : {
+        "TaxScheme" : {
+          "$ref" : "#/definitions/ID"
+        }
+      }
+    },
+    "TaxSubtotal" : {
+      "properties" : {
+        "TaxAmount" : {
+          "$ref" : "#/definitions/Currency"
+        },
+        "TaxCategory" : {
+          "$ref" : "#/definitions/TaxCategory"
+        }
+      }
+    },
+    "TaxTotal" : {
+      "properties" : {
+        "TaxSubtotal" : {
+          "$ref" : "#/definitions/TaxSubtotal"
+        },
+        "TaxAmount" : {
+          "$ref" : "#/definitions/Currency"
+        }
+      }
+    },
+    "Item Identification" : {
+      "properties" : {
+        "Description" : {
+          "type" : "string"
+        },
+        "SellersItemIdentification" : {
+          "$ref" : "#/definitions/ID"
+        },
+        "StandardItemIdentification" : {
+          "$ref" : "#/definitions/ID"
+        }
+      }
+    },
+    "Item Price" : {
+      "properties" : {
+        "PriceAmount" : {
+          "$ref" : "#/definitions/Currency"
+        },
+        "BaseQuantity" : {
+          "type" : "string",
+          "format" : "integer"
+        }
+      }
+    }
+  }
+}
