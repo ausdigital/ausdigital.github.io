@@ -16,7 +16,12 @@
       "name": "Authorization"
     }
   },
-  "produces": ["application/json", "application/xml", "text/html", "text/xml"],
+  "produces": [
+    "application/json",
+    "application/xml",
+    "text/html",
+    "text/xml"
+  ],
   "parameters": {
     "fingerprintParameter": {
       "name": "fingerprint",
@@ -49,7 +54,12 @@
       "required": false,
       "type": "string",
       "default": "application/json",
-      "enum": ["application/json", "application/xml", "text/html", "text/xml"]
+      "enum": [
+        "application/json",
+        "application/xml",
+        "text/html",
+        "text/xml"
+      ]
     },
     "contentTypeHeader": {
       "name": "Content-Type",
@@ -58,7 +68,30 @@
       "required": true,
       "type": "string",
       "default": "application/json",
-      "enum": ["application/json", "application/xml", "text/html", "text/xml"]
+      "enum": [
+        "application/json",
+        "application/xml",
+        "text/html",
+        "text/xml"
+      ]
+    },
+    "notRevokedBefore": {
+      "name": "notRevokedBefore",
+      "in": "query",
+      "description": "Filter parameter for keys never revoked or revoked lately than given time (in ISO 8601 format)",
+      "required": false,
+      "type": "string",
+      "format": "date-time",
+      "default": "2017-03-02T00:00:00.00000000:00"
+    },
+    "published_before": {
+      "name": "published_before",
+      "in": "query",
+      "description": "Filter parameter for keys published before given time (in ISO 8601 format)",
+      "required": false,
+      "type": "string",
+      "format": "date-time",
+      "default": "2017-03-03T00:00:00.000000+00:00"
     }
   },
   "responses": {
@@ -181,13 +214,17 @@
   "paths": {
     "/{participant_id}": {
       "get": {
-        "tags": ["service group"],
+        "tags": [
+          "service group"
+        ],
         "summary": "Service Group Info",
         "description": "Get Service Group Info",
         "operationId": "getServiceGroup",
-        "parameters": [{
+        "parameters": [
+          {
             "$ref": "#/parameters/participantIdUrlParameter"
-          }, {
+          },
+          {
             "$ref": "#/parameters/acceptHeader"
           }
         ],
@@ -212,13 +249,17 @@
         }
       },
       "put": {
-        "tags": ["service group"],
+        "tags": [
+          "service group"
+        ],
         "summary": "Create/Update Service Group Info",
         "description": "Create/Update Service Group Info",
         "operationId": "createServiceGroup",
-        "parameters": [{
+        "parameters": [
+          {
             "$ref": "#/parameters/participantIdUrlParameter"
-          }, {
+          },
+          {
             "$ref": "#/parameters/contentTypeHeader"
           }
         ],
@@ -241,11 +282,14 @@
         }
       },
       "delete": {
-        "tags": ["service group"],
+        "tags": [
+          "service group"
+        ],
         "summary": "Delete Service Group Info",
         "description": "Delete Service Group Info",
         "operationId": "deleteServiceGroup",
-        "parameters": [{
+        "parameters": [
+          {
             "$ref": "#/parameters/participantIdUrlParameter"
           }
         ],
@@ -270,15 +314,20 @@
     },
     "/{participant_id}/service/{document_id}": {
       "get": {
-        "tags": ["service metadata"],
+        "tags": [
+          "service metadata"
+        ],
         "summary": "Service Metadata",
         "description": "Get Signed Service Metadata",
         "operationId": "getSignedServiceMetadata",
-        "parameters": [{
+        "parameters": [
+          {
             "$ref": "#/parameters/participantIdUrlParameter"
-          }, {
+          },
+          {
             "$ref": "#/parameters/documentIdUrlParameter"
-          }, {
+          },
+          {
             "$ref": "#/parameters/acceptHeader"
           }
         ],
@@ -306,15 +355,20 @@
         }
       },
       "put": {
-        "tags": ["service metadata"],
+        "tags": [
+          "service metadata"
+        ],
         "summary": "Create/Update Service Metadata",
         "description": "Create/Update Service Metadata",
         "operationId": "createServiceMetadata",
-        "parameters": [{
+        "parameters": [
+          {
             "$ref": "#/parameters/participantIdUrlParameter"
-          }, {
+          },
+          {
             "$ref": "#/parameters/documentIdUrlParameter"
-          }, {
+          },
+          {
             "$ref": "#/parameters/contentTypeHeader"
           }
         ],
@@ -337,13 +391,17 @@
         }
       },
       "delete": {
-        "tags": ["service metadata"],
+        "tags": [
+          "service metadata"
+        ],
         "summary": "Delete Service Group Info",
         "description": "Delete Service Group Info",
         "operationId": "deleteServiceMetadata",
-        "parameters": [{
+        "parameters": [
+          {
             "$ref": "#/parameters/participantIdUrlParameter"
-          }, {
+          },
+          {
             "$ref": "#/parameters/documentIdUrlParameter"
           }
         ],
@@ -368,12 +426,21 @@
     },
     "/{participant_id}/keys/": {
       "get": {
-        "tags": ["keys"],
+        "tags": [
+          "keys"
+        ],
         "summary": "Get keys information",
         "description": "Returns information about keys for particular business",
         "operationId": "getKeysInfo",
-        "parameters": [{
+        "parameters": [
+          {
             "$ref": "#/parameters/participantIdUrlParameter"
+          },
+          {
+            "$ref": "#/parameters/notRevokedBefore"
+          },
+          {
+            "$ref": "#/parameters/published_before"
           }
         ],
         "responses": {
@@ -388,6 +455,9 @@
               "$ref": "#/definitions/keyDetailList"
             }
           },
+          "400": {
+            "$ref": "#/responses/400"
+          },
           "404": {
             "$ref": "#/responses/404"
           },
@@ -397,12 +467,16 @@
         }
       },
       "post": {
-        "tags": ["keys"],
+        "tags": [
+          "keys"
+        ],
         "summary": "Create keys for business",
         "operationId": "createKeysInfo",
-        "parameters": [{
+        "parameters": [
+          {
             "$ref": "#/parameters/participantIdUrlParameter"
-          }, {
+          },
+          {
             "description": "New public key info",
             "in": "body",
             "name": "body",
@@ -412,7 +486,8 @@
             }
           }
         ],
-        "security": [{
+        "security": [
+          {
             "JWT": []
           }
         ],
@@ -440,13 +515,17 @@
     },
     "/{participant_id}/keys/{fingerprint}/": {
       "get": {
-        "tags": ["keys by fingerprint"],
+        "tags": [
+          "keys by fingerprint"
+        ],
         "summary": "Get keys information by fingerprint",
         "description": "Returns information about key for particular business with given fingerprint",
         "operationId": "getKeysDetailByFingerprint",
-        "parameters": [{
+        "parameters": [
+          {
             "$ref": "#/parameters/participantIdUrlParameter"
-          }, {
+          },
+          {
             "$ref": "#/parameters/fingerprintParameter"
           }
         ],
@@ -471,14 +550,19 @@
         }
       },
       "patch": {
-        "tags": ["keys by fingerprint"],
+        "tags": [
+          "keys by fingerprint"
+        ],
         "summary": "Edit \"revoke\" parameter for given key",
         "operationId": "editKey",
-        "parameters": [{
+        "parameters": [
+          {
             "$ref": "#/parameters/participantIdUrlParameter"
-          }, {
+          },
+          {
             "$ref": "#/parameters/fingerprintParameter"
-          }, {
+          },
+          {
             "description": "Public key info",
             "in": "body",
             "name": "body",
@@ -488,7 +572,8 @@
             }
           }
         ],
-        "security": [{
+        "security": [
+          {
             "JWT": []
           }
         ],
@@ -533,7 +618,9 @@
       }
     },
     "serviceMetadata": {
-      "required": ["participantIdentifier"],
+      "required": [
+        "participantIdentifier"
+      ],
       "properties": {
         "participantIdentifier": {
           "type": "array",
