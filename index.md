@@ -18,7 +18,7 @@ All specification development is done as an open community processes based aroun
 
 ## What you need to do
 
-The [governance model](/pages/governance-model.md) explains which specifications apply to which kind of implementer.  But the most common implementer is the software vendor that wants to participate in the network and provide their customers with the benefits of supply chain automation and trade finance.  The good news is that, as a software vendor, you need only implement one or more of the semantic specifications (eg **[BILL](http://ausdigital.org/ausdigital-bill/)** for e-invoicing) and support the **client** role in the **[TAP-GW](http://ausdigital.org/ausdigital-tap-gw/)** specification (for which open source implementations are avaialble).
+The [governance model](/pages/governance-model.md) explains which specifications apply to which kind of implementer.  But the most common implementer is the software vendor that wants to participate in the network and provide their customers with the benefits of supply chain automation and trade finance.  The good news is that, as a software vendor, you need only implement one or more of the semantic specifications (eg **[BILL](http://ausdigital.org/ausdigital-bill/)** for e-invoicing) and support the **client** role in the **[TAP-GW](http://ausdigital.org/ausdigital-tap-gw/)** specification (open source tools avaialble) so that you can use the services of any access point proovder.
 
 ## How it works 
 
