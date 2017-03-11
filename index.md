@@ -16,7 +16,11 @@ Electronic Document Exchange (EDI) is nothing new but has traditionally been com
 
 All specification development is done as an open community processes based around the [GitHub](https://github.com/ausdigital) collaborative development environment using a transparent [governance model](/pages/governance-model.md). You can [help with development](https://github.com/ausdigital) or [join the conversation](http://chat.ausdigital.org/), or just [keep yourself informed](http://eepurl.com/ctZ6hf).
 
-## How it Works 
+## What you need to do
+
+The [governance model](/pages/governance-model.md) explains which specifications apply to which kind of implementer.  But the most common implementer is the software vendor that wants to participate in the network and provide their customers with the benefits of supply cahin automation and trade finance.  The good news is that, as a software vendor, you need only implement one or more of the semantic specifications (eg **[BILL](http://ausdigital.org/ausdigital-bill/)** for e-invoicing) and support the **client** role in the **[TAP-GW](http://ausdigital.org/ausdigital-tap-gw/)** specification (for which open source implementations are avaialble).
+
+## How it works 
 
 Unlike single provider APIs (eg google or facebook), a B2B community needs all businesses to implement the same interface so that the same document format (e.g. an invoice) can be sent from any business to any other business. There also needs to be a way to discover the service endpoint for any specific business so that the sender system knows where to send messages. The diagram shows how it works. The Ausdigital technical and semantic specifications are positioned on the diagram via the blue and green tags.
 
@@ -37,7 +41,7 @@ The **JSON**  and **CODE** specification define some common foundation standards
 
 The success of the interoperability framework depends on uptake by the ledger software providers. Those systems must implement a number of interfaces in a consistent way - which requires clear standards, good test services, and easy to use tooling.  That is the purpose of this site.
 
-## How to Participate
+## How to participate
 
 There are several levels of participation that you can choose from.  Pick any or all of the following:
 
