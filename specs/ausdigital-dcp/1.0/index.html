@@ -165,6 +165,10 @@
 <li class="toc-entry toc-h2"><a href="#language">Language</a></li>
 <li class="toc-entry toc-h2"><a href="#application-programming-interface">Application Programming Interface</a></li>
 <li class="toc-entry toc-h2"><a href="#protocol">Protocol</a></li>
+<li class="toc-entry toc-h2"><a href="#informal-description">Informal description</a></li>
+<li class="toc-entry toc-h2"><a href="#formal-rest-api-description">Formal REST API description</a></li>
+<li class="toc-entry toc-h3"><a href="#endpoints-description">Endpoints description</a></li>
+<li class="toc-entry toc-h2"><a href="#examples">Examples</a></li>
 <li class="toc-entry toc-h1"><a href="#related-material">Related Material</a></li>
 </ul>
 </div>
@@ -205,7 +209,7 @@ development at
   <tbody>
     <tr>
       <td>ausdigital-dcp/1</td>
-      <td>This specification.</td>
+      <td>This specification (Digital Capability Publisher)</td>
     </tr>
     <tr>
       <td>ausdigital-dcl/1</td>
@@ -230,16 +234,20 @@ development at
   </tbody>
 </table>
 
+<p>DCP - Digital Capability Publisher</p>
+
+<p>business, business id or participant id - string like <code class="highlighter-rouge">urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999</code></p>
+
 <p>The DCP service depends on <code class="highlighter-rouge">ausdigital-dcl/1</code> and <code class="highlighter-rouge">ausdigital-idp/1</code>.</p>
 
-<p>Other <code class="highlighter-rouge">ausdigital-tap</code> and <code class="highlighter-rouge">ausdigital-nry</code> services both depend on the DCP service.</p>
+<p>Other ausdigital services <code class="highlighter-rouge">ausdigital-tap</code>, <code class="highlighter-rouge">ausdigital-tapgw</code>, <code class="highlighter-rouge">ausdigital-nry</code> depend on the DCP service.</p>
 
 <h2 id="licence">Licence</h2>
 
-<p>Copyright (c) 2016 the Editor and Contributors. All rights reserved.</p>
+<p>Copyright (c) 2017 the Editor and Contributors. All rights reserved.</p>
 
 <p>This Specification is free software; you can redistribute it and/or modify it under the
-terms of the GNU General Public License as published by the Free Software Foundation; 
+terms of the GNU General Public License as published by the Free Software Foundation;
 either version 3 of the License, or (at your option) any later version.</p>
 
 <p>This Specification is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -275,16 +283,15 @@ RFC 2119.</p>
   <li>dynamic service discovery.</li>
 </ul>
 
-<p>This framework operates on the basis that the issuer of a business identifier is best positioned to verify the identity of anyone attempting to authorise an update to the metadata registry. That is why for example we are proposing the ausdigital-dcl/1 for the Australian Business Number (ABN) should be operated by the Australian Business Register (ABR).</p>
+<p>This framework operates on the basis that the issuer of a business identifier is best positioned to verify the identity of anyone attempting to authorise an update to the metadata registry. That is why for example we are proposing the <code class="highlighter-rouge">ausdigital-dcl/1</code> for the Australian Business Number (ABN) should be operated by the Australian Business Register (ABR).</p>
 
-<p>The Digital Capability Publisher is functionally equivalent to a REST version of the European OASIS standard “Service Metadata Publisher”. Users are expected to have used the ausdigital-dcl/1 to discover the appropriate DCP service for a particular business. They then interact with the DCP using the REST protocol <a href="https://app.swaggerhub.com/api/ausdigital/ausdigital-dcp/1.0">documented here</a> to access a collection of ServiceMetaData entries for the business.</p>
+<p>The Digital Capability Publisher is functionally equivalent to a REST version of the European OASIS standard “Service Metadata Publisher”. Users are expected to have used the <code class="highlighter-rouge">ausdigital-dcl/1</code> to discover the appropriate DCP service for a particular business. They then interact with the DCP using the REST protocol <a href="https://app.swaggerhub.com/api/ausdigital/ausdigital-dcp/1.0">documented here</a> to access a collection of ServiceMetadata entries for the business.</p>
 
-<p>The sample below shows a service metadata record example for a business with ABN 23601120601 that supports both standard invoice and RCTI processes.</p>
+<p>The sample below shows a service metadata record example for a business with ABN 99999999999 that supports both standard invoice and RCTI processes. Fields will be explained in this document later.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="w">    </span><span class="p">{</span><span class="nt">"ServiceMetadata"</span><span class="p">:[{</span><span class="w">
-      </span><span class="nt">"ParticipantIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abn"</span><span class="p">,</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23601120601"</span><span class="p">},</span><span class="w">
-      </span><span class="nt">"DocumentIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dbc-docid"</span><span class="p">,</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice-1"</span><span class="p">},</span><span class="w">
-      </span><span class="nt">"ProcessList"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"ProcessList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
         </span><span class="nt">"ProcessIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dbc-procid"</span><span class="p">,</span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice-1"</span><span class="p">},</span><span class="w">
         </span><span class="nt">"ServiceEndpointList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
@@ -296,27 +303,287 @@ RFC 2119.</p>
           </span><span class="nt">"ServiceExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-01"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"Certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TlRMTVNTUAABAAAAt7IY4gk...."</span><span class="p">,</span><span class="w">
           </span><span class="nt">"ServiceDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice service"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.myob.com/api/essentials-accounting/endpoints/"</span><span class="p">}</span><span class="w">
-          </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.myob.com/api/essentials-accounting/endpoints/"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
         </span><span class="nt">"ProcessIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dbc-procid"</span><span class="p">,</span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rcti-1"</span><span class="p">},</span><span class="w">
         </span><span class="nt">"ServiceEndpointList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"transportProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REST-POST"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"EndpointURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.myob.com/au/essentials/businesses/23601120601/sales/invoice-1"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"RequireBusinessLevelSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"MinimumAuthenticationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"ServiceActivationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-01"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"ServiceExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-01"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"Certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TlRMTVNTUAABAAAAt7IY4gk...."</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"ServiceDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice service"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.myob.com/api/essentials-accounting/endpoints/"</span><span class="p">}]</span><span class="w">
-        </span><span class="p">}]</span><span class="w">
+            </span><span class="nt">"transportProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REST-POST"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"EndpointURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.myob.com/au/essentials/businesses/23601120601/sales/invoice-1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"RequireBusinessLevelSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"MinimumAuthenticationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ServiceActivationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-01"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ServiceExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-01"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"Certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TlRMTVNTUAABAAAAt7IY4gk...."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ServiceDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice service"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.myob.com/api/essentials-accounting/endpoints/"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dbc::claims"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ParticipantIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99999999999"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h2 id="informal-description">Informal description</h2>
+
+<p>Free-text explanation of the objects, used in this specification</p>
+
+<ul>
+  <li>business
+    <ul>
+      <li>has participant identifier field
+        <ul>
+          <li>if you can provide JWT token then you can update this participant info:
+            <ul>
+              <li>if JWT contains participant id which is equal to business participant id</li>
+              <li>if JWT has been issued by some IDP which DCP trust</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>has ServiceGroups
+        <ul>
+          <li>with field name (“default”)</li>
+          <li>with field extensions (free format object)</li>
+          <li>used to logically group the services</li>
+        </ul>
+      </li>
+      <li>has service metadata list
+        <ul>
+          <li>with relation to ParticipantIdentifier (reference to containing business)</li>
+          <li>with relation to ServiceGroup name (‘default’ if nothing was specified on service creation step)</li>
+          <li>with field DocumentIdentifier (which document this service is about)</li>
+          <li>with proceses list
+            <ul>
+              <li>made of process object
+                <ul>
+                  <li>with field ProcessIdentifier: which process is described</li>
+                  <li>with field ServiceEndpointList: list of endpoints, which accept business messages</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>with public keys list
+        <ul>
+          <li>made of PublicKey items
+            <ul>
+              <li>with field fingerprint</li>
+              <li>with field keyid</li>
+              <li>with field pubKey</li>
+              <li>with field published</li>
+              <li>with field revoked</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>with list of linked participant identifiers</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Business is a base entity, containing all business-related objects. Business info is easy discoverable by DCL-DCP requests chain:</p>
+
+<ul>
+  <li>do NAPTR record to well-known DCL instance (like dcl.testpoint.io) with business participant ID encoded as <code class="highlighter-rouge">B-{md5_of_lowercased_participant_id}.{dcl_hostname}.</code> (example: <code class="highlighter-rouge">b-06cdeef89c79d08e77d8ea9a6c85e172.dcl.testpoint.io.</code>)</li>
+  <li>get DCP instance hostname (for example. dcp.testpoint.io)</li>
+  <li>query DCP instance using given url: <code class="highlighter-rouge">https://{dcp_hostname}/{participant_id}</code></li>
+  <li>if sender need endpoint to send his message:
+    <ul>
+      <li>read and iterate service metadata list of service groups list</li>
+      <li>find desired document workflow information</li>
+      <li>get remote endpoint which accepts the desired document in the given workflow</li>
+      <li>send your document to remote endpoint</li>
+    </ul>
+  </li>
+  <li>if sender need the public key to encrypt some document for the receiver:
+    <ul>
+      <li>iterate current public keys</li>
+      <li>select one which is fine (fresh and not revoked in next 5 minutes)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>So, while having recipient participant ID, message body and DCL installation hostname (which is well-known) anyone can effectively send this message to this participant ID without any extra knowledge (specific endpoints, client software, etc) assuming that any protocol is implemented.</p>
+
+<h2 id="formal-rest-api-description">Formal REST API description</h2>
+
+<p>DCP MAY deny processing of participant identifier if it starts not with <code class="highlighter-rouge">urn:oasis:names:tc:ebcore:partyid-type:</code> with 404 error</p>
+
+<p>DCP MUST support json data format</p>
+
+<p>DCP MAY support legacy OASIS xml data format (PEPPOL)</p>
+
+<p>DCP MAY support any other data format</p>
+
+<p>DCP MUST respect <code class="highlighter-rouge">Accept</code> HTTP header</p>
+
+<p>Any valid DCP implementation (installation) MUST provide next endpoints:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>GET service group info at least for 'default' group (all service metadatas)
+GET service metadata
+GET business keys list
+GET business key by fingerprint/keyid
+GET business linked participant ids ("also known as")
+</code></pre>
+</div>
+
+<p>DCP internally MAY use any trusted data source (for example, local database, populated by valid users, or linked government data directory)</p>
+
+<p>DCP SHOULD NOT require any auth for GET (readonly) endpoints</p>
+
+<p>But it’s not very helpful while businesses can’t execute these actions:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>PUT service metadata
+DELETE service metadata
+POST business public key
+PATCH business public key (update revocation date)
+</code></pre>
+</div>
+
+<p>so DCP SHOULD allow business managers to update public data</p>
+
+<p>DCP MUST ensure that user have write permission for this business before doing any changes</p>
+
+<p>DCP SHOULD accept JWT token from trusted idp as auth source</p>
+
+<p>DCP MAY use any additional auth mechanism convenient for its users</p>
+
+<p>DCP MAY offer additional endpoints while they don’t collide with standard ones</p>
+
+<h3 id="endpoints-description">Endpoints description</h3>
+
+<p><strong>GET <code class="highlighter-rouge">/{participant_id}</code></strong></p>
+<ul>
+  <li>MUST contain participant ID</li>
+  <li>MUST contain list of document types (service metadatas links)</li>
+  <li>MUST NOT contain any data from linked participant identifiers (untill it’s submitted directly to this one)</li>
+  <li>service group MAY have additional json fields provided, implementations SHOULD ignore unknown fields</li>
+  <li>response MUST include <code class="highlighter-rouge">ServiceMetadataReferenceCollection</code> element with the list of service metadatas for given participant ID</li>
+</ul>
+
+<p><strong>GET <code class="highlighter-rouge">/{participant_id}/service/{document_id}</code></strong></p>
+<ul>
+  <li>Return service metadata for given <code class="highlighter-rouge">document_id</code> and <code class="highlighter-rouge">participant_id</code></li>
+  <li>service metadata MAY have additional json fields provided, implementations SHOULD ignore unknown fields</li>
+  <li>response MUST include <code class="highlighter-rouge">ProcessList</code> element</li>
+</ul>
+
+<p><strong>GET <code class="highlighter-rouge">/{participant_id}/keys/</code></strong></p>
+<ul>
+  <li>Return list of published public keys for this participant</li>
+  <li>MUST be a list of PublicKey objects (todo: put that schema here, describe fields <code class="highlighter-rouge">fingerprint</code>, <code class="highlighter-rouge">keyid</code>, <code class="highlighter-rouge">published</code>, <code class="highlighter-rouge">pubKey</code>, <code class="highlighter-rouge">revoked</code>)</li>
+  <li>MAY offer additioinal filtering parameters</li>
+</ul>
+
+<p><strong>GET <code class="highlighter-rouge">/{participant_id}/keys/{id}</code></strong></p>
+<ul>
+  <li>Return specific public key for given business</li>
+  <li><code class="highlighter-rouge">id</code> parameter MUST be a fingerprint or keyid of given key</li>
+  <li>MUST be a valid PublicKey object</li>
+  <li>MUST return 404 if key doesn’t exists</li>
+  <li>MAY offer additioinal filtering parameters</li>
+</ul>
+
+<p><strong>PUT <code class="highlighter-rouge">/{participant_id}/service/{document_id}</code></strong></p>
+<ul>
+  <li>Update and return updated service metadata</li>
+  <li>MUST completely replace old service metadata</li>
+  <li>MUST support auth and return 4xx error if auth is invalid</li>
+  <li>MUST check user permission to make update operation</li>
+  <li>response MUST contain updated service metadata in the same format as GET returns</li>
+</ul>
+
+<p><strong>DELETE <code class="highlighter-rouge">/{participant_id}/service/{document_id}</code></strong></p>
+<ul>
+  <li>MUST do something so GET <code class="highlighter-rouge">/{participant_id}/service/{document_id}</code> starts to return 404</li>
+</ul>
+
+<p><strong>GET /{participant_id}/aka</strong></p>
+<ul>
+  <li>MUST return full list of participant ids, linked by business owner to this participant identifiers</li>
+  <li>links works both ways</li>
+  <li>if user linked PID1 to PID2 and PID2 to PID3 then PID1 linked to PID3 as well.</li>
+</ul>
+
+<p><strong>POST /{participant_id}/aka</strong></p>
+<ul>
+  <li>MUST accept parameter <code class="highlighter-rouge">linked_participant_id</code> which is equal to participant ID which business owner wants to link</li>
+  <li>DCP MUST check auth and ensure that both participant id (base and linked) are owned by user</li>
+  <li>MUST silently replace old link by new one if link already exists</li>
+  <li>participant_id must appear in GET <code class="highlighter-rouge">/{linked_participant_id}/aka</code> (link works both ways)</li>
+</ul>
+
+<p><strong>DELETE <code class="highlighter-rouge">/{participant_id}/aka/{linked_participant_id}</code></strong></p>
+<ul>
+  <li>used to remove link from first PID to second</li>
+  <li>DCP MUST check auth and ensure that both participant ids (first and second) are owned by this user</li>
+  <li>DCP MUST remove the link between first and second participant id</li>
+</ul>
+
+<p>If business has 2 participant identifiers linked then services (documents) from ID1 MUST NOT appear in output for ID2, and vise versa</p>
+
+<h2 id="examples">Examples</h2>
+
+<p><strong>GET /urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::42140282984</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"ServiceMetadataReferenceCollection"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"sap::invoice"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"Extension"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nt">"ParticipantIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42140282984"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><strong>GET /urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::42140282984/service/sap::invoice</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"ProcessList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"ProcessIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dbc"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice-type1"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"Signature"</span><span class="err">:</span><span class="w"> </span><span class="s2">"AD56YGNN8876TTFJ123…"</span><span class="w">
-    </span><span class="err">}</span><span class="p">,</span><span class="w">
-    </span><span class="p">{</span><span class="err">...</span><span class="w"> </span><span class="err">another</span><span class="w"> </span><span class="err">signed</span><span class="w"> </span><span class="err">service</span><span class="w"> </span><span class="err">metadata</span><span class="w"> </span><span class="err">structure</span><span class="w"> </span><span class="err">...</span><span class="w">
-    </span><span class="p">}]</span><span class="w">
-    
+      </span><span class="nt">"ServiceEndpointList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"ServiceActivationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-14"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"Certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"EndpointURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"transportProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"ServiceExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-14"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"RequireBusinessLevelSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"MinimumAuthenticationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"ServiceDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"DocumentIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sap"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"ParticipantIdentifier"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42140282984"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 </div>
 
