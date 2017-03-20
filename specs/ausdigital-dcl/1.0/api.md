@@ -1,5 +1,3 @@
----
-layout: swagger
 swagger: '2.0'
 info:
   version: "1.0"
@@ -66,5 +64,3 @@ paths:
           description: Participant Not found
         "500":
           description: Internal server error
----
-Some description
