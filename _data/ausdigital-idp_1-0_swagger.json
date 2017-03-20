@@ -1,0 +1,1 @@
+{"swagger":"2.0","info":{"version":"1.0","title":"Identity Provider (IDP) interface specification","description":"The \"Identity Provider\" (IDP) specification defines a standard set of scopes, claims and assurance levels for an OIDC based e-business federated trust framework."},"paths":{}}
