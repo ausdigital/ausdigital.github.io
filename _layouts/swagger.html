@@ -12,12 +12,14 @@ layout: default
 
     <h1>{{ swagger.info.title }} <span class="api-version">{{ swagger.info.version }}</span></h1>
     <div class="quick-description">{{ swagger.info.description | markdownify }}</div>
-    <div class="swagger-base-url">[ Base url: {{ swagger.host }}{{ swagger.basePath }} ]</div>
+    <div class="swagger-base-url">[ Base url: <a href="//{{ swagger.host }}{{ swagger.basePath }}" target="_blank">{{ swagger.host }}{{ swagger.basePath }}</a> ]</div>
     {{ content }}
 
     {% for route in swagger.paths %}
     <div class="swagger-paths">
-        <h2 class="swagger-path">{{ route[0] }}</h>
+
+        <h2 class="swagger-path">{{ route[1].get.tags }}</h2>
+        <div class="swagger-path-route">{{ route[0] }}</div>
         {% for method in route[1] %}
         <div class="swagger-method swagger-method-{{ method[0] }}">
             <h3 class="swagger-method-title">
@@ -27,7 +29,7 @@ layout: default
                 </a>
             </h3>
             <div class="swagger-method-details">
-                <p class="swagger-method-description">{{ method[1].description }}</p>
+                <div class="swagger-method-description">{{ method[1].description  | markdownify }}</div>
                 {% if method[1].parameters %}
                 <div class="swagger-parameters">
                     <h4>Parameters</h4>
@@ -53,7 +55,7 @@ layout: default
                                     {% endif %}
                                 </td>
                                 <td>{{ parameter.in }}</td>
-                                <td>{{ parameter.description }}</td>
+                                <td>{{ parameter.description | markdownify }}</td>
                                 <td>
                                     {% if parameter.type %}
                                     {{ parameter.type | capitalize }}
@@ -74,10 +76,12 @@ layout: default
                 <div class="swagger-response">
                     <h4>Responses</h4>
                     {% for response in method[1].responses %}
-                    <h5>
-                        <span class="swagger-response-code">{{ response[0] }}</span>
-                        {{ response[1].description }}
-                    </h5>
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">{{ response[0] }}</div>
+                        <div class="swagger-response-description">
+                            {{ response[1].description | markdownify }}
+                        </div>
+                    </div>
                     {% for content_type in swagger.produces %}
                         {% if response[1].examples[content_type] %}
                             {% assign example = response[1].examples[content_type] %}

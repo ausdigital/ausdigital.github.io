@@ -24,8 +24,8 @@
 
 .swagger-path, .page-content h2.swagger-path, .docs-content h2.swagger-path{
     font-size: $base-font-size * 1.2;
-    margin: 25px 0 10px 0;
-    font-weight: 400;
+    margin: 25px 0 0 0;
+    font-weight: 700;
 }
 
 .swagger-method {
@@ -89,16 +89,25 @@
 .swagger-response {
     font-size: $base-font-size;
 
-    h5 {
+    .swagger-responses-title {
         margin: 10px 0 5px 0;
     }
 }
 
 .swagger-response-code {
     font-weight: 600;
+    float: left;
 
     &:after {
         content: ' \2014 ';
+    }
+}
+
+.swagger-response-description{
+    margin: 0 0 0 50px;
+
+    p{
+        margin: 0 0 5px 0;
     }
 }
 
@@ -147,7 +156,7 @@
     }
 
     .swagger-base-url{
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .swagger-method-description{
@@ -173,6 +182,14 @@
     table {
         th, td{
             font-size: 14px;
+
+            p{
+                margin: 0;
+
+                & + p{
+                    margin-top: 15px;
+                }
+            }
         }
     }
 }
