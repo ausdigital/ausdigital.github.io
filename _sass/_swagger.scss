@@ -117,6 +117,10 @@
     margin-bottom: $spacing-unit;
     width: 100%;
 
+    th{
+        white-space: nowrap;
+    }
+
     th, td {
         border: 1px solid darken($grey-color-light, 5%);
         padding: 4px 10px;
@@ -199,9 +203,19 @@
         }
 
         table{
+            display: table;
+
+            th{
+                white-space: nowrap;
+            }
+
             th, td{
                 font-size: 13px;
                 text-align: left;
+
+                &:last-child{
+                    min-width: 2%;
+                }
 
                 p{
                     margin: 0;
