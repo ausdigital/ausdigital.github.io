@@ -146,17 +146,19 @@
     
 
     <h1>Digital Capability Locator (DCL) interface specification <span class="api-version">1.0</span></h1>
-    <div class="quick-description">The "Digital Capability Lookup" (DCL) specification defines a DNS based method to discover which DCP(SMP) is the authoritative source for a given business 
+    <div class="quick-description"><p>The “Digital Capability Lookup” (DCL) specification defines a DNS based method to discover which DCP(SMP) is the authoritative source for a given business</p>
 
-API uses JWT authorization, JWT issuer must be added to whitelist on DCL implementation. It's passed as a header `Authorization: JWT XXX`, where XXX value provided by your IDP.
+<p>API uses JWT authorization, JWT issuer must be added to whitelist on DCL implementation. It’s passed as a header <code class="highlighter-rouge">Authorization: JWT XXX</code>, where XXX value provided by your IDP.</p>
 </div>
-    <div class="swagger-base-url">[ Base url: dcp.testpoint.io/api/v0 ]</div>
+    <div class="swagger-base-url">[ Base url: <a href="//dcp.testpoint.io/api/v0" target="_blank">dcp.testpoint.io/api/v0</a> ]</div>
     
 
 
     
     <div class="swagger-paths">
-        <h2 class="swagger-path">/demo_auth/</h>
+
+        <h2 class="swagger-path">auth</h2>
+        <div class="swagger-path-route">/demo_auth/</div>
         
         <div class="swagger-method swagger-method-get">
             <h3 class="swagger-method-title">
@@ -166,24 +168,33 @@ API uses JWT authorization, JWT issuer must be added to whitelist on DCL impleme
                 </a>
             </h3>
             <div class="swagger-method-details">
-                <p class="swagger-method-description">Check if OIDC JWT token is correct</p>
+                <div class="swagger-method-description"><p>Check if OIDC JWT token is correct</p>
+</div>
                 
                 
                 <div class="swagger-response">
                     <h4>Responses</h4>
                     
-                    <h5>
-                        <span class="swagger-response-code">200</span>
-                        The JWT is correct
-                    </h5>
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">200</div>
+                        <div class="swagger-response-description">
+                            <p>The JWT is correct</p>
+
+                            
+                        </div>
+                    </div>
                     
                         
                     
                     
-                    <h5>
-                        <span class="swagger-response-code">401</span>
-                        Wrong auth parameters
-                    </h5>
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">401</div>
+                        <div class="swagger-response-description">
+                            <p>Wrong auth parameters</p>
+
+                            
+                        </div>
+                    </div>
                     
                         
                     
@@ -196,7 +207,9 @@ API uses JWT authorization, JWT issuer must be added to whitelist on DCL impleme
     </div>
     
     <div class="swagger-paths">
-        <h2 class="swagger-path">/dcl/{participant_id}</h>
+
+        <h2 class="swagger-path"></h2>
+        <div class="swagger-path-route">/dcl/{participant_id}</div>
         
         <div class="swagger-method swagger-method-put">
             <h3 class="swagger-method-title">
@@ -206,7 +219,8 @@ API uses JWT authorization, JWT issuer must be added to whitelist on DCL impleme
                 </a>
             </h3>
             <div class="swagger-method-details">
-                <p class="swagger-method-description">Updates DNS NAPTR record with new DCP value for given business/participant</p>
+                <div class="swagger-method-description"><p>Updates DNS NAPTR record with new DCP value for given business/participant</p>
+</div>
                 
                 <div class="swagger-parameters">
                     <h4>Parameters</h4>
@@ -232,7 +246,8 @@ API uses JWT authorization, JWT issuer must be added to whitelist on DCL impleme
                                     
                                 </td>
                                 <td>path</td>
-                                <td>string representation</td>
+                                <td><p>string representation</p>
+</td>
                                 <td>
                                     
                                     String
@@ -252,7 +267,8 @@ API uses JWT authorization, JWT issuer must be added to whitelist on DCL impleme
                                     
                                 </td>
                                 <td>body</td>
-                                <td>New DCP info</td>
+                                <td><p>New DCP info</p>
+</td>
                                 <td>
                                     
                                     String
@@ -268,34 +284,50 @@ API uses JWT authorization, JWT issuer must be added to whitelist on DCL impleme
                 <div class="swagger-response">
                     <h4>Responses</h4>
                     
-                    <h5>
-                        <span class="swagger-response-code">200</span>
-                        Success
-                    </h5>
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">200</div>
+                        <div class="swagger-response-description">
+                            <p>Success</p>
+
+                            
+                        </div>
+                    </div>
                     
                         
                     
                     
-                    <h5>
-                        <span class="swagger-response-code">401</span>
-                        Wrong Auth Header
-                    </h5>
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">401</div>
+                        <div class="swagger-response-description">
+                            <p>Wrong Auth Header</p>
+
+                            
+                        </div>
+                    </div>
                     
                         
                     
                     
-                    <h5>
-                        <span class="swagger-response-code">404</span>
-                        Participant Not found
-                    </h5>
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">404</div>
+                        <div class="swagger-response-description">
+                            <p>Participant Not found</p>
+
+                            
+                        </div>
+                    </div>
                     
                         
                     
                     
-                    <h5>
-                        <span class="swagger-response-code">500</span>
-                        Internal server error
-                    </h5>
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">500</div>
+                        <div class="swagger-response-description">
+                            <p>Internal server error</p>
+
+                            
+                        </div>
+                    </div>
                     
                         
                     
