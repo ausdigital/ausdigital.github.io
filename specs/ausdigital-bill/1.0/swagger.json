@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "description" : "APIs for validation of the various billing documents (invoice, credit note, ..)",
+    "description" : "APIs for validation of the various billing documents (invoice, credit note and others)",
     "version" : "1.0",
     "title" : "Billing document validation API"
   },
