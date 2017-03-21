@@ -11,7 +11,7 @@ layout: default
     {% endif %}
 
     <h1>{{ swagger.info.title }} <span class="api-version">{{ swagger.info.version }}</span></h1>
-    <div class="quick-description">{{ swagger.info.description }}</div>
+    <div class="quick-description">{{ swagger.info.description | markdownify }}</div>
     <div class="swagger-base-url">[ Base url: {{ swagger.host }}{{ swagger.basePath }} ]</div>
     {{ content }}
 
