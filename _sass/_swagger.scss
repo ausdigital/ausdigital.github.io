@@ -192,4 +192,26 @@
             }
         }
     }
+
+    .swagger-response-headers{
+        h5{
+            font-size: 14px;
+        }
+
+        table{
+            th, td{
+                font-size: 13px;
+                text-align: left;
+
+                p{
+                    margin: 0;
+                    line-height: normal;
+
+                    & + p{
+                        margin-top: 15px;
+                    }
+                }
+            }
+        }
+    }
 }

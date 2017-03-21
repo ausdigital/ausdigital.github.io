@@ -80,6 +80,25 @@ layout: default
                         <div class="swagger-response-code">{{ response[0] }}</div>
                         <div class="swagger-response-description">
                             {{ response[1].description | markdownify }}
+                            {% if response[1].headers %}
+                                <div class="swagger-response-headers">
+                                <h5>Headers:</h5>
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Type</th>
+                                    </tr>
+                                    {% for header in response[1].headers %}
+                                        <tr>
+                                            <td>{{ header[0] }}</td>
+                                            <td>{{ header[1].description | markdownify }}</td>
+                                            <td>{{ header[1].type }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                     {% for content_type in swagger.produces %}
