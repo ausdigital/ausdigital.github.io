@@ -145,7 +145,7 @@
 
     
 
-    <h1>Digital Capability Publisher (DCP) interface specification <span class="api-version">1.0</span></h1>
+    <h1 class="no-anchor">Digital Capability Publisher (DCP) interface specification <span class="api-version">1.0</span></h1>
     <div class="quick-description"><p>The “Digital Capability Publisher” (DCP) provides the ability to discover detailed service information and associated digital certificates for any known business identifier.</p>
 
 <p>Please mind the test installation and ensure data validity - some of such installations have data like in production, with real businesses, but this data is not guaranteed to be valid and may be changed in development purposes; do not rely on data from specific hostname to real-world production installation until service owners specifically said it’s true and valid. For example, any *.testpoint.io installations have the test data and can’t be used in production.</p>
@@ -177,7 +177,7 @@ Please note that JSON format differs from specification XML and has more data in
     
     <div class="swagger-paths">
 
-        <h2 class="swagger-path">service group</h2>
+        <h2 class="swagger-path" id="service-group">service group</h2>
         <div class="swagger-path-route">/{participant_id}</div>
         
         <div class="swagger-method swagger-method-get">
@@ -713,7 +713,7 @@ Please note that JSON format differs from specification XML and has more data in
     
     <div class="swagger-paths">
 
-        <h2 class="swagger-path">service metadata</h2>
+        <h2 class="swagger-path" id="service-metadata">service metadata</h2>
         <div class="swagger-path-route">/{participant_id}/service/{document_id}</div>
         
         <div class="swagger-method swagger-method-get">
@@ -1330,7 +1330,7 @@ Please note that JSON format differs from specification XML and has more data in
     
     <div class="swagger-paths">
 
-        <h2 class="swagger-path">keys</h2>
+        <h2 class="swagger-path" id="keys">keys</h2>
         <div class="swagger-path-route">/{participant_id}/keys/</div>
         
         <div class="swagger-method swagger-method-get">
@@ -1693,7 +1693,7 @@ Please note that JSON format differs from specification XML and has more data in
     
     <div class="swagger-paths">
 
-        <h2 class="swagger-path">keys by fingerprint</h2>
+        <h2 class="swagger-path" id="keys-by-fingerprint">keys by fingerprint</h2>
         <div class="swagger-path-route">/{participant_id}/keys/{fingerprint}/</div>
         
         <div class="swagger-method swagger-method-get">
@@ -2102,6 +2102,11 @@ else {
     // Wait for it
     document.addEventListener("DOMContentLoaded", init);
 }
+</script>
+<script src="/js/anchor.min.js"></script>
+<script>
+    anchors.add('h1, h2, h3, h4, h5');
+    anchors.remove('.no-anchor, .page-content > h1');
 </script>
         </div>
     </div>

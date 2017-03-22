@@ -145,7 +145,7 @@
 
     
 
-    <h1>Identity Provider (IDP) interface specification <span class="api-version">1.0</span></h1>
+    <h1 class="no-anchor">Identity Provider (IDP) interface specification <span class="api-version">1.0</span></h1>
     <div class="quick-description"><p>The “Identity Provider” (IDP) specification defines a standard set of scopes, claims and assurance levels for an OIDC based e-business federated trust framework.</p>
 </div>
     <div class="swagger-base-url">[ Base url: <a href="//" target="_blank"></a> ]</div>
@@ -211,6 +211,11 @@ else {
     // Wait for it
     document.addEventListener("DOMContentLoaded", init);
 }
+</script>
+<script src="/js/anchor.min.js"></script>
+<script>
+    anchors.add('h1, h2, h3, h4, h5');
+    anchors.remove('.no-anchor, .page-content > h1');
 </script>
         </div>
     </div>
