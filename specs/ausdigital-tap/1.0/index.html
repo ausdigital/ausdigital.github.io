@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>AusDigital Transaction Access Point (TAP) 1.0 Specification - AusDigital Standards by ausdigital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-line">
+        <div class="wrapper">
+            <div id="mobile-menu-wrapper" class="mobile-menu">
+                <button id="hamburger-menu" class="hamburger-menu">
+                    <span>toggle menu</span>
+                </button>
+                <div id="mobile-menu" style="display: none;">
+                    
+                    <ul class="sidebar-menu">
+    
+    <li class="menu-title">Benefits</li>
+    <li><a  href="/business-case/">A Business Case</a></li>
+    <li class="menu-title">Technical Specs</li>
+    <li><a  href="/ausdigital-idp/">Identity Provider (IDP)</a></li>
+    <li><a  href="/ausdigital-dcl/">Capability Locator (DCL)</a></li>
+    <li><a  href="/ausdigital-dcp/">Capability Publisher (DCP)</a></li>
+    <li><a class="active" href="/ausdigital-tap/">Access Point (TAP)</a></li>
+    <li><a  href="/ausdigital-tap-gw/">TAP Gateway (TAP-GW)</a></li>
+    <li><a  href="/ausdigital-nry/">Notary (NRY)</a></li>
+    <li><a  href="/ausdigital-syn/">UBL Syntax (SYN)</a></li>
+    <li class="menu-title">Semantic Specs</li>
+    <li><a  href="/ausdigital-code/">Code Lists Mgmt (CODE)</a></li>
+    <li><a  href="/ausdigital-bill/">Billing Process (BILL)</a></li>
+    <li><a  href="/ausdigital-po/">Purchase Orders (PO)</a></li>
+    <li><a  href="/ausdigital-ship/">Fulfillment (SHIP)</a></li>
+    <li class="menu-title">Governance</li>
+    <li><a  href="/governance-model/">Governance Model</a></li>
+    <li class="menu-title">Community</li>
+    <li><a href="http://eepurl.com/ctZ6hf" target="_blank">Newsletter (subscribe)</a></li>
+    <li><a href="http://chat.ausdigital.org" target="_blank">Chat (join team)</a></li>
+    <li><a href="https://github.com/ausdigital/" target="_blank">GitHub</a></li>
+</ul>
+                </div>
+            </div>
+            <a href="/" class="logo"><img src="/images/logo.png" alt="AusDigital"><span>AusDigital.org</span></a>
+            <div class="header-search">
+                <script>
+                    (function() {
+                        var cx = '017892665596304004128:tj19kxwel_m';
+                        var gcse = document.createElement('script');
+                        gcse.type = 'text/javascript';
+                        gcse.async = true;
+                        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                        var s = document.getElementsByTagName('script')[0];
+                        s.parentNode.insertBefore(gcse, s);
+                    })();
+                </script>
+                <gcse:search></gcse:search>
+            </div>
+            
+        </div>
+    </div>
+    <div class="header-content">
+        <div class="wrapper">
+            <img src="/images/logo.png" alt="AusDigital">
+            <div class="header-text-box">
+                <div class="header-name">AusDigital Standards</div>
+                <div class="header-tagline">Business to Business data exchange open standards community </div>
+            </div>
+        </div>
+    </div>
+</header>
+<script type="text/javascript">
+    document.getElementById('hamburger-menu').onclick = function() {
+        var nf = document.getElementById('mobile-menu');
+
+        // Show and hide menu items when toggle is clicked
+        if(nf.style.display==='none') {
+            nf.style.display = 'block';
+        }
+        else {
+            nf.style.display = 'none';
+        }
+    };
+
+    window.addEventListener('click', function(e){
+        if (!document.getElementById('mobile-menu-wrapper').contains(e.target)){
+            document.getElementById('mobile-menu').style.display= 'none';
+        }
+    });
+</script>
+
+<div class="main-wrapper">
+    <div class="main-content">
+        <div class="page-sidebar">
+            <ul class="sidebar-menu">
+    
+    <li class="menu-title">Benefits</li>
+    <li><a  href="/business-case/">A Business Case</a></li>
+    <li class="menu-title">Technical Specs</li>
+    <li><a  href="/ausdigital-idp/">Identity Provider (IDP)</a></li>
+    <li><a  href="/ausdigital-dcl/">Capability Locator (DCL)</a></li>
+    <li><a  href="/ausdigital-dcp/">Capability Publisher (DCP)</a></li>
+    <li><a class="active" href="/ausdigital-tap/">Access Point (TAP)</a></li>
+    <li><a  href="/ausdigital-tap-gw/">TAP Gateway (TAP-GW)</a></li>
+    <li><a  href="/ausdigital-nry/">Notary (NRY)</a></li>
+    <li><a  href="/ausdigital-syn/">UBL Syntax (SYN)</a></li>
+    <li class="menu-title">Semantic Specs</li>
+    <li><a  href="/ausdigital-code/">Code Lists Mgmt (CODE)</a></li>
+    <li><a  href="/ausdigital-bill/">Billing Process (BILL)</a></li>
+    <li><a  href="/ausdigital-po/">Purchase Orders (PO)</a></li>
+    <li><a  href="/ausdigital-ship/">Fulfillment (SHIP)</a></li>
+    <li class="menu-title">Governance</li>
+    <li><a  href="/governance-model/">Governance Model</a></li>
+    <li class="menu-title">Community</li>
+    <li><a href="http://eepurl.com/ctZ6hf" target="_blank">Newsletter (subscribe)</a></li>
+    <li><a href="http://chat.ausdigital.org" target="_blank">Chat (join team)</a></li>
+    <li><a href="https://github.com/ausdigital/" target="_blank">GitHub</a></li>
+</ul>
+        </div>
+        <div class="page-content docs-content">
+            <div class="spec-header">
+                
+                <ul>
+                    <li>Spec ID: <p>ausdigital-tap/1</p>
+</li>
+                    <li><p><img src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" alt="raw" /></p>
+</li>
+                    <li>Editor: <p>Digital Business Council (Council)</p>
+</li>
+                    <li>Contributors: 
+</li>
+                </ul>
+            </div>
+            <div class="specs-toc">
+    <!--<div class="specs-toc-title">Table of contents</div>-->
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#introduction">Introduction</a></li>
+<li class="toc-entry toc-h2"><a href="#goals">Goals</a></li>
+<li class="toc-entry toc-h2"><a href="#status">Status</a></li>
+<li class="toc-entry toc-h2"><a href="#glossary">Glossary</a></li>
+<li class="toc-entry toc-h2"><a href="#licence">Licence</a></li>
+<li class="toc-entry toc-h2"><a href="#change-process">Change Process</a></li>
+<li class="toc-entry toc-h2"><a href="#language">Language</a></li>
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h1"><a href="#related-material">Related Material</a></li>
+</ul>
+</div>
+            <h2 id="introduction">Introduction</h2>
+
+<p>This document describes a protocol for exchanging formal documents (such as invoices) between businesses. TAP is a secure, decentralised, peer to peer architecture where gateways are optional and minimally trusted.</p>
+
+<h2 id="goals">Goals</h2>
+
+<p>The primary goal of the Transaction Access Point (TAP) 1.0 Specification is to TBA.</p>
+
+<p>The Transaction Access Point (TAP) 1.0 Specification defines TBA.</p>
+
+<h2 id="status">Status</h2>
+
+<p>This spec is an early draft for consuiltation.</p>
+
+<p>This specification aims to support the Australian Digital Business Council
+<a href="http://ausdigital.org">eInvoicing initiative</a>, and is under active
+development at
+<a href="https://github.com/ausdigital/ausdigital-tap">https://github.com/ausdigital/ausdigital-tap</a>.</p>
+
+<p>Comments and feedback are encouraged and welcome. Pull requests with improvements are welcome too.</p>
+
+<h2 id="glossary">Glossary</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Phrase</th>
+      <th>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ausdigital-tap/1</td>
+      <td>This specification.</td>
+    </tr>
+    <tr>
+      <td>ausdigital-dcl/1</td>
+      <td>Version 1 of the AusDigtial <a href="http://ausdigital.org/specs/ausdigital-dcl/1.0">Digital Capability Locator (DCL)</a> specification</td>
+    </tr>
+    <tr>
+      <td>ausdigital-idp/1</td>
+      <td>Version 1 of the AusDigital <a href="http://ausdigital.org/specs/ausdigital-idp/1.0">Identity Provider (IDP)</a> specification.</td>
+    </tr>
+    <tr>
+      <td>ausdigital-dcp/1</td>
+      <td>Version 1 of the AusDigital <a href="http://ausdigital.org/ausdigital-tap">Digital Capability Publisher (DCP)</a> specification.</td>
+    </tr>
+    <tr>
+      <td>ausdigital-tap/2</td>
+      <td>Version 2 of the AusDigital <a href="http://ausdigital.org/ausdigital-tap">Transaction Access Point(TAP)</a> specification.</td>
+    </tr>
+    <tr>
+      <td>ausdigital-nry/1</td>
+      <td>Version 1 of the AusDigital <a href="http://ausdigital.org/ausdigital-nry">Notary (NRY)</a> specification.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The TAP service depends on TBA and TBA.</p>
+
+<p>Other TBA and TBA services both depend on the TAP service.</p>
+
+<h2 id="licence">Licence</h2>
+
+<p>Copyright (c) 2016 the Editor and Contributors. All rights reserved.</p>
+
+<p>This work is licensed under a Creative Commons Attribution 4.0 International License.</p>
+
+<h2 id="change-process">Change Process</h2>
+
+<p>This document is governed by the <a href="http://rfc.unprotocols.org/spec:2/COSS/">2/COSS</a> (COSS).</p>
+
+<h2 id="language">Language</h2>
+
+<p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”,
+“RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in
+RFC 2119.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>The Access Point Implementation Guide defines the standards for delivering and receiving of digital business documents within the Council’s Interoperability Framework (Framework). The Framework defines the following components:</p>
+
+<ul>
+  <li>Access Point: A sender or receiver of digital business documents;</li>
+  <li>Digital Capability Locator: A service for looking up the location of the Digital Capability Publisher for a Participant. (Digital Business Council, 2016a);</li>
+  <li>Digital Capability Publisher: A service for Participants to store details of their capabilities, and includes what scenarios they can process, the data formats they support and the delivery address for their eInvoices. (Digital Business Council, 2016b); and</li>
+  <li>Electronic Business Documents: A digital representation of a business document, e.g. an eInvoice.</li>
+</ul>
+
+<p><img src="./tap_business_context_diagram.png" alt="Figure 1: Context of Access Points within the Interoperability Framework" title="Figure 1: Context of Access Points within the Interoperability Framework" /></p>
+
+<p>Figure 1: Context of Access Points within the Interoperability Framework</p>
+
+<p>The messaging protocol described in this document is business process and business document agnostic. The underlying OASIS ebMS3 standard has been designed to be flexible and support a large number of use cases. This implementation guide reduces complexity by focusing on the exchange of business documents regardless of their type or the process in which they are used.</p>
+
+<p>The context diagram Figure 1 shows the components included in the Interoperability Framework and where the Access Point (AP) sits. The Digital Capability Publisher and Digital Capability Locator are used by the Access Points and enable the eInvoicing process.</p>
+
+<p>The components of the framework are used in a four-corner model (see Figure 2: Four Corner Model). End users, or participants, don’t directly exchange electronic information but connect through a network of Access Points. The digital address for a receiving Access Point is dynamically discovered using the Digital Capability Locator (DCL) and Digital Capability Publisher(DCP) components of the Framework. Access Points may also update a participant’s digital endpoint in the DCP.</p>
+
+<p><img src="./tap_four_corner_model.png" alt="Figure 2: Four Corner Model" title="Figure 2: Four Corner Model" /></p>
+
+<p>Figure 2: Four Corner Model</p>
+
+<p>See the complete <a href="./Access_Point_Implementation_Guide_v1.0.pdf">Access Point Implementation Guide</a> for further details.</p>
+
+<h1 id="related-material">Related Material</h1>
+
+<ul>
+  <li>AusDigital Transaction Access Point Implementation Guide (v1.0, available <a href="https://github.com/ausdigital/ausdigital-tap/blob/master/docs/1.0/Digital_Capability_Publisher_Implementation_Guide_v1.0.pdf">here</a>), which provides background to the <a href="http://ausdigital.org">AusDigital</a> community process.</li>
+  <li><a href="https://github.com/ausdigital/ausdigital-tap/issues/">GitHub issues</a> for collaborating on the development of the TAP.</li>
+  <li>A reference <a href="http://testpoint.io/tap">TAP service</a> (for testing and development purposes).</li>
+  <li>Free, Open-Source Software <a href="https://github.com/test-point/testpoint-tap">TAP implementation</a>.</li>
+  <li>An automated <a href="https://github.com/test-point/testpoint-tap">TAP test suite</a>.</li>
+</ul>
+
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <a href="/" class="footer-logo"><img src="/images/logo.png" alt="AusDigital"><span>AusDigital.org</span></a>
+    <ul class="footer-menu">
+        <li><a href="http://ausdigital.org/about">About AusDigital</a></li>
+        <li><a href="https://github.com/ausdigital" target="_blank">Github</a></li>
+        <li><a href="http://eepurl.com/ctZ6hf" target="_blank">Newsletter</a></li>
+        <li><a href="http://chat.ausdigital.org/" target="_blank">Join</a> <a href="https://ausdigital.slack.com/messages/general/" target="_blank">team</a></li>
+    </ul>
+    <div class="footer-credits">
+        This page was generated by GitHub Pages.
+        Comments, issues and suggestions are welcome in the <a href="https://github.com/ausdigital/ausdigital.github.io/issues/new">ticket system</a>.
+        Pull requests welcome in the <a href="https://github.com/ausdigital/ausdigital.github.io/">site repository</a>.
+    </div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79579364-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</body>
+</html>
