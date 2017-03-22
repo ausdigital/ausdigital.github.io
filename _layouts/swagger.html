@@ -10,7 +10,7 @@ layout: default
     {% assign swagger = page %}
     {% endif %}
 
-    <h1>{{ swagger.info.title }} <span class="api-version">{{ swagger.info.version }}</span></h1>
+    <h1 class="no-anchor">{{ swagger.info.title }} <span class="api-version">{{ swagger.info.version }}</span></h1>
     <div class="quick-description">{{ swagger.info.description | markdownify }}</div>
     <div class="swagger-base-url">[ Base url: <a href="//{{ swagger.host }}{{ swagger.basePath }}" target="_blank">{{ swagger.host }}{{ swagger.basePath }}</a> ]</div>
     {{ content }}
@@ -18,7 +18,7 @@ layout: default
     {% for route in swagger.paths %}
     <div class="swagger-paths">
 
-        <h2 class="swagger-path">{{ route[1].get.tags }}</h2>
+        <h2 class="swagger-path" id="{{ route[1].get.tags[0] | slugify }}">{{ route[1].get.tags }}</h2>
         <div class="swagger-path-route">{{ route[0] }}</div>
         {% for method in route[1] %}
         <div class="swagger-method swagger-method-{{ method[0] }}">
@@ -179,4 +179,9 @@ else {
     // Wait for it
     document.addEventListener("DOMContentLoaded", init);
 }
+</script>
+<script src="/js/anchor.min.js"></script>
+<script>
+    anchors.add('h1, h2, h3, h4, h5');
+    anchors.remove('.no-anchor, .page-content > h1');
 </script>
