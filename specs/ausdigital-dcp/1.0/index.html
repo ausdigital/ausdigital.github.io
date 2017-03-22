@@ -169,6 +169,8 @@
 <li class="toc-entry toc-h2"><a href="#formal-rest-api-description">Formal REST API description</a></li>
 <li class="toc-entry toc-h3"><a href="#endpoints-description">Endpoints description</a></li>
 <li class="toc-entry toc-h2"><a href="#examples">Examples</a></li>
+<li class="toc-entry toc-h3"><a href="#response-formats">Response formats</a></li>
+<li class="toc-entry toc-h3"><a href="#participant-id-linking">Participant ID linking</a></li>
 <li class="toc-entry toc-h1"><a href="#related-material">Related Material</a></li>
 </ul>
 </div>
@@ -463,6 +465,14 @@ PATCH business public key (update revocation date)
 
 <h3 id="endpoints-description">Endpoints description</h3>
 
+<p>Checkpoints for ANY endpoint:</p>
+
+<ul>
+  <li>XML version MUST be OASIS-compliant</li>
+  <li>JSON and XML version MUST provide the same core data with optional extra data</li>
+  <li>DCP publishing services SHOULD NOT produce extra metadata that contain extensions necessary for a Client to understand in order to make use of this metadata (private forks of that specification may define whatever they consider useful)</li>
+</ul>
+
 <p><strong>GET <code class="highlighter-rouge">/{participant_id}</code></strong></p>
 <ul>
   <li>MUST contain participant ID</li>
@@ -477,12 +487,13 @@ PATCH business public key (update revocation date)
   <li>Return service metadata for given <code class="highlighter-rouge">document_id</code> and <code class="highlighter-rouge">participant_id</code></li>
   <li>service metadata MAY have additional json fields provided, implementations SHOULD ignore unknown fields</li>
   <li>response MUST include <code class="highlighter-rouge">ProcessList</code> element</li>
+  <li>OASIS response MUST be compatible with <a href="http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/cos01/bdx-smp-v1.0-cos01.html#_Toc458092041">OASIS PEPPOL specification</a></li>
 </ul>
 
 <p><strong>GET <code class="highlighter-rouge">/{participant_id}/keys/</code></strong></p>
 <ul>
   <li>Return list of published public keys for this participant</li>
-  <li>MUST be a list of PublicKey objects (todo: put that schema here, describe fields <code class="highlighter-rouge">fingerprint</code>, <code class="highlighter-rouge">keyid</code>, <code class="highlighter-rouge">published</code>, <code class="highlighter-rouge">pubKey</code>, <code class="highlighter-rouge">revoked</code>)</li>
+  <li>MUST be a list of PublicKey objects (TODO: put that schema here, describe fields <code class="highlighter-rouge">fingerprint</code>, <code class="highlighter-rouge">keyid</code>, <code class="highlighter-rouge">published</code>, <code class="highlighter-rouge">pubKey</code>, <code class="highlighter-rouge">revoked</code>)</li>
   <li>MAY offer additioinal filtering parameters</li>
 </ul>
 
@@ -490,9 +501,10 @@ PATCH business public key (update revocation date)
 <ul>
   <li>Return specific public key for given business</li>
   <li><code class="highlighter-rouge">id</code> parameter MUST be a fingerprint or keyid of given key</li>
-  <li>MUST be a valid PublicKey object</li>
+  <li>MUST return a valid PublicKey object</li>
   <li>MUST return 404 if key doesn’t exists</li>
   <li>MAY offer additioinal filtering parameters</li>
+  <li>MUST return information of key publication date and revocation date if applicable</li>
 </ul>
 
 <p><strong>PUT <code class="highlighter-rouge">/{participant_id}/service/{document_id}</code></strong></p>
@@ -509,83 +521,154 @@ PATCH business public key (update revocation date)
   <li>MUST do something so GET <code class="highlighter-rouge">/{participant_id}/service/{document_id}</code> starts to return 404</li>
 </ul>
 
-<p><strong>GET /{participant_id}/aka</strong></p>
+<p><strong>GET <code class="highlighter-rouge">/{participant_id}/aka</code></strong></p>
 <ul>
   <li>MUST return full list of participant ids, linked by business owner to this participant identifiers</li>
   <li>links works both ways</li>
   <li>if user linked PID1 to PID2 and PID2 to PID3 then PID1 linked to PID3 as well.</li>
+  <li>implementations MAY include source participant ID (provided in URL) in linked list</li>
 </ul>
 
-<p><strong>POST /{participant_id}/aka</strong></p>
+<p><strong>POST <code class="highlighter-rouge">/{participant_id}/aka</code></strong></p>
 <ul>
-  <li>MUST accept parameter <code class="highlighter-rouge">linked_participant_id</code> which is equal to participant ID which business owner wants to link</li>
-  <li>DCP MUST check auth and ensure that both participant id (base and linked) are owned by user</li>
+  <li>MUST accept body parameter <code class="highlighter-rouge">participantId</code> which is equal to participant ID which business owner wants to link</li>
+  <li>DCP MUST check auth and ensure that both participant id (base and linked) are manageable by this user</li>
   <li>MUST silently replace old link by new one if link already exists</li>
-  <li>participant_id must appear in GET <code class="highlighter-rouge">/{linked_participant_id}/aka</code> (link works both ways)</li>
+  <li>link MUST work both directions (if <code class="highlighter-rouge">/{pid1}/aka</code> contains pid2 then <code class="highlighter-rouge">/{pid2}/aka</code> contains pid1)</li>
+  <li>any 3rd participant id, linked to first or second, must receve link to both participant IDs; both participant ID must receive link to any 3rd party participant id, linked to another one.</li>
 </ul>
 
 <p><strong>DELETE <code class="highlighter-rouge">/{participant_id}/aka/{linked_participant_id}</code></strong></p>
 <ul>
-  <li>used to remove link from first PID to second</li>
+  <li>Is used to remove link between these participant IDs</li>
   <li>DCP MUST check auth and ensure that both participant ids (first and second) are owned by this user</li>
   <li>DCP MUST remove the link between first and second participant id</li>
 </ul>
 
-<p>If business has 2 participant identifiers linked then services (documents) from ID1 MUST NOT appear in output for ID2, and vise versa</p>
+<p>If business has 2 participant identifiers linked then services (documents) from ID1 MUST NOT appear in output for ID2, and vise versa. Business MAY do 2 PUT requests to both participant ID have the same service metadatas, or use implementation-specific convenience endpoints for that.</p>
 
 <h2 id="examples">Examples</h2>
 
-<p><strong>GET /urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::42140282984</strong></p>
+<h3 id="response-formats">Response formats</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"ServiceMetadataReferenceCollection"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"sap::invoice"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"Extension"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-  </span><span class="nt">"ParticipantIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42140282984"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+<p><strong>GET /urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::99999999999</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Accept: application/json
+
+{
+  "ServiceMetadataReferenceCollection": [
+    "sap::invoice"
+  ],
+  "Name": "default",
+  "Extension": {},
+  "ParticipantIdentifier": {
+    "scheme": "urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151",
+    "value": "99999999999"
+  }
+}
+</code></pre>
 </div>
 
-<p><strong>GET /urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::42140282984/service/sap::invoice</strong></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>Accept: application/xml
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"ProcessList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"ProcessIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dbc"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice-type1"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nt">"ServiceEndpointList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"ServiceActivationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-14"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"Certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"EndpointURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"transportProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"ServiceExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-14"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"RequireBusinessLevelSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"MinimumAuthenticationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"ServiceDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"DocumentIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sap"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"ParticipantIdentifier"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42140282984"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;ServiceGroup xmlns="http://busdox.org/serviceMetadata/publishing/1.0/" xmlns:ids="http://busdox.org/transport/identifiers/1.0/"&gt;
+  &lt;ids:ParticipantIdentifier scheme="urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151"&gt;99999999999&lt;/ids:ParticipantIdentifier&gt;
+  &lt;ServiceMetadataReferenceCollection&gt;
+    &lt;ServiceMetadataReference href="https://example.org/urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::99999999999/service/sap::invoice"/&gt;
+  &lt;/ServiceMetadataReferenceCollection&gt;
+  &lt;Extension/&gt;
+&lt;/ServiceGroup&gt;
+</code></pre>
 </div>
+
+<p><strong>GET /urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::99999999999/service/dbc::invoices</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Accept: application/json
+
+{
+  "ProcessList": [
+    {
+      "ProcessIdentifier": {
+        "scheme": "gln-deliver-goods",
+        "value": "generic"
+      },
+      "ServiceEndpointList": [
+        {
+          "EndpointURI": "https://accesspoint.com/as4service/simplified/invoice-2-type/",
+          "transportProfile": "dbc-as4",
+          "RequireBusinessLevelSignature": "false",
+          "TechnicalInformationUrl": "http://www.acesspoint.com/as4info",
+          "MinimumAuthenticationLevel": "2",
+          "ServiceDescription": "as4 message service for invoice 2"
+        }
+      ]
+    }
+  ],
+  "DocumentIdentifier": {
+    "scheme": "dbc",
+    "value": "invoices"
+  },
+  "id": "dbc::invoices",
+  "ParticipantIdentifier": {
+    "scheme": "urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151",
+    "value": "99999999999"
+  }
+}
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Accept: application/xml
+
+&lt;SignedServiceMetadata xmlns="http://busdox.org/serviceMetadata/publishing/1.0/" xmlns:ids="http://busdox.org/transport/identifiers/1.0/"&gt;
+  &lt;ServiceMetadata xmlns="http://busdox.org/serviceMetadata/publishing/1.0/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"&gt;
+    &lt;ServiceInformation&gt;
+      &lt;ids:ParticipantIdentifier scheme="urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151"&gt;99999999999&lt;/ids:ParticipantIdentifier&gt;
+      &lt;ids:DocumentIdentifier scheme="dbc"&gt;invoices&lt;/ids:DocumentIdentifier&gt;
+      &lt;ProcessList&gt;
+        &lt;Process&gt;
+          &lt;ids:ProcessIdentifier scheme="gln-deliver-goods"&gt;generic&lt;/ids:ProcessIdentifier&gt;
+          &lt;ServiceEndpointList&gt;
+            &lt;Endpoint transportProfile="dbc-as4"&gt;
+              &lt;EndpointURI&gt;https://accesspoint.com/as4service/simplified/invoice-2-type/&lt;/EndpointURI&gt;
+              &lt;transportProfile&gt;dbc-as4&lt;/transportProfile&gt;
+              &lt;RequireBusinessLevelSignature&gt;false&lt;/RequireBusinessLevelSignature&gt;
+              &lt;TechnicalInformationUrl&gt;http://www.acesspoint.com/as4info&lt;/TechnicalInformationUrl&gt;
+              &lt;MinimumAuthenticationLevel&gt;2&lt;/MinimumAuthenticationLevel&gt;
+              &lt;ServiceDescription&gt;as4 message service for invoice 2&lt;/ServiceDescription&gt;
+            &lt;/Endpoint&gt;
+          &lt;/ServiceEndpointList&gt;
+        &lt;/Process&gt;
+      &lt;/ProcessList&gt;
+    &lt;/ServiceInformation&gt;
+  &lt;/ServiceMetadata&gt;
+  &lt;Signature xmlns="http://www.w3.org/2000/09/xmldsig#"/&gt;
+&lt;/SignedServiceMetadata&gt;
+</code></pre>
+</div>
+
+<h3 id="participant-id-linking">Participant ID linking</h3>
+
+<p>Before:</p>
+
+<ul>
+  <li>pid1 linked to pid2 (and vice versa)</li>
+  <li>pid1 linked participant IDs: <code class="highlighter-rouge">[pid1, pid2]</code></li>
+  <li>pid2 linked participant IDs: <code class="highlighter-rouge">[pid1, pid2]</code></li>
+  <li>pid_new linked participant IDs: <code class="highlighter-rouge">[pid_new]</code> or <code class="highlighter-rouge">[]</code></li>
+  <li>user adds pid_new to pid1 links: <code class="highlighter-rouge">POST /{pid1}/aka</code> with <code class="highlighter-rouge"><span class="p">{</span><span class="nt">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="err">pid_new</span><span class="p">}</span></code> payload</li>
+</ul>
+
+<p>After:</p>
+
+<ul>
+  <li>pid1 linked to pid2 and to pid_new (and vice versa)</li>
+  <li>pid1 linked participant IDs: <code class="highlighter-rouge">[pid1, pid2, pid_new]</code></li>
+  <li>pid2 linked participant IDs: <code class="highlighter-rouge">[pid1, pid2, pid_new]</code></li>
+  <li>pid_new linked participant IDs: <code class="highlighter-rouge">[pid1, pid2, pid_new]</code></li>
+</ul>
+
+<p>Please note no <code class="highlighter-rouge">POST /{pid2}/aka</code> was submitted, but pid2 still receives link to pid_new because pid1 was linked to pid2.</p>
 
 <h1 id="related-material">Related Material</h1>
 
