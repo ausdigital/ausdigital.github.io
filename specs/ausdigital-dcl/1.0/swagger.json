@@ -23,7 +23,7 @@
     "/demo_auth/" : {
       "get" : {
         "tags" : [ "auth" ],
-        "summary" : "Get base user information with authentication enabled",
+        "summary" : "Get base user information with authentication enabled.",
         "description" : "Check if OIDC JWT token is correct",
         "operationId" : "DemoAuth",
         "responses" : {
