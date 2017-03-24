@@ -328,387 +328,6 @@ Please note that JSON format differs from specification XML and has more data in
             </div>
         </div>
         
-        <div class="swagger-method swagger-method-put">
-            <h3 class="swagger-method-title">
-                <a href="#" class="swagger-method-link">
-                    <span class="swagger-method-name">PUT</span>
-                    Create/Update Service Group Info
-                </a>
-            </h3>
-            <div class="swagger-method-details">
-                <div class="swagger-method-description"><p>Create/Update Service Group Info</p>
-</div>
-                
-                <div class="swagger-parameters">
-                    <h4>Parameters</h4>
-                    <table class="swagger-parameters-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Located in</th>
-                                <th>Description</th>
-                                <th>Type</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                            <tr>
-                                <td>
-                                    
-                                    <span class="swagger-parameter-required">
-                                    
-                                    participant_id
-                                    
-                                    </span>
-                                    
-                                </td>
-                                <td>path</td>
-                                <td><p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
-</td>
-                                <td>
-                                    
-                                    String
-                                    
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td>
-                                    
-                                    <span class="swagger-parameter-required">
-                                    
-                                    Content-Type
-                                    
-                                    </span>
-                                    
-                                </td>
-                                <td>header</td>
-                                <td><p>content type header</p>
-</td>
-                                <td>
-                                    
-                                    String
-                                    
-                                    
-                                </td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                </div>
-                
-                
-                <div class="swagger-response">
-                    <h4>Responses</h4>
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">201</div>
-                        <div class="swagger-response-description">
-                            <p>The request has been fulfilled and has resulted in one or more new resources being created.</p>
-
-                            
-                                <div class="swagger-response-headers">
-                                <h5>Headers:</h5>
-                                <table>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Type</th>
-                                    </tr>
-                                    
-                                        <tr>
-                                            <td>location</td>
-                                            <td><p>The location of the created resource. Should match the resource location used to create it.</p>
-</td>
-                                            <td>string</td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td>date</td>
-                                            <td><p>The date and time that the message was originated.</p>
-</td>
-                                            <td>string</td>
-                                        </tr>
-                                    
-                                </table>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">204</div>
-                        <div class="swagger-response-description">
-                            <p>The resource already existed and nothing happened if the body was empty. If the body was not empty and the participant identifier matched the UR, the resource is updated.</p>
-
-                            
-                                <div class="swagger-response-headers">
-                                <h5>Headers:</h5>
-                                <table>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Type</th>
-                                    </tr>
-                                    
-                                        <tr>
-                                            <td>date</td>
-                                            <td><p>The date and time that the message was originated.</p>
-</td>
-                                            <td>string</td>
-                                        </tr>
-                                    
-                                </table>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">400</div>
-                        <div class="swagger-response-description">
-                            <p>The server cannot or will not process the request due to something that is perceived to be a client error.</p>
-
-                            
-                        </div>
-                    </div>
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">403</div>
-                        <div class="swagger-response-description">
-                            <p>The server understood the request, but is refusing to fulfill it. Return this if there is a problem with the client certificate.</p>
-
-                            
-                        </div>
-                    </div>
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">500</div>
-                        <div class="swagger-response-description">
-                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
-
-                            
-                        </div>
-                    </div>
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        <div class="swagger-method swagger-method-delete">
-            <h3 class="swagger-method-title">
-                <a href="#" class="swagger-method-link">
-                    <span class="swagger-method-name">DELETE</span>
-                    Delete Service Group Info
-                </a>
-            </h3>
-            <div class="swagger-method-details">
-                <div class="swagger-method-description"><p>Delete Service Group Info</p>
-</div>
-                
-                <div class="swagger-parameters">
-                    <h4>Parameters</h4>
-                    <table class="swagger-parameters-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Located in</th>
-                                <th>Description</th>
-                                <th>Type</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                            <tr>
-                                <td>
-                                    
-                                    <span class="swagger-parameter-required">
-                                    
-                                    participant_id
-                                    
-                                    </span>
-                                    
-                                </td>
-                                <td>path</td>
-                                <td><p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
-</td>
-                                <td>
-                                    
-                                    String
-                                    
-                                    
-                                </td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                </div>
-                
-                
-                <div class="swagger-response">
-                    <h4>Responses</h4>
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">204</div>
-                        <div class="swagger-response-description">
-                            <p>The resource has been removed.</p>
-
-                            
-                                <div class="swagger-response-headers">
-                                <h5>Headers:</h5>
-                                <table>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Type</th>
-                                    </tr>
-                                    
-                                        <tr>
-                                            <td>date</td>
-                                            <td><p>The date and time that the message was originated.</p>
-</td>
-                                            <td>string</td>
-                                        </tr>
-                                    
-                                </table>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">400</div>
-                        <div class="swagger-response-description">
-                            <p>The server cannot or will not process the request due to something that is perceived to be a client error.</p>
-
-                            
-                        </div>
-                    </div>
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">403</div>
-                        <div class="swagger-response-description">
-                            <p>The server understood the request, but is refusing to fulfill it. Return this if there is a problem with the client certificate.</p>
-
-                            
-                        </div>
-                    </div>
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">404</div>
-                        <div class="swagger-response-description">
-                            <p>The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.</p>
-
-                            
-                        </div>
-                    </div>
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">500</div>
-                        <div class="swagger-response-description">
-                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
-
-                            
-                        </div>
-                    </div>
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                    
-                </div>
-                
-            </div>
-        </div>
-        
     </div>
     
     <div class="swagger-paths">
@@ -990,6 +609,26 @@ Please note that JSON format differs from specification XML and has more data in
                                 </td>
                             </tr>
                             
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    body
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>body</td>
+                                <td><p>Service metadata info</p>
+</td>
+                                <td>
+                                    
+                                    String
+                                    
+                                </td>
+                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>
@@ -999,9 +638,9 @@ Please note that JSON format differs from specification XML and has more data in
                     <h4>Responses</h4>
                     
                     <div class="swagger-responses-title">
-                        <div class="swagger-response-code">201</div>
+                        <div class="swagger-response-code">200</div>
                         <div class="swagger-response-description">
-                            <p>The request has been fulfilled and has resulted in one or more new resources being created.</p>
+                            <p>Service Metadata Information</p>
 
                             
                                 <div class="swagger-response-headers">
@@ -1014,52 +653,8 @@ Please note that JSON format differs from specification XML and has more data in
                                     </tr>
                                     
                                         <tr>
-                                            <td>location</td>
-                                            <td><p>The location of the created resource. Should match the resource location used to create it.</p>
-</td>
-                                            <td>string</td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td>date</td>
-                                            <td><p>The date and time that the message was originated.</p>
-</td>
-                                            <td>string</td>
-                                        </tr>
-                                    
-                                </table>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">204</div>
-                        <div class="swagger-response-description">
-                            <p>The resource already existed and nothing happened if the body was empty. If the body was not empty and the participant identifier matched the UR, the resource is updated.</p>
-
-                            
-                                <div class="swagger-response-headers">
-                                <h5>Headers:</h5>
-                                <table>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Type</th>
-                                    </tr>
-                                    
-                                        <tr>
-                                            <td>date</td>
-                                            <td><p>The date and time that the message was originated.</p>
+                                            <td>Content-Type</td>
+                                            <td>
 </td>
                                             <td>string</td>
                                         </tr>
@@ -1083,6 +678,24 @@ Please note that JSON format differs from specification XML and has more data in
                         <div class="swagger-response-code">400</div>
                         <div class="swagger-response-description">
                             <p>The server cannot or will not process the request due to something that is perceived to be a client error.</p>
+
+                            
+                        </div>
+                    </div>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">401</div>
+                        <div class="swagger-response-description">
+                            <p>Invalid auth header. No credentials provided.</p>
 
                             
                         </div>
@@ -1142,11 +755,11 @@ Please note that JSON format differs from specification XML and has more data in
             <h3 class="swagger-method-title">
                 <a href="#" class="swagger-method-link">
                     <span class="swagger-method-name">DELETE</span>
-                    Delete Service Group Info
+                    Delete Service Metadata Info
                 </a>
             </h3>
             <div class="swagger-method-details">
-                <div class="swagger-method-description"><p>Delete Service Group Info</p>
+                <div class="swagger-method-description"><p>Delete Service Metadata Info</p>
 </div>
                 
                 <div class="swagger-parameters">
@@ -1253,6 +866,24 @@ Please note that JSON format differs from specification XML and has more data in
                         <div class="swagger-response-code">400</div>
                         <div class="swagger-response-description">
                             <p>The server cannot or will not process the request due to something that is perceived to be a client error.</p>
+
+                            
+                        </div>
+                    </div>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">401</div>
+                        <div class="swagger-response-description">
+                            <p>Invalid auth header. No credentials provided.</p>
 
                             
                         </div>
@@ -2044,6 +1675,554 @@ Please note that JSON format differs from specification XML and has more data in
         
     </div>
     
+    <div class="swagger-paths">
+
+        <h2 class="swagger-path" id="links">links</h2>
+        <div class="swagger-path-route">/{participant_id}/aka</div>
+        
+        <div class="swagger-method swagger-method-get">
+            <h3 class="swagger-method-title">
+                <a href="#" class="swagger-method-link">
+                    <span class="swagger-method-name">GET</span>
+                    Get list of linked participants
+                </a>
+            </h3>
+            <div class="swagger-method-details">
+                <div class="swagger-method-description"><p>Return flat list of linked participant IDs for this pid excluding itself</p>
+</div>
+                
+                <div class="swagger-parameters">
+                    <h4>Parameters</h4>
+                    <table class="swagger-parameters-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Located in</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    participant_id
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>path</td>
+                                <td><p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
+</td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+                
+                <div class="swagger-response">
+                    <h4>Responses</h4>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">200</div>
+                        <div class="swagger-response-description">
+                            <p>OK</p>
+
+                            
+                                <div class="swagger-response-headers">
+                                <h5>Headers:</h5>
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Type</th>
+                                    </tr>
+                                    
+                                        <tr>
+                                            <td>Content-Type</td>
+                                            <td>
+</td>
+                                            <td>string</td>
+                                        </tr>
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">404</div>
+                        <div class="swagger-response-description">
+                            <p>The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.</p>
+
+                            
+                        </div>
+                    </div>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">500</div>
+                        <div class="swagger-response-description">
+                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
+
+                            
+                        </div>
+                    </div>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="swagger-method swagger-method-post">
+            <h3 class="swagger-method-title">
+                <a href="#" class="swagger-method-link">
+                    <span class="swagger-method-name">POST</span>
+                    Create link between participants
+                </a>
+            </h3>
+            <div class="swagger-method-details">
+                <div class="swagger-method-description"><p>Create link between participants</p>
+</div>
+                
+                <div class="swagger-parameters">
+                    <h4>Parameters</h4>
+                    <table class="swagger-parameters-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Located in</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    participant_id
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>path</td>
+                                <td><p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
+</td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    body
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>body</td>
+                                <td><p>id of participant to link</p>
+</td>
+                                <td>
+                                    
+                                    String
+                                    
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+                
+                <div class="swagger-response">
+                    <h4>Responses</h4>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">201</div>
+                        <div class="swagger-response-description">
+                            <p>Created</p>
+
+                            
+                                <div class="swagger-response-headers">
+                                <h5>Headers:</h5>
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Type</th>
+                                    </tr>
+                                    
+                                        <tr>
+                                            <td>Content-Type</td>
+                                            <td>
+</td>
+                                            <td>string</td>
+                                        </tr>
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">400</div>
+                        <div class="swagger-response-description">
+                            <p>The server cannot or will not process the request due to something that is perceived to be a client error.</p>
+
+                            
+                        </div>
+                    </div>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">401</div>
+                        <div class="swagger-response-description">
+                            <p>Invalid auth header. No credentials provided.</p>
+
+                            
+                        </div>
+                    </div>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">403</div>
+                        <div class="swagger-response-description">
+                            <ul>
+  <li>Participant id {participant_id}} not available for given user - not business owner</li>
+  <li>Invalid auth header. No credentials provided.</li>
+  <li>Badly formed JWT</li>
+  <li>Invalid Authorization header. JWT Signature verification failed.</li>
+</ul>
+
+                            
+                        </div>
+                    </div>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">404</div>
+                        <div class="swagger-response-description">
+                            <p>The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.</p>
+
+                            
+                        </div>
+                    </div>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">500</div>
+                        <div class="swagger-response-description">
+                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
+
+                            
+                        </div>
+                    </div>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="swagger-paths">
+
+        <h2 class="swagger-path" id=""></h2>
+        <div class="swagger-path-route">/{participant_id}/aka/{linked_participant_id}</div>
+        
+        <div class="swagger-method swagger-method-delete">
+            <h3 class="swagger-method-title">
+                <a href="#" class="swagger-method-link">
+                    <span class="swagger-method-name">DELETE</span>
+                    Delete linked participant by Id
+                </a>
+            </h3>
+            <div class="swagger-method-details">
+                <div class="swagger-method-description"><p>Delete linked participant by Id</p>
+</div>
+                
+                <div class="swagger-parameters">
+                    <h4>Parameters</h4>
+                    <table class="swagger-parameters-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Located in</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    participant_id
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>path</td>
+                                <td><p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
+</td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    linked_participant_id
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>path</td>
+                                <td><p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
+</td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+                
+                <div class="swagger-response">
+                    <h4>Responses</h4>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">204</div>
+                        <div class="swagger-response-description">
+                            <p>The resource has been removed.</p>
+
+                            
+                                <div class="swagger-response-headers">
+                                <h5>Headers:</h5>
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Type</th>
+                                    </tr>
+                                    
+                                        <tr>
+                                            <td>date</td>
+                                            <td><p>The date and time that the message was originated.</p>
+</td>
+                                            <td>string</td>
+                                        </tr>
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">401</div>
+                        <div class="swagger-response-description">
+                            <p>Invalid auth header. No credentials provided.</p>
+
+                            
+                        </div>
+                    </div>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">403</div>
+                        <div class="swagger-response-description">
+                            <ul>
+  <li>Participant id {participant_id}} not available for given user - not business owner</li>
+  <li>Invalid auth header. No credentials provided.</li>
+  <li>Badly formed JWT</li>
+  <li>Invalid Authorization header. JWT Signature verification failed.</li>
+</ul>
+
+                            
+                        </div>
+                    </div>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">404</div>
+                        <div class="swagger-response-description">
+                            <p>The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.</p>
+
+                            
+                        </div>
+                    </div>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">500</div>
+                        <div class="swagger-response-description">
+                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
+
+                            
+                        </div>
+                    </div>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+    
 </div>
 <script type="text/javascript">
 // Helpers
@@ -2106,7 +2285,7 @@ else {
 <script src="/js/anchor.min.js"></script>
 <script>
     anchors.add('h1, h2, h3, h4, h5');
-    anchors.remove('.no-anchor, .page-content > h1');
+    anchors.remove('.no-anchor, .page-content > h1:first-child');
 </script>
         </div>
     </div>

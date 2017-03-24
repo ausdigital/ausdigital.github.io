@@ -6,7 +6,9 @@
     "description": "The \"Digital Capability Publisher\" (DCP) provides the ability to discover detailed service information and associated digital certificates for any known business identifier. \n\nPlease mind the test installation and ensure data validity - some of such installations have data like in production, with real businesses, but this data is not guaranteed to be valid and may be changed in development purposes; do not rely on data from specific hostname to real-world production installation until service owners specifically said it's true and valid. For example, any *.testpoint.io installations have the test data and can't be used in production.\n\nThis API specification should be valid for all supporting installations and implementations.\n\nIf you want OASIS XML output:\n* pass Accept header with 'application/xml' or 'text/xml' value\n* pass ?format=xml as GET query parameter\n\nOASIS-compliant urls also supported (but it is strongy recommended to implement json, just because JSON is more flexible and contains more information). Examples:\n\n* https://dcp.testpoint.io/urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::22341388307?format=xml\n* https://dcp.testpoint.io/urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::22341388307/service/dbc::invoice?format=xml\n  \nDespite Oasis SMP standard prohibit using SSL/TLS, DPC implementation speicfication defines HTTPS as a signle supported protocol.  \nPlease note that JSON format differs from specification XML and has more data in it.\n\nIf you want to do any authenticated test requests then it's better to use CURL, not Swaggerhub website.\n"
   },
   "host": "dcp.testpoint.io",
-  "schemes": ["https"],
+  "schemes": [
+    "https"
+  ],
   "basePath": "/",
   "securityDefinitions": {
     "JWT": {
@@ -39,13 +41,21 @@
       "type": "string",
       "default": "urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::22341388307"
     },
+    "linkedParticipantIdUrlParameter": {
+      "name": "linked_participant_id",
+      "in": "path",
+      "description": "The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.",
+      "required": true,
+      "type": "string",
+      "default": "urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::22341388307"
+    },
     "documentIdUrlParameter": {
       "name": "document_id",
       "in": "path",
       "description": "Represents the type of document that the recipient is able to receive. The document is represented by an identifier (identifying the document type) and an identifier scheme, which the format of the identifier itself.",
       "required": true,
       "type": "string",
-      "default": "dbc::invoice"
+      "default": "dbc::invoices"
     },
     "acceptHeader": {
       "name": "Accept",
@@ -110,6 +120,20 @@
     },
     "400": {
       "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "401": {
+      "description": "Invalid auth header. No credentials provided.",
       "schema": {
         "type": "object",
         "properties": {
@@ -247,69 +271,6 @@
             "$ref": "#/responses/500"
           }
         }
-      },
-      "put": {
-        "tags": [
-          "service group"
-        ],
-        "summary": "Create/Update Service Group Info",
-        "description": "Create/Update Service Group Info",
-        "operationId": "createServiceGroup",
-        "parameters": [
-          {
-            "$ref": "#/parameters/participantIdUrlParameter"
-          },
-          {
-            "$ref": "#/parameters/contentTypeHeader"
-          }
-        ],
-        "responses": {
-          "201": {
-            "$ref": "#/responses/201"
-          },
-          "204": {
-            "$ref": "#/responses/204-create"
-          },
-          "400": {
-            "$ref": "#/responses/400"
-          },
-          "403": {
-            "$ref": "#/responses/403"
-          },
-          "500": {
-            "$ref": "#/responses/500"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "service group"
-        ],
-        "summary": "Delete Service Group Info",
-        "description": "Delete Service Group Info",
-        "operationId": "deleteServiceGroup",
-        "parameters": [
-          {
-            "$ref": "#/parameters/participantIdUrlParameter"
-          }
-        ],
-        "responses": {
-          "204": {
-            "$ref": "#/responses/204-delete"
-          },
-          "400": {
-            "$ref": "#/responses/400"
-          },
-          "403": {
-            "$ref": "#/responses/403"
-          },
-          "404": {
-            "$ref": "#/responses/404"
-          },
-          "500": {
-            "$ref": "#/responses/500"
-          }
-        }
       }
     },
     "/{participant_id}/service/{document_id}": {
@@ -370,17 +331,39 @@
           },
           {
             "$ref": "#/parameters/contentTypeHeader"
+          },
+          {
+            "description": "Service metadata info",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/serviceMetadataPut"
+            }
+          }
+        ],
+        "security": [
+          {
+            "JWT": []
           }
         ],
         "responses": {
-          "201": {
-            "$ref": "#/responses/201"
-          },
-          "204": {
-            "$ref": "#/responses/204-create"
+          "200": {
+            "description": "Service Metadata Information",
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/serviceMetadata"
+            }
           },
           "400": {
             "$ref": "#/responses/400"
+          },
+          "401": {
+            "$ref": "#/responses/401"
           },
           "403": {
             "$ref": "#/responses/403"
@@ -394,8 +377,8 @@
         "tags": [
           "service metadata"
         ],
-        "summary": "Delete Service Group Info",
-        "description": "Delete Service Group Info",
+        "summary": "Delete Service Metadata Info",
+        "description": "Delete Service Metadata Info",
         "operationId": "deleteServiceMetadata",
         "parameters": [
           {
@@ -405,12 +388,20 @@
             "$ref": "#/parameters/documentIdUrlParameter"
           }
         ],
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
         "responses": {
           "204": {
             "$ref": "#/responses/204-delete"
           },
           "400": {
             "$ref": "#/responses/400"
+          },
+          "401": {
+            "$ref": "#/responses/401"
           },
           "403": {
             "$ref": "#/responses/403"
@@ -598,6 +589,135 @@
           }
         }
       }
+    },
+    "/{participant_id}/aka": {
+      "get": {
+        "tags": [
+          "links"
+        ],
+        "summary": "Get list of linked participants",
+        "description": "Return flat list of linked participant IDs for this pid excluding itself",
+        "operationId": "getLInkedParticipants",
+        "parameters": [
+          {
+            "$ref": "#/parameters/participantIdUrlParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/akaDetail"
+            }
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "links"
+        ],
+        "summary": "Create link between participants",
+        "description": "Create link between participants",
+        "operationId": "createLink",
+        "parameters": [
+          {
+            "$ref": "#/parameters/participantIdUrlParameter"
+          },
+          {
+            "description": "id of participant to link",
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/participantIDLinkPost"
+            }
+          }
+        ],
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Content-Type": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/akaDetail"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "401": {
+            "$ref": "#/responses/401"
+          },
+          "403": {
+            "$ref": "#/responses/403-key"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      }
+    },
+    "/{participant_id}/aka/{linked_participant_id}": {
+      "delete": {
+        "tags": [
+          "links"
+        ],
+        "summary": "Delete linked participant by Id",
+        "description": "Delete linked participant by Id",
+        "operationId": "deleteLinkedPartcipantById",
+        "parameters": [
+          {
+            "$ref": "#/parameters/participantIdUrlParameter"
+          },
+          {
+            "$ref": "#/parameters/linkedParticipantIdUrlParameter"
+          }
+        ],
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204-delete"
+          },
+          "401": {
+            "$ref": "#/responses/401"
+          },
+          "403": {
+            "$ref": "#/responses/403-key"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -614,6 +734,22 @@
         },
         "name": {
           "type": "string"
+        },
+        "participantIdentifier": {
+          "$ref": "#/definitions/participantIdentifier"
+        }
+      }
+    },
+    "serviceMetadataPut": {
+      "properties": {
+        "documentIdentifier": {
+          "$ref": "#/definitions/documentIdentifier"
+        },
+        "processList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/process"
+          }
         }
       }
     },
@@ -622,19 +758,22 @@
         "participantIdentifier"
       ],
       "properties": {
-        "participantIdentifier": {
+        "processList": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/participantIdentifier"
+            "$ref": "#/definitions/process"
           }
         },
         "documentIdentifier": {
           "$ref": "#/definitions/documentIdentifier"
         },
-        "processList": {
+        "id": {
+          "type": "string"
+        },
+        "participantIdentifier": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/process"
+            "$ref": "#/definitions/participantIdentifier"
           }
         }
       }
@@ -654,10 +793,10 @@
     },
     "serviceEndpoint": {
       "properties": {
-        "transportProfile": {
+        "endpointURI": {
           "type": "string"
         },
-        "endpointURI": {
+        "transportProfile": {
           "type": "string"
         },
         "requireBusinessLevelSignature": {
@@ -733,6 +872,9 @@
           "type": "string",
           "format": "date-time"
         },
+        "keyid": {
+          "type": "string"
+        },
         "pubKey": {
           "type": "string"
         },
@@ -764,6 +906,20 @@
         "revoked": {
           "type": "string",
           "format": "date-time"
+        }
+      }
+    },
+    "akaDetail": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "linked participant ID"
+      }
+    },
+    "participantIDLinkPost": {
+      "properties": {
+        "participantId": {
+          "type": "string"
         }
       }
     },
