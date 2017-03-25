@@ -168,6 +168,7 @@
 <li class="toc-entry toc-h2"><a href="#access-tokens">Access Tokens</a></li>
 <li class="toc-entry toc-h2"><a href="#claims-and-scopes">Claims and Scopes</a></li>
 <li class="toc-entry toc-h2"><a href="#custom-claims-and-scopes-in-the-adbc-idp-domain">Custom Claims and Scopes in the ADBC IDP domain</a></li>
+<li class="toc-entry toc-h2"><a href="#participant-id-claim-name">Participant ID claim name</a></li>
 <li class="toc-entry toc-h2"><a href="#id-schemes-and-jurisdictions">ID Schemes and Jurisdictions</a></li>
 <li class="toc-entry toc-h2"><a href="#two-kinds-of-trust">Two kinds of trust</a></li>
 <li class="toc-entry toc-h2"><a href="#how-an-rp-trusts-an-idp">How an RP trusts an IDP</a></li>
@@ -384,6 +385,41 @@ orchestrating business message components.</p>
 Number” ID Scheme (ABN). It means that (according to this IDP), this
 client of the IDP is the business known as ABN 12345678, and they have
 given the RP permission to update their businesses metadata.</p>
+
+<h2 id="participant-id-claim-name">Participant ID claim name</h2>
+
+<p>Any participant ID claim name represents prefix of full participant ID schema without last commponent. Content of that claim is a list of dicts, where every dict contains only one component, key is the last component of schema, value is participant ID without schema.</p>
+
+<p>JWT example (partial):</p>
+<div class="highlighter-rouge"><pre class="highlight"><code> "urn:oasis:names:tc:ebcore:partyid-type:iso6523": [
+    {"0151": "11111111111"},
+    {"0088": "22222222222"},
+    {"0088": "33333333333"},
+    {"0088": "44444444444"}
+  ],
+  "urn:unregistered": [
+    {"foo": "1234"},
+    {"bar": "5678"}
+  ],
+  "urn:oasis:names:tc:ebcore:partyid-type:iso20022:ProprietaryIdentification": [
+    {"ausdigitalorg": "nry.testpoint.io"},
+    {"company2": "..."}
+  ],
+</code></pre>
+</div>
+
+<p>Participant ID’s extracted from that JWT:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::11111111111
+urn:oasis:names:tc:ebcore:partyid-type:iso6523:0088::22222222222
+urn:oasis:names:tc:ebcore:partyid-type:iso6523:0088::33333333333
+urn:oasis:names:tc:ebcore:partyid-type:iso6523:0088::44444444444
+urn:unregistered:foo::1234
+urn:unregistered:bar::5678
+urn:oasis:names:tc:ebcore:partyid-type:iso20022:ProprietaryIdentification:ausdigitalorg::nry.testpoint.io
+urn:oasis:names:tc:ebcore:partyid-type:iso20022:ProprietaryIdentification:company2::...
+</code></pre>
+</div>
 
 <h2 id="id-schemes-and-jurisdictions">ID Schemes and Jurisdictions</h2>
 
