@@ -92,7 +92,7 @@
       "required": false,
       "type": "string",
       "format": "date-time",
-      "default": "2017-03-02T00:00:00.00000000:00"
+      "default": "2017-03-02T00:00:00.000000+00:00"
     },
     "published_before": {
       "name": "published_before",

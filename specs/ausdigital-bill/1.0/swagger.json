@@ -40,7 +40,7 @@
   "definitions": {
     "Invoice": {
       "title": "NewInvoice",
-      "required": ["IssueDate", "DueDate", "InvoiceTypeCode", "BuyerReference1", "OrderReference", "AccountingSupplierParty", "AccountingCustomerParty"],
+      "required": ["IssueDate", "DueDate", "InvoiceTypeCode", "BuyerReference", "OrderReference", "AccountingSupplierParty", "AccountingCustomerParty"],
       "properties": {
         "IssueDate": {
           "type": "string",
@@ -247,7 +247,7 @@
       "required": ["PartyIdentification", "PartyName"],
       "properties": {
         "PartyIdentification": {
-          "$ref": "#/definitions/ID1"
+          "$ref": "#/definitions/ID"
         },
         "PartyName": {
           "$ref": "#/definitions/Name"
@@ -331,24 +331,6 @@
     },
     "ID": {
       "title": "Identification GUID",
-      "required": ["ID"],
-      "properties": {
-        "ID": {
-          "type": "string"
-        }
-      }
-    },
-    "UnusedID": {
-      "title": "UnusedIdentification GUID",
-      "required": ["ID"],
-      "properties": {
-        "ID": {
-          "type": "string"
-        }
-      }
-    },
-    "AnotherUnusedID": {
-      "title": "UnusedIdentification GUID",
       "required": ["ID"],
       "properties": {
         "ID": {
