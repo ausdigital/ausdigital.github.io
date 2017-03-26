@@ -247,7 +247,7 @@
       "required": ["PartyIdentification", "PartyName"],
       "properties": {
         "PartyIdentification": {
-          "$ref": "#/definitions/ID"
+          "$ref": "#/definitions/ID1"
         },
         "PartyName": {
           "$ref": "#/definitions/Name"
@@ -331,6 +331,24 @@
     },
     "ID": {
       "title": "Identification GUID",
+      "required": ["ID"],
+      "properties": {
+        "ID": {
+          "type": "string"
+        }
+      }
+    },
+    "UnusedID": {
+      "title": "UnusedIdentification GUID",
+      "required": ["ID"],
+      "properties": {
+        "ID": {
+          "type": "string"
+        }
+      }
+    },
+    "AnotherUnusedID": {
+      "title": "UnusedIdentification GUID",
       "required": ["ID"],
       "properties": {
         "ID": {
