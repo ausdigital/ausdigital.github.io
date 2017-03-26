@@ -17,7 +17,7 @@ Supporting the TAP-GW specification helps to commoditise the network so that led
 
 | Specification URL | Version | Status | API Definition |  Issues List |
 | ----------------- | ------  | ------ | -------------- |  ----------- |
-| [TAP-GW 0.1 spec](http://ausdigital.org/specs/ausdigital-tap-gw/1.0/) | 0.1 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | coming soon | [TAP-GW Issues](https://github.com/ausdigital/ausdigital-tap-gw/issues)  |
+| [TAP-GW 0.1 spec](http://ausdigital.org/specs/ausdigital-tap-gw/1.0/) | 0.1 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [TAP-GW 1.0 API](http://ausdigital.org/specs/ausdigital-tap-gw/1.0/api) | [TAP-GW Issues](https://github.com/ausdigital/ausdigital-tap-gw/issues)  |
 
 ## Known Implementations
 

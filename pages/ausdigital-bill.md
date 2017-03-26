@@ -13,7 +13,7 @@ The Billing Semantics Specifications are based on [OASIS UBL2.1](http://docs.oas
 
 | Specification URL | Version | Status | API Definition | Issues List |
 | ----------------- | ------  | ------ | -------------- | ----------- |
-| [BILL 1.0 spec](http://ausdigital.org/specs/ausdigital-bill/1.0/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [BILL 1.0 API](https://swaggerhub.com/api/ausdigital/ausdigital-syn/1.0) |  [BILL 1.0 Issues](https://github.com/ausdigital/ausdigital-bill/issues)  |
+| [BILL 1.0 spec](http://ausdigital.org/specs/ausdigital-bill/1.0/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [BILL 1.0 API](http://ausdigital.org/specs/ausdigital-bill/1.0/api) |  [BILL 1.0 Issues](https://github.com/ausdigital/ausdigital-bill/issues)  |
 
 ## Known Implementations
 

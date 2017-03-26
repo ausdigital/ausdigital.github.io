@@ -13,7 +13,7 @@ A federated set of one or more identity providers are the key source of trust fo
 
 | Specification URL | Version | Status | API Definition | Issues List |
 | ----------------- | ------  | ------ | -------------- | ----------- |
-| [IDP 1.0 spec](http://ausdigital.org/specs/ausdigital-idp/1.0/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [IDP 1.0 API](https://swaggerhub.com/api/ausdigital/ausdigital-idp/1.0) |  [IDP 1.0 Issues](https://github.com/ausdigital/ausdigital-idp/issues)  |
+| [IDP 1.0 spec](http://ausdigital.org/specs/ausdigital-idp/1.0/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [IDP 1.0 API](http://ausdigital.org/specs/ausdigital-idp/1.0/api) |  [IDP 1.0 Issues](https://github.com/ausdigital/ausdigital-idp/issues)  |
 
 ## Known Implementations
 
