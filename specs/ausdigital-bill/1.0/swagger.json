@@ -40,7 +40,7 @@
   "definitions": {
     "Invoice": {
       "title": "NewInvoice",
-      "required": ["IssueDate", "DueDate", "InvoiceTypeCode", "BuyerReference", "OrderReference", "AccountingSupplierParty", "AccountingCustomerParty"],
+      "required": ["IssueDate", "DueDate", "InvoiceTypeCode", "BuyerReference1", "OrderReference", "AccountingSupplierParty", "AccountingCustomerParty"],
       "properties": {
         "IssueDate": {
           "type": "string",
