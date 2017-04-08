@@ -14,7 +14,7 @@
   },
   "host" : "syn.testpoint.io",
   "schemes" : [ "https", "http" ],
-  "basePath" : "/api/v0",
+  "basePath" : "/",
   "paths" : {
     "/ubl2json" : {
       "post" : {
