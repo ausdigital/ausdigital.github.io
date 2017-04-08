@@ -1,6 +1,6 @@
 {
   "swagger": "2.0",
-  "host": "api.e-invoice.com",
+  "host": "syn.testpoint.io",
   "basePath": "/validator",
   "info": {
     "version": "1.0",
