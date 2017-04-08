@@ -7,7 +7,7 @@
   },
   "host" : "dcl.testpoint.io",
   "schemes" : [ "https" ],
-  "basePath" : "/api/v0",
+  "basePath" : "/",
   "produces" : [ "application/json" ],
   "parameters" : {
     "participantIdUrlParameter" : {
