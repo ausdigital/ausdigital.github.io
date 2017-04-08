@@ -307,7 +307,7 @@
               "$ref": "#/definitions/serviceMetadata"
             },
             "examples": {
-              "application/json": "{\"ProcessList\":[{\"ProcessIdentifier\":{\"scheme\":\"at\",\"value\":\"atata\"},\"ServiceEndpointList\":[{\"ServiceActivationDate\":\"2017-04-06\",\"Certificate\":\"123\",\"EndpointURI\":\"ataat\",\"transportProfile\":\"at\",\"ServiceExpirationDate\":\"2017-04-10\",\"RequireBusinessLevelSignature\":\"false\",\"TechnicalInformationUrl\":\"123\",\"MinimumAuthenticationLevel\":\"0\",\"ServiceDescription\":\"123\"}]}],\"DocumentIdentifier\":{\"scheme\":\"at\",\"value\":\"atata\"},\"id\":\"at::atata\",\"ParticipantIdentifier\":{\"scheme\":\"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151\",\"value\":\"51009286202\"}}"
+              "application/json": "{\n  \"ProcessList\": [{\n      \"ProcessIdentifier\": {\n        \"scheme\": \"at\",\n        \"value\": \"atata\"\n      },\n      \"ServiceEndpointList\": [{\n          \"ServiceActivationDate\": \"2017-04-06\",\n          \"Certificate\": \"123\",\n          \"EndpointURI\": \"ataat\",\n          \"transportProfile\": \"at\",\n          \"ServiceExpirationDate\": \"2017-04-10\",\n          \"RequireBusinessLevelSignature\": \"false\",\n          \"TechnicalInformationUrl\": \"123\",\n          \"MinimumAuthenticationLevel\": \"0\",\n          \"ServiceDescription\": \"123\"\n        }\n      ]\n    }\n  ],\n  \"DocumentIdentifier\": {\n    \"scheme\": \"at\",\n    \"value\": \"atata\"\n  },\n  \"id\": \"at::atata\",\n  \"ParticipantIdentifier\": {\n    \"scheme\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151\",\n    \"value\": \"51009286202\"\n  }\n}\n"
             }
           },
           "404": {
