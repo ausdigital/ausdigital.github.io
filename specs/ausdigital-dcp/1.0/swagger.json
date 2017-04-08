@@ -262,6 +262,9 @@
             },
             "schema": {
               "$ref": "#/definitions/serviceGroup"
+            },
+            "examples": {
+              "application/json": "{\n  \"ServiceMetadataReferenceCollection\": [],\n  \"Name\": \"default\",\n  \"Extension\": {},\n  \"ParticipantIdentifier\": {\n    \"scheme\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151\",\n    \"value\": \"22341388307\"\n  }\n}            \n"
             }
           },
           "404": {
