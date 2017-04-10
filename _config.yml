@@ -15,6 +15,11 @@ kramwdown:
 
 gems: [jekyll-toc, jekyll-pdf]
 
+pdf:
+  cache: false | directory | default: .asset-cache
+  page_size: A4, Letter, etc. | default: A4
+  layout: layout | default: pdf
+
 defaults:
   -
     scope:
