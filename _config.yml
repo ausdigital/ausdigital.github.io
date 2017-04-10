@@ -13,7 +13,7 @@ markdown: kramdown
 kramwdown:
   parse_block_html: true
 
-gems: [jekyll-toc]
+gems: [jekyll-toc, jekyll-pdf]
 
 defaults:
   -

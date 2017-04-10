@@ -16,6 +16,7 @@ gem "minima"
 
 #gem 'jekyll-toc'
 gem 'github-pages'
+gem 'jekyll-pdf'
 
 group :jekyll_plugins do
    gem "jekyll-toc"
