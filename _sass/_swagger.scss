@@ -1,3 +1,5 @@
+$swagger-response-margin: 50px;
+
 @mixin swagger-method($color) {
     border: 1px solid $color;
 
@@ -92,6 +94,10 @@
     .swagger-responses-title {
         margin: 10px 0 5px 0;
     }
+
+    figure{
+        margin: 0 0 0 $swagger-response-margin;
+    }
 }
 
 .swagger-response-code {
@@ -104,7 +110,7 @@
 }
 
 .swagger-response-description{
-    margin: 0 0 0 50px;
+    margin: 0 0 0 $swagger-response-margin;
 
     p{
         margin: 0 0 5px 0;
@@ -112,7 +118,7 @@
 }
 
 .swagger-parameters-table {
-    border-spacing: 0px;
+    border-spacing: 0;
     border-collapse: collapse;
     margin-bottom: $spacing-unit;
     width: 100%;
