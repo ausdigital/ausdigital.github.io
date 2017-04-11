@@ -11,9 +11,11 @@ layout: default
     {% endif %}
 
     <h1 class="no-anchor">{{ swagger.info.title }} <span class="api-version">{{ swagger.info.version }}</span></h1>
-    <div class="quick-description">{{ swagger.info.description | markdownify }}</div>
+    <div class="quick-description">
+        {{ content }}
+        {{ swagger.info.description | markdownify }}
+    </div>
     <div class="swagger-base-url">[ Base url: <a href="//{{ swagger.host }}{{ swagger.basePath }}" target="_blank">{{ swagger.host }}{{ swagger.basePath }}</a> ]</div>
-    {{ content }}
 
     {% for route in swagger.paths %}
     <div class="swagger-paths">
