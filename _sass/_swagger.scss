@@ -200,6 +200,33 @@ $swagger-response-margin: 50px;
                     margin-top: 15px;
                 }
             }
+
+            figure{
+                margin: 0;
+            }
+
+            .show-swagger-parameters-example{
+                color: $brand-color;
+                text-decoration: underline;
+                cursor: pointer;
+
+                &:hover{
+                    text-decoration: none;
+                }
+            }
+
+            .swagger-parameters-example{
+                display: none;
+                font-size: 16px;
+
+                &.open{
+                    display: block;
+                }
+            }
+        }
+
+        td{
+            vertical-align: top;
         }
     }
 

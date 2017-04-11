@@ -57,7 +57,26 @@ layout: default
                                     {% endif %}
                                 </td>
                                 <td>{{ parameter.in }}</td>
-                                <td>{{ parameter.description | markdownify }}</td>
+                                <td>
+                                    {{ parameter.description | markdownify }}
+                                    {% if parameter.schema.example %}
+                                        <span class="show-swagger-parameters-example">Example</span>
+                                        <div class="swagger-parameters-example">
+                                            {% for content_type in swagger.produces %}
+                                                {% if parameter.schema.example[content_type] %}
+                                                    {% assign example = parameter.schema.example[content_type] %}
+                                                    {% if content_type contains 'json' %}
+                                                        {% highlight json %}{{ example }}{% endhighlight %}
+                                                    {% elsif content_type contains 'xml' %}
+                                                        {% highlight xml %}{{ example }}{% endhighlight %}
+                                                    {% else %}
+                                                        {% highlight http %}{{ example }}{% endhighlight %}
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </td>
                                 <td>
                                     {% if parameter.type %}
                                     {{ parameter.type | capitalize }}
@@ -164,7 +183,17 @@ function init() {
     $$('.swagger-method-title').forEach(function (title) {
         $.bind(title, {
             'click': function (e) {
-                var details = $('.swagger-method-details', title.parentNode)
+                var details = $('.swagger-method-details', title.parentNode);
+                $.toggleDetails(details);
+                e.preventDefault();
+            }
+        });
+    });
+
+    $$('.show-swagger-parameters-example').forEach(function (title) {
+        $.bind(title, {
+            'click': function (e) {
+                var details = $('.swagger-parameters-example', title.parentNode);
                 $.toggleDetails(details);
                 e.preventDefault();
             }
