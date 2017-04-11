@@ -766,6 +766,36 @@
             "$ref": "#/definitions/process"
           }
         }
+      },
+      "example": {
+        "ProcessList": [{
+            "ProcessIdentifier": {
+              "scheme": "at",
+              "value": "atata"
+            },
+            "ServiceEndpointList": [{
+                "ServiceActivationDate": "2017-04-06",
+                "Certificate": "123",
+                "EndpointURI": "ataat",
+                "transportProfile": "at",
+                "ServiceExpirationDate": "2017-04-10",
+                "RequireBusinessLevelSignature": "false",
+                "TechnicalInformationUrl": "123",
+                "MinimumAuthenticationLevel": "0",
+                "ServiceDescription": "123"
+              }
+            ]
+          }
+        ],
+        "DocumentIdentifier": {
+          "scheme": "at",
+          "value": "atata"
+        },
+        "id": "at::atata",
+        "ParticipantIdentifier": {
+          "scheme": "urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151",
+          "value": "51009286202"
+        }
       }
     },
     "serviceMetadata": {
