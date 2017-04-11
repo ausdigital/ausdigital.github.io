@@ -144,6 +144,9 @@
             }
           }
         }
+      },
+      "examples": {
+        "application/json": "{\n  \"status\": \"error\",\n  \"status_code\": 401,\n  \"message\": \"Invalid auth header. No credentials provided.\",\n  \"type\": \"urn:acme:error:generic\"\n}"
       }
     },
     "403": {
@@ -483,6 +486,13 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/keyDetailPost"
+            },
+            "example": {
+              "published": "2017-04-11T13:58:37.058Z",
+              "keyid": "string",
+              "pubKey": "string",
+              "revoked": "2017-04-11T13:58:37.058Z",
+              "fingerprint": "string"
             }
           }
         ],
@@ -572,6 +582,9 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/revokeDetail"
+            },
+            "example": {
+              "revoked": "2017-04-11T14:00:09.546Z"
             }
           }
         ],
