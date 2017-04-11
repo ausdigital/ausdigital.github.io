@@ -130,6 +130,9 @@
             }
           }
         }
+      },
+      "examples": {
+        "application/json": "{\n  \"status\": \"error\",\n  \"status_code\": 400,\n  \"message\": \"JSON parse error - No JSON object could be decoded\",\n  \"type\": \"urn:acme:error:generic\"\n}"
       }
     },
     "401": {
@@ -486,13 +489,6 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/keyDetailPost"
-            },
-            "example": {
-              "published": "2017-04-11T13:58:37.058Z",
-              "keyid": "string",
-              "pubKey": "string",
-              "revoked": "2017-04-11T13:58:37.058Z",
-              "fingerprint": "string"
             }
           }
         ],
@@ -582,9 +578,6 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/revokeDetail"
-            },
-            "example": {
-              "revoked": "2017-04-11T14:00:09.546Z"
             }
           }
         ],
@@ -957,6 +950,13 @@
         "fingerprint": {
           "type": "string"
         }
+      },
+      "example": {
+        "published": "2017-04-11T13:58:37.058Z",
+        "keyid": "string",
+        "pubKey": "string",
+        "revoked": "2017-04-11T13:58:37.058Z",
+        "fingerprint": "string"
       }
     },
     "revokeDetail": {
@@ -965,6 +965,9 @@
           "type": "string",
           "format": "date-time"
         }
+      },
+      "example": {
+        "revoked": "2017-04-11T14:00:09.546Z"
       }
     },
     "akaDetail": {
