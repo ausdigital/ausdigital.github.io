@@ -96,7 +96,7 @@ $swagger-response-margin: 50px;
     }
 
     figure{
-        margin: 0 0 0 $swagger-response-margin;
+        margin: 0;
     }
 }
 
@@ -205,30 +205,33 @@ $swagger-response-margin: 50px;
                 margin: 0;
             }
 
-            .show-swagger-parameters-example{
-                color: $brand-color;
-                text-decoration: underline;
-                cursor: pointer;
-
-                &:hover{
-                    text-decoration: none;
-                }
-            }
-
-            .swagger-parameters-example{
-                display: none;
-                font-size: 16px;
-
-                &.open{
-                    display: block;
-                }
-            }
         }
 
         td{
             vertical-align: top;
         }
     }
+
+    .swagger-parameters-example, .swagger-response-example{
+        display: none;
+        font-size: 16px;
+
+        &.open{
+            display: block;
+        }
+    }
+
+    .show-swagger-parameters-example, .show-swagger-response-example{
+        color: $brand-color;
+        text-decoration: underline;
+        cursor: pointer;
+
+        &:hover{
+            text-decoration: none;
+        }
+    }
+
+
 
     .swagger-response-headers{
         h5{
@@ -259,6 +262,18 @@ $swagger-response-margin: 50px;
                     }
                 }
             }
+        }
+    }
+
+    .swagger-response-example-wrapper{
+        margin: 0 0 0 $swagger-response-margin;
+    }
+
+    .swagger-response-example{
+        display: none;
+
+        &.open{
+            display: block;
         }
     }
 }

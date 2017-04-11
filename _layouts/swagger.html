@@ -122,18 +122,23 @@ layout: default
                             {% endif %}
                         </div>
                     </div>
-                    {% for content_type in swagger.produces %}
-                        {% if response[1].examples[content_type] %}
-                            {% assign example = response[1].examples[content_type] %}
-                            {% if content_type contains 'json' %}
-                                {% highlight json %}{{ example }}{% endhighlight %}
-                            {% elsif content_type contains 'xml' %}
-                                {% highlight xml %}{{ example }}{% endhighlight %}
-                            {% else %}
-                                {% highlight http %}{{ example }}{% endhighlight %}
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
+                    <div class="swagger-response-example-wrapper">
+                            {% for content_type in swagger.produces %}
+                                {% if response[1].examples[content_type] %}
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        {% assign example = response[1].examples[content_type] %}
+                                        {% if content_type contains 'json' %}
+                                            {% highlight json %}{{ example }}{% endhighlight %}
+                                        {% elsif content_type contains 'xml' %}
+                                            {% highlight xml %}{{ example }}{% endhighlight %}
+                                        {% else %}
+                                            {% highlight http %}{{ example }}{% endhighlight %}
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                    </div>
                     {% endfor %}
                 </div>
                 {% endif %}
@@ -194,6 +199,17 @@ function init() {
         $.bind(title, {
             'click': function (e) {
                 var details = $('.swagger-parameters-example', title.parentNode);
+                $.toggleDetails(details);
+                e.preventDefault();
+            }
+        });
+    });
+
+    $$('.show-swagger-response-example').forEach(function (title) {
+        $.bind(title, {
+            'click': function (e) {
+                console.log('tets');
+                var details = $('.swagger-response-example', title.parentNode);
                 $.toggleDetails(details);
                 e.preventDefault();
             }
