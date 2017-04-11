@@ -199,8 +199,11 @@
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p><code class="highlighter-rouge">private</code> or <code class="highlighter-rouge">public</code></p>
-</td>
+                                <td>
+                                    <p><code class="highlighter-rouge">private</code> or <code class="highlighter-rouge">public</code></p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -216,8 +219,11 @@
                                     
                                 </td>
                                 <td>query</td>
-                                <td><p>comma-separated list of participant identifiers</p>
-</td>
+                                <td>
+                                    <p>comma-separated list of participant identifiers</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -233,8 +239,11 @@
                                     
                                 </td>
                                 <td>query</td>
-                                <td><p>ISO 8601 date to filter the documents</p>
-</td>
+                                <td>
+                                    <p>ISO 8601 date to filter the documents</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -250,8 +259,11 @@
                                     
                                 </td>
                                 <td>query</td>
-                                <td><p>ISO 8601 date to filter the documents</p>
-</td>
+                                <td>
+                                    <p>ISO 8601 date to filter the documents</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -366,8 +378,11 @@
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p><code class="highlighter-rouge">private</code> or <code class="highlighter-rouge">public</code></p>
-</td>
+                                <td>
+                                    <p><code class="highlighter-rouge">private</code> or <code class="highlighter-rouge">public</code></p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -387,8 +402,11 @@
                                     
                                 </td>
                                 <td>formData</td>
-                                <td><p>object data, optionally with content-type and filename</p>
-</td>
+                                <td>
+                                    <p>object data, optionally with content-type and filename</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     File
@@ -408,8 +426,11 @@
                                     
                                 </td>
                                 <td>formData</td>
-                                <td><p>JSON file with parameters. Shall be valid against schema https://github.com/ausdigital/ausdigital-nry/blob/master/resources/1.0/spec/nry_post_param.schema</p>
-</td>
+                                <td>
+                                    <p>JSON file with parameters. Shall be valid against schema https://github.com/ausdigital/ausdigital-nry/blob/master/resources/1.0/spec/nry_post_param.schema</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     File
@@ -538,8 +559,11 @@
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p><code class="highlighter-rouge">private</code> or <code class="highlighter-rouge">public</code></p>
-</td>
+                                <td>
+                                    <p><code class="highlighter-rouge">private</code> or <code class="highlighter-rouge">public</code></p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -559,8 +583,11 @@
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p>QmHash of the notarized document</p>
-</td>
+                                <td>
+                                    <p>QmHash of the notarized document</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -718,7 +745,17 @@ function init() {
     $$('.swagger-method-title').forEach(function (title) {
         $.bind(title, {
             'click': function (e) {
-                var details = $('.swagger-method-details', title.parentNode)
+                var details = $('.swagger-method-details', title.parentNode);
+                $.toggleDetails(details);
+                e.preventDefault();
+            }
+        });
+    });
+
+    $$('.show-swagger-parameters-example').forEach(function (title) {
+        $.bind(title, {
+            'click': function (e) {
+                var details = $('.swagger-parameters-example', title.parentNode);
                 $.toggleDetails(details);
                 e.preventDefault();
             }

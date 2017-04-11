@@ -219,8 +219,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
-</td>
+                                <td>
+                                    <p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -236,8 +239,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>header</td>
-                                <td><p>accept header</p>
-</td>
+                                <td>
+                                    <p>accept header</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -391,8 +397,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
-</td>
+                                <td>
+                                    <p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -412,8 +421,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p>Represents the type of document that the recipient is able to receive. The document is represented by an identifier (identifying the document type) and an identifier scheme, which the format of the identifier itself.</p>
-</td>
+                                <td>
+                                    <p>Represents the type of document that the recipient is able to receive. The document is represented by an identifier (identifying the document type) and an identifier scheme, which the format of the identifier itself.</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -429,8 +441,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>header</td>
-                                <td><p>accept header</p>
-</td>
+                                <td>
+                                    <p>accept header</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -614,8 +629,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
-</td>
+                                <td>
+                                    <p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -635,8 +653,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p>Represents the type of document that the recipient is able to receive. The document is represented by an identifier (identifying the document type) and an identifier scheme, which the format of the identifier itself.</p>
-</td>
+                                <td>
+                                    <p>Represents the type of document that the recipient is able to receive. The document is represented by an identifier (identifying the document type) and an identifier scheme, which the format of the identifier itself.</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -656,8 +677,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>header</td>
-                                <td><p>content type header</p>
-</td>
+                                <td>
+                                    <p>content type header</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -677,8 +701,62 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>body</td>
-                                <td><p>Service metadata info</p>
-</td>
+                                <td>
+                                    <p>Service metadata info</p>
+
+                                    
+                                        <span class="show-swagger-parameters-example">Example</span>
+                                        <div class="swagger-parameters-example">
+                                            
+                                                
+                                                    
+                                                    
+                                                        
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="nt">"ProcessList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"ProcessIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"at"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"atata"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"ServiceEndpointList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"ServiceActivationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-06"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"Certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"EndpointURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ataat"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"transportProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"at"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"ServiceExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-10"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"RequireBusinessLevelSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"MinimumAuthenticationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"ServiceDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"DocumentIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"at"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"atata"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"at::atata#"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ParticipantIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51009286202"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                                    
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                        </div>
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -867,8 +945,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
-</td>
+                                <td>
+                                    <p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -888,8 +969,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p>Represents the type of document that the recipient is able to receive. The document is represented by an identifier (identifying the document type) and an identifier scheme, which the format of the identifier itself.</p>
-</td>
+                                <td>
+                                    <p>Represents the type of document that the recipient is able to receive. The document is represented by an identifier (identifying the document type) and an identifier scheme, which the format of the identifier itself.</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -1104,8 +1188,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
-</td>
+                                <td>
+                                    <p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -1121,8 +1208,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>query</td>
-                                <td><p>Filter parameter for keys never revoked or revoked lately than given time (in ISO 8601 format)</p>
-</td>
+                                <td>
+                                    <p>Filter parameter for keys never revoked or revoked lately than given time (in ISO 8601 format)</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -1138,8 +1228,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>query</td>
-                                <td><p>Filter parameter for keys published before given time (in ISO 8601 format)</p>
-</td>
+                                <td>
+                                    <p>Filter parameter for keys published before given time (in ISO 8601 format)</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -1314,8 +1407,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
-</td>
+                                <td>
+                                    <p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -1335,8 +1431,37 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>body</td>
-                                <td><p>New public key info</p>
-</td>
+                                <td>
+                                    <p>New public key info</p>
+
+                                    
+                                        <span class="show-swagger-parameters-example">Example</span>
+                                        <div class="swagger-parameters-example">
+                                            
+                                                
+                                                    
+                                                    
+                                                        
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="nt">"published"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-11T13:58:37.058Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"keyid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pubKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"revoked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-11T13:58:37.058Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                                    
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                        </div>
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -1506,8 +1631,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
-</td>
+                                <td>
+                                    <p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -1527,8 +1655,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p>value of fingerprint (should be not less than 40 characteres)</p>
-</td>
+                                <td>
+                                    <p>value of fingerprint (should be not less than 40 characteres)</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -1671,8 +1802,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
-</td>
+                                <td>
+                                    <p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -1692,8 +1826,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p>value of fingerprint (should be not less than 40 characteres)</p>
-</td>
+                                <td>
+                                    <p>value of fingerprint (should be not less than 40 characteres)</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -1713,8 +1850,33 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>body</td>
-                                <td><p>Public key info</p>
-</td>
+                                <td>
+                                    <p>Public key info</p>
+
+                                    
+                                        <span class="show-swagger-parameters-example">Example</span>
+                                        <div class="swagger-parameters-example">
+                                            
+                                                
+                                                    
+                                                    
+                                                        
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="nt">"revoked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-11T14:00:09.546Z"</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                                    
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                        </div>
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -1884,8 +2046,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
-</td>
+                                <td>
+                                    <p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -2025,8 +2190,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
-</td>
+                                <td>
+                                    <p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -2046,8 +2214,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>body</td>
-                                <td><p>id of participant to link</p>
-</td>
+                                <td>
+                                    <p>id of participant to link</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -2266,8 +2437,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
-</td>
+                                <td>
+                                    <p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -2287,8 +2461,11 @@ Please note that JSON format differs from specification XML and has more data in
                                     
                                 </td>
                                 <td>path</td>
-                                <td><p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
-</td>
+                                <td>
+                                    <p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -2479,7 +2656,17 @@ function init() {
     $$('.swagger-method-title').forEach(function (title) {
         $.bind(title, {
             'click': function (e) {
-                var details = $('.swagger-method-details', title.parentNode)
+                var details = $('.swagger-method-details', title.parentNode);
+                $.toggleDetails(details);
+                e.preventDefault();
+            }
+        });
+    });
+
+    $$('.show-swagger-parameters-example').forEach(function (title) {
+        $.bind(title, {
+            'click': function (e) {
+                var details = $('.swagger-parameters-example', title.parentNode);
                 $.toggleDetails(details);
                 e.preventDefault();
             }

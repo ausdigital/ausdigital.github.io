@@ -195,8 +195,11 @@
                                     
                                 </td>
                                 <td>body</td>
-                                <td><p>invoice to be sent</p>
-</td>
+                                <td>
+                                    <p>invoice to be sent</p>
+
+                                    
+                                </td>
                                 <td>
                                     
                                     String
@@ -290,7 +293,17 @@ function init() {
     $$('.swagger-method-title').forEach(function (title) {
         $.bind(title, {
             'click': function (e) {
-                var details = $('.swagger-method-details', title.parentNode)
+                var details = $('.swagger-method-details', title.parentNode);
+                $.toggleDetails(details);
+                e.preventDefault();
+            }
+        });
+    });
+
+    $$('.show-swagger-parameters-example').forEach(function (title) {
+        $.bind(title, {
+            'click': function (e) {
+                var details = $('.swagger-parameters-example', title.parentNode);
                 $.toggleDetails(details);
                 e.preventDefault();
             }
