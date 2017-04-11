@@ -223,7 +223,9 @@
                             
                         </div>
                     </div>
-                    
+                    <div class="swagger-response-example-wrapper">
+                            
+                    </div>
                     
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">403</div>
@@ -233,7 +235,9 @@
                             
                         </div>
                     </div>
-                    
+                    <div class="swagger-response-example-wrapper">
+                            
+                    </div>
                     
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">500</div>
@@ -243,7 +247,9 @@
                             
                         </div>
                     </div>
-                    
+                    <div class="swagger-response-example-wrapper">
+                            
+                    </div>
                     
                 </div>
                 
@@ -304,6 +310,17 @@ function init() {
         $.bind(title, {
             'click': function (e) {
                 var details = $('.swagger-parameters-example', title.parentNode);
+                $.toggleDetails(details);
+                e.preventDefault();
+            }
+        });
+    });
+
+    $$('.show-swagger-response-example').forEach(function (title) {
+        $.bind(title, {
+            'click': function (e) {
+                console.log('tets');
+                var details = $('.swagger-response-example', title.parentNode);
                 $.toggleDetails(details);
                 e.preventDefault();
             }

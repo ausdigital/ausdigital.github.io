@@ -212,6 +212,17 @@ function init() {
             }
         });
     });
+
+    $$('.show-swagger-response-example').forEach(function (title) {
+        $.bind(title, {
+            'click': function (e) {
+                console.log('tets');
+                var details = $('.swagger-response-example', title.parentNode);
+                $.toggleDetails(details);
+                e.preventDefault();
+            }
+        });
+    });
 }
 
 
