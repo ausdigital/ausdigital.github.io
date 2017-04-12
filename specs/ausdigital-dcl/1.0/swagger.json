@@ -365,7 +365,7 @@
               }
             },
             "schema":{
-              "$ref":"#definitions/accreditedProviders"
+              "$ref":"#/definitions/accreditedProviders"
             },
             "examples":{
               "application/json":"{\n  \"metadata\": {\n    \"resultset\": {\n      \"count\": 227,\n      \"offset\": 50,\n      \"limit\": 25\n    }\n  },\n  \"results\": [{\n      \"capabilityPublisherID\": \"\",\n      \"name\": \"\",\n      \"contactEmail\": \"\",\n      \"URL\": \"\",\n      \"ClientCertificates\": [\"\", \"\"],\n      \"ServerCertificates\": [\"\", \"\"]\n    }, {\n      \"capabilityPublisherID\": \"\",\n      \"name\": \"\",\n      \"contactEmail\": \"\",\n      \"URL\": \"\",\n      \"ClientCertificates\": [\"\", \"\"],\n      \"ServerCertificates\": [\"\", \"\"]\n    }\n  ]\n}"
@@ -409,7 +409,7 @@
               }
             },
             "schema":{
-              "$ref":"#definitions/accreditedAccessPoints"
+              "$ref":"#/definitions/accreditedAccessPoints"
             },
             "examples":{
               "application/json":"{\n  \"metadata\": {\n    \"resultset\": {\n      \"count\": 227,\n      \"offset\": 50,\n      \"limit\": 25\n    }\n  },\n  \"results\": [{\n      \"accessPointID\": \"\",\n      \"name\": \"\",\n      \"contactEmail\": \"\",\n      \"URL\": \"\",\n      \"ClientCertificates\": [\"\", \"\"],\n      \"ServerCertificates\": [\"\", \"\"]\n    }, {\n      \"accessPointID\": \"\",\n      \"name\": \"\",\n      \"contactEmail\": \"\",\n      \"URL\": \"\",\n      \"ClientCertificates\": [\"\", \"\"],\n      \"ServerCertificates\": [\"\", \"\"]\n    }\n  ]\n}"
