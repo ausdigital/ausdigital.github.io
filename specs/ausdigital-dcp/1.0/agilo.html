@@ -41,36 +41,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -82,36 +65,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -245,36 +211,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -286,36 +235,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -514,83 +446,59 @@
       </span>}
     </span>}
   </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Schema</h5><pre><code>{
+</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
+  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
+  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>400</span></span>,
+  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"JSON parse error - No JSON object could be decoded"</span></span>,
+  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+</span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
     </span>}
   </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>Invalid auth header. No credentials provided.</div><h5>Schema</h5><pre><code>{
+</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>Invalid auth header. No credentials provided.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
+  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
+  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>401</span></span>,
+  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"Invalid auth header. No credentials provided."</span></span>,
+  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+</span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -602,36 +510,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -643,118 +534,77 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
     </span>}
   </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div></div></div></div><div class=middle><div id=service-metadata-put class="action put"><h4 class=action-heading><div class=name>Create/Update Service Metadata</div><a href=#service-metadata-put class="method put">PUT</a><code class=uri>/{participant_id}/service/{document_id}</code></h4><p>Create/Update Service Metadata<div class=title><strong>URI Parameters</strong></div><div><dl class=inner><dt style="padding:.2em 0">participant_id<dd style="padding:.2em 0"><code>string</code>&nbsp;<span class=required>(required)</span>&nbsp;<p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.<dt style="padding:.2em 0">document_id<dd style="padding:.2em 0"><code>string</code>&nbsp;<span class=required>(required)</span>&nbsp;<p>Represents the type of document that the recipient is able to receive. The document is represented by an identifier (identifying the document type) and an identifier scheme, which the format of the identifier itself.</dl></div></div></div><hr class=split><div class=right><div class=definition><span class="method delete">DELETE</span>&nbsp;<span class=uri><span class=hostname></span>/<span class=hljs-attribute title=participant_id>participant_id</span>/service/<span class=hljs-attribute title=document_id>document_id</span></span></div><div class=tabs><div class=tabs><div class=example-names><span>Responses</span><span class=tab-button>204</span><span class=tab-button>400</span><span class=tab-button>401</span><span class=tab-button>403</span><span class=tab-button>404</span><span class=tab-button>500</span></div><div class=tab><div><div class=inner><div class=description><p>The resource has been removed.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>date</span>: <span class=hljs-string></span></code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Schema</h5><pre><code>{
+</span>}</code></pre><div style=height:1px></div></div></div></div></div></div></div><div class=middle><div id=service-metadata-put class="action put"><h4 class=action-heading><div class=name>Create/Update Service Metadata</div><a href=#service-metadata-put class="method put">PUT</a><code class=uri>/{participant_id}/service/{document_id}</code></h4><p>Create/Update Service Metadata<div class=title><strong>URI Parameters</strong></div><div><dl class=inner><dt style="padding:.2em 0">participant_id<dd style="padding:.2em 0"><code>string</code>&nbsp;<span class=required>(required)</span>&nbsp;<p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.<dt style="padding:.2em 0">document_id<dd style="padding:.2em 0"><code>string</code>&nbsp;<span class=required>(required)</span>&nbsp;<p>Represents the type of document that the recipient is able to receive. The document is represented by an identifier (identifying the document type) and an identifier scheme, which the format of the identifier itself.</dl></div></div></div><hr class=split><div class=right><div class=definition><span class="method delete">DELETE</span>&nbsp;<span class=uri><span class=hostname></span>/<span class=hljs-attribute title=participant_id>participant_id</span>/service/<span class=hljs-attribute title=document_id>document_id</span></span></div><div class=tabs><div class=tabs><div class=example-names><span>Responses</span><span class=tab-button>204</span><span class=tab-button>400</span><span class=tab-button>401</span><span class=tab-button>403</span><span class=tab-button>404</span><span class=tab-button>500</span></div><div class=tab><div><div class=inner><div class=description><p>The resource has been removed.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>date</span>: <span class=hljs-string></span></code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
+  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
+  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>400</span></span>,
+  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"JSON parse error - No JSON object could be decoded"</span></span>,
+  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+</span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
     </span>}
   </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>Invalid auth header. No credentials provided.</div><h5>Schema</h5><pre><code>{
+</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>Invalid auth header. No credentials provided.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
+  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
+  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>401</span></span>,
+  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"Invalid auth header. No credentials provided."</span></span>,
+  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+</span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -766,36 +616,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -807,36 +640,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -848,36 +664,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -914,42 +713,30 @@
       </span>}
     </span>}
   </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Schema</h5><pre><code>{
+</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
+  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
+  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>400</span></span>,
+  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"JSON parse error - No JSON object could be decoded"</span></span>,
+  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+</span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -961,36 +748,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -1002,36 +772,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -1049,6 +802,13 @@
     "<span class=hljs-attribute>fingerprint</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span>
     </span>}
+  </span>}</span>,
+  "<span class=hljs-attribute>example</span>": <span class=hljs-value>{
+    "<span class=hljs-attribute>published</span>": <span class=hljs-value><span class=hljs-string>"2017-04-11T13:58:37.058Z"</span></span>,
+    "<span class=hljs-attribute>keyid</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
+    "<span class=hljs-attribute>pubKey</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
+    "<span class=hljs-attribute>revoked</span>": <span class=hljs-value><span class=hljs-string>"2017-04-11T13:58:37.058Z"</span></span>,
+    "<span class=hljs-attribute>fingerprint</span>": <span class=hljs-value><span class=hljs-string>"string"</span>
   </span>}
 </span>}</code></pre><div style=height:1px></div></div></div></div></div><div class=tabs><div class=example-names><span>Responses</span><span class=tab-button>201</span><span class=tab-button>400</span><span class=tab-button>403</span><span class=tab-button>404</span><span class=tab-button>500</span></div><div class=tab><div><div class=inner><div class=description><p>Created</div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
@@ -1070,42 +830,30 @@
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span>
     </span>}
   </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Schema</h5><pre><code>{
+</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
+  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
+  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>400</span></span>,
+  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"JSON parse error - No JSON object could be decoded"</span></span>,
+  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+</span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -1117,36 +865,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -1158,36 +889,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -1225,36 +939,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -1266,36 +963,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -1307,6 +987,9 @@
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
       "<span class=hljs-attribute>format</span>": <span class=hljs-value><span class=hljs-string>"date-time"</span>
     </span>}
+  </span>}</span>,
+  "<span class=hljs-attribute>example</span>": <span class=hljs-value>{
+    "<span class=hljs-attribute>revoked</span>": <span class=hljs-value><span class=hljs-string>"2017-04-11T14:00:09.546Z"</span>
   </span>}
 </span>}</code></pre><div style=height:1px></div></div></div></div></div><div class=tabs><div class=example-names><span>Responses</span><span class=tab-button>200</span><span class=tab-button>400</span><span class=tab-button>403</span><span class=tab-button>404</span><span class=tab-button>500</span></div><div class=tab><div><div class=inner><div class=description><p>OK</div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
@@ -1328,42 +1011,30 @@
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span>
     </span>}
   </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Schema</h5><pre><code>{
+</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
+  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
+  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>400</span></span>,
+  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"JSON parse error - No JSON object could be decoded"</span></span>,
+  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+</span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -1375,36 +1046,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -1416,36 +1070,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -1466,36 +1103,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -1507,36 +1127,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -1554,83 +1157,59 @@
     "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
     "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"linked participant ID"</span>
   </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Schema</h5><pre><code>{
+</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
+  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
+  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>400</span></span>,
+  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"JSON parse error - No JSON object could be decoded"</span></span>,
+  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+</span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
     </span>}
   </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>Invalid auth header. No credentials provided.</div><h5>Schema</h5><pre><code>{
+</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>Invalid auth header. No credentials provided.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
+  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
+  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>401</span></span>,
+  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"Invalid auth header. No credentials provided."</span></span>,
+  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+</span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -1642,36 +1221,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -1683,77 +1245,48 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
     </span>}
   </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div></div></div></div><div class=middle><div id=links-post class="action post"><h4 class=action-heading><div class=name>Create link between participants</div><a href=#links-post class="method post">POST</a><code class=uri>/{participant_id}/aka</code></h4><p>Create link between participants<div class=title><strong>URI Parameters</strong></div><div><dl class=inner><dt style="padding:.2em 0">participant_id<dd style="padding:.2em 0"><code>string</code>&nbsp;<span class=required>(required)</span>&nbsp;<p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</dl></div></div></div><hr class=split><div class=middle><div id=links--1 class=resource></div></div><div class=right><div class=definition><span class="method delete">DELETE</span>&nbsp;<span class=uri><span class=hostname></span>/<span class=hljs-attribute title=participant_id>participant_id</span>/aka/<span class=hljs-attribute title=linked_participant_id>linked_participant_id</span></span></div><div class=tabs><div class=tabs><div class=example-names><span>Responses</span><span class=tab-button>204</span><span class=tab-button>401</span><span class=tab-button>403</span><span class=tab-button>404</span><span class=tab-button>500</span></div><div class=tab><div><div class=inner><div class=description><p>The resource has been removed.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>date</span>: <span class=hljs-string></span></code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>Invalid auth header. No credentials provided.</div><h5>Schema</h5><pre><code>{
+</span>}</code></pre><div style=height:1px></div></div></div></div></div></div></div><div class=middle><div id=links-post class="action post"><h4 class=action-heading><div class=name>Create link between participants</div><a href=#links-post class="method post">POST</a><code class=uri>/{participant_id}/aka</code></h4><p>Create link between participants<div class=title><strong>URI Parameters</strong></div><div><dl class=inner><dt style="padding:.2em 0">participant_id<dd style="padding:.2em 0"><code>string</code>&nbsp;<span class=required>(required)</span>&nbsp;<p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</dl></div></div></div><hr class=split><div class=middle><div id=links--1 class=resource></div></div><div class=right><div class=definition><span class="method delete">DELETE</span>&nbsp;<span class=uri><span class=hostname></span>/<span class=hljs-attribute title=participant_id>participant_id</span>/aka/<span class=hljs-attribute title=linked_participant_id>linked_participant_id</span></span></div><div class=tabs><div class=tabs><div class=example-names><span>Responses</span><span class=tab-button>204</span><span class=tab-button>401</span><span class=tab-button>403</span><span class=tab-button>404</span><span class=tab-button>500</span></div><div class=tab><div><div class=inner><div class=description><p>The resource has been removed.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>date</span>: <span class=hljs-string></span></code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>Invalid auth header. No credentials provided.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
+  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
+  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>401</span></span>,
+  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"Invalid auth header. No credentials provided."</span></span>,
+  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+</span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -1765,36 +1298,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
@@ -1806,36 +1322,19 @@
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture as per jsonapi.org/format/#errors"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"error response srtucture"</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>link</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a URL linking to a full description of the error."</span>
-          </span>}</span>,
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an application-specific error code, expressed as a string value."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>title</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization."</span>
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
           </span>}</span>,
-          "<span class=hljs-attribute>detail</span>": <span class=hljs-value>{
+          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a human-readable explanation specific to this occurrence of the problem. Like title, this field’s value can be localized."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>source</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"an object containing references to the source of the error, optionally including any of the following"</span></span>,
-            "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-              "<span class=hljs-attribute>pointer</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a JSON Pointer [RFC6901] to the associated entity in the request document [e.g. \"/data\" for a primary data object, or \"/data/attributes/title\" for a specific attribute]."</span>
-              </span>}</span>,
-              "<span class=hljs-attribute>parameter</span>": <span class=hljs-value>{
-                "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-                "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"a string indicating which URI query parameter caused the error."</span>
-              </span>}
-            </span>}
+            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
