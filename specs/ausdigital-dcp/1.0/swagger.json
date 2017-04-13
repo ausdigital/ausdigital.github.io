@@ -124,7 +124,7 @@
         "$ref":"#/definitions/errors"
       },
       "examples": {
-        "application/json": "{\n  \"status\": \"error\",\n  \"status_code\": 400,\n  \"message\": \"JSON parse error - No JSON object could be decoded\",\n  \"type\": \"urn:acme:error:generic\"\n}"
+        "application/json": "{\n    \"errors\": [\n        {\n            \"code\": \"DCP_V400\",\n            \"name\": \"DocumentIdentifier\",\n            \"userMessage\": \"This field is required.\"\n        }\n    ]\n}"
       }
     },
     "401": {
@@ -133,7 +133,7 @@
         "$ref":"#/definitions/errors"
       },
       "examples": {
-        "application/json": "{\n  \"status\": \"error\",\n  \"status_code\": 401,\n  \"message\": \"Invalid auth header. No credentials provided.\",\n  \"type\": \"urn:acme:error:generic\"\n}"
+        "application/json": "{\n    \"errors\": [\n        {\n            \"code\": \"DCP-X401\",\n            \"name\": \"Authentication Failed\",\n            \"userMessage\": \"Invalid auth header. No credentials provided.\"\n        }\n    ]\n}"
       }
     },
     "403": {
