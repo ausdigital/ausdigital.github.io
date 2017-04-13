@@ -140,6 +140,9 @@
       "description": "The server understood the request, but is refusing to fulfill it. Return this if there is a problem with the client certificate.",
       "schema": {
         "$ref":"#/definitions/errors"
+      },
+      "examples": {
+        "application/json": "{\n  \"errors\": [\n    {\n      \"code\": \"DCP-X403\",\n      \"name\": \"Permission Denied\",\n      \"userMessage\": \"Participant id urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::99998888779 not available for given user - not business owner\"\n    }\n  ]\n}"
       }
     },
     "404": {
