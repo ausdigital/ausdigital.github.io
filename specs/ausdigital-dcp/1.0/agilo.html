@@ -447,10 +447,13 @@
     </span>}
   </span>}
 </span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
-  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
-  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>400</span></span>,
-  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"JSON parse error - No JSON object could be decoded"</span></span>,
-  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+  "<span class=hljs-attribute>errors</span>": <span class=hljs-value>[
+    {
+      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"DCP_V400"</span></span>,
+      "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"DocumentIdentifier"</span></span>,
+      "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value><span class=hljs-string>"This field is required."</span>
+    </span>}
+  ]
 </span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
@@ -476,10 +479,13 @@
     </span>}
   </span>}
 </span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>Invalid auth header. No credentials provided.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
-  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
-  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>401</span></span>,
-  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"Invalid auth header. No credentials provided."</span></span>,
-  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+  "<span class=hljs-attribute>errors</span>": <span class=hljs-value>[
+    {
+      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"DCP-X401"</span></span>,
+      "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"Authentication Failed"</span></span>,
+      "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value><span class=hljs-string>"Invalid auth header. No credentials provided."</span>
+    </span>}
+  ]
 </span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
@@ -504,7 +510,15 @@
       </span>}
     </span>}
   </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server understood the request, but is refusing to fulfill it. Return this if there is a problem with the client certificate.</div><h5>Schema</h5><pre><code>{
+</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server understood the request, but is refusing to fulfill it. Return this if there is a problem with the client certificate.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
+  "<span class=hljs-attribute>errors</span>": <span class=hljs-value>[
+    {
+      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"DCP-X403"</span></span>,
+      "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"Permission Denied"</span></span>,
+      "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value><span class=hljs-string>"Participant id urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::99998888779 not available for given user - not business owner"</span>
+    </span>}
+  ]
+</span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
@@ -553,10 +567,13 @@
     </span>}
   </span>}
 </span>}</code></pre><div style=height:1px></div></div></div></div></div></div></div><div class=middle><div id=service-metadata-put class="action put"><h4 class=action-heading><div class=name>Create/Update Service Metadata</div><a href=#service-metadata-put class="method put">PUT</a><code class=uri>/{participant_id}/service/{document_id}</code></h4><p>Create/Update Service Metadata<div class=title><strong>URI Parameters</strong></div><div><dl class=inner><dt style="padding:.2em 0">participant_id<dd style="padding:.2em 0"><code>string</code>&nbsp;<span class=required>(required)</span>&nbsp;<p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.<dt style="padding:.2em 0">document_id<dd style="padding:.2em 0"><code>string</code>&nbsp;<span class=required>(required)</span>&nbsp;<p>Represents the type of document that the recipient is able to receive. The document is represented by an identifier (identifying the document type) and an identifier scheme, which the format of the identifier itself.</dl></div></div></div><hr class=split><div class=right><div class=definition><span class="method delete">DELETE</span>&nbsp;<span class=uri><span class=hostname></span>/<span class=hljs-attribute title=participant_id>participant_id</span>/service/<span class=hljs-attribute title=document_id>document_id</span></span></div><div class=tabs><div class=tabs><div class=example-names><span>Responses</span><span class=tab-button>204</span><span class=tab-button>400</span><span class=tab-button>401</span><span class=tab-button>403</span><span class=tab-button>404</span><span class=tab-button>500</span></div><div class=tab><div><div class=inner><div class=description><p>The resource has been removed.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>date</span>: <span class=hljs-string></span></code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
-  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
-  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>400</span></span>,
-  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"JSON parse error - No JSON object could be decoded"</span></span>,
-  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+  "<span class=hljs-attribute>errors</span>": <span class=hljs-value>[
+    {
+      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"DCP_V400"</span></span>,
+      "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"DocumentIdentifier"</span></span>,
+      "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value><span class=hljs-string>"This field is required."</span>
+    </span>}
+  ]
 </span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
@@ -582,10 +599,13 @@
     </span>}
   </span>}
 </span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>Invalid auth header. No credentials provided.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
-  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
-  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>401</span></span>,
-  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"Invalid auth header. No credentials provided."</span></span>,
-  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+  "<span class=hljs-attribute>errors</span>": <span class=hljs-value>[
+    {
+      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"DCP-X401"</span></span>,
+      "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"Authentication Failed"</span></span>,
+      "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value><span class=hljs-string>"Invalid auth header. No credentials provided."</span>
+    </span>}
+  ]
 </span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
@@ -610,7 +630,15 @@
       </span>}
     </span>}
   </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server understood the request, but is refusing to fulfill it. Return this if there is a problem with the client certificate.</div><h5>Schema</h5><pre><code>{
+</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server understood the request, but is refusing to fulfill it. Return this if there is a problem with the client certificate.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
+  "<span class=hljs-attribute>errors</span>": <span class=hljs-value>[
+    {
+      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"DCP-X403"</span></span>,
+      "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"Permission Denied"</span></span>,
+      "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value><span class=hljs-string>"Participant id urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::99998888779 not available for given user - not business owner"</span>
+    </span>}
+  ]
+</span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
@@ -714,10 +742,13 @@
     </span>}
   </span>}
 </span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
-  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
-  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>400</span></span>,
-  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"JSON parse error - No JSON object could be decoded"</span></span>,
-  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+  "<span class=hljs-attribute>errors</span>": <span class=hljs-value>[
+    {
+      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"DCP_V400"</span></span>,
+      "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"DocumentIdentifier"</span></span>,
+      "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value><span class=hljs-string>"This field is required."</span>
+    </span>}
+  ]
 </span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
@@ -831,10 +862,13 @@
     </span>}
   </span>}
 </span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
-  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
-  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>400</span></span>,
-  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"JSON parse error - No JSON object could be decoded"</span></span>,
-  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+  "<span class=hljs-attribute>errors</span>": <span class=hljs-value>[
+    {
+      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"DCP_V400"</span></span>,
+      "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"DocumentIdentifier"</span></span>,
+      "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value><span class=hljs-string>"This field is required."</span>
+    </span>}
+  ]
 </span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
@@ -1012,10 +1046,13 @@
     </span>}
   </span>}
 </span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
-  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
-  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>400</span></span>,
-  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"JSON parse error - No JSON object could be decoded"</span></span>,
-  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+  "<span class=hljs-attribute>errors</span>": <span class=hljs-value>[
+    {
+      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"DCP_V400"</span></span>,
+      "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"DocumentIdentifier"</span></span>,
+      "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value><span class=hljs-string>"This field is required."</span>
+    </span>}
+  ]
 </span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
@@ -1158,10 +1195,13 @@
     "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"linked participant ID"</span>
   </span>}
 </span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
-  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
-  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>400</span></span>,
-  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"JSON parse error - No JSON object could be decoded"</span></span>,
-  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+  "<span class=hljs-attribute>errors</span>": <span class=hljs-value>[
+    {
+      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"DCP_V400"</span></span>,
+      "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"DocumentIdentifier"</span></span>,
+      "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value><span class=hljs-string>"This field is required."</span>
+    </span>}
+  ]
 </span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
@@ -1187,10 +1227,13 @@
     </span>}
   </span>}
 </span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>Invalid auth header. No credentials provided.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
-  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
-  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>401</span></span>,
-  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"Invalid auth header. No credentials provided."</span></span>,
-  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+  "<span class=hljs-attribute>errors</span>": <span class=hljs-value>[
+    {
+      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"DCP-X401"</span></span>,
+      "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"Authentication Failed"</span></span>,
+      "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value><span class=hljs-string>"Invalid auth header. No credentials provided."</span>
+    </span>}
+  ]
 </span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
@@ -1264,10 +1307,13 @@
     </span>}
   </span>}
 </span>}</code></pre><div style=height:1px></div></div></div></div></div></div></div><div class=middle><div id=links-post class="action post"><h4 class=action-heading><div class=name>Create link between participants</div><a href=#links-post class="method post">POST</a><code class=uri>/{participant_id}/aka</code></h4><p>Create link between participants<div class=title><strong>URI Parameters</strong></div><div><dl class=inner><dt style="padding:.2em 0">participant_id<dd style="padding:.2em 0"><code>string</code>&nbsp;<span class=required>(required)</span>&nbsp;<p>The participant identifier. Comprises the identifier, and an identifier scheme. This identifier MUST have the same value of the {id} part of the URI of the enclosing ServiceMetadata resource.</dl></div></div></div><hr class=split><div class=middle><div id=links--1 class=resource></div></div><div class=right><div class=definition><span class="method delete">DELETE</span>&nbsp;<span class=uri><span class=hostname></span>/<span class=hljs-attribute title=participant_id>participant_id</span>/aka/<span class=hljs-attribute title=linked_participant_id>linked_participant_id</span></span></div><div class=tabs><div class=tabs><div class=example-names><span>Responses</span><span class=tab-button>204</span><span class=tab-button>401</span><span class=tab-button>403</span><span class=tab-button>404</span><span class=tab-button>500</span></div><div class=tab><div><div class=inner><div class=description><p>The resource has been removed.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>date</span>: <span class=hljs-string></span></code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>Invalid auth header. No credentials provided.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
-  "<span class=hljs-attribute>status</span>": <span class=hljs-value><span class=hljs-string>"error"</span></span>,
-  "<span class=hljs-attribute>status_code</span>": <span class=hljs-value><span class=hljs-number>401</span></span>,
-  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"Invalid auth header. No credentials provided."</span></span>,
-  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"urn:acme:error:generic"</span>
+  "<span class=hljs-attribute>errors</span>": <span class=hljs-value>[
+    {
+      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"DCP-X401"</span></span>,
+      "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"Authentication Failed"</span></span>,
+      "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value><span class=hljs-string>"Invalid auth header. No credentials provided."</span>
+    </span>}
+  ]
 </span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
