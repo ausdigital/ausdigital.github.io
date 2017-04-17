@@ -257,7 +257,7 @@
             "$ref":"#/responses/404"
           },
           "409":{
-            "$ref":"#/responses/422"
+            "$ref":"#/responses/409"
           },
           "500":{
             "$ref":"#/responses/500"
@@ -614,7 +614,7 @@
       }
     },
     "error":{
-      "description":"standard error response srtucture as per jsonapi.org/format/#errors",
+      "description":"error response srtucture",
       "properties":{
         "code":{
           "type":"string",

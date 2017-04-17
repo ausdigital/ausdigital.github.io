@@ -708,7 +708,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">409</div>
                         <div class="swagger-response-description">
-                            <p>The server understands the content type of the request entity, and the syntax of the request entity is correct but was unable to process the contained instructions (see error code reference).</p>
+                            <p>The request could not be completed due to a conflict with the current state of the target resource (see error code reference).</p>
 
                             
                         </div>
@@ -723,9 +723,9 @@
                                             
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
   </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DCL-0001"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Digital Capability Publisher Accreditation Not Valid."</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">" The accreditation for the nominated Digital Capability Publisher is not valid."</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DCL-0002"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resource Mismatch."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">" A resource already exists for the participant's unique identifier but contains an alternative Digital Capability Publisher ID."</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
