@@ -456,6 +456,349 @@
         <h2 class="swagger-path" id=""></h2>
         <div class="swagger-path-route">/api/capabilityPublishers/{capabilityPublisherID}/participants/{participantId}</div>
         
+        <div class="swagger-method swagger-method-put">
+            <h3 class="swagger-method-title">
+                <a href="#" class="swagger-method-link">
+                    <span class="swagger-method-name">PUT</span>
+                    Update Participant Capability Address
+                </a>
+            </h3>
+            <div class="swagger-method-details">
+                <div class="swagger-method-description"><p>Update Participant Capability Address</p>
+</div>
+                
+                <div class="swagger-parameters">
+                    <h4>Parameters</h4>
+                    <table class="swagger-parameters-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Located in</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    capabilityPublisherID
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>path</td>
+                                <td>
+                                    <p>The unique ID assigned to the Digital Capability Publisher during the accreditation process.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    participantId
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>path</td>
+                                <td>
+                                    <p>The Unique Identifier for the Participant.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    Accept
+                                    
+                                </td>
+                                <td>header</td>
+                                <td>
+                                    <p>accept header</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    Content-Type
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>header</td>
+                                <td>
+                                    <p>content type header</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    body
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>body</td>
+                                <td>
+                                    <p>TODO</p>
+
+                                    
+                                        <span class="show-swagger-parameters-example">Example</span>
+                                        <div class="swagger-parameters-example">
+                                            
+                                                
+                                                    
+                                                    
+                                                        
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="nt">"participantIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51824753556"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"participantIdentifierScheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tx:ebcore:partyid-type:iso6523:0151"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"capabilityPublisherID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                                    
+                                                
+                                            
+                                        </div>
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+                
+                <div class="swagger-response">
+                    <h4>Responses</h4>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">200</div>
+                        <div class="swagger-response-description">
+                            <p>The request has been fulfilled and has resulted in one or more new resources being created.</p>
+
+                            
+                                <div class="swagger-response-headers">
+                                <h5>Headers:</h5>
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Type</th>
+                                    </tr>
+                                    
+                                        <tr>
+                                            <td>Content-Type</td>
+                                            <td><p>Mandatory. Depending on request:
+	• application/json (default)
+	• application/xml</p>
+</td>
+                                            <td>string</td>
+                                        </tr>
+                                    
+                                        <tr>
+                                            <td>Date</td>
+                                            <td><p>Mandatory. The date and time that the message was originated.</p>
+</td>
+                                            <td>string</td>
+                                        </tr>
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"capabilityPublisherID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"domainName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.mysmp.com.au"</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">400</div>
+                        <div class="swagger-response-description">
+                            <p>The server cannot or will not process the request due to something that is perceived to be a client error.</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">403</div>
+                        <div class="swagger-response-description">
+                            <p>The server understood the request, but is refusing to fulfill it. Return this if there is a problem with the client certificate.</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">404</div>
+                        <div class="swagger-response-description">
+                            <p>The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">409</div>
+                        <div class="swagger-response-description">
+                            <p>The request could not be completed due to a conflict with the current state of the target resource (see error code reference).</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DCL-0002"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resource Mismatch."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">" A resource already exists for the participant's unique identifier but contains an alternative Digital Capability Publisher ID."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">422</div>
+                        <div class="swagger-response-description">
+                            <p>The server understands the content type of the request entity, and the syntax of the request entity is correct but was unable to process the contained instructions (see error code reference).</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DCL-0001"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Digital Capability Publisher Accreditation Not Valid."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">" The accreditation for the nominated Digital Capability Publisher is not valid."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">500</div>
+                        <div class="swagger-response-description">
+                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                            
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
         <div class="swagger-method swagger-method-delete">
             <h3 class="swagger-method-title">
                 <a href="#" class="swagger-method-link">

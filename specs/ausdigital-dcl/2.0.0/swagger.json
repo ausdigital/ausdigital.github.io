@@ -245,6 +245,81 @@
       }
     },
     "/api/capabilityPublishers/{capabilityPublisherID}/participants/{participantId}":{
+      "put":{
+        "tags":[
+          "Update Participant Capability Address"
+        ],
+        "summary":"Update Participant Capability Address",
+        "description":"Update Participant Capability Address",
+        "operationId":"updateParticipantsParticipanId",
+        "parameters":[
+          {
+            "$ref":"#/parameters/capabilityPublisherID"
+          },
+          {
+            "$ref":"#/parameters/participantId"
+          },
+          {
+            "$ref":"#/parameters/acceptHeader"
+          },
+          {
+            "$ref":"#/parameters/contentTypeHeader"
+          },
+          {
+            "description":"TODO",
+            "in":"body",
+            "name":"body",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/ParticipantEntity"
+            }
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"The request has been fulfilled and has resulted in one or more new resources being created.",
+            "headers":{
+              "Content-Type":{
+                "type":"string",
+                "description":"Mandatory. Depending on request:\n\t• application/json (default)\n\t• application/xml"
+              },
+              "Date":{
+                "type":"string",
+                "description":"Mandatory. The date and time that the message was originated."
+              }
+            },
+            "schema":{
+              "type":"object",
+              "properties":{
+                "hash":{
+                  "type":"string"
+                }
+              }
+            },
+            "examples":{
+              "application/json":"{\n  \"capabilityPublisherID\": \"1\",\n  \"domainName\": \"www.mysmp.com.au\"\n}"
+            }
+          },
+          "400":{
+            "$ref":"#/responses/400"
+          },
+          "403":{
+            "$ref":"#/responses/403"
+          },
+          "404":{
+            "$ref":"#/responses/404"
+          },
+          "409":{
+            "$ref":"#/responses/409"
+          },
+          "422":{
+            "$ref":"#/responses/422"
+          },
+          "500":{
+            "$ref":"#/responses/500"
+          }
+        }
+      },
       "delete":{
         "tags":[
           "Delete Participant Capability Address"
