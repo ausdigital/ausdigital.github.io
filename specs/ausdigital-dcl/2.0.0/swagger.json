@@ -1,0 +1,640 @@
+{
+  "swagger":"2.0",
+  "info":{
+    "version":"2.0.0",
+    "title":"Digital Capability Locator (DCL) interface specification",
+    "description":"The \"Digital Capability Lookup\" (DCL) specification defines a DNS based method to discover which DCP(SMP) is the authoritative source for a given business \n"
+  },
+  "host":"dcl.testpoint.io",
+  "schemes":[
+    "https"
+  ],
+  "basePath":"/",
+  "produces":[
+    "application/json"
+  ],
+  "parameters":{
+    "capabilityPublisherID":{
+      "name":"capabilityPublisherID",
+      "in":"path",
+      "description":"The unique ID assigned to the Digital Capability Publisher during the accreditation process.",
+      "required":true,
+      "type":"string",
+      "default":""
+    },
+    "participantId":{
+      "name":"participantId",
+      "in":"path",
+      "description":"The Unique Identifier for the Participant.",
+      "required":true,
+      "type":"string",
+      "default":""
+    },
+    "limit":{
+      "name":"limit",
+      "in":"query",
+      "description":"The maximum number of records returned in the result set.",
+      "required":true,
+      "type":"integer",
+      "default":25
+    },
+    "offset":{
+      "name":"offset",
+      "in":"query",
+      "description":"The offset of the first record contained in the result set within the total number of records matching the request criteria.",
+      "required":true,
+      "type":"integer",
+      "default":50
+    },
+    "acceptHeader":{
+      "name":"Accept",
+      "in":"header",
+      "description":"accept header",
+      "required":false,
+      "type":"string",
+      "default":"application/json",
+      "enum":[
+        "application/json",
+        "application/xml"
+      ]
+    },
+    "contentTypeHeader":{
+      "name":"Content-Type",
+      "in":"header",
+      "description":"content type header",
+      "required":true,
+      "type":"string",
+      "default":"application/json",
+      "enum":[
+        "application/json",
+        "application/xml"
+      ]
+    }
+  },
+  "responses":{
+    "204-delete":{
+      "description":"The resource has been removed.",
+      "headers":{
+        "Content-Type":{
+          "type":"string",
+          "description":"Mandatory. Depending on request:\n\t• application/json (default)\n\t• application/xml"
+        },
+        "Date":{
+          "type":"string",
+          "description":"Mandatory. The date and time that the message was originated."
+        }
+      }
+    },
+    "400":{
+      "description":"The server cannot or will not process the request due to something that is perceived to be a client error.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      }
+    },
+    "403":{
+      "description":"The server understood the request, but is refusing to fulfill it. Return this if there is a problem with the client certificate.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      }
+    },
+    "404":{
+      "description":"The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      }
+    },
+    "406":{
+      "description":"The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to the accept headers sent in the request.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      }
+    },
+    "409":{
+      "description":"The request could not be completed due to a conflict with the current state of the target resource (see error code reference).",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      },
+      "examples":{
+        "application/json":"{\n  \"errors\": [{\n      \"code\": \"DCL-0002\",\n      \"name\": \"Resource Mismatch.\",\n      \"userMessage\": \" A resource already exists for the participant's unique identifier but contains an alternative Digital Capability Publisher ID.\"\n    }\n  ]\n}"
+      }
+    },
+    "422":{
+      "description":"The server understands the content type of the request entity, and the syntax of the request entity is correct but was unable to process the contained instructions (see error code reference).",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      },
+      "examples":{
+        "application/json":"{\n  \"errors\": [{\n      \"code\": \"DCL-0001\",\n      \"name\": \" Digital Capability Publisher Accreditation Not Valid.\",\n      \"userMessage\": \" The accreditation for the nominated Digital Capability Publisher is not valid.\"\n    }\n  ]\n}"
+      }
+    },
+    "500":{
+      "description":"Internal server error; no action required; may help to retry request later or contact support.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      }
+    },
+    "5xx":{
+      "description":"Any appropriate HTTP server error.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      }
+    }
+  },
+  "paths":{
+    "/api/capabilityPublishers/{capabilityPublisherID}/participants":{
+      "post":{
+        "tags":[
+          "Register Participant Capability Address"
+        ],
+        "summary":"Register Participant Capability Address",
+        "description":"Register Participant Capability Address",
+        "operationId":"postParticipants",
+        "parameters":[
+          {
+            "$ref":"#/parameters/capabilityPublisherID"
+          },
+          {
+            "$ref":"#/parameters/acceptHeader"
+          },
+          {
+            "$ref":"#/parameters/contentTypeHeader"
+          },
+          {
+            "description":"TODO",
+            "in":"body",
+            "name":"body",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/ParticipantEntity"
+            }
+          }
+        ],
+        "responses":{
+          "201":{
+            "description":"The request has been fulfilled and has resulted in one or more new resources being created.",
+            "headers":{
+              "Content-Type":{
+                "type":"string",
+                "description":"Mandatory. Depending on request:\n\t• application/json (default)\n\t• application/xml"
+              },
+              "Date":{
+                "type":"string",
+                "description":"Mandatory. The date and time that the message was originated."
+              }
+            },
+            "schema":{
+              "type":"object",
+              "properties":{
+                "hash":{
+                  "type":"string"
+                }
+              }
+            },
+            "examples":{
+              "application/json":"{\n  \"hash\": \"B-7ca4a2858bd2c58700e0e7aa752c5f18\"\n}"
+            }
+          },
+          "400":{
+            "$ref":"#/responses/400"
+          },
+          "403":{
+            "$ref":"#/responses/403"
+          },
+          "404":{
+            "$ref":"#/responses/404"
+          },
+          "422":{
+            "$ref":"#/responses/422"
+          },
+          "500":{
+            "$ref":"#/responses/500"
+          }
+        }
+      }
+    },
+    "/api/capabilityPublisher/{capabilityPublisherID}/participants/{participantId}":{
+      "delete":{
+        "tags":[
+          "Delete Participant Capability Address"
+        ],
+        "summary":"Delete Participant Capability Address",
+        "description":"Delete Participant Capability Address",
+        "operationId":"deleteParticipantsParticipanId",
+        "parameters":[
+          {
+            "$ref":"#/parameters/capabilityPublisherID"
+          },
+          {
+            "$ref":"#/parameters/participantId"
+          },
+          {
+            "$ref":"#/parameters/acceptHeader"
+          },
+          {
+            "$ref":"#/parameters/contentTypeHeader"
+          },
+          {
+            "description":"TODO",
+            "in":"body",
+            "name":"body",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/ParticipantEntity"
+            }
+          }
+        ],
+        "responses":{
+          "204":{
+            "$ref":"#/responses/204-delete"
+          },
+          "400":{
+            "$ref":"#/responses/400"
+          },
+          "403":{
+            "$ref":"#/responses/403"
+          },
+          "404":{
+            "$ref":"#/responses/404"
+          },
+          "409":{
+            "$ref":"#/responses/409"
+          },
+          "422":{
+            "$ref":"#/responses/422"
+          },
+          "500":{
+            "$ref":"#/responses/500"
+          }
+        }
+      }
+    },
+    "/api/capabilityPublishers/{capabilityPublisherID}":{
+      "put":{
+        "tags":[
+          "Update Digital Capability Publisher End-Point"
+        ],
+        "summary":"Update Digital Capability Publisher End-Point",
+        "description":"Update Digital Capability Publisher End-Point",
+        "operationId":"putPuplisherEndPoint",
+        "parameters":[
+          {
+            "$ref":"#/parameters/capabilityPublisherID"
+          },
+          {
+            "$ref":"#/parameters/acceptHeader"
+          },
+          {
+            "$ref":"#/parameters/contentTypeHeader"
+          },
+          {
+            "description":"TODO",
+            "in":"body",
+            "name":"body",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/UpdateParticipantEntity"
+            }
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"The request has been fulfilled and has resulted in one or more new resources being created.",
+            "headers":{
+              "Content-Type":{
+                "type":"string",
+                "description":"Mandatory. Depending on request:\n\t• application/json (default)\n\t• application/xml"
+              },
+              "Date":{
+                "type":"string",
+                "description":"Mandatory. The date and time that the message was originated."
+              }
+            },
+            "schema":{
+              "type":"object",
+              "properties":{
+                "hash":{
+                  "type":"string"
+                }
+              }
+            },
+            "examples":{
+              "application/json":"{\n  \"capabilityPublisherID\": \"1\",\n  \"domainName\": \"www.mysmp.com.au\"\n}"
+            }
+          },
+          "400":{
+            "$ref":"#/responses/400"
+          },
+          "403":{
+            "$ref":"#/responses/403"
+          },
+          "404":{
+            "$ref":"#/responses/404"
+          },
+          "409":{
+            "$ref":"#/responses/409"
+          },
+          "422":{
+            "$ref":"#/responses/422"
+          },
+          "500":{
+            "$ref":"#/responses/500"
+          }
+        }
+      }
+    },
+    "/api/v1/capabilityPublisher":{
+      "get":{
+        "tags":[
+          "Capability Publisher"
+        ],
+        "summary":"List Accredited Digital Capability Publishers",
+        "description":"List Accredited Digital Capability Publishers",
+        "operationId":"listADCP",
+        "parameters":[
+          {
+            "$ref":"#/parameters/acceptHeader"
+          },
+          {
+            "$ref":"#/parameters/limit"
+          },
+          {
+            "$ref":"#/parameters/offset"
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"TODO",
+            "headers":{
+              "Content-Type":{
+                "type":"string",
+                "description":"Mandatory. Depending on request:\n\t• application/json (default)\n\t• application/xml"
+              }
+            },
+            "schema":{
+              "$ref":"#/definitions/accreditedProviders"
+            },
+            "examples":{
+              "application/json":"{\n  \"metadata\": {\n    \"resultset\": {\n      \"count\": 227,\n      \"offset\": 50,\n      \"limit\": 25\n    }\n  },\n  \"results\": [{\n      \"capabilityPublisherID\": \"\",\n      \"name\": \"\",\n      \"contactEmail\": \"\",\n      \"URL\": \"\",\n      \"ClientCertificates\": [\"\", \"\"],\n      \"ServerCertificates\": [\"\", \"\"]\n    }, {\n      \"capabilityPublisherID\": \"\",\n      \"name\": \"\",\n      \"contactEmail\": \"\",\n      \"URL\": \"\",\n      \"ClientCertificates\": [\"\", \"\"],\n      \"ServerCertificates\": [\"\", \"\"]\n    }\n  ]\n}"
+            }
+          },
+          "400":{
+            "$ref":"#/responses/400"
+          },
+          "500":{
+            "$ref":"#/responses/500"
+          }
+        }
+      }
+    },
+    "/api/v1/accessPoint":{
+      "get":{
+        "tags":[
+          "Access Points"
+        ],
+        "summary":"List Accredited Access Points",
+        "description":"List Accredited Access Points",
+        "operationId":"listAAP",
+        "parameters":[
+          {
+            "$ref":"#/parameters/acceptHeader"
+          },
+          {
+            "$ref":"#/parameters/limit"
+          },
+          {
+            "$ref":"#/parameters/offset"
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"TODO",
+            "headers":{
+              "Content-Type":{
+                "type":"string",
+                "description":"Mandatory. Depending on request:\n\t• application/json (default)\n\t• application/xml"
+              }
+            },
+            "schema":{
+              "$ref":"#/definitions/accreditedAccessPoints"
+            },
+            "examples":{
+              "application/json":"{\n  \"metadata\": {\n    \"resultset\": {\n      \"count\": 227,\n      \"offset\": 50,\n      \"limit\": 25\n    }\n  },\n  \"results\": [{\n      \"accessPointID\": \"\",\n      \"name\": \"\",\n      \"contactEmail\": \"\",\n      \"URL\": \"\",\n      \"ClientCertificates\": [\"\", \"\"],\n      \"ServerCertificates\": [\"\", \"\"]\n    }, {\n      \"accessPointID\": \"\",\n      \"name\": \"\",\n      \"contactEmail\": \"\",\n      \"URL\": \"\",\n      \"ClientCertificates\": [\"\", \"\"],\n      \"ServerCertificates\": [\"\", \"\"]\n    }\n  ]\n}"
+            }
+          },
+          "400":{
+            "$ref":"#/responses/400"
+          },
+          "500":{
+            "$ref":"#/responses/500"
+          }
+        }
+      }
+    }
+  },
+  "definitions":{
+    "ParticipantEntity":{
+      "description":"TODO",
+      "properties":{
+        "participantIdentifier":{
+          "type":"string",
+          "description":"The unique identifier for the Participant."
+        },
+        "participantIdentifierScheme":{
+          "type":"string",
+          "description":"The Identifier Scheme which applied to the participantIdentifier."
+        },
+        "capabilityPublisherID":{
+          "type":"string",
+          "description":"The unique ID assigned to the Digital Capability Publisher during the accreditation process."
+        }
+      },
+      "required":[
+        "participantIdentifier",
+        "participantIdentifierScheme",
+        "capabilityPublisherID"
+      ],
+      "example":{
+        "participantIdentifier":"51824753556",
+        "participantIdentifierScheme":"urn:oasis:names:tx:ebcore:partyid-type:iso6523:0151",
+        "capabilityPublisherID":"1"
+      }
+    },
+    "UpdateParticipantEntity":{
+      "description":"TODO",
+      "properties":{
+        "capabilityPublisherID":{
+          "type":"string",
+          "description":"The unique ID assigned to the Digital Capability Publisher during the accreditation process."
+        },
+        "domainName":{
+          "type":"string",
+          "description":"The DNS Domain Name for the Digital Capability Publisher."
+        }
+      },
+      "required":[
+        "capabilityPublisherID",
+        "domainName"
+      ],
+      "example":{
+        "capabilityPublisherID":"1",
+        "domainName":"www.mysmp.com.au"
+      }
+    },
+    "accreditedProviders":{
+      "description":"TODO",
+      "properties":{
+        "metadata":{
+          "$ref":"#/definitions/metadata"
+        },
+        "results":{
+          "type":"array",
+          "items":{
+            "$ref":"#/definitions/accreditedProvider"
+          }
+        }
+      }
+    },
+    "metadata":{
+      "description":"An array containing ResultSet metadata.",
+      "type":"object",
+      "properties":{
+        "resultSet":{
+          "description":"An object containing information on the result set returned by the API.",
+          "type":"object",
+          "properties":{
+            "count":{
+              "description":"Total number of records matching the request criteria.",
+              "type":"integer"
+            },
+            "offset":{
+              "description":"The offset of the first record contained in the result set within the total number of records matching the request criteria.",
+              "type":"integer"
+            },
+            "limit":{
+              "description":"The maximum number of records returned in the result set.",
+              "type":"integer"
+            }
+          }
+        }
+      }
+    },
+    "accreditedProvider":{
+      "description":"TODO",
+      "properties":{
+        "capabilityPublisherID":{
+          "description":"The unique id for the Digital Capability Publisher issued by the accreditation authority.",
+          "type":"string"
+        },
+        "name":{
+          "$ref":"#/definitions/name"
+        },
+        "contactEmail":{
+          "$ref":"#/definitions/contactEmail"
+        },
+        "URL":{
+          "$ref":"#/definitions/URL"
+        },
+        "clientCertificates":{
+          "$ref":"#/definitions/clientCertificates"
+        },
+        "serverCertificates":{
+          "$ref":"#/definitions/serverCertificates"
+        }
+      }
+    },
+    "accreditedAccessPoints":{
+      "description":"TODO",
+      "properties":{
+        "metadata":{
+          "$ref":"#/definitions/metadata"
+        },
+        "results":{
+          "type":"array",
+          "items":{
+            "$ref":"#/definitions/accreditedAccessPoint"
+          }
+        }
+      }
+    },
+    "accreditedAccessPoint":{
+      "description":"TODO",
+      "properties":{
+        "accessPointID":{
+          "description":"The unique id for the Access Point issued by the accreditation authority.",
+          "type":"string"
+        },
+        "name":{
+          "$ref":"#/definitions/name"
+        },
+        "contactEmail":{
+          "$ref":"#/definitions/contactEmail"
+        },
+        "URL":{
+          "$ref":"#/definitions/URL"
+        },
+        "clientCertificates":{
+          "$ref":"#/definitions/clientCertificates"
+        },
+        "serverCertificates":{
+          "$ref":"#/definitions/serverCertificates"
+        }
+      }
+    },
+    "name":{
+      "description":"The trading name of the provider listed on the accreditation record.",
+      "type":"string"
+    },
+    "contactEmail":{
+      "description":"A contact email for the provider.",
+      "type":"string",
+      "format":"email"
+    },
+    "URL":{
+      "description":"The URL for the provider’s registration website.",
+      "type":"string",
+      "format":"uri"
+    },
+    "clientCertificates":{
+      "description":"A list of PEM base 64 encoded DER formatted X509 client certificates. One or two client’s certificates may be returned to support rollover of certificates.",
+      "type":"array",
+      "items":{
+        "type":"string"
+      }
+    },
+    "serverCertificates":{
+      "description":"A list of PEM base 64 encoded DER formatted X509 server certificates. One or two server certificates may be returned to support rollover of certificates.",
+      "type":"array",
+      "items":{
+        "type":"string"
+      }
+    },
+    "errors":{
+      "type":"object",
+      "properties":{
+        "errors":{
+          "type":"array",
+          "items":{
+            "$ref":"#/definitions/error"
+          }
+        }
+      }
+    },
+    "error":{
+      "description":"error response srtucture",
+      "properties":{
+        "code":{
+          "type":"string",
+          "description":"The code associated with the error."
+        },
+        "name":{
+          "type":"string",
+          "description":"The name category for the error."
+        },
+        "userMessage":{
+          "type":"string",
+          "description":"The human readable error message."
+        }
+      }
+    }
+  }
+}
