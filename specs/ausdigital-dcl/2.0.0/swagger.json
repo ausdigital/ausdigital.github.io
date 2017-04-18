@@ -34,7 +34,7 @@
       "name":"limit",
       "in":"query",
       "description":"The maximum number of records returned in the result set.",
-      "required":true,
+      "required":false,
       "type":"integer",
       "default":25
     },
@@ -42,8 +42,40 @@
       "name":"offset",
       "in":"query",
       "description":"The offset of the first record contained in the result set within the total number of records matching the request criteria.",
-      "required":true,
+      "required":false,
       "type":"integer",
+      "default":50
+    },
+    "idQuery":{
+      "name":"id",
+      "in":"query",
+      "description":"The unique id for the accredited service provider or it's part with wildcards.",
+      "required":false,
+      "type":"string",
+      "default":25
+    },
+    "nameQuery":{
+      "name":"name",
+      "in":"query",
+      "description":"The trading name of the accredited service provider or it's part with wildcards.",
+      "required":false,
+      "type":"string",
+      "default":50
+    },
+    "idAPQuery":{
+      "name":"id",
+      "in":"query",
+      "description":"The unique id for the access point or it's part with wildcards.",
+      "required":false,
+      "type":"string",
+      "default":25
+    },
+    "nameAPQuery":{
+      "name":"name",
+      "in":"query",
+      "description":"The trading name of the access point or it's part with wildcards.",
+      "required":false,
+      "type":"string",
       "default":50
     },
     "acceptHeader":{
@@ -212,7 +244,7 @@
         }
       }
     },
-    "/api/capabilityPublisher/{capabilityPublisherID}/participants/{participantId}":{
+    "/api/capabilityPublishers/{capabilityPublisherID}/participants/{participantId}":{
       "delete":{
         "tags":[
           "Delete Participant Capability Address"
@@ -359,6 +391,12 @@
           },
           {
             "$ref":"#/parameters/offset"
+          },
+          {
+            "$ref":"#/parameters/idQuery"
+          },
+          {
+            "$ref":"#/parameters/nameQuery"
           }
         ],
         "responses":{
@@ -403,6 +441,12 @@
           },
           {
             "$ref":"#/parameters/offset"
+          },
+          {
+            "$ref":"#/parameters/idAPQuery"
+          },
+          {
+            "$ref":"#/parameters/nameAPQuery"
           }
         ],
         "responses":{
@@ -446,6 +490,16 @@
         "capabilityPublisherID":{
           "type":"string",
           "description":"The unique ID assigned to the Digital Capability Publisher during the accreditation process."
+        },
+        "validFrom":{
+          "type":"string",
+          "format":"date-time",
+          "description":"TODO"
+        },
+        "validTill":{
+          "type":"string",
+          "format":"date-time",
+          "description":"TODO"
         }
       },
       "required":[
