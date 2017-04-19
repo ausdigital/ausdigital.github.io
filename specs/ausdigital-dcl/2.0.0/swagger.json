@@ -449,7 +449,7 @@
         }
       }
     },
-    "/api/v1/capabilityPublisher":{
+    "/api/v1/capabilityPublishers":{
       "get":{
         "tags":[
           "Capability Publisher"
@@ -499,7 +499,7 @@
         }
       }
     },
-    "/api/v1/accessPoint":{
+    "/api/v1/accessPoints":{
       "get":{
         "tags":[
           "Access Points"
