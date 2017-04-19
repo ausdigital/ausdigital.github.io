@@ -19,8 +19,11 @@ layout: default
 
     {% for route in swagger.paths %}
     <div class="swagger-paths">
-
-        <h2 class="swagger-path" id="{{ route[1].get.tags[0] | slugify }}">{{ route[1].get.tags }}</h2>
+        {% if route[1].get %}<h2 class="swagger-path" id="{{ route[1].get.tags[0] | slugify }}">{{ route[1].get.tags }}</h2>{% endif %}
+        {% if route[1].post %}<h2 class="swagger-path" id="{{ route[1].post.tags[0] | slugify }}">{{ route[1].post.tags }}</h2>{% endif %}
+        {% if route[1].delete %}<h2 class="swagger-path" id="{{ route[1].delete.tags[0] | slugify }}">{{ route[1].delete.tags }}</h2>{% endif %}
+        {% if route[1].put %}<h2 class="swagger-path" id="{{ route[1].put.tags[0] | slugify }}">{{ route[1].put.tags }}</h2>{% endif %}
+        {% if route[1].patch %}<h2 class="swagger-path" id="{{ route[1].patch.tags[0] | slugify }}">{{ route[1].patch.tags }}</h2>{% endif %}
         <div class="swagger-path-route">{{ route[0] }}</div>
         {% for method in route[1] %}
         <div class="swagger-method swagger-method-{{ method[0] }}">
