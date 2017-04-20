@@ -247,7 +247,7 @@
     "/api/capabilityPublishers/{capabilityPublisherID}/participants/{participantId}":{
       "put":{
         "tags":[
-          "Update Participant Capability Address"
+          "Delete or Update Participant Capability Address"
         ],
         "summary":"Update Participant Capability Address",
         "description":"Update Participant Capability Address",
@@ -322,7 +322,7 @@
       },
       "delete":{
         "tags":[
-          "Delete Participant Capability Address"
+          "Delete or Update Participant Capability Address"
         ],
         "summary":"Delete Participant Capability Address",
         "description":"Delete Participant Capability Address",
