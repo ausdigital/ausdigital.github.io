@@ -101,6 +101,15 @@
         "application/json",
         "application/xml"
       ]
+    },
+    "cacheControlHeader": {
+      "name": "Cache-Control",
+      "in": "header",
+      "description": "Cache-Control header",
+      "required": false,
+      "type": "string",
+      "default": "max-age=86400",
+      "enum": ["no-cache", "max-age=86400"]
     }
   },
   "responses":{
@@ -449,7 +458,7 @@
         }
       }
     },
-    "/api/v1/capabilityPublishers":{
+    "/api/v2/capabilityPublishers":{
       "get":{
         "tags":[
           "Capability Publisher"
@@ -460,6 +469,9 @@
         "parameters":[
           {
             "$ref":"#/parameters/acceptHeader"
+          },
+          {
+            "$ref": "#/parameters/cacheControlHeader"
           },
           {
             "$ref":"#/parameters/limit"
@@ -478,6 +490,10 @@
           "200":{
             "description":"TODO",
             "headers":{
+              "Cache-Control": {
+                "type": "string",
+                "description": "Mandatory. no-cache or max-age directives must be defined for this header."
+              },
               "Content-Type":{
                 "type":"string",
                 "description":"Mandatory. Depending on request:\n\t• application/json (default)\n\t• application/xml"
@@ -499,7 +515,7 @@
         }
       }
     },
-    "/api/v1/accessPoints":{
+    "/api/v2/accessPoints":{
       "get":{
         "tags":[
           "Access Points"
@@ -510,6 +526,9 @@
         "parameters":[
           {
             "$ref":"#/parameters/acceptHeader"
+          },
+          {
+            "$ref": "#/parameters/cacheControlHeader"
           },
           {
             "$ref":"#/parameters/limit"
@@ -528,6 +547,10 @@
           "200":{
             "description":"TODO",
             "headers":{
+              "Cache-Control": {
+                "type": "string",
+                "description": "Mandatory. no-cache or max-age directives must be defined for this header."
+              },
               "Content-Type":{
                 "type":"string",
                 "description":"Mandatory. Depending on request:\n\t• application/json (default)\n\t• application/xml"
