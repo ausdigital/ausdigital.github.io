@@ -143,31 +143,10 @@
         "application/json":"{\n  \"errors\": [{\n      \"code\": \"TAP-GW-0004\",\n      \"name\": \"Authentication Required.\",\n      \"userMessage\": \"Please provide a valid JWT from correct issuer\"\n    }\n  ]\n}\n|-\n{\n  \"errors\": [{\n      \"code\": \"TAP-GW-0005\",\n      \"name\": \"Authentication Required.\",\n      \"userMessage\": \"Please provide a valid JWT: Signature has expired\"\n    }\n  ]\n}"
       }
     },
-    "403":{
-      "description":"The server understood the request, but is refusing to fulfill it. Return this if there is a problem with the client certificate.",
-      "schema":{
-        "$ref":"#/definitions/errors"
-      }
-    },
     "404":{
       "description":"The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.",
       "schema":{
         "$ref":"#/definitions/errors"
-      }
-    },
-    "406":{
-      "description":"The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to the accept headers sent in the request.",
-      "schema":{
-        "$ref":"#/definitions/errors"
-      }
-    },
-    "409":{
-      "description":"The request could not be completed due to a conflict with the current state of the target resource (see error code reference).",
-      "schema":{
-        "$ref":"#/definitions/errors"
-      },
-      "examples":{
-        "application/json":"{\n  \"errors\": [{\n      \"code\": \"TAP-GW-0006\",\n      \"name\": \"Resource Mismatch.\",\n      \"userMessage\": \" A resource already exists for the participant's unique identifier but contains an alternative Digital Capability Publisher ID.\"\n    }\n  ]\n}"
       }
     },
     "415":{
@@ -176,7 +155,7 @@
         "$ref":"#/definitions/errors"
       },
       "examples":{
-        "application/json":"{\n  \"errors\": [{\n      \"code\": \"TAP-GW-0007\",\n      \"name\": \"Unsupported media type.\",\n      \"userMessage\": \"Unsupported media type. Must be multipart/form-data.\"\n    }\n  ]\n}"
+        "application/json":"{\n  \"errors\": [{\n      \"code\": \"TAP-GW-0006\",\n      \"name\": \"Unsupported media type.\",\n      \"userMessage\": \"Unsupported media type. Must be multipart/form-data.\"\n    }\n  ]\n}"
       }
     },
     "500":{
@@ -195,6 +174,11 @@
         "summary":"Get Endpoints List",
         "description":"Only endpoints for the given user will be returned\\nFiltering by metadata is supported (pass metadata and values to filter by as GET parameters)",
         "operationId":"getEndpoints",
+        "parameters":[
+          {
+            "$ref":"#/parameters/authorizationHeader"
+          }
+        ],
         "responses":{
           "200":{
             "description":"OK.",
@@ -231,6 +215,12 @@
         "description":"Create Endpoint. JSON with desired endpoint fields is expected in a request body.",
         "operationId":"postEndpoints",
         "parameters":[
+          {
+            "$ref":"#/parameters/authorizationHeader"
+          },
+          {
+            "$ref":"#/parameters/contentTypeHeader"
+          },
           {
             "description":"TODO",
             "in":"body",
@@ -283,6 +273,9 @@
         "operationId":"getEndpointDetails",
         "parameters":[
           {
+            "$ref":"#/parameters/authorizationHeader"
+          },
+          {
             "$ref":"#/parameters/endpointId"
           }
         ],
@@ -325,6 +318,12 @@
         "description":"Completely replaces the whole metadata set.\\n Only endpoints for the given user could be updated.\\n To delete metadata item send PUT without key which shall be deleted.\\n New version of the object is returned, with metadata updated.",
         "operationId":"putEndpointDetails",
         "parameters":[
+          {
+            "$ref":"#/parameters/authorizationHeader"
+          },
+          {
+            "$ref":"#/parameters/contentTypeHeader"
+          },
           {
             "$ref":"#/parameters/endpointId"
           },
@@ -381,6 +380,12 @@
         "operationId":"patchEndpointDetails",
         "parameters":[
           {
+            "$ref":"#/parameters/authorizationHeader"
+          },
+          {
+            "$ref":"#/parameters/contentTypeHeader"
+          },
+          {
             "$ref":"#/parameters/endpointId"
           },
           {
@@ -436,12 +441,24 @@
         "summary":"Post TAP message",
         "description":"Post TAP message. Payload must be a TAP message with a signature.",
         "operationId":"postTAPMessage",
+        "consumes":[
+          "multipart/form-data"
+        ],
         "parameters":[
+          {
+            "$ref":"#/parameters/authorizationHeader"
+          },
           {
             "$ref":"#/parameters/endpointId"
           },
           {
             "$ref":"#/parameters/contentTypeMPHeader"
+          },
+          {
+            "$ref":"#/parameters/message"
+          },
+          {
+            "$ref":"#/parameters/signature"
           }
         ],
         "responses":{
@@ -488,6 +505,9 @@
         "description":"Get TAP messages. Only messages from endpoints created by user with given JWT will be returned.\\n Filtering by metadata and parametres is supported (pass metadata and values to filter by as GET parameters).n Following parametres are available for filtering: is_read, endpoint, participant_id.\\n Any other query parameter is filtered as exact metadata of endpoint (returns only messages from endpoints which have metadata with given key equal to given value).",
         "operationId":"getTAPMessages",
         "parameters":[
+          {
+            "$ref":"#/parameters/authorizationHeader"
+          },
           {
             "$ref":"#/parameters/isRead"
           },
@@ -536,6 +556,12 @@
         "description":"Only messages for the given user could be updated.\\n Only isRead parameter of message could be updated.",
         "operationId":"patchTAPMessage",
         "parameters":[
+          {
+            "$ref":"#/parameters/authorizationHeader"
+          },
+          {
+            "$ref":"#/parameters/contentTypeHeader"
+          },
           {
             "$ref":"#/parameters/messageId"
           },
@@ -650,6 +676,9 @@
         "description":"Returns TAP message body",
         "operationId":"getTAPMessageBody",
         "parameters":[
+          {
+            "$ref":"#/parameters/authorizationHeader"
+          },
           {
             "$ref":"#/parameters/messageId"
           }

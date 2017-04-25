@@ -737,7 +737,27 @@
       </span>}
     </span>}
   </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div></div></div></div><div class=middle><div id=endpoint-details-patch class="action patch"><h4 class=action-heading><div class=name>Endpoint Update</div><a href=#endpoint-details-patch class="method patch">PATCH</a><code class=uri>/api/endpoints/{endpointId}</code></h4><p>Update only passed set of keys/values.\n Only endpoints for the given user could be updated.\n New version of the object is returned, with metadata updated.<div class=title><strong>URI Parameters</strong></div><div><dl class=inner><dt style="padding:.2em 0">endpointId<dd style="padding:.2em 0"><code>string</code>&nbsp;<span class=required>(required)</span>&nbsp;<p>The unique endpoint ID.</dl></div></div></div><hr class=split><div class=middle><section id=tap-message class=resource-group><h2 class=group-heading>TAP message <a href=#tap-message class=permalink>&para;</a></h2></section></div><div class=middle><div id=tap-message- class=resource></div></div><div class=right><div class=definition><span class="method post">POST</span>&nbsp;<span class=uri><span class=hostname></span>/api/endpoints/<span class=hljs-attribute title=endpointId>endpointId</span>/message</span></div><div class=tabs><div class=tabs><div class=example-names><span>Responses</span><span class=tab-button>200</span><span class=tab-button>400</span><span class=tab-button>404</span><span class=tab-button>415</span><span class=tab-button>500</span></div><div class=tab><div><div class=inner><div class=description><p>OK. Message has been queued for validation and sending.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json,</span><br><span class=hljs-attribute>Date</span>: <span class=hljs-string></span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
+</span>}</code></pre><div style=height:1px></div></div></div></div></div></div></div><div class=middle><div id=endpoint-details-patch class="action patch"><h4 class=action-heading><div class=name>Endpoint Update</div><a href=#endpoint-details-patch class="method patch">PATCH</a><code class=uri>/api/endpoints/{endpointId}</code></h4><p>Update only passed set of keys/values.\n Only endpoints for the given user could be updated.\n New version of the object is returned, with metadata updated.<div class=title><strong>URI Parameters</strong></div><div><dl class=inner><dt style="padding:.2em 0">endpointId<dd style="padding:.2em 0"><code>string</code>&nbsp;<span class=required>(required)</span>&nbsp;<p>The unique endpoint ID.</dl></div></div></div><hr class=split><div class=middle><section id=tap-message class=resource-group><h2 class=group-heading>TAP message <a href=#tap-message class=permalink>&para;</a></h2></section></div><div class=middle><div id=tap-message- class=resource></div></div><div class=right><div class=definition><span class="method post">POST</span>&nbsp;<span class=uri><span class=hostname></span>/api/endpoints/<span class=hljs-attribute title=endpointId>endpointId</span>/message</span></div><div class=tabs><div class=example-names><span>Requests</span></div><div class=tabs><div class=tab><div><div class=inner><h5>Body</h5><pre><code>{
+  "<span class=hljs-attribute>message</span>": <span class=hljs-value><span class=hljs-string>"Hello, world!"</span></span>,
+  "<span class=hljs-attribute>signature</span>": <span class=hljs-value><span class=hljs-string>"Hello, world!"</span>
+</span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
+  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
+  "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
+    "<span class=hljs-attribute>message</span>": <span class=hljs-value>{
+      "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
+      "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The message file."</span>
+    </span>}</span>,
+    "<span class=hljs-attribute>signature</span>": <span class=hljs-value>{
+      "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
+      "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The signature file."</span>
+    </span>}
+  </span>}</span>,
+  "<span class=hljs-attribute>required</span>": <span class=hljs-value>[
+    <span class=hljs-string>"message"</span>,
+    <span class=hljs-string>"signature"</span>
+  ]</span>,
+  "<span class=hljs-attribute>$schema</span>": <span class=hljs-value><span class=hljs-string>"http://json-schema.org/draft-04/schema#"</span>
+</span>}</code></pre><div style=height:1px></div></div></div></div></div><div class=tabs><div class=example-names><span>Responses</span><span class=tab-button>200</span><span class=tab-button>400</span><span class=tab-button>404</span><span class=tab-button>415</span><span class=tab-button>500</span></div><div class=tab><div><div class=inner><div class=description><p>OK. Message has been queued for validation and sending.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json,</span><br><span class=hljs-attribute>Date</span>: <span class=hljs-string></span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
   "<span class=hljs-attribute>data</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"TapMessage"</span></span>,
     "<span class=hljs-attribute>id</span>": <span class=hljs-value><span class=hljs-string>"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span></span>,
@@ -872,7 +892,7 @@
 </span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>Unsupported media type.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
   "<span class=hljs-attribute>errors</span>": <span class=hljs-value>[
     {
-      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"TAP-GW-0007"</span></span>,
+      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"TAP-GW-0006"</span></span>,
       "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"Unsupported media type."</span></span>,
       "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value><span class=hljs-string>"Unsupported media type. Must be multipart/form-data."</span>
     </span>}

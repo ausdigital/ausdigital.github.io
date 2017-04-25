@@ -147,7 +147,9 @@
 
     <h1 class="no-anchor">Transaction Access Point Gateway (TAP-GW) interface specification <span class="api-version">1.0</span></h1>
     <div class="quick-description">
-        
+        <p>Click <a href="agilo.html" target="_blank">here</a> to see this specification in Agilo format with complete set of examples/models.</p>
+
+<p>Click <a href="swagger.json" target="_blank">here</a> to download the original swagger document.</p>
 
         <p>‘Dates: ISO8601 with timezone  Format: jsonapi.org’</p>
 
@@ -170,6 +172,43 @@
             <div class="swagger-method-details">
                 <div class="swagger-method-description"><p>Only endpoints for the given user will be returned\nFiltering by metadata is supported (pass metadata and values to filter by as GET parameters)</p>
 </div>
+                
+                <div class="swagger-parameters">
+                    <h4>Parameters</h4>
+                    <table class="swagger-parameters-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Located in</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    Authorization
+                                    
+                                </td>
+                                <td>header</td>
+                                <td>
+                                    <p>WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
                 
                 
                 <div class="swagger-response">
@@ -332,6 +371,50 @@
                             </tr>
                         </thead>
                         <tbody>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    Authorization
+                                    
+                                </td>
+                                <td>header</td>
+                                <td>
+                                    <p>WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    Content-Type
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>header</td>
+                                <td>
+                                    <p>content type header</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
                             
                             <tr>
                                 <td>
@@ -548,6 +631,26 @@
                             <tr>
                                 <td>
                                     
+                                    Authorization
+                                    
+                                </td>
+                                <td>header</td>
+                                <td>
+                                    <p>WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
                                     <span class="swagger-parameter-required">
                                     
                                     endpointId
@@ -732,6 +835,50 @@
                             </tr>
                         </thead>
                         <tbody>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    Authorization
+                                    
+                                </td>
+                                <td>header</td>
+                                <td>
+                                    <p>WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    Content-Type
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>header</td>
+                                <td>
+                                    <p>content type header</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
                             
                             <tr>
                                 <td>
@@ -990,6 +1137,50 @@
                             </tr>
                         </thead>
                         <tbody>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    Authorization
+                                    
+                                </td>
+                                <td>header</td>
+                                <td>
+                                    <p>WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    Content-Type
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>header</td>
+                                <td>
+                                    <p>content type header</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
                             
                             <tr>
                                 <td>
@@ -1260,6 +1451,26 @@
                             <tr>
                                 <td>
                                     
+                                    Authorization
+                                    
+                                </td>
+                                <td>header</td>
+                                <td>
+                                    <p>WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
                                     <span class="swagger-parameter-required">
                                     
                                     endpointId
@@ -1300,6 +1511,54 @@
                                 <td>
                                     
                                     String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    message
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>formData</td>
+                                <td>
+                                    <p>The message file.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    File
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    signature
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>formData</td>
+                                <td>
+                                    <p>The signature file.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    File
                                     
                                     
                                 </td>
@@ -1440,7 +1699,7 @@
                                             
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
   </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-GW-0007"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-GW-0006"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unsupported media type."</span><span class="p">,</span><span class="w">
       </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unsupported media type. Must be multipart/form-data."</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1502,6 +1761,26 @@
                             </tr>
                         </thead>
                         <tbody>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    Authorization
+                                    
+                                </td>
+                                <td>header</td>
+                                <td>
+                                    <p>WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
                             
                             <tr>
                                 <td>
@@ -1755,6 +2034,50 @@
                             </tr>
                         </thead>
                         <tbody>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    Authorization
+                                    
+                                </td>
+                                <td>header</td>
+                                <td>
+                                    <p>WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    Content-Type
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>header</td>
+                                <td>
+                                    <p>content type header</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
                             
                             <tr>
                                 <td>
@@ -2285,6 +2608,26 @@
                             </tr>
                         </thead>
                         <tbody>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    Authorization
+                                    
+                                </td>
+                                <td>header</td>
+                                <td>
+                                    <p>WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
                             
                             <tr>
                                 <td>
