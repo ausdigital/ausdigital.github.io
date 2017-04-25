@@ -1,9 +1,951 @@
 {
-  "swagger" : "2.0",
-  "info" : {
-    "version" : "1.0",
-    "title" : "Ledger Access Point (LAP) protocol interfaces",
-    "description" : "The \"Ledger Access Point\" (LAP) specification defines a standard protocol for RESTful exchange of e-business documents between ledger systems"
+  "swagger":"2.0",
+  "info":{
+    "version":"1.0",
+    "title":"Transaction Access Point Gateway (TAP-GW) interface specification",
+    "description":"'Dates: ISO8601 with timezone  Format: jsonapi.org'\n"
   },
-  "paths" : { }
+  "host":"tap-gw.testpoint.io",
+  "schemes":[
+    "http"
+  ],
+  "basePath":"/",
+  "produces":[
+    "application/json"
+  ],
+  "parameters":{
+    "endpointId":{
+      "name":"endpointId",
+      "in":"path",
+      "description":"The unique endpoint ID.",
+      "required":true,
+      "type":"string",
+      "default":""
+    },
+    "messageId":{
+      "name":"messageId",
+      "in":"path",
+      "description":"The unique message ID.",
+      "required":true,
+      "type":"string",
+      "default":""
+    },
+    "endpoint":{
+      "name":"endpoint",
+      "in":"query",
+      "description":"TODO",
+      "required":true,
+      "type":"string",
+      "default":""
+    },
+    "isRead":{
+      "name":"isRead",
+      "in":"query",
+      "description":"TODO",
+      "required":true,
+      "type":"string",
+      "default":""
+    },
+    "participantId":{
+      "name":"participantId",
+      "in":"query",
+      "description":"string representation",
+      "required":true,
+      "type":"string",
+      "default":""
+    },
+    "message":{
+      "name":"message",
+      "in":"formData",
+      "description":"The message file.",
+      "required":true,
+      "type":"file"
+    },
+    "signature":{
+      "name":"signature",
+      "in":"formData",
+      "description":"The signature file.",
+      "required":true,
+      "type":"file"
+    },
+    "authorizationHeader":{
+      "name":"Authorization",
+      "in":"header",
+      "description":"WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.",
+      "required":false,
+      "type":"string",
+      "default":"application/json",
+      "enum":[
+        "application/json"
+      ]
+    },
+    "contentTypeHeader":{
+      "name":"Content-Type",
+      "in":"header",
+      "description":"content type header",
+      "required":true,
+      "type":"string",
+      "default":"application/json",
+      "enum":[
+        "application/json"
+      ]
+    },
+    "contentTypeMPHeader":{
+      "name":"Content-Type",
+      "in":"header",
+      "description":"content type multipart/form-data header",
+      "required":true,
+      "type":"string",
+      "default":"multipart/form-data",
+      "enum":[
+        "multipart/form-data"
+      ]
+    }
+  },
+  "responses":{
+    "204-delete":{
+      "description":"The resource has been removed.",
+      "headers":{
+        "Content-Type":{
+          "type":"string",
+          "description":"Mandatory. Value - application/json."
+        },
+        "Date":{
+          "type":"string",
+          "description":"Mandatory. The date and time that the message was originated."
+        }
+      }
+    },
+    "400":{
+      "description":"The server cannot or will not process the request due to something that is perceived to be a client error.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      },
+      "examples":{
+        "application/json":"{\n  \"errors\": [{\n      \"code\": \"TAP-GW-0001\",\n      \"name\": \"Malformed JSON.\",\n      \"userMessage\": \"Could not decode the request body. The JSON was incorrect or not encoded as UTF-8.\"\n    }\n  ]\n}"
+      }
+    },
+    "400-nofile":{
+      "description":"The server cannot or will not process the request due to something that is perceived to be a client error.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      },
+      "examples":{
+        "application/json":"{\n  \"errors\": [{\n      \"code\": \"TAP-GW-0002\",\n      \"name\": \"No file was submitted.\",\n      \"userMessage\": \"No file was for message parameter.\"\n    },\n    {\n      \"code\": \"TAP-GW-0003\",\n      \"name\": \"No file was submitted.\",\n      \"userMessage\": \"No file was for signature parameter.\"\n    }\n  ]\n}"
+      }
+    },
+    "401":{
+      "description":"Authentication credentials were not provided or Invalid Authorization header, JWT Signature verification failed.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      },
+      "examples":{
+        "application/json":"{\n  \"errors\": [{\n      \"code\": \"TAP-GW-0004\",\n      \"name\": \"Authentication Required.\",\n      \"userMessage\": \"Please provide a valid JWT from correct issuer\"\n    }\n  ]\n}\n|-\n{\n  \"errors\": [{\n      \"code\": \"TAP-GW-0005\",\n      \"name\": \"Authentication Required.\",\n      \"userMessage\": \"Please provide a valid JWT: Signature has expired\"\n    }\n  ]\n}"
+      }
+    },
+    "403":{
+      "description":"The server understood the request, but is refusing to fulfill it. Return this if there is a problem with the client certificate.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      }
+    },
+    "404":{
+      "description":"The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      }
+    },
+    "406":{
+      "description":"The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to the accept headers sent in the request.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      }
+    },
+    "409":{
+      "description":"The request could not be completed due to a conflict with the current state of the target resource (see error code reference).",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      },
+      "examples":{
+        "application/json":"{\n  \"errors\": [{\n      \"code\": \"TAP-GW-0006\",\n      \"name\": \"Resource Mismatch.\",\n      \"userMessage\": \" A resource already exists for the participant's unique identifier but contains an alternative Digital Capability Publisher ID.\"\n    }\n  ]\n}"
+      }
+    },
+    "415":{
+      "description":"Unsupported media type.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      },
+      "examples":{
+        "application/json":"{\n  \"errors\": [{\n      \"code\": \"TAP-GW-0007\",\n      \"name\": \"Unsupported media type.\",\n      \"userMessage\": \"Unsupported media type. Must be multipart/form-data.\"\n    }\n  ]\n}"
+      }
+    },
+    "500":{
+      "description":"Internal server error; no action required; may help to retry request later or contact support.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      }
+    }
+  },
+  "paths":{
+    "/api/endpoints":{
+      "get":{
+        "tags":[
+          "Endpoints"
+        ],
+        "summary":"Get Endpoints List",
+        "description":"Only endpoints for the given user will be returned\\nFiltering by metadata is supported (pass metadata and values to filter by as GET parameters)",
+        "operationId":"getEndpoints",
+        "responses":{
+          "200":{
+            "description":"OK.",
+            "headers":{
+              "Content-Type":{
+                "type":"string",
+                "description":"Mandatory. Value - application/json."
+              },
+              "Date":{
+                "type":"string",
+                "description":"Mandatory. The date and time that the message was originated."
+              }
+            },
+            "schema":{
+              "$ref":"#/definitions/EndpointsResponseEntity"
+            },
+            "examples":{
+              "application/json":"{\n  \"links\": {\n      \"first\": \"http://tap-gw.testpoint.io/api/endpoints/?page=1\",\n      \"last\": \"http://tap-gw.testpoint.io/api/endpoints/?page=1\",\n      \"next\": null,\n      \"prev\": null\n  },\n  \"data\": [\n      {\n          \"type\": \"TapGwEndpoint\",\n          \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n          \"attributes\": {\n              \"participant_id\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999\",\n              \"endpoint_type\": \"ausdigital-tap/2\",\n              \"key1\": \"value1\",\n              \"key2\": \"value2\"\n          }\n      }\n  ],\n  \"meta\": {\n      \"pagination\": {\n          \"page\": 1,\n          \"pages\": 1,\n          \"count\": X\n      }\n  }\n}"
+            }
+          },
+          "401":{
+            "$ref":"#/responses/401"
+          },
+          "500":{
+            "$ref":"#/responses/500"
+          }
+        }
+      },
+      "post":{
+        "tags":[
+          "Endpoints"
+        ],
+        "summary":"Create Endpoint",
+        "description":"Create Endpoint. JSON with desired endpoint fields is expected in a request body.",
+        "operationId":"postEndpoints",
+        "parameters":[
+          {
+            "description":"TODO",
+            "in":"body",
+            "name":"body",
+            "required":true,
+            "schema":{
+              "$ref":"#/definitions/EndpointPostRequestEntity"
+            }
+          }
+        ],
+        "responses":{
+          "201":{
+            "description":"The request has been fulfilled and has resulted in one or more new resources being created.",
+            "headers":{
+              "Content-Type":{
+                "type":"string",
+                "description":"Mandatory. Value - application/json."
+              },
+              "Date":{
+                "type":"string",
+                "description":"Mandatory. The date and time that the message was originated."
+              }
+            },
+            "schema":{
+              "$ref":"#/definitions/EndpointPostResponseEntity"
+            },
+            "examples":{
+              "application/json":"{\n  \"data\": {\n      \"type\": \"TapGwEndpoint\",\n      \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n      \"attributes\": {\n          \"participantId\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999\",\n          \"endpointType\": \"ausdigital-tap/2\",\n          \"keyX\": \"valueY\"\n      }\n  }\n}"
+            }
+          },
+          "400":{
+            "$ref":"#/responses/400"
+          },
+          "401":{
+            "$ref":"#/responses/401"
+          },
+          "500":{
+            "$ref":"#/responses/500"
+          }
+        }
+      }
+    },
+    "/api/endpoints/{endpointId}":{
+      "get":{
+        "tags":[
+          "Endpoint Details"
+        ],
+        "summary":"Get Endpoint Details",
+        "description":"Only endpoints for the given user will be returned (user determined by JWT)",
+        "operationId":"getEndpointDetails",
+        "parameters":[
+          {
+            "$ref":"#/parameters/endpointId"
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"OK.",
+            "headers":{
+              "Content-Type":{
+                "type":"string",
+                "description":"Mandatory. Value - application/json."
+              },
+              "Date":{
+                "type":"string",
+                "description":"Mandatory. The date and time that the message was originated."
+              }
+            },
+            "schema":{
+              "$ref":"#/definitions/EndpointPostResponseEntity"
+            },
+            "examples":{
+              "application/json":"{\n  \"data\": {\n      \"type\": \"TapGwEndpoint\",\n      \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n      \"attributes\": {\n          \"participant_id\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999\",\n          \"endpoint_type\": \"ausdigital-tap/2\",\n          \"keyX\": \"valueeY\"\n      }\n  }\n}"
+            }
+          },
+          "401":{
+            "$ref":"#/responses/401"
+          },
+          "404":{
+            "$ref":"#/responses/404"
+          },
+          "500":{
+            "$ref":"#/responses/500"
+          }
+        }
+      },
+      "put":{
+        "tags":[
+          "Endpoint Details"
+        ],
+        "summary":"Endpoint Update",
+        "description":"Completely replaces the whole metadata set.\\n Only endpoints for the given user could be updated.\\n To delete metadata item send PUT without key which shall be deleted.\\n New version of the object is returned, with metadata updated.",
+        "operationId":"putEndpointDetails",
+        "parameters":[
+          {
+            "$ref":"#/parameters/endpointId"
+          },
+          {
+            "description":"TODO",
+            "in":"body",
+            "name":"body",
+            "required":true,
+            "schema":{
+              "type":"object",
+              "example":{
+                "keyX":"ValueX"
+              }
+            }
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"OK.",
+            "headers":{
+              "Content-Type":{
+                "type":"string",
+                "description":"Mandatory. Value - application/json."
+              },
+              "Date":{
+                "type":"string",
+                "description":"Mandatory. The date and time that the message was originated."
+              }
+            },
+            "examples":{
+              "application/json":"{\n  \"data\": {\n      \"type\": \"TapGwEndpoint\",\n      \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n      \"attributes\": {\n          \"participant_id\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999\",\n          \"endpoint_type\": \"ausdigital-tap/2\",\n          \"keyX\": \"valueX\"\n      }\n  }\n}"
+            }
+          },
+          "400":{
+            "$ref":"#/responses/400"
+          },
+          "401":{
+            "$ref":"#/responses/401"
+          },
+          "404":{
+            "$ref":"#/responses/404"
+          },
+          "500":{
+            "$ref":"#/responses/500"
+          }
+        }
+      },
+      "patch":{
+        "tags":[
+          "Endpoint Details"
+        ],
+        "summary":"Endpoint Update",
+        "description":"Update only passed set of keys/values.\\n Only endpoints for the given user could be updated.\\n New version of the object is returned, with metadata updated.",
+        "operationId":"patchEndpointDetails",
+        "parameters":[
+          {
+            "$ref":"#/parameters/endpointId"
+          },
+          {
+            "description":"TODO",
+            "in":"body",
+            "name":"body",
+            "required":true,
+            "schema":{
+              "type":"object",
+              "example":{
+                "keyX":"ValueX"
+              }
+            }
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"OK.",
+            "headers":{
+              "Content-Type":{
+                "type":"string",
+                "description":"Mandatory. Value - application/json."
+              },
+              "Date":{
+                "type":"string",
+                "description":"Mandatory. The date and time that the message was originated."
+              }
+            },
+            "examples":{
+              "application/json":"{\n  \"data\": {\n      \"type\": \"TapGwEndpoint\",\n      \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n      \"attributes\": {\n          \"participant_id\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999\",\n          \"endpoint_type\": \"ausdigital-tap/2\",\n          \"keyX\": \"valueX\"\n      }\n  }\n}"
+            }
+          },
+          "400":{
+            "$ref":"#/responses/400"
+          },
+          "401":{
+            "$ref":"#/responses/401"
+          },
+          "404":{
+            "$ref":"#/responses/404"
+          },
+          "500":{
+            "$ref":"#/responses/500"
+          }
+        }
+      }
+    },
+    "/api/endpoints/{endpointId}/message":{
+      "post":{
+        "tags":[
+          "TAP message"
+        ],
+        "summary":"Post TAP message",
+        "description":"Post TAP message. Payload must be a TAP message with a signature.",
+        "operationId":"postTAPMessage",
+        "parameters":[
+          {
+            "$ref":"#/parameters/endpointId"
+          },
+          {
+            "$ref":"#/parameters/contentTypeMPHeader"
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"OK. Message has been queued for validation and sending.",
+            "headers":{
+              "Content-Type":{
+                "type":"string",
+                "description":"Mandatory. Value - application/json."
+              },
+              "Date":{
+                "type":"string",
+                "description":"Mandatory. The date and time that the message was originated."
+              }
+            },
+            "schema":{
+              "$ref":"#/definitions/TAPMessageData"
+            },
+            "examples":{
+              "application/json":"{\n  \"data\": {\n    \"type\": \"TapMessage\",\n    \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n    \"attributes\": {\n        \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n        \"status\": [\"in_transit\", \"send\"]\n    }\n  }\n}"
+            }
+          },
+          "400":{
+            "$ref":"#/responses/400-nofile"
+          },
+          "404":{
+            "$ref":"#/responses/404"
+          },
+          "415":{
+            "$ref":"#/responses/415"
+          },
+          "500":{
+            "$ref":"#/responses/500"
+          }
+        }
+      }
+    },
+    "/api/messages":{
+      "get":{
+        "tags":[
+          "TAP messages"
+        ],
+        "summary":"Get TAP messages",
+        "description":"Get TAP messages. Only messages from endpoints created by user with given JWT will be returned.\\n Filtering by metadata and parametres is supported (pass metadata and values to filter by as GET parameters).n Following parametres are available for filtering: is_read, endpoint, participant_id.\\n Any other query parameter is filtered as exact metadata of endpoint (returns only messages from endpoints which have metadata with given key equal to given value).",
+        "operationId":"getTAPMessages",
+        "parameters":[
+          {
+            "$ref":"#/parameters/isRead"
+          },
+          {
+            "$ref":"#/parameters/endpoint"
+          },
+          {
+            "$ref":"#/parameters/participantId"
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"OK.",
+            "headers":{
+              "Content-Type":{
+                "type":"string",
+                "description":"Mandatory. Value - application/json."
+              },
+              "Date":{
+                "type":"string",
+                "description":"Mandatory. The date and time that the message was originated."
+              }
+            },
+            "schema":{
+              "$ref":"#/definitions/TAPMessages"
+            },
+            "examples":{
+              "application/json":"{\n  \"links\": {\n      \"first\": \"http://tap-gw.testpoint.io/api/messages/?page=1\",\n      \"last\": \"http://tap-gw.testpoint.io/api/messages/?page=1\",\n      \"next\": null,\n      \"prev\": null\n  },\n  \"data\": [\n      {\n          \"type\": \"TapMessage\",\n          \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n          \"attributes\": {\n              \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n              \"status\": \"sent\",\n              \"createdAt\": \"2017-02-27T05:52:27.618962Z\",\n              \"sentAt\": \"2017-02-27T05:52:46.081878Z\",\n              \"docId\": \"QmXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n              \"isRead\": false,\n              \"metadata\": {\n                  \"key1\": \"value2\",\n                  \"key2\": \"value2\"\n              },\n              \"endpoint\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\"\n          }\n      }\n  ],\n  \"meta\": {\n      \"pagination\": {\n          \"page\": 1,\n          \"pages\": 1,\n          \"count\": X\n      }\n  }\n}"
+            }
+          },
+          "401":{
+            "$ref":"#/responses/401"
+          },
+          "500":{
+            "$ref":"#/responses/500"
+          }
+        }
+      }
+    },
+    "/api/messages/{messageId}/":{
+      "patch":{
+        "tags":[
+          "Update TAP message"
+        ],
+        "summary":"Update TAP message",
+        "description":"Only messages for the given user could be updated.\\n Only isRead parameter of message could be updated.",
+        "operationId":"patchTAPMessage",
+        "parameters":[
+          {
+            "$ref":"#/parameters/messageId"
+          },
+          {
+            "description":"TODO",
+            "in":"body",
+            "name":"body",
+            "required":true,
+            "schema":{
+              "type":"object",
+              "properties":{
+                "isRead":{
+                  "type":"boolean",
+                  "description":"TODO"
+                }
+              },
+              "example":{
+                "isRead":true
+              }
+            }
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"OK.",
+            "headers":{
+              "Content-Type":{
+                "type":"string",
+                "description":"Mandatory. Value - application/json."
+              },
+              "Date":{
+                "type":"string",
+                "description":"Mandatory. The date and time that the message was originated."
+              }
+            },
+            "schema":{
+              "$ref":"#/definitions/TAPMessages"
+            },
+            "examples":{
+              "application/json":"{\n  \"links\": {\n      \"first\": \"http://tap-gw.testpoint.io/api/messages/?page=1\",\n      \"last\": \"http://tap-gw.testpoint.io/api/messages/?page=1\",\n      \"next\": null,\n      \"prev\": null\n  },\n  \"data\": [\n      {\n          \"type\": \"TapMessage\",\n          \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n          \"attributes\": {\n              \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n              \"status\": \"sent\",\n              \"createdAt\": \"2017-02-27T05:52:27.618962Z\",\n              \"sentAt\": \"2017-02-27T05:52:46.081878Z\",\n              \"docId\": \"QmXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n              \"isRead\": true,\n              \"metadata\": {\n                  \"key1\": \"value2\",\n                  \"key2\": \"value2\"\n              },\n              \"endpoint\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\"\n          }\n      }\n  ],\n  \"meta\": {\n      \"pagination\": {\n          \"page\": 1,\n          \"pages\": 1,\n          \"count\": X\n      }\n  }\n}"
+            }
+          },
+          "400":{
+            "$ref":"#/responses/400"
+          },
+          "401":{
+            "$ref":"#/responses/401"
+          },
+          "404":{
+            "$ref":"#/responses/404"
+          },
+          "500":{
+            "$ref":"#/responses/500"
+          }
+        }
+      }
+    },
+    "/api/messages/{messageId}/status/":{
+      "get":{
+        "tags":[
+          "Get TAP message status"
+        ],
+        "summary":"Get TAP message status",
+        "description":"Doesn't require any auth (knowing message ID is enough for access control).\n May be used for debug purposes, to see how messages are processed and possible errors.",
+        "operationId":"getTAPMessageStatus",
+        "parameters":[
+          {
+            "$ref":"#/parameters/messageId"
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"OK.",
+            "headers":{
+              "Content-Type":{
+                "type":"string",
+                "description":"Mandatory. Value - application/json."
+              },
+              "Date":{
+                "type":"string",
+                "description":"Mandatory. The date and time that the message was originated."
+              }
+            },
+            "schema":{
+              "$ref":"#/definitions/TAPMessageData"
+            },
+            "examples":{
+              "application/json":"{\n  \"data\": {\n    \"type\": \"TapMessage\",\n    \"id\": \"eb2b4035-a7f6-4bbb-b686-a06a250eaed5\",\n    \"attributes\": {\n      \"uuid\": \"eb2b4035-a7f6-4bbb-b686-a06a250eaed5\",\n      \"status\": \"error\",\n      \"createdAt\": \"2017-03-22T09:59:01.779081Z\",\n      \"error\": \"Can't get public key from DCP for given sender\"\n    }\n  }\n}\n|-\n{\n  \"data\": {\n    \"type\": \"TapMessage\",\n    \"id\": \"2467cde6-b58a-4890-919a-1b99db1b89e0\",\n    \"attributes\": {\n      \"uuid\": \"2467cde6-b58a-4890-919a-1b99db1b89e0\",\n      \"status\": \"sent\",\n      \"createdAt\": \"2017-03-14T11:59:04.111491Z\"\n    }\n  }\n}"
+            }
+          },
+          "400":{
+            "$ref":"#/responses/400"
+          },
+          "401":{
+            "$ref":"#/responses/401"
+          },
+          "404":{
+            "$ref":"#/responses/404"
+          },
+          "500":{
+            "$ref":"#/responses/500"
+          }
+        }
+      }
+    },
+    "/api/messages/{messageId}/body/":{
+      "get":{
+        "tags":[
+          "Get TAP message body"
+        ],
+        "summary":"Get TAP message body",
+        "description":"Returns TAP message body",
+        "operationId":"getTAPMessageBody",
+        "parameters":[
+          {
+            "$ref":"#/parameters/messageId"
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"OK.",
+            "headers":{
+              "Content-Type":{
+                "type":"string",
+                "description":"Mandatory. Value - application/json."
+              },
+              "Date":{
+                "type":"string",
+                "description":"Mandatory. The date and time that the message was originated."
+              }
+            },
+            "schema":{
+              "$ref":"#/definitions/TAPMessageBody"
+            },
+            "examples":{
+              "application/json":"{\n  \"cyphertext\": \"-----BEGIN PGP MESSAGE-----\\nVersion: GnuPG v2\\n\\nhQEMA40g45xxxxxxxxxxxxxxxxxxxxx-----END PGP MESSAGE-----\", \n  \"hash\": \"8d4d3f10e70960710fb95ec53719d306a6b1a779057a887ede073eaf48f81db8\", \n  \"sender\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::11002788650\", \n  \"reference\": \"\"\n}"
+            }
+          },
+          "400":{
+            "$ref":"#/responses/400"
+          },
+          "401":{
+            "$ref":"#/responses/401"
+          },
+          "404":{
+            "$ref":"#/responses/404"
+          },
+          "500":{
+            "$ref":"#/responses/500"
+          }
+        }
+      }
+    }
+  },
+  "definitions":{
+    "EndpointsResponseEntity":{
+      "description":"TODO",
+      "properties":{
+        "links":{
+          "$ref":"#/definitions/Links"
+        },
+        "data":{
+          "type":"array",
+          "description":"TODO",
+          "items":{
+            "$ref":"#/definitions/EndpointEntity"
+          }
+        },
+        "meta":{
+          "$ref":"#/definitions/Meta"
+        }
+      }
+    },
+    "EndpointPostRequestEntity":{
+      "description":"TODO",
+      "properties":{
+        "participantId":{
+          "type":"string",
+          "description":"The Participant Identifier."
+        }
+      },
+      "required":[
+        "participantId"
+      ]
+    },
+    "EndpointPostResponseEntity":{
+      "description":"TODO",
+      "properties":{
+        "data":{
+          "$ref":"#/definitions/EndpointEntity"
+        }
+      },
+      "required":[
+        "data"
+      ]
+    },
+    "EndpointEntity":{
+      "description":"TODO",
+      "properties":{
+        "type":{
+          "type":"string",
+          "description":"The Endpoint Type."
+        },
+        "id":{
+          "type":"string",
+          "description":"The Endpoint Identifier."
+        },
+        "attributes":{
+          "$ref":"#/definitions/Attributes"
+        }
+      }
+    },
+    "Attributes":{
+      "description":"TODO",
+      "properties":{
+        "participantId":{
+          "type":"string",
+          "description":"The Participant Identifier."
+        },
+        "endpointType":{
+          "type":"string",
+          "description":"The Participant Identifier."
+        }
+      },
+      "required":[
+        "participantId",
+        "endpointType"
+      ]
+    },
+    "Links":{
+      "type":"object",
+      "description":"TODO",
+      "properties":{
+        "first":{
+          "type":"string",
+          "description":"TODO"
+        },
+        "last":{
+          "type":"string",
+          "description":"TODO"
+        },
+        "next":{
+          "type":"string",
+          "description":"TODO"
+        },
+        "prev":{
+          "type":"string",
+          "description":"TODO"
+        }
+      },
+      "required":[
+        "first",
+        "last",
+        "next",
+        "prev"
+      ]
+    },
+    "Meta":{
+      "type":"object",
+      "description":"TODO",
+      "properties":{
+        "pagination":{
+          "type":"object",
+          "description":"TODO",
+          "properties":{
+            "page":{
+              "type":"integer",
+              "description":"TODO"
+            },
+            "pages":{
+              "type":"integer",
+              "description":"TODO"
+            },
+            "count":{
+              "type":"integer",
+              "description":"TODO"
+            }
+          }
+        }
+      }
+    },
+    "TAPMessageBody":{
+      "description":"TODO",
+      "properties":{
+        "cyphertext":{
+          "type":"string",
+          "description":"TODO"
+        },
+        "hash":{
+          "type":"string",
+          "description":"TODO"
+        },
+        "sender":{
+          "type":"string",
+          "description":"TODO"
+        },
+        "reference":{
+          "type":"string",
+          "description":"TODO"
+        }
+      }
+    },
+    "TAPMessageData":{
+      "description":"TODO",
+      "properties":{
+        "data":{
+          "$ref":"#/definitions/TAPMessage"
+        }
+      }
+    },
+    "TAPMessage":{
+      "description":"TODO",
+      "properties":{
+        "type":{
+          "type":"string",
+          "description":"The Message Type."
+        },
+        "id":{
+          "type":"string",
+          "description":"The Message Identifier."
+        },
+        "attributes":{
+          "type":"object",
+          "description":"TODO",
+          "properties":{
+            "uuid":{
+              "type":"string",
+              "description":"TODO"
+            },
+            "status":{
+              "type":"string",
+              "description":"TODO. Check if array is possible.",
+              "enum":[
+                "processing",
+                "in_transit",
+                "sent",
+                "error"
+              ]
+            },
+            "createdAt":{
+              "type":"string",
+              "format":"date-time",
+              "description":"The date when the message was created."
+            },
+            "sentAt":{
+              "type":"string",
+              "format":"date-time",
+              "description":"The date when the message was sent."
+            },
+            "docId":{
+              "type":"string",
+              "description":"TODO"
+            },
+            "isRead":{
+              "type":"boolean",
+              "description":"TODO"
+            },
+            "metadata":{
+              "type":"object",
+              "description":"TODO"
+            }
+          }
+        }
+      }
+    },
+    "TAPMessages":{
+      "description":"TODO",
+      "properties":{
+        "links":{
+          "$ref":"#/definitions/Links"
+        },
+        "data":{
+          "type":"array",
+          "description":"TODO",
+          "items":{
+            "$ref":"#/definitions/TAPMessage"
+          }
+        },
+        "meta":{
+          "$ref":"#/definitions/Meta"
+        }
+      }
+    },
+    "errors":{
+      "type":"object",
+      "properties":{
+        "errors":{
+          "type":"array",
+          "items":{
+            "$ref":"#/definitions/error"
+          }
+        }
+      }
+    },
+    "error":{
+      "description":"standard error response srtucture as per jsonapi.org/format/#errors",
+      "properties":{
+        "code":{
+          "type":"string",
+          "description":"The code associated with the error."
+        },
+        "name":{
+          "type":"string",
+          "description":"The name category for the error."
+        },
+        "userMessage":{
+          "type":"string",
+          "description":"The human readable error message."
+        }
+      }
+    }
+  }
 }
