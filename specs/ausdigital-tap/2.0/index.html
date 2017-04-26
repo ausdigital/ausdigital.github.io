@@ -319,9 +319,20 @@ and service endpoint addresses.</p>
 
 <p>Receiving TAPs may also use the signature as a filter (messages with invalid signatures MAY be dropped by receiving TAPs, rather than delivered). This allows TAPs to buffer trusted components from anonymous denial of service attacks.</p>
 
-<p>When a valid message is received, the TAP issues an HTTP 200 status and returns a response body with <code class="highlighter-rouge">Content-Type: text/json</code>, containing a HATEOS-style list of callback URLs.</p>
+<p>When a valid message is received, the TAP issues an HTTP 200 status and returns a response body with <code class="highlighter-rouge">Content-Type: application/json</code>, containing a HATEOS-style list of callback URLs.</p>
 
-<p><img src="./tap_overview_response.png" alt="Illustration of HTTP 200 response" title="Response 200 OK" /></p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TapMessage"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in_transit"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
 
 <p>See the TAP Protocol Details chapter for more information.</p>
 
@@ -540,15 +551,14 @@ and service endpoint addresses.</p>
 
 <h2 id="receipt-and-technical-acknowledgement">Receipt and Technical Acknowledgement</h2>
 
-<p>When a valid message is received, the TAP issues an HTTP 200 status and returns a response body with <code class="highlighter-rouge">Content-Type: text/json</code>, containing a HATEOS-style list of callback URLs.</p>
+<p>When a valid message is received, the TAP issues an HTTP 200 status and returns a response body with <code class="highlighter-rouge">Content-Type: application/json</code>, containing a HATEOS-style list of callback URLs.
+Check the <a href="http://ausdigital.org/specs/ausdigital-tap/2.0/api">API</a>  for possible error response.</p>
 
 <p>TODO:</p>
 
 <ul>
-  <li>example response.</li>
   <li>explain callback URLs</li>
   <li>explain callback semantic URLs</li>
-  <li>define error responses.</li>
 </ul>
 
 <h1 id="related-material">Related Material</h1>
