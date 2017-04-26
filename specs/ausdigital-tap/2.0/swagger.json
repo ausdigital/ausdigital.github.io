@@ -2,8 +2,241 @@
   "swagger" : "2.0",
   "info" : {
     "version" : "1.0",
-    "title" : "Ledger Access Point (LAP) protocol interfaces",
-    "description" : "The \"Ledger Access Point\" (LAP) specification defines a standard protocol for RESTful exchange of e-business documents between ledger systems"
+    "title" : "Transaction Access Point (TAP) protocol interfaces",
+    "description" : "The \"Transaction Access Point\" (TAP) specification defines a standard protocol for RESTful exchange of e-business documents between ledger systems"
   },
-  "paths" : { }
+  "schemes":[
+    "https"
+  ],
+  "basePath":"/",
+  "produces":[
+    "application/json"
+  ],
+  "parameters":{
+    "endpointId":{
+      "name":"endpointId",
+      "in":"path",
+      "description":"The unique endpoint ID.",
+      "required":true,
+      "type":"string",
+      "default":""
+    },
+    "message":{
+      "name":"message",
+      "in":"formData",
+      "description":"The message file. Must be a valid json document.",
+      "required":true,
+      "type":"file"
+    },
+    "signature":{
+      "name":"signature",
+      "in":"formData",
+      "description":"The signature file. Must have .sig extension.",
+      "required":true,
+      "type":"file"
+    },
+    "authorizationHeader":{
+      "name":"Authorization",
+      "in":"header",
+      "description":"JWT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.",
+      "required":false,
+      "type":"string",
+      "default":"application/json",
+      "enum":[
+        "application/json"
+      ]
+    },
+    "contentTypeMPHeader":{
+      "name":"Content-Type",
+      "in":"header",
+      "description":"content type multipart/form-data header",
+      "required":true,
+      "type":"string",
+      "default":"multipart/form-data",
+      "enum":[
+        "multipart/form-data"
+      ]
+    }
+  },
+  "responses":{
+    "400-nofile":{
+      "description":"The server cannot or will not process the request due to something that is perceived to be a client error.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      }
+    },
+    "404":{
+      "description":"The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      }
+    },
+    "415":{
+      "description":"Unsupported media type.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      }
+    },
+    "500":{
+      "description":"Internal server error; no action required; may help to retry request later or contact support.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      }
+    }
+  }, 
+  "paths":{
+   "<TAP_ENDPOINT_URL>":{
+      "post":{
+        "tags":[
+          "TAP message"
+        ],
+        "summary":"Post TAP message to any TAP URL",
+        "description":"Post TAP message. Payload must be a TAP message with a signature. TAP URL could be any valid URL",
+        "operationId":"postTAPMessage",
+        "consumes":[
+          "multipart/form-data"
+        ],
+        "parameters":[
+          {
+            "$ref":"#/parameters/authorizationHeader"
+          },
+          {
+            "$ref":"#/parameters/contentTypeMPHeader"
+          },
+          {
+            "$ref":"#/parameters/message"
+          },
+          {
+            "$ref":"#/parameters/signature"
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"OK. Message has been queued for validation and sending.",
+            "headers":{
+              "Content-Type":{
+                "type":"string",
+                "description":"Mandatory. Value - application/json."
+              },
+              "Date":{
+                "type":"string",
+                "description":"Mandatory. The date and time that the message was originated."
+              }
+            },
+            "schema":{
+              "$ref":"#/definitions/TAPMessageData"
+            },
+            "examples":{
+              "application/json":"{\n  \"data\": {\n    \"type\": \"TapMessage\",\n    \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n    \"attributes\": {\n        \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n        \"status\": [\"in_transit\", \"send\"]\n    }\n  }\n}"
+            }
+          },
+          "400":{
+            "$ref":"#/responses/400-nofile"
+          },
+          "404":{
+            "$ref":"#/responses/404"
+          },
+          "415":{
+            "$ref":"#/responses/415"
+          },
+          "500":{
+            "$ref":"#/responses/500"
+          }
+        }
+      }
+    }
+  },
+  "definitions":{
+     "TAPMessageData":{
+      "description":"TODO",
+      "properties":{
+        "data":{
+          "$ref":"#/definitions/TAPMessage"
+        }
+      }
+    },
+    "TAPMessage":{
+      "description":"TODO",
+      "properties":{
+        "type":{
+          "type":"string",
+          "description":"The Message Type."
+        },
+        "id":{
+          "type":"string",
+          "description":"The Message Identifier."
+        },
+        "attributes":{
+          "type":"object",
+          "description":"TODO",
+          "properties":{
+            "uuid":{
+              "type":"string",
+              "description":"TODO"
+            },
+            "status":{
+              "type":"string",
+              "description":"TODO. Check if array is possible.",
+              "enum":[
+                "processing",
+                "in_transit",
+                "sent",
+                "error"
+              ]
+            },
+            "createdAt":{
+              "type":"string",
+              "format":"date-time",
+              "description":"The date when the message was created."
+            },
+            "sentAt":{
+              "type":"string",
+              "format":"date-time",
+              "description":"The date when the message was sent."
+            },
+            "docId":{
+              "type":"string",
+              "description":"TODO"
+            },
+            "isRead":{
+              "type":"boolean",
+              "description":"TODO"
+            },
+            "metadata":{
+              "type":"object",
+              "description":"TODO"
+            }
+          }
+        }
+      }
+    },
+     "errors":{
+      "type":"object",
+      "properties":{
+        "errors":{
+          "type":"array",
+          "items":{
+            "$ref":"#/definitions/error"
+          }
+        }
+      }
+    },
+    "error":{
+      "description":"standard error response srtucture as per jsonapi.org/format/#errors",
+      "properties":{
+        "code":{
+          "type":"string",
+          "description":"The code associated with the error."
+        },
+        "name":{
+          "type":"string",
+          "description":"The name category for the error."
+        },
+        "userMessage":{
+          "type":"string",
+          "description":"The human readable error message."
+        }
+      }
+    }
+  }
 }
