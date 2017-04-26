@@ -173,6 +173,7 @@
 <li class="toc-entry toc-h3"><a href="#create-cyphertext-of-signed-business-document">Create cyphertext of signed business document</a></li>
 <li class="toc-entry toc-h4"><a href="#note-about-published-keys">Note about published keys</a></li>
 <li class="toc-entry toc-h3"><a href="#compose-message">Compose Message</a></li>
+<li class="toc-entry toc-h3"><a href="#message-schema">Message schema</a></li>
 <li class="toc-entry toc-h3"><a href="#generate-signature">Generate signature</a></li>
 <li class="toc-entry toc-h3"><a href="#posting-the-message-to-the-recipient-tap">Posting the message to the recipient TAP</a></li>
 <li class="toc-entry toc-h2"><a href="#receipt-and-technical-acknowledgement">Receipt and Technical Acknowledgement</a></li>
@@ -326,7 +327,7 @@ and service endpoint addresses.</p>
 
 <h1 id="tap-protocol-details">TAP Protocol Details</h1>
 
-<p>The TAP Protocol is a very simple REST API. One business sends a message directly to another business’ TAP endpoint (discovered via the SMP):</p>
+<p>The TAP Protocol is a very simple REST API. One business sends a message directly to another business’ TAP endpoint (discovered via the DCP):</p>
 
 <ul>
   <li>The sender uses the HTTP POST verb (over HTTPS) to send the signed message to a TAP.</li>
@@ -423,12 +424,12 @@ and service endpoint addresses.</p>
 
 <h4 id="note-about-published-keys">Note about published keys</h4>
 
-<p>Once the recipient’s key has been added to the sender’s keyring, and assuming the current working directory contains a signed document <code class="highlighter-rouge">signed_doc.txt</code>, and the user namespace identifier of the recipient public key is <code class="highlighter-rouge">91f68ffafa1288ad55cb3e61e937870fb5598cc098e125fe29412ab3047f15e1@smp.testpoint.io</code> then cyphertext of signed business document can be created with:</p>
+<p>Once the recipient’s key has been added to the sender’s keyring, and assuming the current working directory contains a signed document <code class="highlighter-rouge">signed_doc.txt</code>, and the user namespace identifier of the recipient public key is <code class="highlighter-rouge">91f68ffafa1288ad55cb3e61e937870fb5598cc098e125fe29412ab3047f15e1@dcp.testpoint.io</code> then cyphertext of signed business document can be created with:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>gpg2 --armour \
  --output "cyphertext.gpg"
  --encrypt \
- --recipient 91f68ffafa1288ad55cb3e61e937870fb5598cc098e125fe29412ab3047f15e1@smp.testpoint.io \
+ --recipient 91f68ffafa1288ad55cb3e61e937870fb5598cc098e125fe29412ab3047f15e1@dcp.testpoint.io \
  signed_doc.txt
 </code></pre>
 </div>
@@ -484,6 +485,24 @@ and service endpoint addresses.</p>
     <span class="n">compose_message</span><span class="p">()</span>
 </code></pre>
 </div>
+
+<h3 id="message-schema">Message schema</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"cyphertext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<ul>
+  <li>“cyphertext” contains encrypted by GPG message using public key of receiver</li>
+  <li>“hash” contains SHA256 hash of message (before encryption)</li>
+  <li>“sender” contains unique participant identifier of client</li>
+  <li>“reference” contains additional information</li>
+</ul>
 
 <h3 id="generate-signature">Generate signature</h3>
 
