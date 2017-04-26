@@ -1,0 +1,6 @@
+{
+    "cyphertext": "string",
+    "hash": "string", 
+    "sender": "string", 
+    "reference": "string"
+}
