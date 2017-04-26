@@ -155,51 +155,61 @@ layout: default
         {% endfor %}
     </div>
     {% endfor %}
-    {% for definition in swagger.definitions %}
-        <h2>{{ definition[0] }}</h2>
-        {% if definition[1].properties  %}
-        <div class="swagger-parameters">
-            <h4>Properties</h4>
-            <table class="swagger-parameters-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Type</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for property in definition[1].properties %}
-                <tr>
-                    <td>{{ property[0] }}</td>
-                    <td>
-                        {{ property[1].type }}
-                    </td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        {% endif %}
-        {% if definition[1].example  %}
-            <div class="swagger-model-example-wrapper">
-                <span class="show-swagger-parameters-example">Example</span>
-                <div class="swagger-parameters-example">
-                {% for content_type in swagger.produces %}
-                    {% if definition[1].example[content_type] %}
-                        {% assign example = definition[1].example[content_type] %}
-                        {% if content_type contains 'json' %}
-                            {% highlight json %}{{ example }}{% endhighlight %}
-                        {% elsif content_type contains 'xml' %}
-                            {% highlight xml %}{{ example }}{% endhighlight %}
-                        {% else %}
-                            {% highlight http %}{{ example }}{% endhighlight %}
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
-                </div>
-            </div>
 
-        {% endif %}
+
+    <br/><br/>
+    <h2>Models</h2>
+    {% assign models = page.models | split: ", " %}
+    {% for definition in swagger.definitions %}
+        {% for model in models %}
+
+            {% if model ==  definition[0] %}
+
+                <h3>{{ definition[0] }}</h3>
+                {% if definition[1].properties  %}
+                <div class="swagger-parameters">
+                    <table class="swagger-parameters-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for property in definition[1].properties %}
+                        <tr>
+                            <td>{{ property[0] }}</td>
+                            <td>
+                                {{ property[1].type }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+                {% if definition[1].example  %}
+                    <div class="swagger-model-example-wrapper">
+                        <span class="show-swagger-parameters-example">Example</span>
+                        <div class="swagger-parameters-example">
+                        {% for content_type in swagger.produces %}
+                            {% if definition[1].example[content_type] %}
+                                {% assign example = definition[1].example[content_type] %}
+                                {% if content_type contains 'json' %}
+                                    {% highlight json %}{{ example }}{% endhighlight %}
+                                {% elsif content_type contains 'xml' %}
+                                    {% highlight xml %}{{ example }}{% endhighlight %}
+                                {% else %}
+                                    {% highlight http %}{{ example }}{% endhighlight %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% endif %}
+        {% endfor %}
     {% endfor %}
 </div>
 <script type="text/javascript">
