@@ -1,9 +1,9 @@
 {
-  "swagger" : "2.0",
-  "info" : {
-    "version" : "1.0",
-    "title" : "Transaction Access Point (TAP) protocol interfaces",
-    "description" : "The \"Transaction Access Point\" (TAP) specification defines a standard protocol for RESTful exchange of e-business documents between ledger systems"
+  "swagger":"2.0",
+  "info":{
+    "version":"1.0",
+    "title":"Transaction Access Point (TAP) protocol interfaces",
+    "description":"The \"Transaction Access Point\" (TAP) specification defines a standard protocol for RESTful exchange of e-business documents between ledger systems"
   },
   "schemes":[
     "https"
@@ -12,11 +12,19 @@
   "produces":[
     "application/json"
   ],
+  "securityDefinitions":{
+    "JWTToken":{
+      "type":"apiKey",
+      "name":"Authorization",
+      "description":"JWT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.",
+      "in":"header"
+    }
+  },
   "parameters":{
-    "endpointId":{
-      "name":"endpointId",
+    "tapURL":{
+      "name":"tapURL",
       "in":"path",
-      "description":"The unique endpoint ID.",
+      "description":"Any TAP URL.",
       "required":true,
       "type":"string",
       "default":""
@@ -24,7 +32,7 @@
     "message":{
       "name":"message",
       "in":"formData",
-      "description":"The message file. Must be a valid json document. Shema - https://github.com/ausdigital/ausdigital-tap/blob/master/docs/2.0/schema.json",
+      "description":"The message file. Must be a valid json document. <span class=\"show-swagger-parameters-example\">Example</span>. Shema - https://github.com/ausdigital/ausdigital-tap/blob/master/docs/2.0/schema.json",
       "required":true,
       "type":"file"
     },
@@ -34,17 +42,6 @@
       "description":"The signature file. Must have .sig extension.",
       "required":true,
       "type":"file"
-    },
-    "authorizationHeader":{
-      "name":"Authorization",
-      "in":"header",
-      "description":"JWT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.",
-      "required":false,
-      "type":"string",
-      "default":"application/json",
-      "enum":[
-        "application/json"
-      ]
     },
     "contentTypeMPHeader":{
       "name":"Content-Type",
@@ -59,12 +56,6 @@
     }
   },
   "responses":{
-    "400-nofile":{
-      "description":"The server cannot or will not process the request due to something that is perceived to be a client error.",
-      "schema":{
-        "$ref":"#/definitions/errors"
-      }
-    },
     "404":{
       "description":"The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.",
       "schema":{
@@ -82,10 +73,16 @@
       "schema":{
         "$ref":"#/definitions/errors"
       }
+    },
+    "400-nofile":{
+      "description":"The server cannot or will not process the request due to something that is perceived to be a client error.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      }
     }
-  }, 
+  },
   "paths":{
-   "<TAP_ENDPOINT_URL>":{
+    "/{tapURL}":{
       "post":{
         "tags":[
           "TAP message"
@@ -96,9 +93,16 @@
         "consumes":[
           "multipart/form-data"
         ],
+        "security":[
+          {
+            "JWTToken":[
+
+            ]
+          }
+        ],
         "parameters":[
           {
-            "$ref":"#/parameters/authorizationHeader"
+            "$ref":"#/parameters/tapURL"
           },
           {
             "$ref":"#/parameters/contentTypeMPHeader"
@@ -127,7 +131,7 @@
               "$ref":"#/definitions/TAPMessageData"
             },
             "examples":{
-              "application/json":"{\n  \"data\": {\n    \"type\": \"TapMessage\",\n    \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n    \"attributes\": {\n        \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n        \"status\": [\"in_transit\", \"send\"]\n    }\n  }\n}"
+              "application/json":"{\n  \"data\": {\n    \"type\": \"TapMessage\",\n    \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n    \"attributes\": {\n        \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n        \"status\": \"in_transit\"\n    }\n  }\n}"
             }
           },
           "400":{
@@ -147,7 +151,7 @@
     }
   },
   "definitions":{
-     "TAPMessageData":{
+    "TAPMessageData":{
       "description":"TODO",
       "properties":{
         "data":{
@@ -156,7 +160,7 @@
       }
     },
     "TAPMessage":{
-      "description":"TODO",
+      "description":"The TAP Message.",
       "properties":{
         "type":{
           "type":"string",
@@ -168,15 +172,15 @@
         },
         "attributes":{
           "type":"object",
-          "description":"TODO",
+          "description":"The set of attributes to describe the Message.",
           "properties":{
             "uuid":{
               "type":"string",
-              "description":"TODO"
+              "description":"The UUID attribute."
             },
             "status":{
               "type":"string",
-              "description":"TODO. Check if array is possible.",
+              "description":"The Message status, one of the four values is allowed.",
               "enum":[
                 "processing",
                 "in_transit",
@@ -196,7 +200,7 @@
             },
             "docId":{
               "type":"string",
-              "description":"TODO"
+              "description":"The"
             },
             "isRead":{
               "type":"boolean",
@@ -210,7 +214,7 @@
         }
       }
     },
-     "errors":{
+    "errors":{
       "type":"object",
       "properties":{
         "errors":{
@@ -222,7 +226,7 @@
       }
     },
     "error":{
-      "description":"standard error response srtucture as per jsonapi.org/format/#errors",
+      "description":"standard error response srtucture",
       "properties":{
         "code":{
           "type":"string",

@@ -159,7 +159,7 @@
         
             <h2 class="swagger-path" id="tap-message">TAP message</h2>
         
-        <div class="swagger-path-route"><TAP_ENDPOINT_URL></div>
+        <div class="swagger-path-route">/{tapURL}</div>
         
         <div class="swagger-method swagger-method-post">
             <h3 class="swagger-method-title">
@@ -187,12 +187,16 @@
                             <tr>
                                 <td>
                                     
-                                    Authorization
+                                    <span class="swagger-parameter-required">
+                                    
+                                    tapURL
+                                    
+                                    </span>
                                     
                                 </td>
-                                <td>header</td>
+                                <td>path</td>
                                 <td>
-                                    <p>JWT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
+                                    <p>Any TAP URL.</p>
 
                                     
                                 </td>
@@ -240,7 +244,7 @@
                                 </td>
                                 <td>formData</td>
                                 <td>
-                                    <p>The message file. Must be a valid json document. Shema - https://github.com/ausdigital/ausdigital-tap/blob/master/docs/2.0/schema.json</p>
+                                    <p>The message file. Must be a valid json document. <span class="show-swagger-parameters-example">Example</span>. Shema - https://github.com/ausdigital/ausdigital-tap/blob/master/docs/2.0/schema.json</p>
 
                                     
                                 </td>
@@ -332,7 +336,7 @@
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"in_transit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"send"</span><span class="p">]</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in_transit"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
