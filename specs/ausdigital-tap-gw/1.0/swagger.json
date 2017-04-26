@@ -748,7 +748,12 @@
       },
       "required":[
         "participantId"
-      ]
+      ],
+      "example":{
+        "participant_id":"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999",
+        "key1":"value1",
+        "keyN":"valueN"
+      }
     },
     "EndpointPostResponseEntity":{
       "description":"TODO",
