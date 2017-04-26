@@ -24,7 +24,7 @@
     "message":{
       "name":"message",
       "in":"formData",
-      "description":"The message file. Must be a valid json document.",
+      "description":"The message file. Must be a valid json document. Shema - https://github.com/ausdigital/ausdigital-tap/blob/master/docs/2.0/schema.json",
       "required":true,
       "type":"file"
     },
