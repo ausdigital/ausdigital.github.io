@@ -32,7 +32,7 @@
     "message":{
       "name":"message",
       "in":"formData",
-      "description":"The message file. Must be a valid json document. <span class=\"show-swagger-parameters-example\">Example</span>. Shema - https://github.com/ausdigital/ausdigital-tap/blob/master/docs/2.0/schema.json",
+      "description":"The message file. Must be a valid json document. Shema - https://github.com/ausdigital/ausdigital-tap/blob/master/docs/2.0/schema.json",
       "required":true,
       "type":"file"
     },
