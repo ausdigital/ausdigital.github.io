@@ -170,7 +170,6 @@
 <li class="toc-entry toc-h3"><a href="#endpoints-description">Endpoints description</a></li>
 <li class="toc-entry toc-h2"><a href="#examples">Examples</a></li>
 <li class="toc-entry toc-h3"><a href="#response-formats">Response formats</a></li>
-<li class="toc-entry toc-h3"><a href="#participant-id-linking">Participant ID linking</a></li>
 <li class="toc-entry toc-h1"><a href="#related-material">Related Material</a></li>
 </ul>
 </div>
@@ -291,48 +290,116 @@ RFC 2119.</p>
 
 <p>The sample below shows a service metadata record example for a business with ABN 99999999999 that supports both standard invoice and RCTI processes. Fields will be explained in this document later.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"ProcessList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"ProcessIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dbc-procid"</span><span class="p">,</span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice-1"</span><span class="p">},</span><span class="w">
-        </span><span class="nt">"ServiceEndpointList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"transportProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REST-POST"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"EndpointURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.myob.com/au/essentials/businesses/23601120601/purchase/invoice-1"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"RequireBusinessLevelSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"MinimumAuthenticationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"ServiceActivationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-01"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"ServiceExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-01"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"Certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TlRMTVNTUAABAAAAt7IY4gk...."</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"ServiceDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice service"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.myob.com/api/essentials-accounting/endpoints/"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"ProcessIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dbc-procid"</span><span class="p">,</span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rcti-1"</span><span class="p">},</span><span class="w">
-        </span><span class="nt">"ServiceEndpointList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"transportProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REST-POST"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"EndpointURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.myob.com/au/essentials/businesses/23601120601/sales/invoice-1"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"RequireBusinessLevelSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"MinimumAuthenticationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"ServiceActivationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-01"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"ServiceExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-01"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"Certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TlRMTVNTUAABAAAAt7IY4gk...."</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"ServiceDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice service"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.myob.com/api/essentials-accounting/endpoints/"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dbc::claims"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"ParticipantIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99999999999"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span>
+<span class="nt">&lt;SignedServiceMetadata</span> <span class="na">xmlns=</span><span class="s">"http://busdox.org/serviceMetadata/publishing/1.0/"</span> <span class="na">xmlns:ids=</span><span class="s">"http://busdox.org/transport/identifiers/1.0/"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;ServiceMetadata</span> <span class="na">xmlns=</span><span class="s">"http://busdox.org/serviceMetadata/publishing/1.0/"</span> <span class="na">xmlns:wsu=</span><span class="s">"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;ServiceInformation&gt;</span>
+			<span class="nt">&lt;ids:ParticipantIdentifier</span> <span class="na">scheme=</span><span class="s">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151"</span><span class="nt">&gt;</span>99998888781<span class="nt">&lt;/ids:ParticipantIdentifier&gt;</span>
+			<span class="nt">&lt;ids:DocumentIdentifier</span> <span class="na">scheme=</span><span class="s">"dbc"</span><span class="nt">&gt;</span>core-invoice<span class="nt">&lt;/ids:DocumentIdentifier&gt;</span>
+			<span class="nt">&lt;ProcessList&gt;</span>
+				<span class="nt">&lt;Process&gt;</span>
+					<span class="nt">&lt;ids:ProcessIdentifier</span> <span class="na">scheme=</span><span class="s">"dbc"</span><span class="nt">&gt;</span>invoice<span class="nt">&lt;/ids:ProcessIdentifier&gt;</span>
+					<span class="nt">&lt;ServiceEndpointList&gt;</span>
+						<span class="nt">&lt;Endpoint</span> <span class="na">transportProfile=</span><span class="s">"TBD"</span><span class="nt">&gt;</span>
+							<span class="nt">&lt;ServiceActivationDate&gt;</span>2017-04-26<span class="nt">&lt;/ServiceActivationDate&gt;</span>
+							<span class="nt">&lt;Certificate&gt;</span>123<span class="nt">&lt;/Certificate&gt;</span>
+							<span class="nt">&lt;EndpointURI&gt;</span>http://tap-gw.testpoint.io/api/endpoints/fd7b7fb4-ed94-46d8-9bdf-5c4aca647f89/message/<span class="nt">&lt;/EndpointURI&gt;</span>
+							<span class="nt">&lt;transportProfile&gt;</span>TBD<span class="nt">&lt;/transportProfile&gt;</span>
+							<span class="nt">&lt;ServiceExpirationDate&gt;</span>2018-04-26<span class="nt">&lt;/ServiceExpirationDate&gt;</span>
+							<span class="nt">&lt;RequireBusinessLevelSignature&gt;</span>false<span class="nt">&lt;/RequireBusinessLevelSignature&gt;</span>
+							<span class="nt">&lt;TechnicalInformationUrl&gt;</span>123<span class="nt">&lt;/TechnicalInformationUrl&gt;</span>
+							<span class="nt">&lt;MinimumAuthenticationLevel&gt;</span>0<span class="nt">&lt;/MinimumAuthenticationLevel&gt;</span>
+							<span class="nt">&lt;ServiceDescription&gt;</span>123<span class="nt">&lt;/ServiceDescription&gt;</span>
+						<span class="nt">&lt;/Endpoint&gt;</span>
+					<span class="nt">&lt;/ServiceEndpointList&gt;</span>
+				<span class="nt">&lt;/Process&gt;</span>
+				<span class="nt">&lt;Process&gt;</span>
+					<span class="nt">&lt;ids:ProcessIdentifier</span> <span class="na">scheme=</span><span class="s">"dbc"</span><span class="nt">&gt;</span>adjustment<span class="nt">&lt;/ids:ProcessIdentifier&gt;</span>
+					<span class="nt">&lt;ServiceEndpointList&gt;</span>
+						<span class="nt">&lt;Endpoint</span> <span class="na">transportProfile=</span><span class="s">"TBD"</span><span class="nt">&gt;</span>
+							<span class="nt">&lt;ServiceActivationDate&gt;</span>2017-04-26<span class="nt">&lt;/ServiceActivationDate&gt;</span>
+							<span class="nt">&lt;Certificate&gt;</span>123<span class="nt">&lt;/Certificate&gt;</span>
+							<span class="nt">&lt;EndpointURI&gt;</span>http://tap-gw.testpoint.io/api/endpoints/fd7b7fb4-ed94-46d8-9bdf-5c4aca647f89/message/<span class="nt">&lt;/EndpointURI&gt;</span>
+							<span class="nt">&lt;transportProfile&gt;</span>TBD<span class="nt">&lt;/transportProfile&gt;</span>
+							<span class="nt">&lt;ServiceExpirationDate&gt;</span>2018-04-26<span class="nt">&lt;/ServiceExpirationDate&gt;</span>
+							<span class="nt">&lt;RequireBusinessLevelSignature&gt;</span>false<span class="nt">&lt;/RequireBusinessLevelSignature&gt;</span>
+							<span class="nt">&lt;TechnicalInformationUrl&gt;</span>123<span class="nt">&lt;/TechnicalInformationUrl&gt;</span>
+							<span class="nt">&lt;MinimumAuthenticationLevel&gt;</span>0<span class="nt">&lt;/MinimumAuthenticationLevel&gt;</span>
+							<span class="nt">&lt;ServiceDescription&gt;</span>123<span class="nt">&lt;/ServiceDescription&gt;</span>
+						<span class="nt">&lt;/Endpoint&gt;</span>
+					<span class="nt">&lt;/ServiceEndpointList&gt;</span>
+				<span class="nt">&lt;/Process&gt;</span>
+				<span class="nt">&lt;Process&gt;</span>
+					<span class="nt">&lt;ids:ProcessIdentifier</span> <span class="na">scheme=</span><span class="s">"dbc"</span><span class="nt">&gt;</span>rcti<span class="nt">&lt;/ids:ProcessIdentifier&gt;</span>
+					<span class="nt">&lt;ServiceEndpointList&gt;</span>
+						<span class="nt">&lt;Endpoint</span> <span class="na">transportProfile=</span><span class="s">"TBD"</span><span class="nt">&gt;</span>
+							<span class="nt">&lt;ServiceActivationDate&gt;</span>2017-04-26<span class="nt">&lt;/ServiceActivationDate&gt;</span>
+							<span class="nt">&lt;Certificate&gt;</span>123<span class="nt">&lt;/Certificate&gt;</span>
+							<span class="nt">&lt;EndpointURI&gt;</span>http://tap-gw.testpoint.io/api/endpoints/fd7b7fb4-ed94-46d8-9bdf-5c4aca647f89/message/<span class="nt">&lt;/EndpointURI&gt;</span>
+							<span class="nt">&lt;transportProfile&gt;</span>TBD<span class="nt">&lt;/transportProfile&gt;</span>
+							<span class="nt">&lt;ServiceExpirationDate&gt;</span>2018-04-26<span class="nt">&lt;/ServiceExpirationDate&gt;</span>
+							<span class="nt">&lt;RequireBusinessLevelSignature&gt;</span>false<span class="nt">&lt;/RequireBusinessLevelSignature&gt;</span>
+							<span class="nt">&lt;TechnicalInformationUrl&gt;</span>123<span class="nt">&lt;/TechnicalInformationUrl&gt;</span>
+							<span class="nt">&lt;MinimumAuthenticationLevel&gt;</span>0<span class="nt">&lt;/MinimumAuthenticationLevel&gt;</span>
+							<span class="nt">&lt;ServiceDescription&gt;</span>123<span class="nt">&lt;/ServiceDescription&gt;</span>
+						<span class="nt">&lt;/Endpoint&gt;</span>
+					<span class="nt">&lt;/ServiceEndpointList&gt;</span>
+				<span class="nt">&lt;/Process&gt;</span>
+				<span class="nt">&lt;Process&gt;</span>
+					<span class="nt">&lt;ids:ProcessIdentifier</span> <span class="na">scheme=</span><span class="s">"dbc"</span><span class="nt">&gt;</span>taxreceipt<span class="nt">&lt;/ids:ProcessIdentifier&gt;</span>
+					<span class="nt">&lt;ServiceEndpointList&gt;</span>
+						<span class="nt">&lt;Endpoint</span> <span class="na">transportProfile=</span><span class="s">"TBD"</span><span class="nt">&gt;</span>
+							<span class="nt">&lt;ServiceActivationDate&gt;</span>2017-04-26<span class="nt">&lt;/ServiceActivationDate&gt;</span>
+							<span class="nt">&lt;Certificate&gt;</span>123<span class="nt">&lt;/Certificate&gt;</span>
+							<span class="nt">&lt;EndpointURI&gt;</span>http://tap-gw.testpoint.io/api/endpoints/fd7b7fb4-ed94-46d8-9bdf-5c4aca647f89/message/<span class="nt">&lt;/EndpointURI&gt;</span>
+							<span class="nt">&lt;transportProfile&gt;</span>TBD<span class="nt">&lt;/transportProfile&gt;</span>
+							<span class="nt">&lt;ServiceExpirationDate&gt;</span>2018-04-26<span class="nt">&lt;/ServiceExpirationDate&gt;</span>
+							<span class="nt">&lt;RequireBusinessLevelSignature&gt;</span>false<span class="nt">&lt;/RequireBusinessLevelSignature&gt;</span>
+							<span class="nt">&lt;TechnicalInformationUrl&gt;</span>123<span class="nt">&lt;/TechnicalInformationUrl&gt;</span>
+							<span class="nt">&lt;MinimumAuthenticationLevel&gt;</span>0<span class="nt">&lt;/MinimumAuthenticationLevel&gt;</span>
+							<span class="nt">&lt;ServiceDescription&gt;</span>123<span class="nt">&lt;/ServiceDescription&gt;</span>
+						<span class="nt">&lt;/Endpoint&gt;</span>
+					<span class="nt">&lt;/ServiceEndpointList&gt;</span>
+				<span class="nt">&lt;/Process&gt;</span>
+				<span class="nt">&lt;Process&gt;</span>
+					<span class="nt">&lt;ids:ProcessIdentifier</span> <span class="na">scheme=</span><span class="s">"dbc"</span><span class="nt">&gt;</span>creditnote<span class="nt">&lt;/ids:ProcessIdentifier&gt;</span>
+					<span class="nt">&lt;ServiceEndpointList&gt;</span>
+						<span class="nt">&lt;Endpoint</span> <span class="na">transportProfile=</span><span class="s">"TBD"</span><span class="nt">&gt;</span>
+							<span class="nt">&lt;ServiceActivationDate&gt;</span>2017-04-26<span class="nt">&lt;/ServiceActivationDate&gt;</span>
+							<span class="nt">&lt;Certificate&gt;</span>123<span class="nt">&lt;/Certificate&gt;</span>
+							<span class="nt">&lt;EndpointURI&gt;</span>http://tap-gw.testpoint.io/api/endpoints/fd7b7fb4-ed94-46d8-9bdf-5c4aca647f89/message/<span class="nt">&lt;/EndpointURI&gt;</span>
+							<span class="nt">&lt;transportProfile&gt;</span>TBD<span class="nt">&lt;/transportProfile&gt;</span>
+							<span class="nt">&lt;ServiceExpirationDate&gt;</span>2018-04-26<span class="nt">&lt;/ServiceExpirationDate&gt;</span>
+							<span class="nt">&lt;RequireBusinessLevelSignature&gt;</span>false<span class="nt">&lt;/RequireBusinessLevelSignature&gt;</span>
+							<span class="nt">&lt;TechnicalInformationUrl&gt;</span>123<span class="nt">&lt;/TechnicalInformationUrl&gt;</span>
+							<span class="nt">&lt;MinimumAuthenticationLevel&gt;</span>0<span class="nt">&lt;/MinimumAuthenticationLevel&gt;</span>
+							<span class="nt">&lt;ServiceDescription&gt;</span>123<span class="nt">&lt;/ServiceDescription&gt;</span>
+						<span class="nt">&lt;/Endpoint&gt;</span>
+					<span class="nt">&lt;/ServiceEndpointList&gt;</span>
+				<span class="nt">&lt;/Process&gt;</span>
+				<span class="nt">&lt;Process&gt;</span>
+					<span class="nt">&lt;ids:ProcessIdentifier</span> <span class="na">scheme=</span><span class="s">"dbc"</span><span class="nt">&gt;</span>debitnote<span class="nt">&lt;/ids:ProcessIdentifier&gt;</span>
+					<span class="nt">&lt;ServiceEndpointList&gt;</span>
+						<span class="nt">&lt;Endpoint</span> <span class="na">transportProfile=</span><span class="s">"TBD"</span><span class="nt">&gt;</span>
+							<span class="nt">&lt;ServiceActivationDate&gt;</span>2017-04-26<span class="nt">&lt;/ServiceActivationDate&gt;</span>
+							<span class="nt">&lt;Certificate&gt;</span>123<span class="nt">&lt;/Certificate&gt;</span>
+							<span class="nt">&lt;EndpointURI&gt;</span>http://tap-gw.testpoint.io/api/endpoints/fd7b7fb4-ed94-46d8-9bdf-5c4aca647f89/message/<span class="nt">&lt;/EndpointURI&gt;</span>
+							<span class="nt">&lt;transportProfile&gt;</span>TBD<span class="nt">&lt;/transportProfile&gt;</span>
+							<span class="nt">&lt;ServiceExpirationDate&gt;</span>2018-04-26<span class="nt">&lt;/ServiceExpirationDate&gt;</span>
+							<span class="nt">&lt;RequireBusinessLevelSignature&gt;</span>false<span class="nt">&lt;/RequireBusinessLevelSignature&gt;</span>
+							<span class="nt">&lt;TechnicalInformationUrl&gt;</span>123<span class="nt">&lt;/TechnicalInformationUrl&gt;</span>
+							<span class="nt">&lt;MinimumAuthenticationLevel&gt;</span>0<span class="nt">&lt;/MinimumAuthenticationLevel&gt;</span>
+							<span class="nt">&lt;ServiceDescription&gt;</span>123<span class="nt">&lt;/ServiceDescription&gt;</span>
+						<span class="nt">&lt;/Endpoint&gt;</span>
+					<span class="nt">&lt;/ServiceEndpointList&gt;</span>
+				<span class="nt">&lt;/Process&gt;</span>
+			<span class="nt">&lt;/ProcessList&gt;</span>
+		<span class="nt">&lt;/ServiceInformation&gt;</span>
+	<span class="nt">&lt;/ServiceMetadata&gt;</span>
+	<span class="nt">&lt;Signature</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/2000/09/xmldsig#"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/SignedServiceMetadata&gt;</span>
+  
+</code></pre>
 </div>
 
 <h2 id="informal-description">Informal description</h2>
@@ -359,37 +426,6 @@ RFC 2119.</p>
           <li>used to logically group the services</li>
         </ul>
       </li>
-      <li>has service metadata list
-        <ul>
-          <li>with relation to ParticipantIdentifier (reference to containing business)</li>
-          <li>with relation to ServiceGroup name (‘default’ if nothing was specified on service creation step)</li>
-          <li>with field DocumentIdentifier (which document this service is about)</li>
-          <li>with proceses list
-            <ul>
-              <li>made of process object
-                <ul>
-                  <li>with field ProcessIdentifier: which process is described</li>
-                  <li>with field ServiceEndpointList: list of endpoints, which accept business messages</li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>with public keys list
-        <ul>
-          <li>made of PublicKey items
-            <ul>
-              <li>with field fingerprint</li>
-              <li>with field keyid</li>
-              <li>with field pubKey</li>
-              <li>with field published</li>
-              <li>with field revoked</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>with list of linked participant identifiers</li>
     </ul>
   </li>
 </ul>
@@ -490,23 +526,6 @@ PATCH business public key (update revocation date)
   <li>OASIS response MUST be compatible with <a href="http://docs.oasis-open.org/bdxr/bdx-smp/v1.0/cos01/bdx-smp-v1.0-cos01.html#_Toc458092041">OASIS PEPPOL specification</a></li>
 </ul>
 
-<p><strong>GET <code class="highlighter-rouge">/{participant_id}/keys/</code></strong></p>
-<ul>
-  <li>Return list of published public keys for this participant</li>
-  <li>MUST be a list of PublicKey objects (TODO: put that schema here, describe fields <code class="highlighter-rouge">fingerprint</code>, <code class="highlighter-rouge">keyid</code>, <code class="highlighter-rouge">published</code>, <code class="highlighter-rouge">pubKey</code>, <code class="highlighter-rouge">revoked</code>)</li>
-  <li>MAY offer additioinal filtering parameters</li>
-</ul>
-
-<p><strong>GET <code class="highlighter-rouge">/{participant_id}/keys/{id}</code></strong></p>
-<ul>
-  <li>Return specific public key for given business</li>
-  <li><code class="highlighter-rouge">id</code> parameter MUST be a fingerprint or keyid of given key</li>
-  <li>MUST return a valid PublicKey object</li>
-  <li>MUST return 404 if key doesn’t exists</li>
-  <li>MAY offer additioinal filtering parameters</li>
-  <li>MUST return information of key publication date and revocation date if applicable</li>
-</ul>
-
 <p><strong>PUT <code class="highlighter-rouge">/{participant_id}/service/{document_id}</code></strong></p>
 <ul>
   <li>Update and return updated service metadata</li>
@@ -521,30 +540,6 @@ PATCH business public key (update revocation date)
   <li>MUST do something so GET <code class="highlighter-rouge">/{participant_id}/service/{document_id}</code> starts to return 404</li>
 </ul>
 
-<p><strong>GET <code class="highlighter-rouge">/{participant_id}/aka</code></strong></p>
-<ul>
-  <li>MUST return full list of participant ids, linked by business owner to this participant identifiers</li>
-  <li>links works both ways</li>
-  <li>if user linked PID1 to PID2 and PID2 to PID3 then PID1 linked to PID3 as well.</li>
-  <li>implementations MAY include source participant ID (provided in URL) in linked list</li>
-</ul>
-
-<p><strong>POST <code class="highlighter-rouge">/{participant_id}/aka</code></strong></p>
-<ul>
-  <li>MUST accept body parameter <code class="highlighter-rouge">participantId</code> which is equal to participant ID which business owner wants to link</li>
-  <li>DCP MUST check auth and ensure that both participant id (base and linked) are manageable by this user</li>
-  <li>MUST silently replace old link by new one if link already exists</li>
-  <li>link MUST work both directions (if <code class="highlighter-rouge">/{pid1}/aka</code> contains pid2 then <code class="highlighter-rouge">/{pid2}/aka</code> contains pid1)</li>
-  <li>any 3rd participant id, linked to first or second, must receve link to both participant IDs; both participant ID must receive link to any 3rd party participant id, linked to another one.</li>
-</ul>
-
-<p><strong>DELETE <code class="highlighter-rouge">/{participant_id}/aka/{linked_participant_id}</code></strong></p>
-<ul>
-  <li>Is used to remove link between these participant IDs</li>
-  <li>DCP MUST check auth and ensure that both participant ids (first and second) are owned by this user</li>
-  <li>DCP MUST remove the link between first and second participant id</li>
-</ul>
-
 <p>If business has 2 participant identifiers linked then services (documents) from ID1 MUST NOT appear in output for ID2, and vise versa. Business MAY do 2 PUT requests to both participant ID have the same service metadatas, or use implementation-specific convenience endpoints for that.</p>
 
 <h2 id="examples">Examples</h2>
@@ -552,22 +547,6 @@ PATCH business public key (update revocation date)
 <h3 id="response-formats">Response formats</h3>
 
 <p><strong>GET /urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::99999999999</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Accept: application/json
-
-{
-  "ServiceMetadataReferenceCollection": [
-    "sap::invoice"
-  ],
-  "Name": "default",
-  "Extension": {},
-  "ParticipantIdentifier": {
-    "scheme": "urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151",
-    "value": "99999999999"
-  }
-}
-</code></pre>
-</div>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>Accept: application/xml
 
@@ -583,40 +562,6 @@ PATCH business public key (update revocation date)
 </div>
 
 <p><strong>GET /urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::99999999999/service/dbc::invoices</strong></p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>Accept: application/json
-
-{
-  "ProcessList": [
-    {
-      "ProcessIdentifier": {
-        "scheme": "gln-deliver-goods",
-        "value": "generic"
-      },
-      "ServiceEndpointList": [
-        {
-          "EndpointURI": "https://accesspoint.com/as4service/simplified/invoice-2-type/",
-          "transportProfile": "dbc-as4",
-          "RequireBusinessLevelSignature": "false",
-          "TechnicalInformationUrl": "http://www.acesspoint.com/as4info",
-          "MinimumAuthenticationLevel": "2",
-          "ServiceDescription": "as4 message service for invoice 2"
-        }
-      ]
-    }
-  ],
-  "DocumentIdentifier": {
-    "scheme": "dbc",
-    "value": "invoices"
-  },
-  "id": "dbc::invoices",
-  "ParticipantIdentifier": {
-    "scheme": "urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151",
-    "value": "99999999999"
-  }
-}
-</code></pre>
-</div>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>Accept: application/xml
 
@@ -646,29 +591,6 @@ PATCH business public key (update revocation date)
 &lt;/SignedServiceMetadata&gt;
 </code></pre>
 </div>
-
-<h3 id="participant-id-linking">Participant ID linking</h3>
-
-<p>Before:</p>
-
-<ul>
-  <li>pid1 linked to pid2 (and vice versa)</li>
-  <li>pid1 linked participant IDs: <code class="highlighter-rouge">[pid1, pid2]</code></li>
-  <li>pid2 linked participant IDs: <code class="highlighter-rouge">[pid1, pid2]</code></li>
-  <li>pid_new linked participant IDs: <code class="highlighter-rouge">[pid_new]</code> or <code class="highlighter-rouge">[]</code></li>
-  <li>user adds pid_new to pid1 links: <code class="highlighter-rouge">POST /{pid1}/aka</code> with <code class="highlighter-rouge"><span class="p">{</span><span class="nt">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="err">pid_new</span><span class="p">}</span></code> payload</li>
-</ul>
-
-<p>After:</p>
-
-<ul>
-  <li>pid1 linked to pid2 and to pid_new (and vice versa)</li>
-  <li>pid1 linked participant IDs: <code class="highlighter-rouge">[pid1, pid2, pid_new]</code></li>
-  <li>pid2 linked participant IDs: <code class="highlighter-rouge">[pid1, pid2, pid_new]</code></li>
-  <li>pid_new linked participant IDs: <code class="highlighter-rouge">[pid1, pid2, pid_new]</code></li>
-</ul>
-
-<p>Please note no <code class="highlighter-rouge">POST /{pid2}/aka</code> was submitted, but pid2 still receives link to pid_new because pid1 was linked to pid2.</p>
 
 <h1 id="related-material">Related Material</h1>
 
