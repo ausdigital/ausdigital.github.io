@@ -28,7 +28,7 @@
     </span>}
   </span>}
 </span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
-  "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"TODO"</span></span>,
+  "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The response to post a TAP message request."</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>data</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The TAP Message."</span></span>,
@@ -71,28 +71,36 @@
             </span>}</span>,
             "<span class=hljs-attribute>docId</span>": <span class=hljs-value>{
               "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-              "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The"</span>
+              "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The Document Identifier"</span>
             </span>}</span>,
             "<span class=hljs-attribute>isRead</span>": <span class=hljs-value>{
               "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"boolean"</span></span>,
-              "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"TODO"</span>
+              "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The flag to indicate if a message is read."</span>
             </span>}</span>,
             "<span class=hljs-attribute>metadata</span>": <span class=hljs-value>{
               "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
-              "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"TODO"</span>
+              "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The additional metadata."</span>
             </span>}
           </span>}
         </span>}
       </span>}
     </span>}
   </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Schema</h5><pre><code>{
+</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
+  "<span class=hljs-attribute>errors</span>": <span class=hljs-value>[
+    {
+      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"TAP-0004"</span></span>,
+      "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"Bad Request."</span></span>,
+      "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value><span class=hljs-string>"The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing)."</span>
+    </span>}
+  ]
+</span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The standard error response definition."</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
@@ -110,13 +118,21 @@
       </span>}
     </span>}
   </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.</div><h5>Schema</h5><pre><code>{
+</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
+  "<span class=hljs-attribute>errors</span>": <span class=hljs-value>[
+    {
+      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"TAP-0001"</span></span>,
+      "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"Resource Not Found."</span></span>,
+      "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value><span class=hljs-string>"The origin server did not find a current representation of the target resource or is not willing to disclose that one exists."</span>
+    </span>}
+  ]
+</span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The standard error response definition."</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
@@ -134,13 +150,21 @@
       </span>}
     </span>}
   </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>Unsupported media type.</div><h5>Schema</h5><pre><code>{
+</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>Unsupported media type.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
+  "<span class=hljs-attribute>errors</span>": <span class=hljs-value>[
+    {
+      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"TAP-0002"</span></span>,
+      "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"Unsupported media type."</span></span>,
+      "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value><span class=hljs-string>"The origin server is refusing to service the request because the payload is in a format not supported by this method on the target resource."</span>
+    </span>}
+  ]
+</span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The standard error response definition."</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
@@ -158,13 +182,21 @@
       </span>}
     </span>}
   </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>Internal server error; no action required; may help to retry request later or contact support.</div><h5>Schema</h5><pre><code>{
+</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>Internal server error; no action required; may help to retry request later or contact support.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
+  "<span class=hljs-attribute>errors</span>": <span class=hljs-value>[
+    {
+      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"TAP-0003"</span></span>,
+      "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"Internal server error."</span></span>,
+      "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value><span class=hljs-string>"The server encountered an unexpected condition that prevented it from fulfilling the request."</span>
+    </span>}
+  ]
+</span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
   "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
   "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
       "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"standard error response srtucture"</span></span>,
+        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The standard error response definition."</span></span>,
         "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
           "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
             "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,

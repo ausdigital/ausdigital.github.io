@@ -26,8 +26,7 @@
       "in":"path",
       "description":"Any TAP URL.",
       "required":true,
-      "type":"string",
-      "default":""
+      "type":"string"
     },
     "message":{
       "name":"message",
@@ -60,24 +59,36 @@
       "description":"The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.",
       "schema":{
         "$ref":"#/definitions/errors"
+      },
+      "examples":{
+        "application/json":"{\n  \"errors\": [{\n      \"code\": \"TAP-0001\",\n      \"name\": \"Resource Not Found.\",\n      \"userMessage\": \"The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.\"\n    }\n  ]\n}"
       }
     },
     "415":{
       "description":"Unsupported media type.",
       "schema":{
         "$ref":"#/definitions/errors"
+      },
+      "examples":{
+        "application/json":"{\n  \"errors\": [{\n      \"code\": \"TAP-0002\",\n      \"name\": \"Unsupported media type.\",\n      \"userMessage\": \"The origin server is refusing to service the request because the payload is in a format not supported by this method on the target resource.\"\n    }\n  ]\n}"
       }
     },
     "500":{
       "description":"Internal server error; no action required; may help to retry request later or contact support.",
       "schema":{
         "$ref":"#/definitions/errors"
+      },
+      "examples":{
+        "application/json":"{\n  \"errors\": [{\n      \"code\": \"TAP-0003\",\n      \"name\": \"Internal server error.\",\n      \"userMessage\": \"The server encountered an unexpected condition that prevented it from fulfilling the request.\"\n    }\n  ]\n}"
       }
     },
     "400-nofile":{
       "description":"The server cannot or will not process the request due to something that is perceived to be a client error.",
       "schema":{
         "$ref":"#/definitions/errors"
+      },
+      "examples":{
+        "application/json":"{\n  \"errors\": [{\n      \"code\": \"TAP-0004\",\n      \"name\": \"Bad Request.\",\n      \"userMessage\": \"The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).\"\n    }\n  ]\n}"
       }
     }
   },
@@ -152,7 +163,7 @@
   },
   "definitions":{
     "TAPMessageData":{
-      "description":"TODO",
+      "description":"The response to post a TAP message request.",
       "properties":{
         "data":{
           "$ref":"#/definitions/TAPMessage"
@@ -200,15 +211,15 @@
             },
             "docId":{
               "type":"string",
-              "description":"The"
+              "description":"The Document Identifier"
             },
             "isRead":{
               "type":"boolean",
-              "description":"TODO"
+              "description":"The flag to indicate if a message is read."
             },
             "metadata":{
               "type":"object",
-              "description":"TODO"
+              "description":"The additional metadata."
             }
           }
         }
@@ -226,7 +237,7 @@
       }
     },
     "error":{
-      "description":"standard error response srtucture",
+      "description":"The standard error response definition.",
       "properties":{
         "code":{
           "type":"string",
