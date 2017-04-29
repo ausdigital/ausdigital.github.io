@@ -5,18 +5,18 @@
     "title":"Transaction Access Point (TAP) protocol interfaces",
     "description":"The \"Transaction Access Point\" (TAP) specification defines a standard protocol for RESTful exchange of e-business documents between ledger systems"
   },
-  "schemes":[
+  "schemes": [
     "https"
   ],
   "basePath":"/",
-  "produces":[
+  "produces": [
     "application/json"
   ],
   "securityDefinitions":{
     "JWTToken":{
       "type":"apiKey",
       "name":"Authorization",
-      "description":"JWT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.",
+      "description":"JWT prepended by `JWT` string, for example: `JWT XXX`. You can get your JWT for testpoint.io services at https://idp.testpoint.io/.",
       "in":"header"
     }
   },
@@ -25,31 +25,31 @@
       "name":"tapURL",
       "in":"path",
       "description":"Any TAP URL.",
-      "required":true,
+      "required": true,
       "type":"string"
     },
     "message":{
       "name":"message",
       "in":"formData",
       "description":"The message file. Must be a valid json document. Shema - https://github.com/ausdigital/ausdigital-tap/blob/master/docs/2.0/schema.json",
-      "required":true,
+      "required": true,
       "type":"file"
     },
     "signature":{
       "name":"signature",
       "in":"formData",
-      "description":"The signature file. Must have .sig extension.",
-      "required":true,
+      "description":"The signature file.",
+      "required": true,
       "type":"file"
     },
     "contentTypeMPHeader":{
       "name":"Content-Type",
       "in":"header",
       "description":"content type multipart/form-data header",
-      "required":true,
+      "required": true,
       "type":"string",
       "default":"multipart/form-data",
-      "enum":[
+      "enum": [
         "multipart/form-data"
       ]
     }
@@ -95,23 +95,21 @@
   "paths":{
     "/{tapURL}":{
       "post":{
-        "tags":[
+        "tags": [
           "TAP message"
         ],
-        "summary":"Post TAP message to any TAP URL",
+        "summary":"Post TAP message to given TAP URL",
         "description":"Post TAP message. Payload must be a TAP message with a signature. TAP URL could be any valid URL",
         "operationId":"postTAPMessage",
-        "consumes":[
+        "consumes": [
           "multipart/form-data"
         ],
-        "security":[
+        "security": [
           {
-            "JWTToken":[
-
-            ]
+            "JWTToken": []
           }
         ],
-        "parameters":[
+        "parameters": [
           {
             "$ref":"#/parameters/tapURL"
           },
@@ -142,7 +140,7 @@
               "$ref":"#/definitions/TAPMessageData"
             },
             "examples":{
-              "application/json":"{\n  \"data\": {\n    \"type\": \"TapMessage\",\n    \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n    \"attributes\": {\n        \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n        \"status\": \"in_transit\"\n    }\n  }\n}"
+              "application/json":"{\n  \"data\":{\n    \"type\": \"TapMessage\",\n    \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n    \"attributes\":{\n        \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n        \"deliveryStatus\": \"in_transit\"\n    }\n  }\n}"
             }
           },
           "400":{
@@ -192,7 +190,7 @@
             "status":{
               "type":"string",
               "description":"The Message status, one of the four values is allowed.",
-              "enum":[
+              "enum": [
                 "processing",
                 "in_transit",
                 "sent",

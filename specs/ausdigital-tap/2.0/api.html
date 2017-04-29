@@ -164,7 +164,7 @@
         <div class="swagger-method swagger-method-post">
             <h3 class="swagger-method-title">
                 <a href="#" class="swagger-method-link">
-                    <span class="swagger-method-name">POST</span>Post TAP message to any TAP URL
+                    <span class="swagger-method-name">POST</span>Post TAP message to given TAP URL
                 </a>
             </h3>
             <div class="swagger-method-details">
@@ -268,7 +268,7 @@
                                 </td>
                                 <td>formData</td>
                                 <td>
-                                    <p>The signature file. Must have .sig extension.</p>
+                                    <p>The signature file.</p>
 
                                     
                                 </td>
@@ -331,12 +331,12 @@
                                         
                                             
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
     </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TapMessage"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
         </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in_transit"</span><span class="w">
+        </span><span class="nt">"deliveryStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in_transit"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>

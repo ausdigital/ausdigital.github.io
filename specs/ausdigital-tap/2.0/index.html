@@ -249,7 +249,7 @@ development at
 <p>Copyright (c) 2016 the Editor and Contributors. All rights reserved.</p>
 
 <p>This Specification is free software; you can redistribute it and/or modify it under the
-terms of the GNU General Public License as published by the Free Software Foundation; 
+terms of the GNU General Public License as published by the Free Software Foundation;
 either version 3 of the License, or (at your option) any later version.</p>
 
 <p>This Specification is distributed in the hope that it will be useful, but WITHOUT ANY
@@ -327,7 +327,7 @@ and service endpoint addresses.</p>
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in_transit"</span><span class="w">
+        </span><span class="nt">"deliveryStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in_transit"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -338,7 +338,7 @@ and service endpoint addresses.</p>
 
 <h1 id="tap-protocol-details">TAP Protocol Details</h1>
 
-<p>The TAP Protocol is a very simple REST API. One business sends a message directly to another business’ TAP endpoint (discovered via the DCP):</p>
+<p>The TAP Protocol is a very simple REST API. One business sends a message directly to another business TAP endpoint (discovered via the DCP):</p>
 
 <ul>
   <li>The sender uses the HTTP POST verb (over HTTPS) to send the signed message to a TAP.</li>
@@ -501,8 +501,8 @@ and service endpoint addresses.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"cyphertext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
