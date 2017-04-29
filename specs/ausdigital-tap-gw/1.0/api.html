@@ -154,14 +154,14 @@
         <p>‘Dates: ISO8601 with timezone  Format: jsonapi.org’</p>
 
     </div>
-    <div class="swagger-base-url">[ Base url: <a href="//tap-gw.testpoint.io/" target="_blank">tap-gw.testpoint.io/</a> ]</div>
+    <div class="swagger-base-url">[ Base url: <a href="//tap-gw.testpoint.io/api/v1/" target="_blank">tap-gw.testpoint.io/api/v1/</a> ]</div>
 
     
     <div class="swagger-paths">
         
             <h2 class="swagger-path" id="endpoints">Endpoints</h2>
         
-        <div class="swagger-path-route">/api/endpoints</div>
+        <div class="swagger-path-route">/endpoints/</div>
         
         <div class="swagger-method swagger-method-get">
             <h3 class="swagger-method-title">
@@ -170,7 +170,7 @@
                 </a>
             </h3>
             <div class="swagger-method-details">
-                <div class="swagger-method-description"><p>Only endpoints for the given user will be returned\nFiltering by metadata is supported (pass metadata and values to filter by as GET parameters)</p>
+                <div class="swagger-method-description"><p>Only endpoints for the given user will be returned. Filtering by metadata is supported (pass metadata and values to filter by as GET parameters)</p>
 </div>
                 
                 <div class="swagger-parameters">
@@ -194,7 +194,7 @@
                                 </td>
                                 <td>header</td>
                                 <td>
-                                    <p>WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
+                                    <p>JWT value prepended by <code class="highlighter-rouge">JWT</code>, for example: <code class="highlighter-rouge">JWT X.Y.X</code>. You can get your JWT for testpoint.io services at https://idp.testpoint.io/. Theoretically, implementaion may support different authentication methods.</p>
 
                                     
                                 </td>
@@ -257,9 +257,9 @@
                                         
                                             
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://tap-gw.testpoint.io/api/endpoints/?page=1"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://tap-gw.testpoint.io/api/endpoints/?page=1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tap-gw.testpoint.io/api/endpoints/?page=1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tap-gw.testpoint.io/api/endpoints/?page=1"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -267,16 +267,16 @@
       </span><span class="p">{</span><span class="w">
           </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TapGwEndpoint"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nt">"participant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"endpoint_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ausdigital-tap/2"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
+              </span><span class="nt">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"endpointType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ausdigital-tap/2"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value1"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"key2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value2"</span><span class="w">
           </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"pagination"</span><span class="p">:{</span><span class="w">
           </span><span class="nt">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nt">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="err">X</span><span class="w">
@@ -293,7 +293,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">401</div>
                         <div class="swagger-response-description">
-                            <p>Authentication credentials were not provided or Invalid Authorization header, JWT Signature verification failed.</p>
+                            <p>Correct authentication credentials were not provided: Invalid Authorization header, JWT Signature verification failed, No auth header</p>
 
                             
                         </div>
@@ -333,7 +333,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">500</div>
                         <div class="swagger-response-description">
-                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
+                            <p>Internal server error, no extra actions from user required. No changes on the server have been made. User should retry request later or contact support.</p>
 
                             
                         </div>
@@ -380,7 +380,7 @@
                                 </td>
                                 <td>header</td>
                                 <td>
-                                    <p>WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
+                                    <p>JWT value prepended by <code class="highlighter-rouge">JWT</code>, for example: <code class="highlighter-rouge">JWT X.Y.X</code>. You can get your JWT for testpoint.io services at https://idp.testpoint.io/. Theoretically, implementaion may support different authentication methods.</p>
 
                                     
                                 </td>
@@ -439,7 +439,7 @@
                                                     
                                                         
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-    </span><span class="nt">"participant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value1"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"keyN"</span><span class="p">:</span><span class="w"> </span><span class="s2">"valueN"</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
@@ -468,7 +468,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">201</div>
                         <div class="swagger-response-description">
-                            <p>The request has been fulfilled and has resulted in one or more new resources being created.</p>
+                            <p>The request has been fulfilled and has resulted in a resource created.</p>
 
                             
                                 <div class="swagger-response-headers">
@@ -508,10 +508,10 @@
                                         
                                             
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TapGwEndpoint"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
           </span><span class="nt">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"endpointType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ausdigital-tap/2"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"keyX"</span><span class="p">:</span><span class="w"> </span><span class="s2">"valueY"</span><span class="w">
@@ -559,7 +559,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">401</div>
                         <div class="swagger-response-description">
-                            <p>Authentication credentials were not provided or Invalid Authorization header, JWT Signature verification failed.</p>
+                            <p>Correct authentication credentials were not provided: Invalid Authorization header, JWT Signature verification failed, No auth header</p>
 
                             
                         </div>
@@ -599,7 +599,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">500</div>
                         <div class="swagger-response-description">
-                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
+                            <p>Internal server error, no extra actions from user required. No changes on the server have been made. User should retry request later or contact support.</p>
 
                             
                         </div>
@@ -621,7 +621,7 @@
         
             <h2 class="swagger-path" id="endpoint-details">Endpoint Details</h2>
         
-        <div class="swagger-path-route">/api/endpoints/{endpointId}</div>
+        <div class="swagger-path-route">/endpoints/{endpointId}</div>
         
         <div class="swagger-method swagger-method-get">
             <h3 class="swagger-method-title">
@@ -630,7 +630,7 @@
                 </a>
             </h3>
             <div class="swagger-method-details">
-                <div class="swagger-method-description"><p>Only endpoints for the given user will be returned (user determined by JWT)</p>
+                <div class="swagger-method-description"><p>Only endpoints for the given user will be returned (user determined by auth header)</p>
 </div>
                 
                 <div class="swagger-parameters">
@@ -654,7 +654,7 @@
                                 </td>
                                 <td>header</td>
                                 <td>
-                                    <p>WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
+                                    <p>JWT value prepended by <code class="highlighter-rouge">JWT</code>, for example: <code class="highlighter-rouge">JWT X.Y.X</code>. You can get your JWT for testpoint.io services at https://idp.testpoint.io/. Theoretically, implementaion may support different authentication methods.</p>
 
                                     
                                 </td>
@@ -741,13 +741,13 @@
                                         
                                             
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TapGwEndpoint"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"participant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"endpoint_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ausdigital-tap/2"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"keyX"</span><span class="p">:</span><span class="w"> </span><span class="s2">"valueeY"</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
+          </span><span class="nt">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"endpointType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ausdigital-tap/2"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"keyX"</span><span class="p">:</span><span class="w"> </span><span class="s2">"valueY"</span><span class="w">
       </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
@@ -761,7 +761,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">401</div>
                         <div class="swagger-response-description">
-                            <p>Authentication credentials were not provided or Invalid Authorization header, JWT Signature verification failed.</p>
+                            <p>Correct authentication credentials were not provided: Invalid Authorization header, JWT Signature verification failed, No auth header</p>
 
                             
                         </div>
@@ -815,7 +815,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">500</div>
                         <div class="swagger-response-description">
-                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
+                            <p>Internal server error, no extra actions from user required. No changes on the server have been made. User should retry request later or contact support.</p>
 
                             
                         </div>
@@ -838,7 +838,7 @@
                 </a>
             </h3>
             <div class="swagger-method-details">
-                <div class="swagger-method-description"><p>Completely replaces the whole metadata set.\n Only endpoints for the given user could be updated.\n To delete metadata item send PUT without key which shall be deleted.\n New version of the object is returned, with metadata updated.</p>
+                <div class="swagger-method-description"><p>Completely replaces the whole metadata set. Only endpoints for the given user could be updated. To delete metadata item send PUT without key which shall be deleted. New version of the object is returned, with metadata updated.</p>
 </div>
                 
                 <div class="swagger-parameters">
@@ -862,7 +862,7 @@
                                 </td>
                                 <td>header</td>
                                 <td>
-                                    <p>WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
+                                    <p>JWT value prepended by <code class="highlighter-rouge">JWT</code>, for example: <code class="highlighter-rouge">JWT X.Y.X</code>. You can get your JWT for testpoint.io services at https://idp.testpoint.io/. Theoretically, implementaion may support different authentication methods.</p>
 
                                     
                                 </td>
@@ -1012,12 +1012,12 @@
                                         
                                             
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TapGwEndpoint"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"participant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"endpoint_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ausdigital-tap/2"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
+          </span><span class="nt">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"endpointType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ausdigital-tap/2"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"keyX"</span><span class="p">:</span><span class="w"> </span><span class="s2">"valueX"</span><span class="w">
       </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -1063,7 +1063,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">401</div>
                         <div class="swagger-response-description">
-                            <p>Authentication credentials were not provided or Invalid Authorization header, JWT Signature verification failed.</p>
+                            <p>Correct authentication credentials were not provided: Invalid Authorization header, JWT Signature verification failed, No auth header</p>
 
                             
                         </div>
@@ -1117,7 +1117,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">500</div>
                         <div class="swagger-response-description">
-                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
+                            <p>Internal server error, no extra actions from user required. No changes on the server have been made. User should retry request later or contact support.</p>
 
                             
                         </div>
@@ -1140,7 +1140,7 @@
                 </a>
             </h3>
             <div class="swagger-method-details">
-                <div class="swagger-method-description"><p>Update only passed set of keys/values.\n Only endpoints for the given user could be updated.\n New version of the object is returned, with metadata updated.</p>
+                <div class="swagger-method-description"><p>Update only passed set of keys/values. Only endpoints for the given user could be updated. New version of the object is returned, with metadata updated.</p>
 </div>
                 
                 <div class="swagger-parameters">
@@ -1164,7 +1164,7 @@
                                 </td>
                                 <td>header</td>
                                 <td>
-                                    <p>WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
+                                    <p>JWT value prepended by <code class="highlighter-rouge">JWT</code>, for example: <code class="highlighter-rouge">JWT X.Y.X</code>. You can get your JWT for testpoint.io services at https://idp.testpoint.io/. Theoretically, implementaion may support different authentication methods.</p>
 
                                     
                                 </td>
@@ -1314,12 +1314,12 @@
                                         
                                             
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TapGwEndpoint"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"participant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"endpoint_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ausdigital-tap/2"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
+          </span><span class="nt">"participantId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"endpointType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ausdigital-tap/2"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"keyX"</span><span class="p">:</span><span class="w"> </span><span class="s2">"valueX"</span><span class="w">
       </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -1365,7 +1365,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">401</div>
                         <div class="swagger-response-description">
-                            <p>Authentication credentials were not provided or Invalid Authorization header, JWT Signature verification failed.</p>
+                            <p>Correct authentication credentials were not provided: Invalid Authorization header, JWT Signature verification failed, No auth header</p>
 
                             
                         </div>
@@ -1419,7 +1419,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">500</div>
                         <div class="swagger-response-description">
-                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
+                            <p>Internal server error, no extra actions from user required. No changes on the server have been made. User should retry request later or contact support.</p>
 
                             
                         </div>
@@ -1439,9 +1439,9 @@
     
     <div class="swagger-paths">
         
-            <h2 class="swagger-path" id="tap-message">TAP message</h2>
+            <h2 class="swagger-path" id="tap-message">TAP Message</h2>
         
-        <div class="swagger-path-route">/api/endpoints/{endpointId}/message</div>
+        <div class="swagger-path-route">/endpoints/{endpointId}/message/</div>
         
         <div class="swagger-method swagger-method-post">
             <h3 class="swagger-method-title">
@@ -1450,7 +1450,7 @@
                 </a>
             </h3>
             <div class="swagger-method-details">
-                <div class="swagger-method-description"><p>Post TAP message. Payload must be a TAP message with a signature.</p>
+                <div class="swagger-method-description"><p>Post TAP message. Payload must be a TAP message with a signature. Authorization is not required. This is duplication of <code class="highlighter-rouge">ausdigital-tap</code> protocol method, tap-gw specification defines just the URL here. TODO - may be we shall move this definition completely to TAP section to avoid documentation duplication?</p>
 </div>
                 
                 <div class="swagger-parameters">
@@ -1465,26 +1465,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
-                            <tr>
-                                <td>
-                                    
-                                    Authorization
-                                    
-                                </td>
-                                <td>header</td>
-                                <td>
-                                    <p>WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
-
-                                    
-                                </td>
-                                <td>
-                                    
-                                    String
-                                    
-                                    
-                                </td>
-                            </tr>
                             
                             <tr>
                                 <td>
@@ -1614,7 +1594,7 @@
                                     
                                         <tr>
                                             <td>Date</td>
-                                            <td><p>Mandatory. The date and time that the message was originated.</p>
+                                            <td><p>Mandatory. The date and time when the message was originated.</p>
 </td>
                                             <td>string</td>
                                         </tr>
@@ -1633,12 +1613,12 @@
                                         
                                             
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
     </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TapMessage"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
         </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"in_transit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"send"</span><span class="p">]</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"in_transit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"sent"</span><span class="p">,</span><span class="w"> </span><span class="s2">"error"</span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
@@ -1702,7 +1682,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">415</div>
                         <div class="swagger-response-description">
-                            <p>Unsupported media type.</p>
+                            <p>Unsupported media type (for example, used tried to send XML when endpoint accepts only JSON)</p>
 
                             
                         </div>
@@ -1733,7 +1713,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">500</div>
                         <div class="swagger-response-description">
-                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
+                            <p>Internal server error, no extra actions from user required. No changes on the server have been made. User should retry request later or contact support.</p>
 
                             
                         </div>
@@ -1755,7 +1735,7 @@
         
             <h2 class="swagger-path" id="tap-messages">TAP messages</h2>
         
-        <div class="swagger-path-route">/api/messages</div>
+        <div class="swagger-path-route">/messages/</div>
         
         <div class="swagger-method swagger-method-get">
             <h3 class="swagger-method-title">
@@ -1764,7 +1744,7 @@
                 </a>
             </h3>
             <div class="swagger-method-details">
-                <div class="swagger-method-description"><p>Get TAP messages. Only messages from endpoints created by user with given JWT will be returned.\n Filtering by metadata and parametres is supported (pass metadata and values to filter by as GET parameters).n Following parametres are available for filtering: is_read, endpoint, participant_id.\n Any other query parameter is filtered as exact metadata of endpoint (returns only messages from endpoints which have metadata with given key equal to given value).</p>
+                <div class="swagger-method-description"><p>Get TAP messages. Only messages from endpoints created by this user will be returned. Filtering by metadata and parameters is supported (pass metadata and values to filter by as GET parameters). Following parameters are available for filtering: status, endpoint, participantId. Any other query parameter is filtered as exact metadata of endpoint (returns only messages from endpoints which have metadata with given key equal to given value).</p>
 </div>
                 
                 <div class="swagger-parameters">
@@ -1788,7 +1768,7 @@
                                 </td>
                                 <td>header</td>
                                 <td>
-                                    <p>WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
+                                    <p>JWT value prepended by <code class="highlighter-rouge">JWT</code>, for example: <code class="highlighter-rouge">JWT X.Y.X</code>. You can get your JWT for testpoint.io services at https://idp.testpoint.io/. Theoretically, implementaion may support different authentication methods.</p>
 
                                     
                                 </td>
@@ -1805,14 +1785,21 @@
                                     
                                     <span class="swagger-parameter-required">
                                     
-                                    isRead
+                                    status
                                     
                                     </span>
                                     
                                 </td>
                                 <td>query</td>
                                 <td>
-                                    <p>TODO</p>
+                                    <table>
+  <tbody>
+    <tr>
+      <td>new</td>
+      <td>read, receiving status</td>
+    </tr>
+  </tbody>
+</table>
 
                                     
                                 </td>
@@ -1923,9 +1910,9 @@
                                         
                                             
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://tap-gw.testpoint.io/api/messages/?page=1"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://tap-gw.testpoint.io/api/messages/?page=1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tap-gw.testpoint.io/api/v1/messages/?page=1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tap-gw.testpoint.io/api/v1/messages/?page=1"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -1933,14 +1920,14 @@
       </span><span class="p">{</span><span class="w">
           </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TapMessage"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
               </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sent"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-27T05:52:27.618962Z"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"sentAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-27T05:52:46.081878Z"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"docId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QmXXXXXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"isRead"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="err">'new'</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"metadata"</span><span class="p">:{</span><span class="w">
                   </span><span class="nt">"key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value2"</span><span class="p">,</span><span class="w">
                   </span><span class="nt">"key2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value2"</span><span class="w">
               </span><span class="p">},</span><span class="w">
@@ -1948,8 +1935,8 @@
           </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"pagination"</span><span class="p">:{</span><span class="w">
           </span><span class="nt">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nt">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="err">X</span><span class="w">
@@ -1966,7 +1953,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">401</div>
                         <div class="swagger-response-description">
-                            <p>Authentication credentials were not provided or Invalid Authorization header, JWT Signature verification failed.</p>
+                            <p>Correct authentication credentials were not provided: Invalid Authorization header, JWT Signature verification failed, No auth header</p>
 
                             
                         </div>
@@ -2006,7 +1993,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">500</div>
                         <div class="swagger-response-description">
-                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
+                            <p>Internal server error, no extra actions from user required. No changes on the server have been made. User should retry request later or contact support.</p>
 
                             
                         </div>
@@ -2026,18 +2013,18 @@
     
     <div class="swagger-paths">
         
-            <h2 class="swagger-path" id="update-tap-message">Update TAP message</h2>
+            <h2 class="swagger-path" id="update-tap-message-metadata">Update TAP message metadata</h2>
         
-        <div class="swagger-path-route">/api/messages/{messageId}/</div>
+        <div class="swagger-path-route">/messages/{messageId}/metadata/</div>
         
         <div class="swagger-method swagger-method-patch">
             <h3 class="swagger-method-title">
                 <a href="#" class="swagger-method-link">
-                    <span class="swagger-method-name">PATCH</span>Update TAP message
+                    <span class="swagger-method-name">PATCH</span>Update TAP message metadata
                 </a>
             </h3>
             <div class="swagger-method-details">
-                <div class="swagger-method-description"><p>Only messages for the given user could be updated.\n Only isRead parameter of message could be updated.</p>
+                <div class="swagger-method-description"><p>Only messages for the given user could be updated. Only <code class="highlighter-rouge">status</code> parameter of message could be updated.</p>
 </div>
                 
                 <div class="swagger-parameters">
@@ -2061,7 +2048,7 @@
                                 </td>
                                 <td>header</td>
                                 <td>
-                                    <p>WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
+                                    <p>JWT value prepended by <code class="highlighter-rouge">JWT</code>, for example: <code class="highlighter-rouge">JWT X.Y.X</code>. You can get your JWT for testpoint.io services at https://idp.testpoint.io/. Theoretically, implementaion may support different authentication methods.</p>
 
                                     
                                 </td>
@@ -2136,22 +2123,6 @@
                                     <p>TODO</p>
 
                                     
-                                        <span class="show-swagger-parameters-example">Example</span>
-                                        <div class="swagger-parameters-example">
-                                            
-                                                
-                                                    
-                                                    
-                                                        
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-    </span><span class="nt">"isRead"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span></code></pre></figure>
-
-                                                    
-                                                
-                                            
-                                        </div>
-                                    
                                 </td>
                                 <td>
                                     
@@ -2211,9 +2182,9 @@
                                         
                                             
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nt">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://tap-gw.testpoint.io/api/messages/?page=1"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://tap-gw.testpoint.io/api/messages/?page=1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tap-gw.testpoint.io/api/v1/messages/?page=1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tap-gw.testpoint.io/api/v1/messages/?page=1"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nt">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -2221,14 +2192,14 @@
       </span><span class="p">{</span><span class="w">
           </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TapMessage"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
               </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sent"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-27T05:52:27.618962Z"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"sentAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-27T05:52:46.081878Z"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"docId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QmXXXXXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"isRead"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"metadata"</span><span class="p">:{</span><span class="w">
                   </span><span class="nt">"key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value2"</span><span class="p">,</span><span class="w">
                   </span><span class="nt">"key2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value2"</span><span class="w">
               </span><span class="p">},</span><span class="w">
@@ -2236,8 +2207,8 @@
           </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"pagination"</span><span class="p">:{</span><span class="w">
           </span><span class="nt">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nt">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="err">X</span><span class="w">
@@ -2285,7 +2256,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">401</div>
                         <div class="swagger-response-description">
-                            <p>Authentication credentials were not provided or Invalid Authorization header, JWT Signature verification failed.</p>
+                            <p>Correct authentication credentials were not provided: Invalid Authorization header, JWT Signature verification failed, No auth header</p>
 
                             
                         </div>
@@ -2339,7 +2310,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">500</div>
                         <div class="swagger-response-description">
-                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
+                            <p>Internal server error, no extra actions from user required. No changes on the server have been made. User should retry request later or contact support.</p>
 
                             
                         </div>
@@ -2361,7 +2332,7 @@
         
             <h2 class="swagger-path" id="get-tap-message-status">Get TAP message status</h2>
         
-        <div class="swagger-path-route">/api/messages/{messageId}/status/</div>
+        <div class="swagger-path-route">/messages/{messageId}/status/</div>
         
         <div class="swagger-method swagger-method-get">
             <h3 class="swagger-method-title">
@@ -2371,7 +2342,7 @@
             </h3>
             <div class="swagger-method-details">
                 <div class="swagger-method-description"><p>Doesn’t require any auth (knowing message ID is enough for access control).
- May be used for debug purposes, to see how messages are processed and possible errors.</p>
+ May be used for debug purposes, to see how messages are processed and possible errors. This is TAP protocol, TAP-GW just defines the URL format here.</p>
 </div>
                 
                 <div class="swagger-parameters">
@@ -2462,10 +2433,10 @@
                                         
                                             
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
     </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TapMessage"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eb2b4035-a7f6-4bbb-b686-a06a250eaed5"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
       </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eb2b4035-a7f6-4bbb-b686-a06a250eaed5"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-22T09:59:01.779081Z"</span><span class="p">,</span><span class="w">
@@ -2475,10 +2446,10 @@
 </span><span class="p">}</span><span class="w">
 </span><span class="err">|-</span><span class="w">
 </span><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
     </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TapMessage"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2467cde6-b58a-4890-919a-1b99db1b89e0"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
       </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2467cde6-b58a-4890-919a-1b99db1b89e0"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sent"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-14T11:59:04.111491Z"</span><span class="w">
@@ -2526,7 +2497,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">401</div>
                         <div class="swagger-response-description">
-                            <p>Authentication credentials were not provided or Invalid Authorization header, JWT Signature verification failed.</p>
+                            <p>Correct authentication credentials were not provided: Invalid Authorization header, JWT Signature verification failed, No auth header</p>
 
                             
                         </div>
@@ -2580,7 +2551,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">500</div>
                         <div class="swagger-response-description">
-                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
+                            <p>Internal server error, no extra actions from user required. No changes on the server have been made. User should retry request later or contact support.</p>
 
                             
                         </div>
@@ -2602,7 +2573,7 @@
         
             <h2 class="swagger-path" id="get-tap-message-body">Get TAP message body</h2>
         
-        <div class="swagger-path-route">/api/messages/{messageId}/body/</div>
+        <div class="swagger-path-route">/messages/{messageId}/</div>
         
         <div class="swagger-method swagger-method-get">
             <h3 class="swagger-method-title">
@@ -2611,7 +2582,7 @@
                 </a>
             </h3>
             <div class="swagger-method-details">
-                <div class="swagger-method-description"><p>Returns TAP message body</p>
+                <div class="swagger-method-description"><p>Returns TAP message body (JSON file with fields like ‘cyphertext’ and so on, see <code class="highlighter-rouge">ausdigital-tap</code>)</p>
 </div>
                 
                 <div class="swagger-parameters">
@@ -2635,7 +2606,7 @@
                                 </td>
                                 <td>header</td>
                                 <td>
-                                    <p>WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.</p>
+                                    <p>JWT value prepended by <code class="highlighter-rouge">JWT</code>, for example: <code class="highlighter-rouge">JWT X.Y.X</code>. You can get your JWT for testpoint.io services at https://idp.testpoint.io/. Theoretically, implementaion may support different authentication methods.</p>
 
                                     
                                 </td>
@@ -2722,9 +2693,9 @@
                                         
                                             
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nt">"cyphertext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-----BEGIN PGP MESSAGE-----\nVersion: GnuPG v2\n\nhQEMA40g45xxxxxxxxxxxxxxxxxxxxx-----END PGP MESSAGE-----"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8d4d3f10e70960710fb95ec53719d306a6b1a779057a887ede073eaf48f81db8"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::11002788650"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"cyphertext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-----BEGIN PGP MESSAGE-----\nVersion: GnuPG v2\n\nhQEMA40g45xxxxxxxxxxxxxxxxxxxxx-----END PGP MESSAGE-----"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8d4d3f10e70960710fb95ec53719d306a6b1a779057a887ede073eaf48f81db8"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::11112288600"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
 
@@ -2768,7 +2739,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">401</div>
                         <div class="swagger-response-description">
-                            <p>Authentication credentials were not provided or Invalid Authorization header, JWT Signature verification failed.</p>
+                            <p>Correct authentication credentials were not provided: Invalid Authorization header, JWT Signature verification failed, No auth header</p>
 
                             
                         </div>
@@ -2822,7 +2793,7 @@
                     <div class="swagger-responses-title">
                         <div class="swagger-response-code">500</div>
                         <div class="swagger-response-description">
-                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
+                            <p>Internal server error, no extra actions from user required. No changes on the server have been made. User should retry request later or contact support.</p>
 
                             
                         </div>

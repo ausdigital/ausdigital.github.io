@@ -6,11 +6,11 @@
     "description":"'Dates: ISO8601 with timezone  Format: jsonapi.org'\n"
   },
   "host":"tap-gw.testpoint.io",
-  "schemes":[
-    "http"
+  "schemes": [
+    "https"
   ],
-  "basePath":"/",
-  "produces":[
+  "basePath":"/api/v1/",
+  "produces": [
     "application/json"
   ],
   "parameters":{
@@ -18,7 +18,7 @@
       "name":"endpointId",
       "in":"path",
       "description":"The unique endpoint ID.",
-      "required":true,
+      "required": true,
       "type":"string",
       "default":""
     },
@@ -26,7 +26,7 @@
       "name":"messageId",
       "in":"path",
       "description":"The unique message ID.",
-      "required":true,
+      "required": true,
       "type":"string",
       "default":""
     },
@@ -34,23 +34,23 @@
       "name":"endpoint",
       "in":"query",
       "description":"TODO",
-      "required":true,
+      "required": true,
       "type":"string",
       "default":""
     },
-    "isRead":{
-      "name":"isRead",
+    "status":{
+      "name":"status",
       "in":"query",
-      "description":"TODO",
-      "required":true,
+      "description":"new|read, receiving status",
+      "required": true,
       "type":"string",
-      "default":""
+      "default":"new"
     },
     "participantId":{
       "name":"participantId",
       "in":"query",
       "description":"string representation",
-      "required":true,
+      "required": true,
       "type":"string",
       "default":""
     },
@@ -58,35 +58,31 @@
       "name":"message",
       "in":"formData",
       "description":"The message file.",
-      "required":true,
+      "required": true,
       "type":"file"
     },
     "signature":{
       "name":"signature",
       "in":"formData",
       "description":"The signature file.",
-      "required":true,
+      "required": true,
       "type":"file"
     },
     "authorizationHeader":{
       "name":"Authorization",
       "in":"header",
-      "description":"WT token value prepended by JWT, for example: JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ You can get your JWT for testpoint.io services at https://idp.testpoint.io/.",
-      "required":false,
-      "type":"string",
-      "default":"application/json",
-      "enum":[
-        "application/json"
-      ]
+      "description":"JWT value prepended by `JWT`, for example: `JWT X.Y.X`. You can get your JWT for testpoint.io services at https://idp.testpoint.io/. Theoretically, implementaion may support different authentication methods.",
+      "required": false,
+      "type":"string"
     },
     "contentTypeHeader":{
       "name":"Content-Type",
       "in":"header",
       "description":"content type header",
-      "required":true,
+      "required": true,
       "type":"string",
       "default":"application/json",
-      "enum":[
+      "enum": [
         "application/json"
       ]
     },
@@ -94,28 +90,15 @@
       "name":"Content-Type",
       "in":"header",
       "description":"content type multipart/form-data header",
-      "required":true,
+      "required": true,
       "type":"string",
       "default":"multipart/form-data",
-      "enum":[
+      "enum": [
         "multipart/form-data"
       ]
     }
   },
   "responses":{
-    "204-delete":{
-      "description":"The resource has been removed.",
-      "headers":{
-        "Content-Type":{
-          "type":"string",
-          "description":"Mandatory. Value - application/json."
-        },
-        "Date":{
-          "type":"string",
-          "description":"Mandatory. The date and time that the message was originated."
-        }
-      }
-    },
     "400":{
       "description":"The server cannot or will not process the request due to something that is perceived to be a client error.",
       "schema":{
@@ -125,17 +108,8 @@
         "application/json":"{\n  \"errors\": [{\n      \"code\": \"TAP-GW-0001\",\n      \"name\": \"Malformed JSON.\",\n      \"userMessage\": \"Could not decode the request body. The JSON was incorrect or not encoded as UTF-8.\"\n    }\n  ]\n}"
       }
     },
-    "400-nofile":{
-      "description":"The server cannot or will not process the request due to something that is perceived to be a client error.",
-      "schema":{
-        "$ref":"#/definitions/errors"
-      },
-      "examples":{
-        "application/json":"{\n  \"errors\": [{\n      \"code\": \"TAP-GW-0002\",\n      \"name\": \"No file was submitted.\",\n      \"userMessage\": \"No file was for message parameter.\"\n    },\n    {\n      \"code\": \"TAP-GW-0003\",\n      \"name\": \"No file was submitted.\",\n      \"userMessage\": \"No file was for signature parameter.\"\n    }\n  ]\n}"
-      }
-    },
     "401":{
-      "description":"Authentication credentials were not provided or Invalid Authorization header, JWT Signature verification failed.",
+      "description":"Correct authentication credentials were not provided: Invalid Authorization header, JWT Signature verification failed, No auth header",
       "schema":{
         "$ref":"#/definitions/errors"
       },
@@ -149,8 +123,14 @@
         "$ref":"#/definitions/errors"
       }
     },
+    "405":{
+      "description":"Method not allowed. For example, user tried to execute HTTP DELETE verb on messages list.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      }
+    },
     "415":{
-      "description":"Unsupported media type.",
+      "description":"Unsupported media type (for example, used tried to send XML when endpoint accepts only JSON)",
       "schema":{
         "$ref":"#/definitions/errors"
       },
@@ -159,22 +139,44 @@
       }
     },
     "500":{
-      "description":"Internal server error; no action required; may help to retry request later or contact support.",
+      "description":"Internal server error, no extra actions from user required. No changes on the server have been made. User should retry request later or contact support.",
       "schema":{
         "$ref":"#/definitions/errors"
+      }
+    },
+    "204-delete":{
+      "description":"The resource has been removed.",
+      "headers":{
+        "Content-Type":{
+          "type":"string",
+          "description":"Mandatory. Value - application/json."
+        },
+        "Date":{
+          "type":"string",
+          "description":"Mandatory. The date and time that the message was originated."
+        }
+      }
+    },
+    "400-nofile":{
+      "description":"The server cannot or will not process the request due to something that is perceived to be a client error.",
+      "schema":{
+        "$ref":"#/definitions/errors"
+      },
+      "examples":{
+        "application/json":"{\n  \"errors\": [{\n      \"code\": \"TAP-GW-0002\",\n      \"name\": \"No file was submitted.\",\n      \"userMessage\": \"No file was for message parameter.\"\n    },\n    {\n      \"code\": \"TAP-GW-0003\",\n      \"name\": \"No file was submitted.\",\n      \"userMessage\": \"No file was for signature parameter.\"\n    }\n  ]\n}"
       }
     }
   },
   "paths":{
-    "/api/endpoints":{
+    "/endpoints/":{
       "get":{
-        "tags":[
+        "tags": [
           "Endpoints"
         ],
         "summary":"Get Endpoints List",
-        "description":"Only endpoints for the given user will be returned\\nFiltering by metadata is supported (pass metadata and values to filter by as GET parameters)",
+        "description":"Only endpoints for the given user will be returned. Filtering by metadata is supported (pass metadata and values to filter by as GET parameters)",
         "operationId":"getEndpoints",
-        "parameters":[
+        "parameters": [
           {
             "$ref":"#/parameters/authorizationHeader"
           }
@@ -196,7 +198,7 @@
               "$ref":"#/definitions/EndpointsResponseEntity"
             },
             "examples":{
-              "application/json":"{\n  \"links\": {\n      \"first\": \"http://tap-gw.testpoint.io/api/endpoints/?page=1\",\n      \"last\": \"http://tap-gw.testpoint.io/api/endpoints/?page=1\",\n      \"next\": null,\n      \"prev\": null\n  },\n  \"data\": [\n      {\n          \"type\": \"TapGwEndpoint\",\n          \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n          \"attributes\": {\n              \"participant_id\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999\",\n              \"endpoint_type\": \"ausdigital-tap/2\",\n              \"key1\": \"value1\",\n              \"key2\": \"value2\"\n          }\n      }\n  ],\n  \"meta\": {\n      \"pagination\": {\n          \"page\": 1,\n          \"pages\": 1,\n          \"count\": X\n      }\n  }\n}"
+              "application/json":"{\n  \"links\":{\n      \"first\": \"https://tap-gw.testpoint.io/api/endpoints/?page=1\",\n      \"last\": \"https://tap-gw.testpoint.io/api/endpoints/?page=1\",\n      \"next\": null,\n      \"prev\": null\n  },\n  \"data\": [\n      {\n          \"type\": \"TapGwEndpoint\",\n          \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n          \"attributes\":{\n              \"participantId\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999\",\n              \"endpointType\": \"ausdigital-tap/2\",\n              \"key1\": \"value1\",\n              \"key2\": \"value2\"\n          }\n      }\n  ],\n  \"meta\":{\n      \"pagination\":{\n          \"page\": 1,\n          \"pages\": 1,\n          \"count\": X\n      }\n  }\n}"
             }
           },
           "401":{
@@ -208,13 +210,13 @@
         }
       },
       "post":{
-        "tags":[
+        "tags": [
           "Endpoints"
         ],
         "summary":"Create Endpoint",
         "description":"Create Endpoint. JSON with desired endpoint fields is expected in a request body.",
         "operationId":"postEndpoints",
-        "parameters":[
+        "parameters": [
           {
             "$ref":"#/parameters/authorizationHeader"
           },
@@ -225,7 +227,7 @@
             "description":"TODO",
             "in":"body",
             "name":"body",
-            "required":true,
+            "required": true,
             "schema":{
               "$ref":"#/definitions/EndpointPostRequestEntity"
             }
@@ -233,7 +235,7 @@
         ],
         "responses":{
           "201":{
-            "description":"The request has been fulfilled and has resulted in one or more new resources being created.",
+            "description":"The request has been fulfilled and has resulted in a resource created.",
             "headers":{
               "Content-Type":{
                 "type":"string",
@@ -248,7 +250,7 @@
               "$ref":"#/definitions/EndpointPostResponseEntity"
             },
             "examples":{
-              "application/json":"{\n  \"data\": {\n      \"type\": \"TapGwEndpoint\",\n      \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n      \"attributes\": {\n          \"participantId\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999\",\n          \"endpointType\": \"ausdigital-tap/2\",\n          \"keyX\": \"valueY\"\n      }\n  }\n}"
+              "application/json":"{\n  \"data\":{\n      \"type\": \"TapGwEndpoint\",\n      \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n      \"attributes\":{\n          \"participantId\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999\",\n          \"endpointType\": \"ausdigital-tap/2\",\n          \"keyX\": \"valueY\"\n      }\n  }\n}"
             }
           },
           "400":{
@@ -263,15 +265,15 @@
         }
       }
     },
-    "/api/endpoints/{endpointId}":{
+    "/endpoints/{endpointId}":{
       "get":{
-        "tags":[
+        "tags": [
           "Endpoint Details"
         ],
         "summary":"Get Endpoint Details",
-        "description":"Only endpoints for the given user will be returned (user determined by JWT)",
+        "description":"Only endpoints for the given user will be returned (user determined by auth header)",
         "operationId":"getEndpointDetails",
-        "parameters":[
+        "parameters": [
           {
             "$ref":"#/parameters/authorizationHeader"
           },
@@ -296,7 +298,7 @@
               "$ref":"#/definitions/EndpointPostResponseEntity"
             },
             "examples":{
-              "application/json":"{\n  \"data\": {\n      \"type\": \"TapGwEndpoint\",\n      \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n      \"attributes\": {\n          \"participant_id\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999\",\n          \"endpoint_type\": \"ausdigital-tap/2\",\n          \"keyX\": \"valueeY\"\n      }\n  }\n}"
+              "application/json":"{\n  \"data\":{\n      \"type\": \"TapGwEndpoint\",\n      \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n      \"attributes\":{\n          \"participantId\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999\",\n          \"endpointType\": \"ausdigital-tap/2\",\n          \"keyX\": \"valueY\"\n      }\n  }\n}"
             }
           },
           "401":{
@@ -311,13 +313,13 @@
         }
       },
       "put":{
-        "tags":[
+        "tags": [
           "Endpoint Details"
         ],
         "summary":"Endpoint Update",
-        "description":"Completely replaces the whole metadata set.\\n Only endpoints for the given user could be updated.\\n To delete metadata item send PUT without key which shall be deleted.\\n New version of the object is returned, with metadata updated.",
+        "description":"Completely replaces the whole metadata set. Only endpoints for the given user could be updated. To delete metadata item send PUT without key which shall be deleted. New version of the object is returned, with metadata updated.",
         "operationId":"putEndpointDetails",
-        "parameters":[
+        "parameters": [
           {
             "$ref":"#/parameters/authorizationHeader"
           },
@@ -331,7 +333,7 @@
             "description":"TODO",
             "in":"body",
             "name":"body",
-            "required":true,
+            "required": true,
             "schema":{
               "type":"object",
               "example":{
@@ -354,7 +356,7 @@
               }
             },
             "examples":{
-              "application/json":"{\n  \"data\": {\n      \"type\": \"TapGwEndpoint\",\n      \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n      \"attributes\": {\n          \"participant_id\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999\",\n          \"endpoint_type\": \"ausdigital-tap/2\",\n          \"keyX\": \"valueX\"\n      }\n  }\n}"
+              "application/json":"{\n  \"data\":{\n      \"type\": \"TapGwEndpoint\",\n      \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n      \"attributes\":{\n          \"participantId\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999\",\n          \"endpointType\": \"ausdigital-tap/2\",\n          \"keyX\": \"valueX\"\n      }\n  }\n}"
             }
           },
           "400":{
@@ -372,13 +374,13 @@
         }
       },
       "patch":{
-        "tags":[
+        "tags": [
           "Endpoint Details"
         ],
         "summary":"Endpoint Update",
-        "description":"Update only passed set of keys/values.\\n Only endpoints for the given user could be updated.\\n New version of the object is returned, with metadata updated.",
+        "description":"Update only passed set of keys/values. Only endpoints for the given user could be updated. New version of the object is returned, with metadata updated.",
         "operationId":"patchEndpointDetails",
-        "parameters":[
+        "parameters": [
           {
             "$ref":"#/parameters/authorizationHeader"
           },
@@ -392,7 +394,7 @@
             "description":"TODO",
             "in":"body",
             "name":"body",
-            "required":true,
+            "required": true,
             "schema":{
               "type":"object",
               "example":{
@@ -415,7 +417,7 @@
               }
             },
             "examples":{
-              "application/json":"{\n  \"data\": {\n      \"type\": \"TapGwEndpoint\",\n      \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n      \"attributes\": {\n          \"participant_id\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999\",\n          \"endpoint_type\": \"ausdigital-tap/2\",\n          \"keyX\": \"valueX\"\n      }\n  }\n}"
+              "application/json":"{\n  \"data\":{\n      \"type\": \"TapGwEndpoint\",\n      \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n      \"attributes\":{\n          \"participantId\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999\",\n          \"endpointType\": \"ausdigital-tap/2\",\n          \"keyX\": \"valueX\"\n      }\n  }\n}"
             }
           },
           "400":{
@@ -433,21 +435,18 @@
         }
       }
     },
-    "/api/endpoints/{endpointId}/message":{
+    "/endpoints/{endpointId}/message/":{
       "post":{
-        "tags":[
-          "TAP message"
+        "tags": [
+          "TAP Message"
         ],
         "summary":"Post TAP message",
-        "description":"Post TAP message. Payload must be a TAP message with a signature.",
+        "description":"Post TAP message. Payload must be a TAP message with a signature. Authorization is not required. This is duplication of `ausdigital-tap` protocol method, tap-gw specification defines just the URL here. TODO - may be we shall move this definition completely to TAP section to avoid documentation duplication?",
         "operationId":"postTAPMessage",
-        "consumes":[
+        "consumes": [
           "multipart/form-data"
         ],
-        "parameters":[
-          {
-            "$ref":"#/parameters/authorizationHeader"
-          },
+        "parameters": [
           {
             "$ref":"#/parameters/endpointId"
           },
@@ -471,14 +470,14 @@
               },
               "Date":{
                 "type":"string",
-                "description":"Mandatory. The date and time that the message was originated."
+                "description":"Mandatory. The date and time when the message was originated."
               }
             },
             "schema":{
               "$ref":"#/definitions/TAPMessageData"
             },
             "examples":{
-              "application/json":"{\n  \"data\": {\n    \"type\": \"TapMessage\",\n    \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n    \"attributes\": {\n        \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n        \"status\": [\"in_transit\", \"send\"]\n    }\n  }\n}"
+              "application/json":"{\n  \"data\":{\n    \"type\": \"TapMessage\",\n    \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n    \"attributes\":{\n        \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n        \"status\": [\"in_transit\", \"sent\", \"error\"]\n    }\n  }\n}"
             }
           },
           "400":{
@@ -496,20 +495,20 @@
         }
       }
     },
-    "/api/messages":{
+    "/messages/":{
       "get":{
-        "tags":[
+        "tags": [
           "TAP messages"
         ],
         "summary":"Get TAP messages",
-        "description":"Get TAP messages. Only messages from endpoints created by user with given JWT will be returned.\\n Filtering by metadata and parametres is supported (pass metadata and values to filter by as GET parameters).n Following parametres are available for filtering: is_read, endpoint, participant_id.\\n Any other query parameter is filtered as exact metadata of endpoint (returns only messages from endpoints which have metadata with given key equal to given value).",
+        "description":"Get TAP messages. Only messages from endpoints created by this user will be returned. Filtering by metadata and parameters is supported (pass metadata and values to filter by as GET parameters). Following parameters are available for filtering: status, endpoint, participantId. Any other query parameter is filtered as exact metadata of endpoint (returns only messages from endpoints which have metadata with given key equal to given value).",
         "operationId":"getTAPMessages",
-        "parameters":[
+        "parameters": [
           {
             "$ref":"#/parameters/authorizationHeader"
           },
           {
-            "$ref":"#/parameters/isRead"
+            "$ref":"#/parameters/status"
           },
           {
             "$ref":"#/parameters/endpoint"
@@ -535,7 +534,7 @@
               "$ref":"#/definitions/TAPMessages"
             },
             "examples":{
-              "application/json":"{\n  \"links\": {\n      \"first\": \"http://tap-gw.testpoint.io/api/messages/?page=1\",\n      \"last\": \"http://tap-gw.testpoint.io/api/messages/?page=1\",\n      \"next\": null,\n      \"prev\": null\n  },\n  \"data\": [\n      {\n          \"type\": \"TapMessage\",\n          \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n          \"attributes\": {\n              \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n              \"status\": \"sent\",\n              \"createdAt\": \"2017-02-27T05:52:27.618962Z\",\n              \"sentAt\": \"2017-02-27T05:52:46.081878Z\",\n              \"docId\": \"QmXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n              \"isRead\": false,\n              \"metadata\": {\n                  \"key1\": \"value2\",\n                  \"key2\": \"value2\"\n              },\n              \"endpoint\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\"\n          }\n      }\n  ],\n  \"meta\": {\n      \"pagination\": {\n          \"page\": 1,\n          \"pages\": 1,\n          \"count\": X\n      }\n  }\n}"
+              "application/json":"{\n  \"links\":{\n      \"first\": \"https://tap-gw.testpoint.io/api/v1/messages/?page=1\",\n      \"last\": \"https://tap-gw.testpoint.io/api/v1/messages/?page=1\",\n      \"next\": null,\n      \"prev\": null\n  },\n  \"data\": [\n      {\n          \"type\": \"TapMessage\",\n          \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n          \"attributes\":{\n              \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n              \"status\": \"sent\",\n              \"createdAt\": \"2017-02-27T05:52:27.618962Z\",\n              \"sentAt\": \"2017-02-27T05:52:46.081878Z\",\n              \"docId\": \"QmXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n              \"status\": 'new',\n              \"metadata\":{\n                  \"key1\": \"value2\",\n                  \"key2\": \"value2\"\n              },\n              \"endpoint\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\"\n          }\n      }\n  ],\n  \"meta\":{\n      \"pagination\":{\n          \"page\": 1,\n          \"pages\": 1,\n          \"count\": X\n      }\n  }\n}"
             }
           },
           "401":{
@@ -547,15 +546,15 @@
         }
       }
     },
-    "/api/messages/{messageId}/":{
+    "/messages/{messageId}/metadata/":{
       "patch":{
-        "tags":[
-          "Update TAP message"
+        "tags": [
+          "Update TAP message metadata"
         ],
-        "summary":"Update TAP message",
-        "description":"Only messages for the given user could be updated.\\n Only isRead parameter of message could be updated.",
+        "summary":"Update TAP message metadata",
+        "description":"Only messages for the given user could be updated. Only `status` parameter of message could be updated.",
         "operationId":"patchTAPMessage",
-        "parameters":[
+        "parameters": [
           {
             "$ref":"#/parameters/authorizationHeader"
           },
@@ -569,17 +568,13 @@
             "description":"TODO",
             "in":"body",
             "name":"body",
-            "required":true,
+            "required": true,
             "schema":{
               "type":"object",
               "properties":{
-                "isRead":{
-                  "type":"boolean",
-                  "description":"TODO"
+                "status":{
+                  "type":"string"
                 }
-              },
-              "example":{
-                "isRead":true
               }
             }
           }
@@ -601,7 +596,7 @@
               "$ref":"#/definitions/TAPMessages"
             },
             "examples":{
-              "application/json":"{\n  \"links\": {\n      \"first\": \"http://tap-gw.testpoint.io/api/messages/?page=1\",\n      \"last\": \"http://tap-gw.testpoint.io/api/messages/?page=1\",\n      \"next\": null,\n      \"prev\": null\n  },\n  \"data\": [\n      {\n          \"type\": \"TapMessage\",\n          \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n          \"attributes\": {\n              \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n              \"status\": \"sent\",\n              \"createdAt\": \"2017-02-27T05:52:27.618962Z\",\n              \"sentAt\": \"2017-02-27T05:52:46.081878Z\",\n              \"docId\": \"QmXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n              \"isRead\": true,\n              \"metadata\": {\n                  \"key1\": \"value2\",\n                  \"key2\": \"value2\"\n              },\n              \"endpoint\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\"\n          }\n      }\n  ],\n  \"meta\": {\n      \"pagination\": {\n          \"page\": 1,\n          \"pages\": 1,\n          \"count\": X\n      }\n  }\n}"
+              "application/json":"{\n  \"links\":{\n      \"first\": \"https://tap-gw.testpoint.io/api/v1/messages/?page=1\",\n      \"last\": \"https://tap-gw.testpoint.io/api/v1/messages/?page=1\",\n      \"next\": null,\n      \"prev\": null\n  },\n  \"data\": [\n      {\n          \"type\": \"TapMessage\",\n          \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n          \"attributes\":{\n              \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n              \"status\": \"sent\",\n              \"createdAt\": \"2017-02-27T05:52:27.618962Z\",\n              \"sentAt\": \"2017-02-27T05:52:46.081878Z\",\n              \"docId\": \"QmXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n              \"status\": \"read\",\n              \"metadata\":{\n                  \"key1\": \"value2\",\n                  \"key2\": \"value2\"\n              },\n              \"endpoint\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\"\n          }\n      }\n  ],\n  \"meta\":{\n      \"pagination\":{\n          \"page\": 1,\n          \"pages\": 1,\n          \"count\": X\n      }\n  }\n}"
             }
           },
           "400":{
@@ -619,15 +614,15 @@
         }
       }
     },
-    "/api/messages/{messageId}/status/":{
+    "/messages/{messageId}/status/":{
       "get":{
-        "tags":[
+        "tags": [
           "Get TAP message status"
         ],
         "summary":"Get TAP message status",
-        "description":"Doesn't require any auth (knowing message ID is enough for access control).\n May be used for debug purposes, to see how messages are processed and possible errors.",
+        "description":"Doesn't require any auth (knowing message ID is enough for access control).\n May be used for debug purposes, to see how messages are processed and possible errors. This is TAP protocol, TAP-GW just defines the URL format here.",
         "operationId":"getTAPMessageStatus",
-        "parameters":[
+        "parameters": [
           {
             "$ref":"#/parameters/messageId"
           }
@@ -649,7 +644,7 @@
               "$ref":"#/definitions/TAPMessageData"
             },
             "examples":{
-              "application/json":"{\n  \"data\": {\n    \"type\": \"TapMessage\",\n    \"id\": \"eb2b4035-a7f6-4bbb-b686-a06a250eaed5\",\n    \"attributes\": {\n      \"uuid\": \"eb2b4035-a7f6-4bbb-b686-a06a250eaed5\",\n      \"status\": \"error\",\n      \"createdAt\": \"2017-03-22T09:59:01.779081Z\",\n      \"error\": \"Can't get public key from DCP for given sender\"\n    }\n  }\n}\n|-\n{\n  \"data\": {\n    \"type\": \"TapMessage\",\n    \"id\": \"2467cde6-b58a-4890-919a-1b99db1b89e0\",\n    \"attributes\": {\n      \"uuid\": \"2467cde6-b58a-4890-919a-1b99db1b89e0\",\n      \"status\": \"sent\",\n      \"createdAt\": \"2017-03-14T11:59:04.111491Z\"\n    }\n  }\n}"
+              "application/json":"{\n  \"data\":{\n    \"type\": \"TapMessage\",\n    \"id\": \"eb2b4035-a7f6-4bbb-b686-a06a250eaed5\",\n    \"attributes\":{\n      \"uuid\": \"eb2b4035-a7f6-4bbb-b686-a06a250eaed5\",\n      \"status\": \"error\",\n      \"createdAt\": \"2017-03-22T09:59:01.779081Z\",\n      \"error\": \"Can't get public key from DCP for given sender\"\n    }\n  }\n}\n|-\n{\n  \"data\":{\n    \"type\": \"TapMessage\",\n    \"id\": \"2467cde6-b58a-4890-919a-1b99db1b89e0\",\n    \"attributes\":{\n      \"uuid\": \"2467cde6-b58a-4890-919a-1b99db1b89e0\",\n      \"status\": \"sent\",\n      \"createdAt\": \"2017-03-14T11:59:04.111491Z\"\n    }\n  }\n}"
             }
           },
           "400":{
@@ -667,15 +662,15 @@
         }
       }
     },
-    "/api/messages/{messageId}/body/":{
+    "/messages/{messageId}/":{
       "get":{
-        "tags":[
+        "tags": [
           "Get TAP message body"
         ],
         "summary":"Get TAP message body",
-        "description":"Returns TAP message body",
+        "description":"Returns TAP message body (JSON file with fields like 'cyphertext' and so on, see `ausdigital-tap`)",
         "operationId":"getTAPMessageBody",
-        "parameters":[
+        "parameters": [
           {
             "$ref":"#/parameters/authorizationHeader"
           },
@@ -700,7 +695,7 @@
               "$ref":"#/definitions/TAPMessageBody"
             },
             "examples":{
-              "application/json":"{\n  \"cyphertext\": \"-----BEGIN PGP MESSAGE-----\\nVersion: GnuPG v2\\n\\nhQEMA40g45xxxxxxxxxxxxxxxxxxxxx-----END PGP MESSAGE-----\", \n  \"hash\": \"8d4d3f10e70960710fb95ec53719d306a6b1a779057a887ede073eaf48f81db8\", \n  \"sender\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::11002788650\", \n  \"reference\": \"\"\n}"
+              "application/json":"{\n  \"cyphertext\": \"-----BEGIN PGP MESSAGE-----\\nVersion: GnuPG v2\\n\\nhQEMA40g45xxxxxxxxxxxxxxxxxxxxx-----END PGP MESSAGE-----\",\n  \"hash\": \"8d4d3f10e70960710fb95ec53719d306a6b1a779057a887ede073eaf48f81db8\",\n  \"sender\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::11112288600\",\n  \"reference\": \"\"\n}"
             }
           },
           "400":{
@@ -746,11 +741,11 @@
           "description":"The Participant Identifier."
         }
       },
-      "required":[
+      "required": [
         "participantId"
       ],
       "example":{
-        "participant_id":"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999",
+        "participantId":"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::9999999999",
         "key1":"value1",
         "keyN":"valueN"
       }
@@ -762,7 +757,7 @@
           "$ref":"#/definitions/EndpointEntity"
         }
       },
-      "required":[
+      "required": [
         "data"
       ]
     },
@@ -794,7 +789,7 @@
           "description":"The Participant Identifier."
         }
       },
-      "required":[
+      "required": [
         "participantId",
         "endpointType"
       ]
@@ -820,7 +815,7 @@
           "description":"TODO"
         }
       },
-      "required":[
+      "required": [
         "first",
         "last",
         "next",
@@ -897,16 +892,14 @@
           "properties":{
             "uuid":{
               "type":"string",
-              "description":"TODO"
+              "description":"some identifier, generated by receiving gateway"
             },
             "status":{
               "type":"string",
-              "description":"TODO. Check if array is possible.",
-              "enum":[
-                "processing",
-                "in_transit",
-                "sent",
-                "error"
+              "description":"Message delivery status",
+              "enum": [
+                "new",
+                "read"
               ]
             },
             "createdAt":{
@@ -921,10 +914,6 @@
             },
             "docId":{
               "type":"string",
-              "description":"TODO"
-            },
-            "isRead":{
-              "type":"boolean",
               "description":"TODO"
             },
             "metadata":{
