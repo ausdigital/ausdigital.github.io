@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0",
     "title": "Transaction Access Point Gateway (TAP-GW) interface specification.",
-    "description": "TAP-GW is an extension for TAP specification. Please check TAP API for information on how to post TAP messages. Dates: ISO8601 with timezone  Format: jsonapi.org."
+    "description": "TAP-GW is an extension for TAP specification. Check TAP API for information on how to post TAP messages. Dates: ISO8601 with timezone  Format: jsonapi.org."
   },
   "schemes": [
     "https"
@@ -21,13 +21,6 @@
     }
   },
   "parameters": {
-    "tapUrl": {
-      "name": "tapUrl",
-      "in": "path",
-      "description": "The Unique Endpoint Identifier.",
-      "required": true,
-      "type": "string"
-    },
     "endpointId": {
       "name": "endpointId",
       "in": "path",
@@ -431,66 +424,6 @@
         }
       }
     },
-    "/{tapUrl}/": {
-      "post": {
-        "tags": [
-          "TAP Message"
-        ],
-        "summary": "Post TAP message",
-        "description": "Post TAP message. Payload must be a TAP message with a signature. Authorization is not required. This is duplication of `ausdigital-tap` protocol method, tap-gw specification defines just the URL here. TODO - may be we shall move this definition completely to TAP section to avoid documentation duplication?",
-        "operationId": "postmessage",
-        "consumes": [
-          "multipart/form-data"
-        ],
-        "parameters": [
-          {
-            "$ref": "#/parameters/tapUrl"
-          },
-          {
-            "$ref": "#/parameters/contentTypeMPHeader"
-          },
-          {
-            "$ref": "#/parameters/message"
-          },
-          {
-            "$ref": "#/parameters/signature"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK. Message has been queued for validation and sending.",
-            "headers": {
-              "Content-Type": {
-                "type": "string",
-                "description": "Mandatory. Value - application/json."
-              },
-              "Date": {
-                "type": "string",
-                "description": "Mandatory. The date and time when the message was originated."
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/messageData"
-            },
-            "examples": {
-              "application/json": "{\n  \"data\":{\n    \"type\": \"TapMessage\",\n    \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n    \"attributes\":{\n        \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n        \"deliveryStatus\": \"transit\"\n    }\n  }\n}"
-            }
-          },
-          "400": {
-            "$ref": "#/responses/400-nofile"
-          },
-          "404": {
-            "$ref": "#/responses/404"
-          },
-          "415": {
-            "$ref": "#/responses/415"
-          },
-          "500": {
-            "$ref": "#/responses/500"
-          }
-        }
-      }
-    },
     "/messages/": {
       "get": {
         "tags": [
@@ -545,6 +478,57 @@
       }
     },
     "/messages/{messageId}/metadata/": {
+      "get": {
+        "tags": [
+          "Get TAP message metadata"
+        ],
+        "summary": "Get TAP message metadata.",
+        "description": "Only messages for the given user could be updated. Only `status` parameter of message could be updated.",
+        "operationId": "getMessageMetadata",
+        "parameters": [
+          {
+            "$ref": "#/parameters/contentTypeHeader"
+          },
+          {
+            "$ref": "#/parameters/messageId"
+          }
+        ],
+        "security": [
+          {
+            "JWTToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK.",
+            "headers": {
+              "Content-Type": {
+                "type": "string",
+                "description": "Mandatory. Value - application/json."
+              },
+              "Date": {
+                "type": "string",
+                "description": "Mandatory. The date and time that the message was originated."
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/messages"
+            },
+            "examples": {
+              "application/json": "{\n  \"links\":{\n      \"first\": \"https://tap-gw.testpoint.io/api/v1/messages/?page=1\",\n      \"last\": \"https://tap-gw.testpoint.io/api/v1/messages/?page=1\",\n      \"next\": null,\n      \"prev\": null\n  },\n  \"data\": [\n      {\n          \"type\": \"TapMessage\",\n          \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n          \"attributes\":{\n              \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n              \"status\": \"sent\",\n              \"createdAt\": \"2017-02-27T05:52:27.618962Z\",\n              \"sentAt\": \"2017-02-27T05:52:46.081878Z\",\n              \"docId\": \"QmXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n              \"status\": \"read\",\n              \"metadata\":{\n                  \"key1\": \"value2\",\n                  \"key2\": \"value2\"\n              },\n              \"endpointId\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\"\n          }\n      }\n  ],\n  \"meta\":{\n      \"pagination\":{\n          \"page\": 1,\n          \"pages\": 1,\n          \"count\": 1\n      }\n  }\n}"
+            }
+          },
+          "401": {
+            "$ref": "#/responses/401"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      },
       "patch": {
         "tags": [
           "Update TAP message metadata"
@@ -597,54 +581,6 @@
             },
             "examples": {
               "application/json": "{\n  \"links\":{\n      \"first\": \"https://tap-gw.testpoint.io/api/v1/messages/?page=1\",\n      \"last\": \"https://tap-gw.testpoint.io/api/v1/messages/?page=1\",\n      \"next\": null,\n      \"prev\": null\n  },\n  \"data\": [\n      {\n          \"type\": \"TapMessage\",\n          \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n          \"attributes\":{\n              \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\",\n              \"status\": \"sent\",\n              \"createdAt\": \"2017-02-27T05:52:27.618962Z\",\n              \"sentAt\": \"2017-02-27T05:52:46.081878Z\",\n              \"docId\": \"QmXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\n              \"status\": \"read\",\n              \"metadata\":{\n                  \"key1\": \"value2\",\n                  \"key2\": \"value2\"\n              },\n              \"endpointId\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX\"\n          }\n      }\n  ],\n  \"meta\":{\n      \"pagination\":{\n          \"page\": 1,\n          \"pages\": 1,\n          \"count\": 1\n      }\n  }\n}"
-            }
-          },
-          "400": {
-            "$ref": "#/responses/400"
-          },
-          "401": {
-            "$ref": "#/responses/401"
-          },
-          "404": {
-            "$ref": "#/responses/404"
-          },
-          "500": {
-            "$ref": "#/responses/500"
-          }
-        }
-      }
-    },
-    "/messages/{messageId}/deliveryStatus/": {
-      "get": {
-        "tags": [
-          "Get TAP message delivery status"
-        ],
-        "summary": "Get TAP message status",
-        "description": "Doesn't require any auth (knowing message ID is enough for access control).\n May be used for debug purposes, to see how messages are processed and possible errors. This is TAP protocol, TAP-GW just defines the URL format here.",
-        "operationId": "getmessageStatus",
-        "parameters": [
-          {
-            "$ref": "#/parameters/messageId"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK.",
-            "headers": {
-              "Content-Type": {
-                "type": "string",
-                "description": "Mandatory. Value - application/json."
-              },
-              "Date": {
-                "type": "string",
-                "description": "Mandatory. The date and time that the message was originated."
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/messageData"
-            },
-            "examples": {
-              "application/json": "{\n  \"data\":{\n    \"type\": \"TapMessage\",\n    \"id\": \"eb2b4035-a7f6-4bbb-b686-a06a250eaed5\",\n    \"attributes\":{\n      \"uuid\": \"eb2b4035-a7f6-4bbb-b686-a06a250eaed5\",\n      \"deliveryStatus\": \"error\",\n      \"createdAt\": \"2017-03-22T09:59:01.779081Z\",\n      \"error\": \"Can't get public key from DCP for given sender\"\n    }\n  }\n}\n|-\n{\n  \"data\":{\n    \"type\": \"TapMessage\",\n    \"id\": \"2467cde6-b58a-4890-919a-1b99db1b89e0\",\n    \"attributes\":{\n      \"uuid\": \"2467cde6-b58a-4890-919a-1b99db1b89e0\",\n      \"deliveryStatus\": \"sent\",\n      \"createdAt\": \"2017-03-14T11:59:04.111491Z\"\n    }\n  }\n}"
             }
           },
           "400": {

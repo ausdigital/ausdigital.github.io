@@ -151,7 +151,7 @@
 
 <p>Click <a href="swagger.json" target="_blank">here</a> to download the original swagger document.</p>
 
-        <p>TAP-GW is an extension for TAP specification. Please check TAP API for information on how to post TAP messages. Dates: ISO8601 with timezone  Format: jsonapi.org.</p>
+        <p>TAP-GW is an extension for TAP specification. Check TAP API for information on how to post TAP messages. Dates: ISO8601 with timezone  Format: jsonapi.org.</p>
 
     </div>
     <div class="swagger-base-url">[ Base url: <a href="///api/v1/" target="_blank">/api/v1/</a> ]</div>
@@ -1322,300 +1322,6 @@
     
     <div class="swagger-paths">
         
-            <h2 class="swagger-path" id="tap-message">TAP Message</h2>
-        
-        <div class="swagger-path-route">/{tapUrl}/</div>
-        
-        <div class="swagger-method swagger-method-post">
-            <h3 class="swagger-method-title">
-                <a href="#" class="swagger-method-link">
-                    <span class="swagger-method-name">POST</span>Post TAP message
-                </a>
-            </h3>
-            <div class="swagger-method-details">
-                <div class="swagger-method-description"><p>Post TAP message. Payload must be a TAP message with a signature. Authorization is not required. This is duplication of <code class="highlighter-rouge">ausdigital-tap</code> protocol method, tap-gw specification defines just the URL here. TODO - may be we shall move this definition completely to TAP section to avoid documentation duplication?</p>
-</div>
-                
-                <div class="swagger-parameters">
-                    <h4>Parameters</h4>
-                    <table class="swagger-parameters-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Located in</th>
-                                <th>Description</th>
-                                <th>Type</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                            <tr>
-                                <td>
-                                    
-                                    <span class="swagger-parameter-required">
-                                    
-                                    tapUrl
-                                    
-                                    </span>
-                                    
-                                </td>
-                                <td>path</td>
-                                <td>
-                                    <p>The Unique Endpoint Identifier.</p>
-
-                                    
-                                </td>
-                                <td>
-                                    
-                                    String
-                                    
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td>
-                                    
-                                    <span class="swagger-parameter-required">
-                                    
-                                    Content-Type
-                                    
-                                    </span>
-                                    
-                                </td>
-                                <td>header</td>
-                                <td>
-                                    <p>content type multipart/form-data header</p>
-
-                                    
-                                </td>
-                                <td>
-                                    
-                                    String
-                                    
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td>
-                                    
-                                    <span class="swagger-parameter-required">
-                                    
-                                    message
-                                    
-                                    </span>
-                                    
-                                </td>
-                                <td>formData</td>
-                                <td>
-                                    <p>The message file.</p>
-
-                                    
-                                </td>
-                                <td>
-                                    
-                                    File
-                                    
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td>
-                                    
-                                    <span class="swagger-parameter-required">
-                                    
-                                    signature
-                                    
-                                    </span>
-                                    
-                                </td>
-                                <td>formData</td>
-                                <td>
-                                    <p>The signature file.</p>
-
-                                    
-                                </td>
-                                <td>
-                                    
-                                    File
-                                    
-                                    
-                                </td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                </div>
-                
-                
-                <div class="swagger-response">
-                    <h4>Responses</h4>
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">200</div>
-                        <div class="swagger-response-description">
-                            <p>OK. Message has been queued for validation and sending.</p>
-
-                            
-                                <div class="swagger-response-headers">
-                                <h5>Headers:</h5>
-                                <table>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Type</th>
-                                    </tr>
-                                    
-                                        <tr>
-                                            <td>Content-Type</td>
-                                            <td><p>Mandatory. Value - application/json.</p>
-</td>
-                                            <td>string</td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td>Date</td>
-                                            <td><p>Mandatory. The date and time when the message was originated.</p>
-</td>
-                                            <td>string</td>
-                                        </tr>
-                                    
-                                </table>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div class="swagger-response-example-wrapper">
-                            
-                                
-                                    <span class="show-swagger-response-example">Example</span>
-                                    <div class="swagger-response-example">
-                                        
-                                        
-                                            
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TapMessage"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
-        </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"deliveryStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transit"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span></code></pre></figure>
-
-                                        
-                                    </div>
-                                
-                            
-                    </div>
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">400</div>
-                        <div class="swagger-response-description">
-                            <p>The server cannot or will not process the request due to something that is perceived to be a client error.</p>
-
-                            
-                        </div>
-                    </div>
-                    <div class="swagger-response-example-wrapper">
-                            
-                                
-                                    <span class="show-swagger-response-example">Example</span>
-                                    <div class="swagger-response-example">
-                                        
-                                        
-                                            
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-GW-0002"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No file was submitted."</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No file was for message parameter."</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-GW-0003"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No file was submitted."</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No file was for signature parameter."</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span></code></pre></figure>
-
-                                        
-                                    </div>
-                                
-                            
-                    </div>
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">404</div>
-                        <div class="swagger-response-description">
-                            <p>The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.</p>
-
-                            
-                        </div>
-                    </div>
-                    <div class="swagger-response-example-wrapper">
-                            
-                                
-                            
-                    </div>
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">415</div>
-                        <div class="swagger-response-description">
-                            <p>Unsupported media type (for example, used tried to send XML when endpoint accepts only JSON)</p>
-
-                            
-                        </div>
-                    </div>
-                    <div class="swagger-response-example-wrapper">
-                            
-                                
-                                    <span class="show-swagger-response-example">Example</span>
-                                    <div class="swagger-response-example">
-                                        
-                                        
-                                            
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-GW-0006"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unsupported media type."</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unsupported media type. Must be multipart/form-data."</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span></code></pre></figure>
-
-                                        
-                                    </div>
-                                
-                            
-                    </div>
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">500</div>
-                        <div class="swagger-response-description">
-                            <p>Internal server error, no extra actions from user required. No changes on the server have been made. User should retry request later or contact support.</p>
-
-                            
-                        </div>
-                    </div>
-                    <div class="swagger-response-example-wrapper">
-                            
-                                
-                            
-                    </div>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-    
-    <div class="swagger-paths">
-        
             <h2 class="swagger-path" id="tap-messages">TAP messages</h2>
         
         <div class="swagger-path-route">/messages/</div>
@@ -1861,9 +1567,244 @@
     
     <div class="swagger-paths">
         
-            <h2 class="swagger-path" id="update-tap-message-metadata">Update TAP message metadata</h2>
+            <h2 class="swagger-path" id="get-tap-message-metadata">Get TAP message metadata</h2>
         
         <div class="swagger-path-route">/messages/{messageId}/metadata/</div>
+        
+        <div class="swagger-method swagger-method-get">
+            <h3 class="swagger-method-title">
+                <a href="#" class="swagger-method-link">
+                    <span class="swagger-method-name">GET</span>Get TAP message metadata.
+                </a>
+            </h3>
+            <div class="swagger-method-details">
+                <div class="swagger-method-description"><p>Only messages for the given user could be updated. Only <code class="highlighter-rouge">status</code> parameter of message could be updated.</p>
+</div>
+                
+                <div class="swagger-parameters">
+                    <h4>Parameters</h4>
+                    <table class="swagger-parameters-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Located in</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    Content-Type
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>header</td>
+                                <td>
+                                    <p>content type header</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    messageId
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>path</td>
+                                <td>
+                                    <p>The Unique Message Identifier.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+                
+                <div class="swagger-response">
+                    <h4>Responses</h4>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">200</div>
+                        <div class="swagger-response-description">
+                            <p>OK.</p>
+
+                            
+                                <div class="swagger-response-headers">
+                                <h5>Headers:</h5>
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Type</th>
+                                    </tr>
+                                    
+                                        <tr>
+                                            <td>Content-Type</td>
+                                            <td><p>Mandatory. Value - application/json.</p>
+</td>
+                                            <td>string</td>
+                                        </tr>
+                                    
+                                        <tr>
+                                            <td>Date</td>
+                                            <td><p>Mandatory. The date and time that the message was originated.</p>
+</td>
+                                            <td>string</td>
+                                        </tr>
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"links"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tap-gw.testpoint.io/api/v1/messages/?page=1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tap-gw.testpoint.io/api/v1/messages/?page=1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"next"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TapMessage"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
+              </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sent"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-27T05:52:27.618962Z"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"sentAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-27T05:52:46.081878Z"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"docId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QmXXXXXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"metadata"</span><span class="p">:{</span><span class="w">
+                  </span><span class="nt">"key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value2"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"key2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value2"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="nt">"endpointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"pagination"</span><span class="p">:{</span><span class="w">
+          </span><span class="nt">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">401</div>
+                        <div class="swagger-response-description">
+                            <p>Correct authentication credentials were not provided: Invalid Authorization header, JWT Signature verification failed, No auth header</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-GW-0004"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authentication Required."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please provide a valid JWT from correct issuer"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="err">|-</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-GW-0005"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authentication Required."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please provide a valid JWT: Signature has expired"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">404</div>
+                        <div class="swagger-response-description">
+                            <p>The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">500</div>
+                        <div class="swagger-response-description">
+                            <p>Internal server error, no extra actions from user required. No changes on the server have been made. User should retry request later or contact support.</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                            
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
         
         <div class="swagger-method swagger-method-patch">
             <h3 class="swagger-method-title">
@@ -2041,247 +1982,6 @@
           </span><span class="nt">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
       </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span></code></pre></figure>
-
-                                        
-                                    </div>
-                                
-                            
-                    </div>
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">400</div>
-                        <div class="swagger-response-description">
-                            <p>The server cannot or will not process the request due to something that is perceived to be a client error.</p>
-
-                            
-                        </div>
-                    </div>
-                    <div class="swagger-response-example-wrapper">
-                            
-                                
-                                    <span class="show-swagger-response-example">Example</span>
-                                    <div class="swagger-response-example">
-                                        
-                                        
-                                            
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-GW-0001"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Malformed JSON."</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Could not decode the request body. The JSON was incorrect or not encoded as UTF-8."</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span></code></pre></figure>
-
-                                        
-                                    </div>
-                                
-                            
-                    </div>
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">401</div>
-                        <div class="swagger-response-description">
-                            <p>Correct authentication credentials were not provided: Invalid Authorization header, JWT Signature verification failed, No auth header</p>
-
-                            
-                        </div>
-                    </div>
-                    <div class="swagger-response-example-wrapper">
-                            
-                                
-                                    <span class="show-swagger-response-example">Example</span>
-                                    <div class="swagger-response-example">
-                                        
-                                        
-                                            
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-GW-0004"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authentication Required."</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please provide a valid JWT from correct issuer"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="err">|-</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-GW-0005"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authentication Required."</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Please provide a valid JWT: Signature has expired"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span></code></pre></figure>
-
-                                        
-                                    </div>
-                                
-                            
-                    </div>
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">404</div>
-                        <div class="swagger-response-description">
-                            <p>The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.</p>
-
-                            
-                        </div>
-                    </div>
-                    <div class="swagger-response-example-wrapper">
-                            
-                                
-                            
-                    </div>
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">500</div>
-                        <div class="swagger-response-description">
-                            <p>Internal server error, no extra actions from user required. No changes on the server have been made. User should retry request later or contact support.</p>
-
-                            
-                        </div>
-                    </div>
-                    <div class="swagger-response-example-wrapper">
-                            
-                                
-                            
-                    </div>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-    
-    <div class="swagger-paths">
-        
-            <h2 class="swagger-path" id="get-tap-message-delivery-status">Get TAP message delivery status</h2>
-        
-        <div class="swagger-path-route">/messages/{messageId}/deliveryStatus/</div>
-        
-        <div class="swagger-method swagger-method-get">
-            <h3 class="swagger-method-title">
-                <a href="#" class="swagger-method-link">
-                    <span class="swagger-method-name">GET</span>Get TAP message status
-                </a>
-            </h3>
-            <div class="swagger-method-details">
-                <div class="swagger-method-description"><p>Doesn’t require any auth (knowing message ID is enough for access control).
- May be used for debug purposes, to see how messages are processed and possible errors. This is TAP protocol, TAP-GW just defines the URL format here.</p>
-</div>
-                
-                <div class="swagger-parameters">
-                    <h4>Parameters</h4>
-                    <table class="swagger-parameters-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Located in</th>
-                                <th>Description</th>
-                                <th>Type</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                            <tr>
-                                <td>
-                                    
-                                    <span class="swagger-parameter-required">
-                                    
-                                    messageId
-                                    
-                                    </span>
-                                    
-                                </td>
-                                <td>path</td>
-                                <td>
-                                    <p>The Unique Message Identifier.</p>
-
-                                    
-                                </td>
-                                <td>
-                                    
-                                    String
-                                    
-                                    
-                                </td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                </div>
-                
-                
-                <div class="swagger-response">
-                    <h4>Responses</h4>
-                    
-                    <div class="swagger-responses-title">
-                        <div class="swagger-response-code">200</div>
-                        <div class="swagger-response-description">
-                            <p>OK.</p>
-
-                            
-                                <div class="swagger-response-headers">
-                                <h5>Headers:</h5>
-                                <table>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Type</th>
-                                    </tr>
-                                    
-                                        <tr>
-                                            <td>Content-Type</td>
-                                            <td><p>Mandatory. Value - application/json.</p>
-</td>
-                                            <td>string</td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td>Date</td>
-                                            <td><p>Mandatory. The date and time that the message was originated.</p>
-</td>
-                                            <td>string</td>
-                                        </tr>
-                                    
-                                </table>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div class="swagger-response-example-wrapper">
-                            
-                                
-                                    <span class="show-swagger-response-example">Example</span>
-                                    <div class="swagger-response-example">
-                                        
-                                        
-                                            
-<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TapMessage"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eb2b4035-a7f6-4bbb-b686-a06a250eaed5"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eb2b4035-a7f6-4bbb-b686-a06a250eaed5"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliveryStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-22T09:59:01.779081Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Can't get public key from DCP for given sender"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="err">|-</span><span class="w">
-</span><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TapMessage"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2467cde6-b58a-4890-919a-1b99db1b89e0"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
-      </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2467cde6-b58a-4890-919a-1b99db1b89e0"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"deliveryStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sent"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-14T11:59:04.111491Z"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
 
