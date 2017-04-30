@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="utf-8">
-    <title>Transaction Access Point Gateway (TAP-GW) interface specification - AusDigital Standards by ausdigital</title>
+    <title>Transaction Access Point Gateway (TAP-GW) interface specification. - AusDigital Standards by ausdigital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/style.css">
 
@@ -145,16 +145,16 @@
 
     
 
-    <h1 class="no-anchor">Transaction Access Point Gateway (TAP-GW) interface specification <span class="api-version">1.0</span></h1>
+    <h1 class="no-anchor">Transaction Access Point Gateway (TAP-GW) interface specification. <span class="api-version">1.0</span></h1>
     <div class="quick-description">
         <p>Click <a href="agilo.html" target="_blank">here</a> to see this specification in Agilo format with complete set of examples/models.</p>
 
 <p>Click <a href="swagger.json" target="_blank">here</a> to download the original swagger document.</p>
 
-        <p>‘Dates: ISO8601 with timezone  Format: jsonapi.org’</p>
+        <p>TAP-GW is an extension for TAP specification. Please check TAP API for information on how to post TAP messages. Dates: ISO8601 with timezone  Format: jsonapi.org.</p>
 
     </div>
-    <div class="swagger-base-url">[ Base url: <a href="//tap-gw.testpoint.io/api/v1/" target="_blank">tap-gw.testpoint.io/api/v1/</a> ]</div>
+    <div class="swagger-base-url">[ Base url: <a href="///api/v1/" target="_blank">/api/v1/</a> ]</div>
 
     
     <div class="swagger-paths">
@@ -172,43 +172,6 @@
             <div class="swagger-method-details">
                 <div class="swagger-method-description"><p>Only endpoints for the given user will be returned. Filtering by metadata is supported (pass metadata and values to filter by as GET parameters)</p>
 </div>
-                
-                <div class="swagger-parameters">
-                    <h4>Parameters</h4>
-                    <table class="swagger-parameters-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Located in</th>
-                                <th>Description</th>
-                                <th>Type</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                            <tr>
-                                <td>
-                                    
-                                    Authorization
-                                    
-                                </td>
-                                <td>header</td>
-                                <td>
-                                    <p>JWT value prepended by <code class="highlighter-rouge">JWT</code>, for example: <code class="highlighter-rouge">JWT X.Y.X</code>. You can get your JWT for testpoint.io services at https://idp.testpoint.io/. Theoretically, implementaion may support different authentication methods.</p>
-
-                                    
-                                </td>
-                                <td>
-                                    
-                                    String
-                                    
-                                    
-                                </td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                </div>
                 
                 
                 <div class="swagger-response">
@@ -279,7 +242,7 @@
       </span><span class="nt">"pagination"</span><span class="p">:{</span><span class="w">
           </span><span class="nt">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nt">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="err">X</span><span class="w">
+          </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
       </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
@@ -375,26 +338,6 @@
                             <tr>
                                 <td>
                                     
-                                    Authorization
-                                    
-                                </td>
-                                <td>header</td>
-                                <td>
-                                    <p>JWT value prepended by <code class="highlighter-rouge">JWT</code>, for example: <code class="highlighter-rouge">JWT X.Y.X</code>. You can get your JWT for testpoint.io services at https://idp.testpoint.io/. Theoretically, implementaion may support different authentication methods.</p>
-
-                                    
-                                </td>
-                                <td>
-                                    
-                                    String
-                                    
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td>
-                                    
                                     <span class="swagger-parameter-required">
                                     
                                     Content-Type
@@ -428,7 +371,7 @@
                                 </td>
                                 <td>body</td>
                                 <td>
-                                    <p>TODO</p>
+                                    <p>The Endpoint details as a body parameter.</p>
 
                                     
                                         <span class="show-swagger-parameters-example">Example</span>
@@ -649,26 +592,6 @@
                             <tr>
                                 <td>
                                     
-                                    Authorization
-                                    
-                                </td>
-                                <td>header</td>
-                                <td>
-                                    <p>JWT value prepended by <code class="highlighter-rouge">JWT</code>, for example: <code class="highlighter-rouge">JWT X.Y.X</code>. You can get your JWT for testpoint.io services at https://idp.testpoint.io/. Theoretically, implementaion may support different authentication methods.</p>
-
-                                    
-                                </td>
-                                <td>
-                                    
-                                    String
-                                    
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td>
-                                    
                                     <span class="swagger-parameter-required">
                                     
                                     endpointId
@@ -678,7 +601,7 @@
                                 </td>
                                 <td>path</td>
                                 <td>
-                                    <p>The unique endpoint ID.</p>
+                                    <p>The Unique Endpoint Identifier.</p>
 
                                     
                                 </td>
@@ -857,26 +780,6 @@
                             <tr>
                                 <td>
                                     
-                                    Authorization
-                                    
-                                </td>
-                                <td>header</td>
-                                <td>
-                                    <p>JWT value prepended by <code class="highlighter-rouge">JWT</code>, for example: <code class="highlighter-rouge">JWT X.Y.X</code>. You can get your JWT for testpoint.io services at https://idp.testpoint.io/. Theoretically, implementaion may support different authentication methods.</p>
-
-                                    
-                                </td>
-                                <td>
-                                    
-                                    String
-                                    
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td>
-                                    
                                     <span class="swagger-parameter-required">
                                     
                                     Content-Type
@@ -910,7 +813,7 @@
                                 </td>
                                 <td>path</td>
                                 <td>
-                                    <p>The unique endpoint ID.</p>
+                                    <p>The Unique Endpoint Identifier.</p>
 
                                     
                                 </td>
@@ -934,7 +837,7 @@
                                 </td>
                                 <td>body</td>
                                 <td>
-                                    <p>TODO</p>
+                                    <p>The TAP Endpoint metadata body parameter.</p>
 
                                     
                                         <span class="show-swagger-parameters-example">Example</span>
@@ -1159,26 +1062,6 @@
                             <tr>
                                 <td>
                                     
-                                    Authorization
-                                    
-                                </td>
-                                <td>header</td>
-                                <td>
-                                    <p>JWT value prepended by <code class="highlighter-rouge">JWT</code>, for example: <code class="highlighter-rouge">JWT X.Y.X</code>. You can get your JWT for testpoint.io services at https://idp.testpoint.io/. Theoretically, implementaion may support different authentication methods.</p>
-
-                                    
-                                </td>
-                                <td>
-                                    
-                                    String
-                                    
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td>
-                                    
                                     <span class="swagger-parameter-required">
                                     
                                     Content-Type
@@ -1212,7 +1095,7 @@
                                 </td>
                                 <td>path</td>
                                 <td>
-                                    <p>The unique endpoint ID.</p>
+                                    <p>The Unique Endpoint Identifier.</p>
 
                                     
                                 </td>
@@ -1236,7 +1119,7 @@
                                 </td>
                                 <td>body</td>
                                 <td>
-                                    <p>TODO</p>
+                                    <p>The TAP Endpoint metadata body parameter.</p>
 
                                     
                                         <span class="show-swagger-parameters-example">Example</span>
@@ -1441,7 +1324,7 @@
         
             <h2 class="swagger-path" id="tap-message">TAP Message</h2>
         
-        <div class="swagger-path-route">/endpoints/{endpointId}/message/</div>
+        <div class="swagger-path-route">/{tapUrl}/</div>
         
         <div class="swagger-method swagger-method-post">
             <h3 class="swagger-method-title">
@@ -1471,14 +1354,14 @@
                                     
                                     <span class="swagger-parameter-required">
                                     
-                                    endpointId
+                                    tapUrl
                                     
                                     </span>
                                     
                                 </td>
                                 <td>path</td>
                                 <td>
-                                    <p>The unique endpoint ID.</p>
+                                    <p>The Unique Endpoint Identifier.</p>
 
                                     
                                 </td>
@@ -1618,7 +1501,7 @@
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
         </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"in_transit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"sent"</span><span class="p">,</span><span class="w"> </span><span class="s2">"error"</span><span class="p">]</span><span class="w">
+        </span><span class="nt">"deliveryStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transit"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
@@ -1763,43 +1646,12 @@
                             <tr>
                                 <td>
                                     
-                                    Authorization
-                                    
-                                </td>
-                                <td>header</td>
-                                <td>
-                                    <p>JWT value prepended by <code class="highlighter-rouge">JWT</code>, for example: <code class="highlighter-rouge">JWT X.Y.X</code>. You can get your JWT for testpoint.io services at https://idp.testpoint.io/. Theoretically, implementaion may support different authentication methods.</p>
-
-                                    
-                                </td>
-                                <td>
-                                    
-                                    String
-                                    
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td>
-                                    
-                                    <span class="swagger-parameter-required">
-                                    
                                     status
                                     
-                                    </span>
-                                    
                                 </td>
                                 <td>query</td>
                                 <td>
-                                    <table>
-  <tbody>
-    <tr>
-      <td>new</td>
-      <td>read, receiving status</td>
-    </tr>
-  </tbody>
-</table>
+                                    <p>The TAP Message received status.</p>
 
                                     
                                 </td>
@@ -1814,16 +1666,12 @@
                             <tr>
                                 <td>
                                     
-                                    <span class="swagger-parameter-required">
-                                    
-                                    endpoint
-                                    
-                                    </span>
+                                    endpointId
                                     
                                 </td>
                                 <td>query</td>
                                 <td>
-                                    <p>TODO</p>
+                                    <p>The Unique Endpoint Identifier.</p>
 
                                     
                                 </td>
@@ -1847,7 +1695,7 @@
                                 </td>
                                 <td>query</td>
                                 <td>
-                                    <p>string representation</p>
+                                    <p>The string representation of Participant Identifier.</p>
 
                                     
                                 </td>
@@ -1922,16 +1770,16 @@
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
               </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sent"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"deliveryStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sent"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-27T05:52:27.618962Z"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"sentAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-27T05:52:46.081878Z"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"docId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QmXXXXXXXXXXXXXXXXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="err">'new'</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
               </span><span class="nt">"metadata"</span><span class="p">:{</span><span class="w">
                   </span><span class="nt">"key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value2"</span><span class="p">,</span><span class="w">
                   </span><span class="nt">"key2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value2"</span><span class="w">
               </span><span class="p">},</span><span class="w">
-              </span><span class="nt">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX"</span><span class="w">
+              </span><span class="nt">"endpointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX"</span><span class="w">
           </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -1939,7 +1787,7 @@
       </span><span class="nt">"pagination"</span><span class="p">:{</span><span class="w">
           </span><span class="nt">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nt">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="err">X</span><span class="w">
+          </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
       </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
@@ -2020,7 +1868,7 @@
         <div class="swagger-method swagger-method-patch">
             <h3 class="swagger-method-title">
                 <a href="#" class="swagger-method-link">
-                    <span class="swagger-method-name">PATCH</span>Update TAP message metadata
+                    <span class="swagger-method-name">PATCH</span>Update TAP message metadata.
                 </a>
             </h3>
             <div class="swagger-method-details">
@@ -2039,26 +1887,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
-                            <tr>
-                                <td>
-                                    
-                                    Authorization
-                                    
-                                </td>
-                                <td>header</td>
-                                <td>
-                                    <p>JWT value prepended by <code class="highlighter-rouge">JWT</code>, for example: <code class="highlighter-rouge">JWT X.Y.X</code>. You can get your JWT for testpoint.io services at https://idp.testpoint.io/. Theoretically, implementaion may support different authentication methods.</p>
-
-                                    
-                                </td>
-                                <td>
-                                    
-                                    String
-                                    
-                                    
-                                </td>
-                            </tr>
                             
                             <tr>
                                 <td>
@@ -2096,7 +1924,7 @@
                                 </td>
                                 <td>path</td>
                                 <td>
-                                    <p>The unique message ID.</p>
+                                    <p>The Unique Message Identifier.</p>
 
                                     
                                 </td>
@@ -2120,7 +1948,7 @@
                                 </td>
                                 <td>body</td>
                                 <td>
-                                    <p>TODO</p>
+                                    <p>The TAP message metadata body parameter.</p>
 
                                     
                                 </td>
@@ -2203,7 +2031,7 @@
                   </span><span class="nt">"key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value2"</span><span class="p">,</span><span class="w">
                   </span><span class="nt">"key2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value2"</span><span class="w">
               </span><span class="p">},</span><span class="w">
-              </span><span class="nt">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX"</span><span class="w">
+              </span><span class="nt">"endpointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX"</span><span class="w">
           </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -2211,7 +2039,7 @@
       </span><span class="nt">"pagination"</span><span class="p">:{</span><span class="w">
           </span><span class="nt">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="nt">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="err">X</span><span class="w">
+          </span><span class="nt">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
       </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
@@ -2330,9 +2158,9 @@
     
     <div class="swagger-paths">
         
-            <h2 class="swagger-path" id="get-tap-message-status">Get TAP message status</h2>
+            <h2 class="swagger-path" id="get-tap-message-delivery-status">Get TAP message delivery status</h2>
         
-        <div class="swagger-path-route">/messages/{messageId}/status/</div>
+        <div class="swagger-path-route">/messages/{messageId}/deliveryStatus/</div>
         
         <div class="swagger-method swagger-method-get">
             <h3 class="swagger-method-title">
@@ -2370,7 +2198,7 @@
                                 </td>
                                 <td>path</td>
                                 <td>
-                                    <p>The unique message ID.</p>
+                                    <p>The Unique Message Identifier.</p>
 
                                     
                                 </td>
@@ -2438,7 +2266,7 @@
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eb2b4035-a7f6-4bbb-b686-a06a250eaed5"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
       </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eb2b4035-a7f6-4bbb-b686-a06a250eaed5"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-22T09:59:01.779081Z"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Can't get public key from DCP for given sender"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -2451,7 +2279,7 @@
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2467cde6-b58a-4890-919a-1b99db1b89e0"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
       </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2467cde6-b58a-4890-919a-1b99db1b89e0"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sent"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deliveryStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sent"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-14T11:59:04.111491Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -2573,7 +2401,7 @@
         
             <h2 class="swagger-path" id="get-tap-message-body">Get TAP message body</h2>
         
-        <div class="swagger-path-route">/messages/{messageId}/</div>
+        <div class="swagger-path-route">/messages/{messageId}/body</div>
         
         <div class="swagger-method swagger-method-get">
             <h3 class="swagger-method-title">
@@ -2582,7 +2410,7 @@
                 </a>
             </h3>
             <div class="swagger-method-details">
-                <div class="swagger-method-description"><p>Returns TAP message body (JSON file with fields like ‘cyphertext’ and so on, see <code class="highlighter-rouge">ausdigital-tap</code>)</p>
+                <div class="swagger-method-description"><p>Returns TAP message body (JSON file with fields like “cyphertext” and so on, see <code class="highlighter-rouge">ausdigital-tap</code>)</p>
 </div>
                 
                 <div class="swagger-parameters">
@@ -2601,26 +2429,6 @@
                             <tr>
                                 <td>
                                     
-                                    Authorization
-                                    
-                                </td>
-                                <td>header</td>
-                                <td>
-                                    <p>JWT value prepended by <code class="highlighter-rouge">JWT</code>, for example: <code class="highlighter-rouge">JWT X.Y.X</code>. You can get your JWT for testpoint.io services at https://idp.testpoint.io/. Theoretically, implementaion may support different authentication methods.</p>
-
-                                    
-                                </td>
-                                <td>
-                                    
-                                    String
-                                    
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td>
-                                    
                                     <span class="swagger-parameter-required">
                                     
                                     messageId
@@ -2630,7 +2438,7 @@
                                 </td>
                                 <td>path</td>
                                 <td>
-                                    <p>The unique message ID.</p>
+                                    <p>The Unique Message Identifier.</p>
 
                                     
                                 </td>
