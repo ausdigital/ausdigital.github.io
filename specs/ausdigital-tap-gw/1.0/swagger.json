@@ -58,7 +58,7 @@
       "name": "participantId",
       "in": "query",
       "description": "The string representation of Participant Identifier.",
-      "required": true,
+      "required": false,
       "type": "string"
     },
     "message": {
