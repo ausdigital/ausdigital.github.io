@@ -149,7 +149,7 @@
     <div class="quick-description">
         
 
-        <p>The “Transaction Access Point” (TAP) specification defines a standard protocol for RESTful exchange of e-business documents between ledger systems</p>
+        <p>The “Transaction Access Point” (TAP) specification defines a standard protocol for RESTful exchange of e-business documents between ledger systems.</p>
 
     </div>
     <div class="swagger-base-url">[ Base url: <a href="///" target="_blank">/</a> ]</div>
@@ -157,9 +157,9 @@
     
     <div class="swagger-paths">
         
-            <h2 class="swagger-path" id="tap-message">TAP message</h2>
+            <h2 class="swagger-path" id="post-tap-message">Post TAP message</h2>
         
-        <div class="swagger-path-route">/{tapURL}</div>
+        <div class="swagger-path-route">/{tapUrl}</div>
         
         <div class="swagger-method swagger-method-post">
             <h3 class="swagger-method-title">
@@ -168,7 +168,7 @@
                 </a>
             </h3>
             <div class="swagger-method-details">
-                <div class="swagger-method-description"><p>Post TAP message. Payload must be a TAP message with a signature. TAP URL could be any valid URL</p>
+                <div class="swagger-method-description"><p>Post TAP message. Payload must be a TAP message with a signature, each in a separate formData parameter. TAP URL could be any valid URL.</p>
 </div>
                 
                 <div class="swagger-parameters">
@@ -189,14 +189,14 @@
                                     
                                     <span class="swagger-parameter-required">
                                     
-                                    tapURL
+                                    tapUrl
                                     
                                     </span>
                                     
                                 </td>
                                 <td>path</td>
                                 <td>
-                                    <p>Any TAP URL.</p>
+                                    <p>The any TAP URL.</p>
 
                                     
                                 </td>
@@ -220,7 +220,7 @@
                                 </td>
                                 <td>header</td>
                                 <td>
-                                    <p>content type multipart/form-data header</p>
+                                    <p>The content type multipart/form-data header.</p>
 
                                     
                                 </td>
@@ -275,6 +275,282 @@
                                 <td>
                                     
                                     File
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+                
+                <div class="swagger-response">
+                    <h4>Responses</h4>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">200</div>
+                        <div class="swagger-response-description">
+                            <p>OK. Message has been queued for validation and sending.</p>
+
+                            
+                                <div class="swagger-response-headers">
+                                <h5>Headers:</h5>
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Type</th>
+                                    </tr>
+                                    
+                                        <tr>
+                                            <td>Content-Type</td>
+                                            <td><p>Mandatory. Value - application/json.</p>
+</td>
+                                            <td>string</td>
+                                        </tr>
+                                    
+                                        <tr>
+                                            <td>Date</td>
+                                            <td><p>Mandatory. The date and time that the message was originated.</p>
+</td>
+                                            <td>string</td>
+                                        </tr>
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TapMessage"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"deliveryStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in_transit"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">400</div>
+                        <div class="swagger-response-description">
+                            <p>The server cannot or will not process the request due to something that is perceived to be a client error.</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-0004"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad Request."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing)."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">404</div>
+                        <div class="swagger-response-description">
+                            <p>The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-0001"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resource Not Found."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The origin server did not find a current representation of the target resource or is not willing to disclose that one exists."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">415</div>
+                        <div class="swagger-response-description">
+                            <p>Unsupported media type.</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-0002"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unsupported media type."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The origin server is refusing to service the request because the payload is in a format not supported by this method on the target resource."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">500</div>
+                        <div class="swagger-response-description">
+                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-0003"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The server encountered an unexpected condition that prevented it from fulfilling the request."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="swagger-paths">
+        
+            <h2 class="swagger-path" id="get-tap-message-delivery-status">Get TAP message delivery status</h2>
+        
+        <div class="swagger-path-route">/{tapUrl}/{messageId}/status</div>
+        
+        <div class="swagger-method swagger-method-get">
+            <h3 class="swagger-method-title">
+                <a href="#" class="swagger-method-link">
+                    <span class="swagger-method-name">GET</span>Get TAP message status
+                </a>
+            </h3>
+            <div class="swagger-method-details">
+                <div class="swagger-method-description"><p>Doesn’t require any auth (knowing message ID is enough for access control).
+ May be used for debug purposes, to see how messages are processed and possible errors. This is TAP protocol, TAP-GW just defines the URL format here.</p>
+</div>
+                
+                <div class="swagger-parameters">
+                    <h4>Parameters</h4>
+                    <table class="swagger-parameters-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Located in</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    tapUrl
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>path</td>
+                                <td>
+                                    <p>The any TAP URL.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    messageId
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>path</td>
+                                <td>
+                                    <p>The Unique Message Identifier.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
                                     
                                     
                                 </td>

@@ -3,55 +3,54 @@
   "info":{
     "version":"1.0",
     "title":"Transaction Access Point (TAP) protocol interfaces",
-    "description":"The \"Transaction Access Point\" (TAP) specification defines a standard protocol for RESTful exchange of e-business documents between ledger systems"
+    "description":"The \"Transaction Access Point\" (TAP) specification defines a standard protocol for RESTful exchange of e-business documents between ledger systems."
   },
-  "schemes": [
+  "schemes":[
     "https"
   ],
   "basePath":"/",
-  "produces": [
+  "produces":[
     "application/json"
   ],
-  "securityDefinitions":{
-    "JWTToken":{
-      "type":"apiKey",
-      "name":"Authorization",
-      "description":"JWT prepended by `JWT` string, for example: `JWT XXX`. You can get your JWT for testpoint.io services at https://idp.testpoint.io/.",
-      "in":"header"
-    }
-  },
   "parameters":{
-    "tapURL":{
-      "name":"tapURL",
+    "tapUrl":{
+      "name":"tapUrl",
       "in":"path",
-      "description":"Any TAP URL.",
-      "required": true,
+      "description":"The any TAP URL.",
+      "required":true,
       "type":"string"
     },
     "message":{
       "name":"message",
       "in":"formData",
       "description":"The message file. Must be a valid json document. Shema - https://github.com/ausdigital/ausdigital-tap/blob/master/docs/2.0/schema.json",
-      "required": true,
+      "required":true,
       "type":"file"
     },
     "signature":{
       "name":"signature",
       "in":"formData",
       "description":"The signature file.",
-      "required": true,
+      "required":true,
       "type":"file"
     },
     "contentTypeMPHeader":{
       "name":"Content-Type",
       "in":"header",
-      "description":"content type multipart/form-data header",
-      "required": true,
+      "description":"The content type multipart/form-data header.",
+      "required":true,
       "type":"string",
       "default":"multipart/form-data",
-      "enum": [
+      "enum":[
         "multipart/form-data"
       ]
+    },
+    "messageId":{
+      "name":"messageId",
+      "in":"path",
+      "description":"The Unique Message Identifier.",
+      "required":true,
+      "type":"string"
     }
   },
   "responses":{
@@ -93,25 +92,20 @@
     }
   },
   "paths":{
-    "/{tapURL}":{
+    "/{tapUrl}":{
       "post":{
-        "tags": [
-          "TAP message"
+        "tags":[
+          "Post TAP message"
         ],
         "summary":"Post TAP message to given TAP URL",
-        "description":"Post TAP message. Payload must be a TAP message with a signature. TAP URL could be any valid URL",
+        "description":"Post TAP message. Payload must be a TAP message with a signature, each in a separate formData parameter. TAP URL could be any valid URL.",
         "operationId":"postTAPMessage",
-        "consumes": [
+        "consumes":[
           "multipart/form-data"
         ],
-        "security": [
+        "parameters":[
           {
-            "JWTToken": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref":"#/parameters/tapURL"
+            "$ref":"#/parameters/tapUrl"
           },
           {
             "$ref":"#/parameters/contentTypeMPHeader"
@@ -137,7 +131,58 @@
               }
             },
             "schema":{
-              "$ref":"#/definitions/TAPMessageData"
+              "$ref":"#/definitions/messageData"
+            },
+            "examples":{
+              "application/json":"{\n  \"data\":{\n    \"type\": \"TapMessage\",\n    \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n    \"attributes\":{\n        \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n        \"deliveryStatus\": \"in_transit\"\n    }\n  }\n}"
+            }
+          },
+          "400":{
+            "$ref":"#/responses/400-nofile"
+          },
+          "404":{
+            "$ref":"#/responses/404"
+          },
+          "415":{
+            "$ref":"#/responses/415"
+          },
+          "500":{
+            "$ref":"#/responses/500"
+          }
+        }
+      }
+    },
+    "/{tapUrl}/{messageId}/status":{
+      "get":{
+        "tags":[
+          "Get TAP message delivery status"
+        ],
+        "summary":"Get TAP message status",
+        "description":"Doesn't require any auth (knowing message ID is enough for access control).\n May be used for debug purposes, to see how messages are processed and possible errors. This is TAP protocol, TAP-GW just defines the URL format here.",
+        "operationId":"getTAPMessageStatus",
+        "parameters":[
+          {
+            "$ref":"#/parameters/tapUrl"
+          },
+          {
+            "$ref":"#/parameters/messageId"
+          }
+        ],
+        "responses":{
+          "200":{
+            "description":"OK. Message has been queued for validation and sending.",
+            "headers":{
+              "Content-Type":{
+                "type":"string",
+                "description":"Mandatory. Value - application/json."
+              },
+              "Date":{
+                "type":"string",
+                "description":"Mandatory. The date and time that the message was originated."
+              }
+            },
+            "schema":{
+              "$ref":"#/definitions/messageData"
             },
             "examples":{
               "application/json":"{\n  \"data\":{\n    \"type\": \"TapMessage\",\n    \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n    \"attributes\":{\n        \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n        \"deliveryStatus\": \"in_transit\"\n    }\n  }\n}"
@@ -160,16 +205,16 @@
     }
   },
   "definitions":{
-    "TAPMessageData":{
+    "messageData":{
       "description":"The response to post a TAP message request.",
       "properties":{
         "data":{
-          "$ref":"#/definitions/TAPMessage"
+          "$ref":"#/definitions/message"
         }
       }
     },
-    "TAPMessage":{
-      "description":"The TAP Message.",
+    "message":{
+      "description":"The TAP Message model.",
       "properties":{
         "type":{
           "type":"string",
@@ -181,18 +226,26 @@
         },
         "attributes":{
           "type":"object",
-          "description":"The set of attributes to describe the Message.",
+          "description":"The TAP Message attributes.",
           "properties":{
             "uuid":{
               "type":"string",
-              "description":"The UUID attribute."
+              "description":"The unique identifier, generated by the receiving gateway."
             },
             "status":{
               "type":"string",
-              "description":"The Message status, one of the four values is allowed.",
-              "enum": [
+              "description":"The TAP Message status.",
+              "enum":[
+                "new",
+                "read"
+              ]
+            },
+            "deliveryStatus":{
+              "type":"string",
+              "description":"The TAP Message delivery status.",
+              "enum":[
                 "processing",
-                "in_transit",
+                "transit",
                 "sent",
                 "error"
               ]
@@ -209,15 +262,11 @@
             },
             "docId":{
               "type":"string",
-              "description":"The Document Identifier"
-            },
-            "isRead":{
-              "type":"boolean",
-              "description":"The flag to indicate if a message is read."
+              "description":"The TAP message document identifier."
             },
             "metadata":{
               "type":"object",
-              "description":"The additional metadata."
+              "description":"The TAP message metadata."
             }
           }
         }
