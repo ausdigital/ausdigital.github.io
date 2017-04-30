@@ -191,12 +191,17 @@
 
 <h2 id="goals">Goals</h2>
 
-<p>TBA.</p>
+<ul>
+  <li>To provide a clear and unambiguous specification for the exchange of invoices between any two business systems.</li>
+  <li>To ensure that there is sufficient business value to both the buyer (accounts payable automation) and the supplier (accounts receivable automation) so that there is a compelling buisness case for implementation.</li>
+</ul>
 
 <p>These are achieved by:</p>
 
 <ul>
-  <li>TBA.</li>
+  <li>A strong focus on the invoice state lifecycle and the interactions that change the state of an invoice - particularly the response documents from buyer to seller.</li>
+  <li>Coverage of all invoice types (invoice, debit note, credit note, adjustment invoice, RCTI, tax receipt)</li>
+  <li>A clear mapping from process context to document properties and business rules that are relevant to the process.</li>
 </ul>
 
 <h2 id="status">Status</h2>
@@ -310,6 +315,7 @@ in this document are to be interpreted as described in RFC 2119.</p>
   <li>an issue of a credit note against an existing invoice (profileID = creditnote) - also usually in response to a disputed status.</li>
   <li>an outright rejection of the invoice by the buyer which leads to a cancelled end-state.</li>
   <li>The “success” end state in all cases is “paid” - indicated by the receipt of a payment record from a bank reconciliation file (outside of the scope of this specification).</li>
+  <li>In some cases a received invoice may be invalid (ie unreadable or does not comply with mandatory business rules).  In that case, the invoice is rejected and the state becomes “invalid”.  The sender must fix and start again.</li>
 </ul>
 
 <h1 id="transport-layer-bindings">Transport Layer Bindings</h1>
@@ -320,8 +326,9 @@ in this document are to be interpreted as described in RFC 2119.</p>
 
 <ul>
   <li>The invoice state lifecycle defines the scope of an e-invoice “conversation”</li>
-  <li>There should be a unique identifier for each “conversation” and it MUST be placed into the TAP header “reference” field</li>
-  <li>The identifier SHOULD be a GUID but MAY be a URI of the form {mydomain}.{identifier} created by the initiator of the conversation.</li>
+  <li>There MUST be a unique identifier for each “conversation” and it MUST be placed into the TAP header “reference” field</li>
+  <li>The identifier MUST created by the initiator of the conversation</li>
+  <li>The identifier MAY be a business level identifier such as in invoice number so long as it is unique between buyer and seller (ie no other conversations with the same identifier can exist).</li>
   <li>The identifier MUST be maintained by the participating (buyer and seller) ledgers as the durable link between the business layer and messaging layer.</li>
 </ul>
 
