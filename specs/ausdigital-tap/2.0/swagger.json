@@ -134,7 +134,7 @@
               "$ref":"#/definitions/messageData"
             },
             "examples":{
-              "application/json":"{\n  \"data\":{\n    \"type\": \"TapMessage\",\n    \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n    \"attributes\":{\n        \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n        \"deliveryStatus\": \"in_transit\"\n    }\n  }\n}"
+              "application/json":"{\n  \"data\":{\n    \"type\": \"TapMessage\",\n    \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n    \"attributes\":{\n        \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n        \"deliveryStatus\": \"transit\"\n    }\n  }\n}"
             }
           },
           "400":{
@@ -185,11 +185,8 @@
               "$ref":"#/definitions/messageData"
             },
             "examples":{
-              "application/json":"{\n  \"data\":{\n    \"type\": \"TapMessage\",\n    \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n    \"attributes\":{\n        \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n        \"deliveryStatus\": \"in_transit\"\n    }\n  }\n}"
+              "application/json":"{\n  \"data\":{\n    \"type\": \"TapMessage\",\n    \"id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n    \"attributes\":{\n        \"uuid\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX\",\n        \"deliveryStatus\": \"transit\"\n    }\n  }\n}"
             }
-          },
-          "400":{
-            "$ref":"#/responses/400-nofile"
           },
           "404":{
             "$ref":"#/responses/404"

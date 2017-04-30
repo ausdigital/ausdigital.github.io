@@ -24,7 +24,7 @@
     "<span class=hljs-attribute>id</span>": <span class=hljs-value><span class=hljs-string>"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span></span>,
     "<span class=hljs-attribute>attributes</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>uuid</span>": <span class=hljs-value><span class=hljs-string>"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span></span>,
-      "<span class=hljs-attribute>deliveryStatus</span>": <span class=hljs-value><span class=hljs-string>"in_transit"</span>
+      "<span class=hljs-attribute>deliveryStatus</span>": <span class=hljs-value><span class=hljs-string>"transit"</span>
     </span>}
   </span>}
 </span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
@@ -218,13 +218,13 @@
       </span>}
     </span>}
   </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div></div></div></div><div class=middle><div id=post-tap-message-post class="action post"><h4 class=action-heading><div class=name>Post TAP message to given TAP URL</div><a href=#post-tap-message-post class="method post">POST</a><code class=uri>/{tapUrl}</code></h4><p>Post TAP message. Payload must be a TAP message with a signature, each in a separate formData parameter. TAP URL could be any valid URL.<div class=title><strong>URI Parameters</strong></div><div><dl class=inner><dt style="padding:.2em 0">tapUrl<dd style="padding:.2em 0"><code>string</code>&nbsp;<span class=required>(required)</span>&nbsp;<p>The any TAP URL.</dl></div></div></div><hr class=split><div class=middle><section id=get-tap-message-delivery-status class=resource-group><h2 class=group-heading>Get TAP message delivery status <a href=#get-tap-message-delivery-status class=permalink>&para;</a></h2></section></div><div class=middle><div id=get-tap-message-delivery-status- class=resource></div></div><div class=right><div class=definition><span class="method get">GET</span>&nbsp;<span class=uri><span class=hostname></span>/<span class=hljs-attribute title=tapUrl>tapUrl</span>/<span class=hljs-attribute title=messageId>messageId</span>/status</span></div><div class=tabs><div class=tabs><div class=example-names><span>Responses</span><span class=tab-button>200</span><span class=tab-button>400</span><span class=tab-button>404</span><span class=tab-button>415</span><span class=tab-button>500</span></div><div class=tab><div><div class=inner><div class=description><p>OK. Message has been queued for validation and sending.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json,</span><br><span class=hljs-attribute>Date</span>: <span class=hljs-string></span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
+</span>}</code></pre><div style=height:1px></div></div></div></div></div></div></div><div class=middle><div id=post-tap-message-post class="action post"><h4 class=action-heading><div class=name>Post TAP message to given TAP URL</div><a href=#post-tap-message-post class="method post">POST</a><code class=uri>/{tapUrl}</code></h4><p>Post TAP message. Payload must be a TAP message with a signature, each in a separate formData parameter. TAP URL could be any valid URL.<div class=title><strong>URI Parameters</strong></div><div><dl class=inner><dt style="padding:.2em 0">tapUrl<dd style="padding:.2em 0"><code>string</code>&nbsp;<span class=required>(required)</span>&nbsp;<p>The any TAP URL.</dl></div></div></div><hr class=split><div class=middle><section id=get-tap-message-delivery-status class=resource-group><h2 class=group-heading>Get TAP message delivery status <a href=#get-tap-message-delivery-status class=permalink>&para;</a></h2></section></div><div class=middle><div id=get-tap-message-delivery-status- class=resource></div></div><div class=right><div class=definition><span class="method get">GET</span>&nbsp;<span class=uri><span class=hostname></span>/<span class=hljs-attribute title=tapUrl>tapUrl</span>/<span class=hljs-attribute title=messageId>messageId</span>/status</span></div><div class=tabs><div class=tabs><div class=example-names><span>Responses</span><span class=tab-button>200</span><span class=tab-button>404</span><span class=tab-button>415</span><span class=tab-button>500</span></div><div class=tab><div><div class=inner><div class=description><p>OK. Message has been queued for validation and sending.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json,</span><br><span class=hljs-attribute>Date</span>: <span class=hljs-string></span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
   "<span class=hljs-attribute>data</span>": <span class=hljs-value>{
     "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"TapMessage"</span></span>,
     "<span class=hljs-attribute>id</span>": <span class=hljs-value><span class=hljs-string>"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span></span>,
     "<span class=hljs-attribute>attributes</span>": <span class=hljs-value>{
       "<span class=hljs-attribute>uuid</span>": <span class=hljs-value><span class=hljs-string>"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX"</span></span>,
-      "<span class=hljs-attribute>deliveryStatus</span>": <span class=hljs-value><span class=hljs-string>"in_transit"</span>
+      "<span class=hljs-attribute>deliveryStatus</span>": <span class=hljs-value><span class=hljs-string>"transit"</span>
     </span>}
   </span>}
 </span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
@@ -285,38 +285,6 @@
               "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
               "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The TAP message metadata."</span>
             </span>}
-          </span>}
-        </span>}
-      </span>}
-    </span>}
-  </span>}
-</span>}</code></pre><div style=height:1px></div></div></div></div><div class=tab><div><div class=inner><div class=description><p>The server cannot or will not process the request due to something that is perceived to be a client error.</div><h5>Headers</h5><pre><code><span class=hljs-attribute>Content-Type</span>: <span class=hljs-string>application/json</span></code></pre><div style=height:1px></div><h5>Body</h5><pre><code>{
-  "<span class=hljs-attribute>errors</span>": <span class=hljs-value>[
-    {
-      "<span class=hljs-attribute>code</span>": <span class=hljs-value><span class=hljs-string>"TAP-0004"</span></span>,
-      "<span class=hljs-attribute>name</span>": <span class=hljs-value><span class=hljs-string>"Bad Request."</span></span>,
-      "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value><span class=hljs-string>"The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing)."</span>
-    </span>}
-  ]
-</span>}</code></pre><div style=height:1px></div><h5>Schema</h5><pre><code>{
-  "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"object"</span></span>,
-  "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-    "<span class=hljs-attribute>errors</span>": <span class=hljs-value>{
-      "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"array"</span></span>,
-      "<span class=hljs-attribute>items</span>": <span class=hljs-value>{
-        "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The standard error response definition."</span></span>,
-        "<span class=hljs-attribute>properties</span>": <span class=hljs-value>{
-          "<span class=hljs-attribute>code</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The code associated with the error."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>name</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The name category for the error."</span>
-          </span>}</span>,
-          "<span class=hljs-attribute>userMessage</span>": <span class=hljs-value>{
-            "<span class=hljs-attribute>type</span>": <span class=hljs-value><span class=hljs-string>"string"</span></span>,
-            "<span class=hljs-attribute>description</span>": <span class=hljs-value><span class=hljs-string>"The human readable error message."</span>
           </span>}
         </span>}
       </span>}
