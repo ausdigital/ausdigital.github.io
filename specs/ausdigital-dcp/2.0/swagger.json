@@ -104,19 +104,6 @@
     }
   },
   "responses": {
-    "201": {
-      "description": "The request has been fulfilled and has resulted in one or more new resources being created.",
-      "headers": {
-        "location": {
-          "type": "string",
-          "description": "The location of the created resource. Should match the resource location used to create it."
-        },
-        "date": {
-          "type": "string",
-          "description": "The date and time that the message was originated."
-        }
-      }
-    },
     "400": {
       "description": "The server cannot or will not process the request due to something that is perceived to be a client error.",
       "schema":{
@@ -166,15 +153,6 @@
       "description": "* Participant id {participant_id}} not available for given user - not business owner\n* Invalid auth header. No credentials provided.\n* Badly formed JWT\n* Invalid Authorization header. JWT Signature verification failed.\n",
       "schema": {
         "$ref":"#/definitions/errors"
-      }
-    },
-    "204-create": {
-      "description": "The resource already existed and nothing happened if the body was empty. If the body was not empty and the participant identifier matched the UR, the resource is updated.",
-      "headers": {
-        "date": {
-          "type": "string",
-          "description": "The date and time that the message was originated."
-        }
       }
     },
     "204-delete": {
