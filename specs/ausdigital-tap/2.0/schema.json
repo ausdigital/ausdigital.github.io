@@ -1,6 +1,6 @@
 {
   "title": "The TAP message body model.",
-  "id": "http://swagger.io/v2/schema.json#",
+  "id": "https://raw.githubusercontent.com/ausdigital/ausdigital-tap/master/docs/2.0/schema.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "required": [
