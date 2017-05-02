@@ -1,6 +1,31 @@
 {
-    "cyphertext": "string",
-    "hash": "string", 
-    "sender": "string", 
-    "reference": "string"
+  "title": "The TAP message body model.",
+  "id": "http://swagger.io/v2/schema.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "cyphertext",
+    "hash",
+    "sender",
+    "reference"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "cyphertext": {
+      "type": "string",
+      "description": "The TAP message cyphertext."
+    },
+    "hash": {
+      "type": "string",
+      "description": "The TAP message hash."
+    },
+    "sender": {
+      "type": "string",
+      "description": "The TAP message sender."
+    },
+    "reference": {
+      "type": "string",
+      "description": "The TAP message reference."
+    }
+  }
 }
