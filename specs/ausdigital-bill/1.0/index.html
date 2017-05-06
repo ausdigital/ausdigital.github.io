@@ -164,8 +164,10 @@
 <li class="toc-entry toc-h2"><a href="#change-process">Change Process</a></li>
 <li class="toc-entry toc-h2"><a href="#language">Language</a></li>
 <li class="toc-entry toc-h1"><a href="#billing-process">Billing Process</a></li>
+<li class="toc-entry toc-h2"><a href="#ausdigital-ubl-customization">AusDigital UBL Customization</a></li>
 <li class="toc-entry toc-h2"><a href="#invoice-document-profiles">Invoice Document Profiles</a></li>
-<li class="toc-entry toc-h2"><a href="#document-response-codes">Document Response Codes</a></li>
+<li class="toc-entry toc-h2"><a href="#application-response-document-profile-for-ausdigital-bill">Application Response Document Profile for AusDigital BILL</a></li>
+<li class="toc-entry toc-h2"><a href="#application-response-codes-for-ausdigital-bill">Application Response Codes for AusDigital BILL</a></li>
 <li class="toc-entry toc-h2"><a href="#state-lifecycle">State Lifecycle</a></li>
 <li class="toc-entry toc-h1"><a href="#transport-layer-bindings">Transport Layer Bindings</a></li>
 <li class="toc-entry toc-h2"><a href="#conversations">Conversations</a></li>
@@ -276,11 +278,13 @@ in this document are to be interpreted as described in RFC 2119.</p>
 
 <h1 id="billing-process">Billing Process</h1>
 
-<h2 id="invoice-document-profiles">Invoice Document Profiles</h2>
+<h2 id="ausdigital-ubl-customization">AusDigital UBL Customization</h2>
 
 <p>UBL CustomizationID is an identifier for a defined customization of UBL.</p>
 
-<p>For AusDigital BILL it is “digitalbusinesscouncil.com.au” (<code class="highlighter-rouge">"CustomizationID":"digitalbusinesscouncil.com.au"</code>).</p>
+<p>For AusDigital BILL it is “ausdigital.org” (<code class="highlighter-rouge">"CustomizationID":"ausdigital.org"</code>).</p>
+
+<h2 id="invoice-document-profiles">Invoice Document Profiles</h2>
 
 <p>The Invoice document is used in six different process contexts, indicated using the UBL ProfileID.</p>
 
@@ -295,15 +299,23 @@ in this document are to be interpreted as described in RFC 2119.</p>
 
 <p>The detailed business validation rules for each invoice profile are defined in <a href="#validation-rules">Validation Rules</a>.</p>
 
-<h2 id="document-response-codes">Document Response Codes</h2>
+<h2 id="application-response-document-profile-for-ausdigital-bill">Application Response Document Profile for AusDigital BILL</h2>
+
+<p>The Invoice document is used in six different process contexts, indicated using the UBL ProfileID.</p>
+
+<ul>
+  <li>Application response to AusDigital BILL Invoice (<code class="highlighter-rouge">"ProfileID":"bill-response-v1"</code>)</li>
+</ul>
+
+<h2 id="application-response-codes-for-ausdigital-bill">Application Response Codes for AusDigital BILL</h2>
 
 <p>A UBL document response provides a means for the receiver party to update the sender on the processing state of the invoice.  The set of valid document response codes depends on the business process identified by the ProcessID (which is the same as the customizationID in UBL instances) are</p>
 
 <ul>
-  <li>Acknowledged - confirms receipt of the invoice (but does not imply approval to pay).</li>
-  <li>Approved - means that the payer has approved the invoice for (future) payment in accordance with payment terms.</li>
-  <li>Disputed - means that the payer has not accepted the invoice and will dispute some or all of the invoice.</li>
-  <li>Rejected - means that the payer has rejected the entire invoice and will not be paying.</li>
+  <li><code class="highlighter-rouge">"responseCode":"acknowledged"</code> - confirms receipt of the invoice (but does not imply approval to pay).</li>
+  <li><code class="highlighter-rouge">"responseCode":"approved"</code> - means that the payer has approved the invoice for (future) payment in accordance with payment terms.</li>
+  <li><code class="highlighter-rouge">"responseCode":"disputed"</code> - means that the payer has not accepted the invoice and will dispute some or all of the invoice.</li>
+  <li><code class="highlighter-rouge">"responseCode":"rejected"</code> - means that the payer has rejected the entire invoice and will not be paying.</li>
 </ul>
 
 <h2 id="state-lifecycle">State Lifecycle</h2>
