@@ -164,11 +164,11 @@
 <li class="toc-entry toc-h2"><a href="#change-process">Change Process</a></li>
 <li class="toc-entry toc-h2"><a href="#language">Language</a></li>
 <li class="toc-entry toc-h1"><a href="#billing-process">Billing Process</a></li>
-<li class="toc-entry toc-h2"><a href="#ausdigital-ubl-customization">AusDigital UBL Customization</a></li>
+<li class="toc-entry toc-h2"><a href="#state-lifecycle">State Lifecycle</a></li>
+<li class="toc-entry toc-h1"><a href="#ubl-document-identifiers">UBL Document Identifiers</a></li>
+<li class="toc-entry toc-h2"><a href="#customizationid">CustomizationID</a></li>
 <li class="toc-entry toc-h2"><a href="#invoice-document-profiles">Invoice Document Profiles</a></li>
 <li class="toc-entry toc-h2"><a href="#application-response-document-profile-for-ausdigital-bill">Application Response Document Profile for AusDigital BILL</a></li>
-<li class="toc-entry toc-h2"><a href="#application-response-codes-for-ausdigital-bill">Application Response Codes for AusDigital BILL</a></li>
-<li class="toc-entry toc-h2"><a href="#state-lifecycle">State Lifecycle</a></li>
 <li class="toc-entry toc-h1"><a href="#transport-layer-bindings">Transport Layer Bindings</a></li>
 <li class="toc-entry toc-h2"><a href="#conversations">Conversations</a></li>
 <li class="toc-entry toc-h2"><a href="#attachments">Attachments</a></li>
@@ -278,45 +278,7 @@ in this document are to be interpreted as described in RFC 2119.</p>
 
 <h1 id="billing-process">Billing Process</h1>
 
-<h2 id="ausdigital-ubl-customization">AusDigital UBL Customization</h2>
-
-<p>UBL CustomizationID is an identifier for a defined customization of UBL.</p>
-
-<p>For AusDigital BILL it is “ausdigital.org” (<code class="highlighter-rouge">"CustomizationID":"ausdigital.org"</code>).</p>
-
-<h2 id="invoice-document-profiles">Invoice Document Profiles</h2>
-
-<p>The Invoice document is used in six different process contexts, indicated using the UBL ProfileID.</p>
-
-<ul>
-  <li>Standard invoice from seller to buyer (<code class="highlighter-rouge">"ProfileID":"bill-invoice-v1"</code>)</li>
-  <li>Updated standard invoice from seller to buyer that replaces a pervious invoice of the same ID (<code class="highlighter-rouge">"ProfileID":"bill-adjustment-v1"</code>)</li>
-  <li>Recipient created tax invoice from buyer to seller (<code class="highlighter-rouge">"ProfileID":"bill-rcti-v1"</code>)</li>
-  <li>Tax receipt sent from seller to buyer after payment has been made - usually for POS or online purchases (<code class="highlighter-rouge">"ProfileID":"bill-taxreceipt-v1"</code>)</li>
-  <li>Credit note sent from seller to buyer that references an earlier standard invoice (<code class="highlighter-rouge">"ProfileID":"bill-creditnote-v1"</code>)</li>
-  <li>Debit note sent from buyer to seller that references an earlier RCTI (<code class="highlighter-rouge">"ProfileID":"bill-debitnote-v1"</code>)</li>
-</ul>
-
-<p>The detailed business validation rules for each invoice profile are defined in <a href="#validation-rules">Validation Rules</a>.</p>
-
-<h2 id="application-response-document-profile-for-ausdigital-bill">Application Response Document Profile for AusDigital BILL</h2>
-
-<p>The Invoice document is used in six different process contexts, indicated using the UBL ProfileID.</p>
-
-<ul>
-  <li>Application response to AusDigital BILL Invoice (<code class="highlighter-rouge">"ProfileID":"bill-response-v1"</code>)</li>
-</ul>
-
-<h2 id="application-response-codes-for-ausdigital-bill">Application Response Codes for AusDigital BILL</h2>
-
-<p>A UBL document response provides a means for the receiver party to update the sender on the processing state of the invoice.  The set of valid document response codes depends on the business process identified by the ProcessID (which is the same as the customizationID in UBL instances) are</p>
-
-<ul>
-  <li><code class="highlighter-rouge">"responseCode":"acknowledged"</code> - confirms receipt of the invoice (but does not imply approval to pay).</li>
-  <li><code class="highlighter-rouge">"responseCode":"approved"</code> - means that the payer has approved the invoice for (future) payment in accordance with payment terms.</li>
-  <li><code class="highlighter-rouge">"responseCode":"disputed"</code> - means that the payer has not accepted the invoice and will dispute some or all of the invoice.</li>
-  <li><code class="highlighter-rouge">"responseCode":"rejected"</code> - means that the payer has rejected the entire invoice and will not be paying.</li>
-</ul>
+<p>The Ausdigital billing process is based on the internaltional UBL billing process and uses the UBL2.1 Invoice and document response schema.</p>
 
 <h2 id="state-lifecycle">State Lifecycle</h2>
 
@@ -334,6 +296,58 @@ in this document are to be interpreted as described in RFC 2119.</p>
   <li>an outright rejection of the invoice by the buyer which leads to a cancelled end-state.</li>
   <li>The “success” end state in all cases is “paid” - indicated by the receipt of a payment record from a bank reconciliation file (outside of the scope of this specification).</li>
   <li>In some cases a received invoice may be invalid (ie unreadable or does not comply with mandatory business rules).  In that case, the invoice is rejected and the state becomes “invalid”.  The sender must fix and start again.</li>
+</ul>
+
+<h1 id="ubl-document-identifiers">UBL Document Identifiers</h1>
+
+<h2 id="customizationid">CustomizationID</h2>
+
+<p>UBL CustomizationID is used to identify the authority that is responsible for the localisation of the UBL for a specific jusridiction or industry context.</p>
+
+<p>For all UBL documents exchanged in accordance with this BILL specification, the customizationID is always “ausdigital.org” (<code class="highlighter-rouge">"CustomizationID":"ausdigital.org"</code>).</p>
+
+<h2 id="invoice-document-profiles">Invoice Document Profiles</h2>
+
+<p>The same UBL 2.1 Invoice document is used in six different ausdigital process contexts, indicated using the UBL ProfileID.</p>
+
+<p>In all cases, the Schema reference is “urn:oasis:names:specification:ubl:schema:xsd:Invoice-2”</p>
+
+<ul>
+  <li>For XML syntax, this is the xmlns namesapce reference.</li>
+  <li>for JSON syntax, this value is carried in the “_D” element.</li>
+</ul>
+
+<p>The Allowed values for the UBL document “ProfileID” element are:</p>
+
+<ul>
+  <li>Standard invoice from seller to buyer (<code class="highlighter-rouge">"ProfileID":"bill-invoice-v1"</code>)</li>
+  <li>Updated standard invoice from seller to buyer that replaces a pervious invoice of the same ID (<code class="highlighter-rouge">"ProfileID":"bill-adjustment-v1"</code>)</li>
+  <li>Recipient created tax invoice from buyer to seller (<code class="highlighter-rouge">"ProfileID":"bill-rcti-v1"</code>)</li>
+  <li>Tax receipt sent from seller to buyer after payment has been made - usually for POS or online purchases (<code class="highlighter-rouge">"ProfileID":"bill-taxreceipt-v1"</code>)</li>
+  <li>Credit note sent from seller to buyer that references an earlier standard invoice (<code class="highlighter-rouge">"ProfileID":"bill-creditnote-v1"</code>)</li>
+  <li>Debit note sent from buyer to seller that references an earlier RCTI (<code class="highlighter-rouge">"ProfileID":"bill-debitnote-v1"</code>)</li>
+</ul>
+
+<p>The detailed business validation rules for each invoice profile are defined in <a href="#validation-rules">Validation Rules</a>.</p>
+
+<h2 id="application-response-document-profile-for-ausdigital-bill">Application Response Document Profile for AusDigital BILL</h2>
+
+<p>The UBL Application response document is used in many different process contexts.  In all cases, the Schema reference is “urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2”</p>
+
+<p>When used to indicate invoice status information in the BILL lifecycle, the applicationResponse document will always carry the the same profileID:</p>
+
+<ul>
+  <li>Application response to AusDigital BILL Invoice (<code class="highlighter-rouge">"ProfileID":"bill-response-v1"</code>)</li>
+</ul>
+
+<p>A UBL document response provides a means for the receiver party to update the sender on the processing state of the invoice.  The set of valid document response codes is defined by the state lifecyle.  The allowed values are:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">"responseCode":"invalid"</code> - returned by the recipient ledger if the invoice document does not validate.  Error details should be sent in the “description” element.</li>
+  <li><code class="highlighter-rouge">"responseCode":"acknowledged"</code> - confirms receipt of the invoice (but does not imply approval to pay).</li>
+  <li><code class="highlighter-rouge">"responseCode":"approved"</code> - means that the payer has approved the invoice for (future) payment in accordance with payment terms.</li>
+  <li><code class="highlighter-rouge">"responseCode":"disputed"</code> - means that the payer has not accepted the invoice and will dispute some or all of the invoice.</li>
+  <li><code class="highlighter-rouge">"responseCode":"rejected"</code> - means that the payer has rejected the entire invoice and will not be paying.</li>
 </ul>
 
 <h1 id="transport-layer-bindings">Transport Layer Bindings</h1>
