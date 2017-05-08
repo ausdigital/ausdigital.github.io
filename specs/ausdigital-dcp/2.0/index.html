@@ -289,49 +289,55 @@ RFC 2119.</p>
 
 <p>The Digital Capability Publisher is functionally equivalent to a REST version of the European OASIS standard “Service Metadata Publisher”. Users are expected to have used the <code class="highlighter-rouge">ausdigital-dcl/2</code> to discover the appropriate DCP service for a particular business. They then interact with the DCP using the REST protocol <a href="http://ausdigital.org/specs/ausdigital-dcp/2.0/api">documented here</a> to access a collection of ServiceMetadata entries for the business.</p>
 
-<p>The sample below shows a service metadata record example for a business with ABN 99999999999 that supports both standard invoice and RCTI processes. Fields will be explained in this document later.</p>
+<p>The sample below shows a service metadata record example for a business with ABN 99999999529 that supports both standard invoice and RCTI processes. Fields will be explained in this document later.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"ProcessList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"ProcessIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dbc-procid"</span><span class="p">,</span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice-1"</span><span class="p">},</span><span class="w">
-        </span><span class="nt">"ServiceEndpointList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"transportProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REST-POST"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"EndpointURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.myob.com/au/essentials/businesses/23601120601/purchase/invoice-1"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"RequireBusinessLevelSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"MinimumAuthenticationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"ServiceActivationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-01"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"ServiceExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-01"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"Certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TlRMTVNTUAABAAAAt7IY4gk...."</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"ServiceDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice service"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.myob.com/api/essentials-accounting/endpoints/"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"ProcessList"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nt">"ProcessIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"digitalbusinesscouncil.com.au"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bill-invoice-v1"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"ProcessIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dbc-procid"</span><span class="p">,</span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rcti-1"</span><span class="p">},</span><span class="w">
-        </span><span class="nt">"ServiceEndpointList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"transportProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REST-POST"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"EndpointURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.myob.com/au/essentials/businesses/23601120601/sales/invoice-1"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"RequireBusinessLevelSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"MinimumAuthenticationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"ServiceActivationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-01"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"ServiceExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-01"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"Certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TlRMTVNTUAABAAAAt7IY4gk...."</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"ServiceDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice service"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://developer.myob.com/api/essentials-accounting/endpoints/"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dbc::claims"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"ParticipantIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99999999999"</span><span class="w">
+      </span><span class="nt">"ServiceEndpointList"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+          </span><span class="nt">"ServiceActivationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-13"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"Certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TlRMTVNTUAABAAAAt7IY4gk...."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"EndpointURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://tap-gw.testpoint.io/api/endpoints/af892e86-9580-484f-ae7e-c4bd42c98eb7/message/"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"transportProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tap-v2.ausdigital.org"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"ServiceExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-17"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"RequireBusinessLevelSignature"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://ausdigital.org/specs/ausdigital-bill/1.0/"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"MinimumAuthenticationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"ServiceDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-GW Service Endpoint for AusDigital BILL Tax Invoice documents."</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"ProcessIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"digitalbusinesscouncil.com.au"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bill-rcti-v1"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"ServiceEndpointList"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+          </span><span class="nt">"ServiceActivationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-13"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"Certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TlRMTVNTUAABAAAAt7IY4gk...."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"EndpointURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://tap-gw.testpoint.io/api/endpoints/af892e86-9580-484f-ae7e-c4bd42c98eb7/message"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"transportProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tap-v2.ausdigital.org"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"ServiceExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-17"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"RequireBusinessLevelSignature"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://ausdigital.org/specs/ausdigital-bill/1.0/"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"MinimumAuthenticationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"ServiceDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-GW Service Endpoint for AusDigital BILL Invoice RCTI documents."</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"DocumentIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bdx-docid-qns"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bdx-docid-qns::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"ParticipantIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99999999529"</span><span class="w">
   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 </div>
 
