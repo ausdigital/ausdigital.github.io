@@ -176,7 +176,7 @@ Please note that JSON format differs from specification XML and has more data in
 <p>If you want to do any authenticated test requests then it’s better to use CURL, not Swaggerhub website.</p>
 
     </div>
-    <div class="swagger-base-url">[ Base url: <a href="//dcp.testpoint.io/" target="_blank">dcp.testpoint.io/</a> ]</div>
+    <div class="swagger-base-url">[ Base url: <a href="///" target="_blank">/</a> ]</div>
 
     
     <div class="swagger-paths">
@@ -297,13 +297,17 @@ Please note that JSON format differs from specification XML and has more data in
                                             
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
   </span><span class="nt">"ServiceMetadataReferenceCollection"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"at::atata"</span><span class="w">
+    </span><span class="s2">"bdx-docid-qns::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dbc::core-invoice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"digitalbusinesscouncil.com.au::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##UBL-2.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dbc::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##UBL-2.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dbc::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"Extension"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
   </span><span class="nt">"ParticipantIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51009286202"</span><span class="w">
+    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99999999529"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
 
@@ -509,31 +513,48 @@ Please note that JSON format differs from specification XML and has more data in
 <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
   </span><span class="nt">"ProcessList"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
       </span><span class="nt">"ProcessIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"at"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"atata"</span><span class="w">
+        </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"digitalbusinesscouncil.com.au"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bill-invoice-v1"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"ServiceEndpointList"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-          </span><span class="nt">"ServiceActivationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-06"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"Certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"EndpointURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ataat"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"transportProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"at"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"ServiceExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-10"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"RequireBusinessLevelSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"MinimumAuthenticationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"ServiceDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+          </span><span class="nt">"ServiceActivationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-13"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"Certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TlRMTVNTUAABAAAAt7IY4gk...."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"EndpointURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://tap-gw.testpoint.io/api/endpoints/af892e86-9580-484f-ae7e-c4bd42c98eb7/message/"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"transportProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tap-v2.ausdigital.org"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"ServiceExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-17"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"RequireBusinessLevelSignature"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://ausdigital.org/specs/ausdigital-bill/1.0/"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"MinimumAuthenticationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"ServiceDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-GW Service Endpoint for AusDigital BILL Tax Invoice documents."</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"ProcessIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"digitalbusinesscouncil.com.au"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bill-adjustment-v1"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"ServiceEndpointList"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+          </span><span class="nt">"ServiceActivationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-13"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"Certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TlRMTVNTUAABAAAAt7IY4gk...."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"EndpointURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://tap-gw.testpoint.io/api/endpoints/af892e86-9580-484f-ae7e-c4bd42c98eb7/message"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"transportProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tap-v2.ausdigital.org"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"ServiceExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-17"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"RequireBusinessLevelSignature"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://ausdigital.org/specs/ausdigital-bill/1.0/"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"MinimumAuthenticationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"ServiceDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-GW Service Endpoint for AusDigital BILL Invoice Adjustment documents."</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"DocumentIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"at"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"atata"</span><span class="w">
+    </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bdx-docid-qns"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"at::atata"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bdx-docid-qns::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"ParticipantIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51009286202"</span><span class="w">
+    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99999999529"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
 
@@ -735,32 +756,51 @@ Please note that JSON format differs from specification XML and has more data in
     </span><span class="nt">"ProcessList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"ProcessIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"at"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"atata"</span><span class="w">
+                </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"digitalbusinesscouncil.com.au"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bill-invoice-v1"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nt">"ServiceEndpointList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="nt">"ServiceActivationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-06"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"Certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"EndpointURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ataat"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"transportProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"at"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"ServiceExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-10"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"RequireBusinessLevelSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"MinimumAuthenticationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"ServiceDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="w">
+                    </span><span class="nt">"ServiceActivationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-13"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"Certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TlRMTVNTUAABAAAAt7IY4gk...."</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"EndpointURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://tap-gw.testpoint.io/api/endpoints/af892e86-9580-484f-ae7e-c4bd42c98eb7/message/"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"transportProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tap-v2.ausdigital.org"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"ServiceExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-17"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"RequireBusinessLevelSignature"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://ausdigital.org/specs/ausdigital-bill/1.0/"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"MinimumAuthenticationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"ServiceDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-GW Service Endpoint for AusDigital BILL Tax Invoice documents."</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"ProcessIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"digitalbusinesscouncil.com.au"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bill-adjustment-v1"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"ServiceEndpointList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"ServiceActivationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-13"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"Certificate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TlRMTVNTUAABAAAAt7IY4gk...."</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"EndpointURI"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://tap-gw.testpoint.io/api/endpoints/af892e86-9580-484f-ae7e-c4bd42c98eb7/message"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"transportProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tap-v2.ausdigital.org"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"ServiceExpirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-17"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"RequireBusinessLevelSignature"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"TechnicalInformationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://ausdigital.org/specs/ausdigital-bill/1.0/"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"MinimumAuthenticationLevel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"ServiceDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TAP-GW Service Endpoint for AusDigital BILL Invoice Adjustment documents."</span><span class="w">
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"DocumentIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"at"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"atata"</span><span class="w">
+        </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bdx-docid-qns"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"at::atata#"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bdx-docid-qns::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2#"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"ParticipantIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51009286202"</span><span class="w">
+        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99999999529"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span></code></pre></figure>
 
