@@ -194,7 +194,7 @@
               "$ref": "#/definitions/serviceGroup"
             },
             "examples": {
-              "application/json": "{\n  \"ServiceMetadataReferenceCollection\": [\n    \"bdx-docid-qns::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\",\n    \"dbc::core-invoice\",\n    \"digitalbusinesscouncil.com.au::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##UBL-2.1\",\n    \"dbc::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##UBL-2.1\",\n    \"dbc::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\"\n  ],\n  \"Name\": \"default\",\n  \"Extension\": {},\n  \"ParticipantIdentifier\": {\n    \"scheme\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151\",\n    \"value\": \"99999999529\"\n  }\n}"
+              "application/json": "{\n  \"ServiceMetadataReferenceCollection\": [\n    \"bdx-docid-qns::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\",\n    \"dbc::core-invoice\",\n    \"ausdigital.org::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##UBL-2.1\",\n    \"dbc::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##UBL-2.1\",\n    \"dbc::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\"\n  ],\n  \"Name\": \"default\",\n  \"Extension\": {},\n  \"ParticipantIdentifier\": {\n    \"scheme\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151\",\n    \"value\": \"99999999529\"\n  }\n}"
             }
           },
           "404": {
@@ -237,7 +237,7 @@
               "$ref": "#/definitions/serviceMetadata"
             },
             "examples": {
-              "application/json": "{\n  \"ProcessList\": [{\n      \"ProcessIdentifier\": {\n        \"scheme\": \"digitalbusinesscouncil.com.au\",\n        \"value\": \"bill-invoice-v1\"\n      },\n      \"ServiceEndpointList\": [{\n          \"ServiceActivationDate\": \"2017-04-13\",\n          \"Certificate\": \"TlRMTVNTUAABAAAAt7IY4gk....\",\n          \"EndpointURI\": \"http://tap-gw.testpoint.io/api/endpoints/af892e86-9580-484f-ae7e-c4bd42c98eb7/message/\",\n          \"transportProfile\": \"tap-v2.ausdigital.org\",\n          \"ServiceExpirationDate\": \"2017-04-17\",\n          \"RequireBusinessLevelSignature\": false,\n          \"TechnicalInformationUrl\": \"http://ausdigital.org/specs/ausdigital-bill/1.0/\",\n          \"MinimumAuthenticationLevel\": \"1\",\n          \"ServiceDescription\": \"TAP-GW Service Endpoint for AusDigital BILL Tax Invoice documents.\"\n        }\n      ]\n    }, {\n      \"ProcessIdentifier\": {\n        \"scheme\": \"digitalbusinesscouncil.com.au\",\n        \"value\": \"bill-adjustment-v1\"\n      },\n      \"ServiceEndpointList\": [{\n          \"ServiceActivationDate\": \"2017-04-13\",\n          \"Certificate\": \"TlRMTVNTUAABAAAAt7IY4gk....\",\n          \"EndpointURI\": \"http://tap-gw.testpoint.io/api/endpoints/af892e86-9580-484f-ae7e-c4bd42c98eb7/message\",\n          \"transportProfile\": \"tap-v2.ausdigital.org\",\n          \"ServiceExpirationDate\": \"2017-04-17\",\n          \"RequireBusinessLevelSignature\": false,\n          \"TechnicalInformationUrl\": \"http://ausdigital.org/specs/ausdigital-bill/1.0/\",\n          \"MinimumAuthenticationLevel\": \"2\",\n          \"ServiceDescription\": \"TAP-GW Service Endpoint for AusDigital BILL Invoice Adjustment documents.\"\n        }\n      ]\n    }\n  ],\n  \"DocumentIdentifier\": {\n    \"scheme\": \"bdx-docid-qns\",\n    \"value\": \"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\"\n  },\n  \"id\": \"bdx-docid-qns::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\",\n  \"ParticipantIdentifier\": {\n    \"scheme\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151\",\n    \"value\": \"99999999529\"\n  }\n}\n"
+              "application/json": "{\n  \"ProcessList\": [{\n      \"ProcessIdentifier\": {\n        \"scheme\": \"ausdigital.org\",\n        \"value\": \"bill-invoice-v1\"\n      },\n      \"ServiceEndpointList\": [{\n          \"ServiceActivationDate\": \"2017-04-13\",\n          \"Certificate\": \"TlRMTVNTUAABAAAAt7IY4gk....\",\n          \"EndpointURI\": \"http://tap-gw.testpoint.io/api/endpoints/af892e86-9580-484f-ae7e-c4bd42c98eb7/message/\",\n          \"transportProfile\": \"tap-v2.ausdigital.org\",\n          \"ServiceExpirationDate\": \"2017-04-17\",\n          \"RequireBusinessLevelSignature\": false,\n          \"TechnicalInformationUrl\": \"http://ausdigital.org/specs/ausdigital-bill/1.0/\",\n          \"MinimumAuthenticationLevel\": \"1\",\n          \"ServiceDescription\": \"TAP-GW Service Endpoint for AusDigital BILL Tax Invoice documents.\"\n        }\n      ]\n    }, {\n      \"ProcessIdentifier\": {\n        \"scheme\": \"ausdigital.org\",\n        \"value\": \"bill-adjustment-v1\"\n      },\n      \"ServiceEndpointList\": [{\n          \"ServiceActivationDate\": \"2017-04-13\",\n          \"Certificate\": \"TlRMTVNTUAABAAAAt7IY4gk....\",\n          \"EndpointURI\": \"http://tap-gw.testpoint.io/api/endpoints/af892e86-9580-484f-ae7e-c4bd42c98eb7/message\",\n          \"transportProfile\": \"tap-v2.ausdigital.org\",\n          \"ServiceExpirationDate\": \"2017-04-17\",\n          \"RequireBusinessLevelSignature\": false,\n          \"TechnicalInformationUrl\": \"http://ausdigital.org/specs/ausdigital-bill/1.0/\",\n          \"MinimumAuthenticationLevel\": \"2\",\n          \"ServiceDescription\": \"TAP-GW Service Endpoint for AusDigital BILL Invoice Adjustment documents.\"\n        }\n      ]\n    }\n  ],\n  \"DocumentIdentifier\": {\n    \"scheme\": \"bdx-docid-qns\",\n    \"value\": \"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\"\n  },\n  \"id\": \"bdx-docid-qns::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\",\n  \"ParticipantIdentifier\": {\n    \"scheme\": \"urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151\",\n    \"value\": \"99999999529\"\n  }\n}\n"
             }
           },
           "404": {
@@ -688,7 +688,7 @@
         "ServiceMetadataReferenceCollection": [
           "bdx-docid-qns::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2",
           "dbc::core-invoice",
-          "digitalbusinesscouncil.com.au::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##UBL-2.1",
+          "ausdigital.org::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##UBL-2.1",
           "dbc::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##UBL-2.1",
           "dbc::urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
         ],
@@ -715,7 +715,7 @@
       "example": {
         "ProcessList": [{
             "ProcessIdentifier": {
-              "scheme": "digitalbusinesscouncil.com.au",
+              "scheme": "ausdigital.org",
               "value": "bill-invoice-v1"
             },
             "ServiceEndpointList": [{
@@ -732,7 +732,7 @@
             ]
           }, {
             "ProcessIdentifier": {
-              "scheme": "digitalbusinesscouncil.com.au",
+              "scheme": "ausdigital.org",
               "value": "bill-adjustment-v1"
             },
             "ServiceEndpointList": [{
