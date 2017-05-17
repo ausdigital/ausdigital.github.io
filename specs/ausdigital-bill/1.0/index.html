@@ -343,11 +343,11 @@ in this document are to be interpreted as described in RFC 2119.</p>
 <p>A UBL document response provides a means for the receiver party to update the sender on the processing state of the invoice.  The set of valid document response codes is defined by the state lifecyle.  The allowed values are:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">"responseCode":"invalid"</code> - returned by the recipient ledger if the invoice document does not validate.  Error details should be sent in the “description” element.</li>
-  <li><code class="highlighter-rouge">"responseCode":"acknowledged"</code> - confirms receipt of the invoice (but does not imply approval to pay).</li>
-  <li><code class="highlighter-rouge">"responseCode":"approved"</code> - means that the payer has approved the invoice for (future) payment in accordance with payment terms.</li>
-  <li><code class="highlighter-rouge">"responseCode":"disputed"</code> - means that the payer has not accepted the invoice and will dispute some or all of the invoice.</li>
-  <li><code class="highlighter-rouge">"responseCode":"rejected"</code> - means that the payer has rejected the entire invoice and will not be paying.</li>
+  <li><code class="highlighter-rouge">"responseCode":"UT"</code> - invalid, returned by the recipient ledger if the invoice document does not validate.  Error details should be sent in the “description” element.</li>
+  <li><code class="highlighter-rouge">"responseCode":"AB"</code> - acknowledged, confirms receipt of the invoice (but does not imply approval to pay).</li>
+  <li><code class="highlighter-rouge">"responseCode":"AP"</code> - approved, means that the payer has approved the invoice for (future) payment in accordance with payment terms.</li>
+  <li><code class="highlighter-rouge">"responseCode":"DI"</code> - disputed, means that the payer has not accepted the invoice and will dispute some or all of the invoice.</li>
+  <li><code class="highlighter-rouge">"responseCode":"RE"</code> - rejected, means that the payer has rejected the entire invoice and will not be paying.</li>
 </ul>
 
 <h1 id="transport-layer-bindings">Transport Layer Bindings</h1>
