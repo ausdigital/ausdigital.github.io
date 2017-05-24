@@ -69,7 +69,7 @@
         "tags": [
           "DCL record management"
         ],
-        "summary": "Add or update an existing relationship between a participant and DCP for a current ParticipantID",
+        "summary": "Add or update a relationship between a participant and DCP for a current ParticipantID",
         "operationId": "addRelationshipByParticipant",
         "parameters": [
           {
