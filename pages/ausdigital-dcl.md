@@ -9,7 +9,7 @@ permalink: /ausdigital-dcl/
 The framework assumes that there could be multiple publishers of business meta-data and e-business capabilities. Therefore, a simple way to ask, "where can I find information about the e-business capabilities of business X ?" is needed.  That is the purpose of the DCL. It is essentially a DNS lookup (NAPTR Record) using a business identifier (eg ABN) as the query and it returns the URL of the detailed metadata about that business.  In a given economy, there is usually only one DCL - often operated by a government authority.
 
 * [DCL Github Repository](https://github.com/ausdigital/ausdigital-dcl)
-* [DCL Slack Channel](https://ausdigital.slack.com/messages/spec-dcl/)
+* [DCL Slack Channel](https://ausdigital.slack.com/messages/spec-dcl/) ([you must signup to ausdigital slack first](https://chat.ausdigital.org/))
 
 | Specification URL | Version | Status | API Definition | Issues List |
 | ----------------- | ------  | ------ | -------------- | -------- |

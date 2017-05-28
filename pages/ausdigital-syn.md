@@ -14,7 +14,7 @@ Version 1.0:
 * The XSD/Schematron/Genericode validation.
 
 * [SYN 1.0 GitHub repository](https://github.com/ausdigital/ausdigital-syn-v1/)
-* [SYN 1.0 Slack channel](https://ausdigital.slack.com/messages/spec-syn-v1/)
+* [SYN 1.0 Slack channel](https://ausdigital.slack.com/messages/spec-syn-v1/) ([you must signup to ausdigital slack first](https://chat.ausdigital.org/))
 
 Version 2.0:
 

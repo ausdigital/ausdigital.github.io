@@ -9,7 +9,7 @@ permalink: /ausdigital-idp/
 A federated set of one or more identity providers are the key source of trust for the network. This specification defines a standard taxonomy of OIDC claims and scopes, together with a set of identity assurance levels and a standard way to link identity claims.
 
 * [IDP GitHub repository](https://github.com/ausdigital/ausdigital-idp)
-* [IDP Slack channel](https://ausdigital.slack.com/messages/spec-idp/)
+* [IDP Slack channel](https://ausdigital.slack.com/messages/spec-idp/) ([you must signup to ausdigital slack first](https://chat.ausdigital.org/))
 
 | Specification URL | Version | Status | API Definition | Issues List |
 | ----------------- | ------  | ------ | -------------- | ----------- |

@@ -9,7 +9,7 @@ permalink: /ausdigital-dcp/
 The framework depends heavily on the ability to discover detailed service information for any given business identifier.  The DCP maintains a list of businesses, with a list of services for each business. Each service lists supported document formats and transport protocols and holds a digital certificate for message signing and encryption.
 
 * [DCP Github Repository](https://github.com/ausdigital/ausdigital-dcp)
-* [DCP Slack Channel](https://ausdigital.slack.com/messages/spec-dcp/)
+* [DCP Slack Channel](https://ausdigital.slack.com/messages/spec-dcp/) ([you must signup to ausdigital slack first](https://chat.ausdigital.org/))
 
 | Specification URL | Version | Status | API Definition |  Issues List |
 | ----------------- | ------- | ------ | -------------- |  ----------- |

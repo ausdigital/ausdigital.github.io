@@ -13,7 +13,7 @@ Significantly, the TAP layer can (and therefore should) be kept out of the ledge
 Supporting the TAP-GW specification helps to commoditise the network so that ledger software providers or their individual business customers can choose any provider and easily switch between them because they all provide the same gateway interface.
 
 * [TAP-GW GitHub repository](https://github.com/ausdigital/ausdigital-tap-gw)
-* [TAP-GW Slack channel](https://ausdigital.slack.com/messages/spec-tap-gw/)
+* [TAP-GW Slack channel](https://ausdigital.slack.com/messages/spec-tap-gw/) ([you must signup to ausdigital slack first](https://chat.ausdigital.org/))
 
 | Specification URL | Version | Status | API Definition |  Issues List |
 | ----------------- | ------  | ------ | -------------- |  ----------- |

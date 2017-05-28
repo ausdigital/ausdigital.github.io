@@ -9,7 +9,7 @@ permalink: /ausdigital-code/
 This specification defines a framework for the expression of context specific UBL code lists in JSON syntax as web resources. It also provides actual JSON web resources for the library of default UBL code lists such as currency codes, payment means, and so on.
  
  * [CODE GitHub repository](https://github.com/ausdigital/ausdigital-code)
- * [CODE Slack Channel](https://ausdigital.slack.com/messages/spec-code/)
+ * [CODE Slack Channel](https://ausdigital.slack.com/messages/spec-code/) ([you must signup to ausdigital slack first](https://chat.ausdigital.org/))
 
 
 | Specification URL | Version | Status | API Definition | Issues List |
