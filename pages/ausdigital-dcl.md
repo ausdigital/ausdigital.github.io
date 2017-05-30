@@ -13,7 +13,7 @@ The framework assumes that there could be multiple publishers of business meta-d
 
 | Specification URL | Version | Status | API Definition | Issues List |
 | ----------------- | ------  | ------ | -------------- | -------- |
-| [DCL 1.0 spec](http://ausdigital.org/specs/ausdigital-dcl/1.0) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [DCL 1.0 API](http://ausdigital.org/specs/ausdigital-dcl/1.0/api) | [DCL 1.0 Issues](https://github.com/ausdigital/ausdigital-dcl/issues)   |
+| [DCL 1.0 spec](http://ausdigital.org/specs/ausdigital-dcl/1.0) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)  | [DCL 1.0 API](http://swagger.testpoint.io?url=http://ausdigital.org/specs/ausdigital-dcl/1.0/swagger.json){:target="_blank"} | [DCL 1.0 Issues](https://github.com/ausdigital/ausdigital-dcl/issues)   |
 
 
 ## Known Implementations
