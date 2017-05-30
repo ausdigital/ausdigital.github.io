@@ -30,7 +30,7 @@ The intent of UBL Syntax 2.0 spec is to provide developers with a much simpler i
 | Specification URL | Version | Status | API Definition | Issues List |
 | ----------------- | ------  | ------ | -------------- | ----------- |
 | [SYN 1.0 spec](http://ausdigital.org/specs/ausdigital-syn/1.0/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | N/A | [SYN 1.0 Issues](https://github.com/ausdigital/ausdigital-syn-v1/issues)  |
-| [SYN 2.0 spec](http://ausdigital.org/specs/ausdigital-syn/2.0/) | 2.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [SYN 2.0 API](http://ausdigital.org/specs/ausdigital-syn/2.0/api)   | [SYN 2.0 Issues](https://github.com/ausdigital/ausdigital-syn/issues)  |
+| [SYN 2.0 spec](http://ausdigital.org/specs/ausdigital-syn/2.0/) | 2.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [SYN 2.0 API](http://swagger.testpoint.io?url=http://ausdigital.org/specs/ausdigital-syn/2.0/swagger.json){:target="_blank"}   | [SYN 2.0 Issues](https://github.com/ausdigital/ausdigital-syn/issues)  |
 
 ## Known Implementations
 
