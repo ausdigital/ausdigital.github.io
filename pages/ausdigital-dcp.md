@@ -14,7 +14,7 @@ The framework depends heavily on the ability to discover detailed service inform
 | Specification URL | Version | Status | API Definition |  Issues List |
 | ----------------- | ------- | ------ | -------------- |  ----------- |
 | [DCP 1.0 spec](http://ausdigital.org/specs/ausdigital-dcp/1.0/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [DCP 1.0 API](http://swagger.testpoint.io?url=http://ausdigital.org/specs/ausdigital-dcp/1.0/swagger.json){:target="_blank"}  | [DCP 1.0 Issues](https://github.com/ausdigital/ausdigital-dcp/issues)    |
-| [DCP 2.0 spec](http://ausdigital.org/specs/ausdigital-dcp/2.0/) | 2.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [DCP 2.0 API](http://swagger.testpoint.io?url=http://ausdigital.org/specs/ausdigital-dcl/2.0/swagger.json){:target="_blank"}  | [DCP 2.0 Issues](https://github.com/ausdigital/ausdigital-dcp/issues)    |
+| [DCP 2.0 spec](http://ausdigital.org/specs/ausdigital-dcp/2.0/) | 2.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [DCP 2.0 API](http://swagger.testpoint.io?url=http://ausdigital.org/specs/ausdigital-dcp/2.0/swagger.json){:target="_blank"}  | [DCP 2.0 Issues](https://github.com/ausdigital/ausdigital-dcp/issues)    |
 
 ## Known Implementations
 
