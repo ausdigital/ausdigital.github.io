@@ -6,9 +6,9 @@ permalink: /ausdigital-tap-gw/
 
 # The TAP Gateway specification
 
-The Transaction Access Point Gateway (TAP-GW) is an optional, standardised interface for integrating ledger systems with a TAP service layer. This is an optional extension to the TAP protocol that separation ledger systems from the TAP service layer.
+The Transaction Access Point Gateway (TAP-GW) is an optional, standardised interface for integrating ledger systems with a TAP service layer. This is an optional extension to the TAP protocol that separates ledger systems from the TAP service layer.
 
-Significantly, the TAP layer can (and therefore should) be kept out of the ledger service's trust zone. It does not need access to key material used to sign, encrypt or decrypt business messages. Be cleanly separating the TAP service from the ledger service, the TAP-GW protocol ensures the TAP is a neutral carrier of business messages.
+Significantly, the TAP layer can (and therefore should) be kept out of the ledger service's trust zone. It does not need access to key material used to sign, encrypt or decrypt business messages. By cleanly separating the TAP service from the ledger service, the TAP-GW protocol ensures the TAP is a neutral carrier of business messages.
 
 Supporting the TAP-GW specification helps to commoditise the network so that ledger software providers or their individual business customers can choose any provider and easily switch between them because they all provide the same gateway interface.
 
