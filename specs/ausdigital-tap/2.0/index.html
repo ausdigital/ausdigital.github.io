@@ -247,7 +247,7 @@ development at
 
 <h2 id="licence">Licence</h2>
 
-<p>Copyright (c) 2016 the Editor and Contributors. All rights reserved.</p>
+<p>Copyright (c) 2016, 2017 the Editor and Contributors. All rights reserved.</p>
 
 <p>This Specification is free software; you can redistribute it and/or modify it under the
 terms of the GNU General Public License as published by the Free Software Foundation;
@@ -339,14 +339,13 @@ and service endpoint addresses.</p>
 
 <h1 id="tap-protocol-details">TAP Protocol Details</h1>
 
-<p>The TAP Protocol is a very simple REST API. One business sends a message directly to another business’ TAP endpoint (discovered via the <code class="highlighter-rouge">ausdigital/DCP</code> protocol):</p>
+<p>The TAP Protocol is a very simple REST API. One business sends a message directly to another business’ TAP endpoint (discovered via the <code class="highlighter-rouge">ausdigital-dcp/1</code> protocol):</p>
 
 <ul>
   <li>The sender uses the HTTP POST verb (over HTTPS) to send the signed message to a TAP,</li>
   <li>The sender MUST use HTTPS,</li>
   <li>The TAP MUST reply with received message info or error response,</li>
-  <li>The TAP MAY include a HATEOS-style list of callback URLs in the response,</li>
-  <li>The TAP MAY notarize some non-sensitive but useful data.</li>
+  <li>The TAP MAY notarize messages that it receives (per <code class="highlighter-rouge">ausdigital-nry/1</code>).</li>
 </ul>
 
 <h2 id="receiving-a-business-message">Receiving a business message</h2>
