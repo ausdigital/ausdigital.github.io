@@ -167,6 +167,7 @@
 <li class="toc-entry toc-h2"><a href="#dependencies">Dependencies</a></li>
 <li class="toc-entry toc-h2"><a href="#tap-protocol-overview">TAP Protocol Overview</a></li>
 <li class="toc-entry toc-h1"><a href="#tap-protocol-details">TAP Protocol Details</a></li>
+<li class="toc-entry toc-h2"><a href="#receiving-a-business-message">Receiving a business message</a></li>
 <li class="toc-entry toc-h2"><a href="#sending-a-business-message">Sending a business message</a></li>
 <li class="toc-entry toc-h3"><a href="#sign-the-business-document">Sign the Business Document</a></li>
 <li class="toc-entry toc-h3"><a href="#create-hash-of-signed-business-document">Create hash of signed business document</a></li>
@@ -338,7 +339,7 @@ and service endpoint addresses.</p>
 
 <h1 id="tap-protocol-details">TAP Protocol Details</h1>
 
-<p>The TAP Protocol is a very simple REST API. One business sends a message directly to another business TAP endpoint (discovered via the DCP):</p>
+<p>The TAP Protocol is a very simple REST API. One business sends a message directly to another business’ TAP endpoint (discovered via the <code class="highlighter-rouge">ausdigital/DCP</code> protocol):</p>
 
 <ul>
   <li>The sender uses the HTTP POST verb (over HTTPS) to send the signed message to a TAP,</li>
@@ -346,6 +347,17 @@ and service endpoint addresses.</p>
   <li>The TAP MUST reply with received message info or error response,</li>
   <li>The TAP MAY include a HATEOS-style list of callback URLs in the response,</li>
   <li>The TAP MAY notarize some non-sensitive but useful data.</li>
+</ul>
+
+<h2 id="receiving-a-business-message">Receiving a business message</h2>
+
+<p>When a message is sent to a TAP endpoint, it MUST validate the message before delivering it to the recipient:</p>
+
+<ul>
+  <li>If the message does not validate against the JSON schema, return HTTP error (400).</li>
+  <li>If the sender participant identifier is not valid, an HTTP 200 may be returned but the message MUST NOT be delivered.</li>
+  <li>If the signing key for the message is not in the sender participant identifier’s published list of signing keys (and non-revoked at the time of signing, per <code class="highlighter-rouge">ausdigital/DCP</code> protocol), an HTTP 200 may be returned but the message MUST NOT be delivered.</li>
+  <li>If the message signature is not made with the signing key of the message, and HTTP 200 may be returned but the message MUST NOT be delivered.</li>
 </ul>
 
 <h2 id="sending-a-business-message">Sending a business message</h2>
