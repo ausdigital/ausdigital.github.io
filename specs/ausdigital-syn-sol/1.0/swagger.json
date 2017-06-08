@@ -1,0 +1,21 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This API supports UBL XML to UBL Solidity trasnformations and Validations of UBL Solidity documents",
+    "version" : "1.0",
+    "title" : "UBL Solidity Syntax 1.0 Transformation and Validation",
+    "contact" : {
+      "email" : "info@ausdigital.org"
+    },
+    "license" : {
+      "name" : "GPL 3.0",
+      "url" : "https://www.gnu.org/licenses/gpl-3.0.en.html"
+    }
+  },
+  "schemes" : [ "https", "http" ],
+  "basePath" : "/",
+  "paths" : {
+  },
+  "responses" : {
+  }
+}

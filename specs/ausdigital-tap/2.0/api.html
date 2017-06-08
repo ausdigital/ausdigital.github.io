@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Transaction Access Point (TAP) protocol interfaces - AusDigital Standards by ausdigital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+  <body id="outer-container">
+
+    <header class="header">
+    <div class="header-line">
+        <div class="wrapper">
+            <div id="mobile-menu-wrapper" class="mobile-menu">
+                <button id="hamburger-menu" class="hamburger-menu">
+                    <span>toggle menu</span>
+                </button>
+                <div id="mobile-menu" style="display: none;">
+                    
+                    <ul class="sidebar-menu">
+    
+    <li class="menu-title">Benefits</li>
+    <li><a  href="/business-case/">A Business Case</a></li>
+    <li class="menu-title">Technical Specs</li>
+    <li><a  href="/ausdigital-idp/">Identity Provider (IDP)</a></li>
+    <li><a  href="/ausdigital-dcl/">Capability Locator (DCL)</a></li>
+    <li><a  href="/ausdigital-dcp/">Capability Publisher (DCP)</a></li>
+    <li><a class="active" href="/ausdigital-tap/">Access Point (TAP)</a></li>
+    <li><a  href="/ausdigital-tap-gw/">TAP Gateway (TAP-GW)</a></li>
+    <li><a  href="/ausdigital-nry/">Notary (NRY)</a></li>
+    <li><a  href="/ausdigital-syn/">UBL Syntax (SYN)</a></li>
+    <li class="menu-title">Semantic Specs</li>
+    <li><a  href="/ausdigital-code/">Code Lists Mgmt (CODE)</a></li>
+    <li><a  href="/ausdigital-bill/">Billing Process (BILL)</a></li>
+    <li><a  href="/ausdigital-po/">Purchase Orders (PO)</a></li>
+    <li><a  href="/ausdigital-ship/">Fulfillment (SHIP)</a></li>
+    <li class="menu-title">Governance</li>
+    <li><a  href="/governance-model/">Governance Model</a></li>
+    <li class="menu-title">Community</li>
+    <li><a href="http://eepurl.com/ctZ6hf" target="_blank">Newsletter (subscribe)</a></li>
+    <li><a href="http://chat.ausdigital.org" target="_blank">Chat (join team)</a></li>
+    <li><a href="https://github.com/ausdigital/" target="_blank">GitHub</a></li>
+</ul>
+                </div>
+            </div>
+            <a href="/" class="logo"><img src="/images/logo.png" alt="AusDigital"><span>AusDigital.org</span></a>
+            <div class="header-search">
+                <script>
+                    (function() {
+                        var cx = '017892665596304004128:tj19kxwel_m';
+                        var gcse = document.createElement('script');
+                        gcse.type = 'text/javascript';
+                        gcse.async = true;
+                        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                        var s = document.getElementsByTagName('script')[0];
+                        s.parentNode.insertBefore(gcse, s);
+                    })();
+                </script>
+                <gcse:search></gcse:search>
+            </div>
+            
+        </div>
+    </div>
+    <div class="header-content">
+        <div class="wrapper">
+            <img src="/images/logo.png" alt="AusDigital">
+            <div class="header-text-box">
+                <div class="header-name">AusDigital Standards</div>
+                <div class="header-tagline">Business to Business data exchange open standards community </div>
+            </div>
+        </div>
+    </div>
+</header>
+<script type="text/javascript">
+    document.getElementById('hamburger-menu').onclick = function() {
+        var nf = document.getElementById('mobile-menu');
+
+        // Show and hide menu items when toggle is clicked
+        if(nf.style.display==='none') {
+            nf.style.display = 'block';
+        }
+        else {
+            nf.style.display = 'none';
+        }
+    };
+
+    window.addEventListener('click', function(e){
+        if (!document.getElementById('mobile-menu-wrapper').contains(e.target)){
+            document.getElementById('mobile-menu').style.display= 'none';
+        }
+    });
+</script>
+
+
+    <div class="main-wrapper">
+    <div class="main-content">
+        <div class="page-sidebar">
+            <ul class="sidebar-menu">
+    
+    <li class="menu-title">Benefits</li>
+    <li><a  href="/business-case/">A Business Case</a></li>
+    <li class="menu-title">Technical Specs</li>
+    <li><a  href="/ausdigital-idp/">Identity Provider (IDP)</a></li>
+    <li><a  href="/ausdigital-dcl/">Capability Locator (DCL)</a></li>
+    <li><a  href="/ausdigital-dcp/">Capability Publisher (DCP)</a></li>
+    <li><a class="active" href="/ausdigital-tap/">Access Point (TAP)</a></li>
+    <li><a  href="/ausdigital-tap-gw/">TAP Gateway (TAP-GW)</a></li>
+    <li><a  href="/ausdigital-nry/">Notary (NRY)</a></li>
+    <li><a  href="/ausdigital-syn/">UBL Syntax (SYN)</a></li>
+    <li class="menu-title">Semantic Specs</li>
+    <li><a  href="/ausdigital-code/">Code Lists Mgmt (CODE)</a></li>
+    <li><a  href="/ausdigital-bill/">Billing Process (BILL)</a></li>
+    <li><a  href="/ausdigital-po/">Purchase Orders (PO)</a></li>
+    <li><a  href="/ausdigital-ship/">Fulfillment (SHIP)</a></li>
+    <li class="menu-title">Governance</li>
+    <li><a  href="/governance-model/">Governance Model</a></li>
+    <li class="menu-title">Community</li>
+    <li><a href="http://eepurl.com/ctZ6hf" target="_blank">Newsletter (subscribe)</a></li>
+    <li><a href="http://chat.ausdigital.org" target="_blank">Chat (join team)</a></li>
+    <li><a href="https://github.com/ausdigital/" target="_blank">GitHub</a></li>
+</ul>
+        </div>
+        <div class="page-content">
+            <div class="swagger-content">
+
+    
+
+    <h1 class="no-anchor">Transaction Access Point (TAP) protocol interfaces <span class="api-version">1.0</span></h1>
+    <div class="quick-description">
+        
+
+        <p>The “Transaction Access Point” (TAP) specification defines a standard protocol for RESTful exchange of e-business documents between ledger systems.</p>
+
+    </div>
+    <div class="swagger-base-url">[ Base url: <a href="///" target="_blank">/</a> ]</div>
+
+    
+    <div class="swagger-paths">
+        
+            <h2 class="swagger-path" id="post-tap-message">Post TAP message</h2>
+        
+        <div class="swagger-path-route">/{tapUrl}</div>
+        
+        <div class="swagger-method swagger-method-post">
+            <h3 class="swagger-method-title">
+                <a href="#" class="swagger-method-link">
+                    <span class="swagger-method-name">POST</span>Post TAP message to given TAP URL
+                </a>
+            </h3>
+            <div class="swagger-method-details">
+                <div class="swagger-method-description"><p>Post TAP message. Payload must be a TAP message with a signature, each in a separate formData parameter. TAP URL could be any valid URL.</p>
+</div>
+                
+                <div class="swagger-parameters">
+                    <h4>Parameters</h4>
+                    <table class="swagger-parameters-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Located in</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    tapUrl
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>path</td>
+                                <td>
+                                    <p>The any TAP URL.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    Content-Type
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>header</td>
+                                <td>
+                                    <p>The content type multipart/form-data header.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    message
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>formData</td>
+                                <td>
+                                    <p>The message file. Must be a valid json document. Shema - https://github.com/ausdigital/ausdigital-tap/blob/master/docs/2.0/schema.json</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    File
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    signature
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>formData</td>
+                                <td>
+                                    <p>The signature file.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    File
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+                
+                <div class="swagger-response">
+                    <h4>Responses</h4>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">200</div>
+                        <div class="swagger-response-description">
+                            <p>OK. Message has been queued for validation and sending.</p>
+
+                            
+                                <div class="swagger-response-headers">
+                                <h5>Headers:</h5>
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Type</th>
+                                    </tr>
+                                    
+                                        <tr>
+                                            <td>Content-Type</td>
+                                            <td><p>Mandatory. Value - application/json.</p>
+</td>
+                                            <td>string</td>
+                                        </tr>
+                                    
+                                        <tr>
+                                            <td>Date</td>
+                                            <td><p>Mandatory. The date and time that the message was originated.</p>
+</td>
+                                            <td>string</td>
+                                        </tr>
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"TapMessage"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"tap-generated UUID of the message"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"documentHash"</span><span class="p">:</span><span class="s2">"proxied field 'hash' from message.json document"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"deliveryStatus"</span><span class="p">:</span><span class="s2">"processing"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">400</div>
+                        <div class="swagger-response-description">
+                            <p>The server cannot or will not process the request due to something that is perceived to be a client error.</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:[{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="s2">"TAP-0004"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Bad Request."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="s2">"The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing)."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">404</div>
+                        <div class="swagger-response-description">
+                            <p>The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:[{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="s2">"TAP-0001"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Resource Not Found."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="s2">"The origin server did not find a current representation of the target resource or is not willing to disclose that one exists."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">415</div>
+                        <div class="swagger-response-description">
+                            <p>Unsupported media type.</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:[{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="s2">"TAP-0002"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Unsupported media type."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="s2">"The origin server is refusing to service the request because the payload is in a format not supported by this method on the target resource."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">500</div>
+                        <div class="swagger-response-description">
+                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:[{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="s2">"TAP-0003"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Internal server error."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="s2">"The server encountered an unexpected condition that prevented it from fulfilling the request."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="swagger-paths">
+        
+            <h2 class="swagger-path" id="get-tap-message-delivery-status">Get TAP message delivery status</h2>
+        
+        <div class="swagger-path-route">/{tapUrl}/{messageId}/status</div>
+        
+        <div class="swagger-method swagger-method-get">
+            <h3 class="swagger-method-title">
+                <a href="#" class="swagger-method-link">
+                    <span class="swagger-method-name">GET</span>Get TAP message status
+                </a>
+            </h3>
+            <div class="swagger-method-details">
+                <div class="swagger-method-description"><p>Doesn’t require any auth (knowing message ID is enough for access control).
+ May be used for debug purposes, to see how messages are processed and possible errors. This is TAP protocol, TAP-GW just defines the URL format here.</p>
+</div>
+                
+                <div class="swagger-parameters">
+                    <h4>Parameters</h4>
+                    <table class="swagger-parameters-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Located in</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    tapUrl
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>path</td>
+                                <td>
+                                    <p>The any TAP URL.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    
+                                    <span class="swagger-parameter-required">
+                                    
+                                    messageId
+                                    
+                                    </span>
+                                    
+                                </td>
+                                <td>path</td>
+                                <td>
+                                    <p>The Unique Message Identifier.</p>
+
+                                    
+                                </td>
+                                <td>
+                                    
+                                    String
+                                    
+                                    
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+                
+                <div class="swagger-response">
+                    <h4>Responses</h4>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">200</div>
+                        <div class="swagger-response-description">
+                            <p>OK. Message has been queued for validation and sending.</p>
+
+                            
+                                <div class="swagger-response-headers">
+                                <h5>Headers:</h5>
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Type</th>
+                                    </tr>
+                                    
+                                        <tr>
+                                            <td>Content-Type</td>
+                                            <td><p>Mandatory. Value - application/json.</p>
+</td>
+                                            <td>string</td>
+                                        </tr>
+                                    
+                                        <tr>
+                                            <td>Date</td>
+                                            <td><p>Mandatory. The date and time that the message was originated.</p>
+</td>
+                                            <td>string</td>
+                                        </tr>
+                                    
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"TapMessage"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"tap-generated UUID of the message"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"attributes"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"documentHash"</span><span class="p">:</span><span class="s2">"proxied field 'hash' from message.json document"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"deliveryStatus"</span><span class="p">:</span><span class="s2">"processing"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">404</div>
+                        <div class="swagger-response-description">
+                            <p>The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:[{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="s2">"TAP-0001"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Resource Not Found."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="s2">"The origin server did not find a current representation of the target resource or is not willing to disclose that one exists."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">415</div>
+                        <div class="swagger-response-description">
+                            <p>Unsupported media type.</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:[{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="s2">"TAP-0002"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Unsupported media type."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="s2">"The origin server is refusing to service the request because the payload is in a format not supported by this method on the target resource."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                    <div class="swagger-responses-title">
+                        <div class="swagger-response-code">500</div>
+                        <div class="swagger-response-description">
+                            <p>Internal server error; no action required; may help to retry request later or contact support.</p>
+
+                            
+                        </div>
+                    </div>
+                    <div class="swagger-response-example-wrapper">
+                            
+                                
+                                    <span class="show-swagger-response-example">Example</span>
+                                    <div class="swagger-response-example">
+                                        
+                                        
+                                            
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:[{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="s2">"TAP-0003"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Internal server error."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"userMessage"</span><span class="p">:</span><span class="s2">"The server encountered an unexpected condition that prevented it from fulfilling the request."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+                                        
+                                    </div>
+                                
+                            
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+<script type="text/javascript">
+// Helpers
+
+var slice = Array.prototype.slice;
+
+function $(expr, parent) {
+    return typeof expr === "string" ? (parent || document).querySelector(expr) : expr || null;
+}
+
+function $$(expr, parent) {
+    return slice.call((parent || document).querySelectorAll(expr));
+}
+
+$.bind = function(element, o) {
+    if (element) {
+        for (var event in o) {
+            var callback = o[event];
+
+            event.split(/\s+/).forEach(function (event) {
+                element.addEventListener(event, callback);
+            });
+        }
+    }
+};
+
+$.toggleDetails = function (element) {
+    if (element.classList.contains('open')) {
+        element.classList.remove('open');
+    }
+    else {
+        element.classList.add('open');
+    }
+}
+
+// Initialization
+
+function init() {
+    $$('.swagger-method-title').forEach(function (title) {
+        $.bind(title, {
+            'click': function (e) {
+                var details = $('.swagger-method-details', title.parentNode);
+                $.toggleDetails(details);
+                e.preventDefault();
+            }
+        });
+    });
+
+    $$('.show-swagger-parameters-example').forEach(function (title) {
+        $.bind(title, {
+            'click': function (e) {
+                var details = $('.swagger-parameters-example', title.parentNode);
+                $.toggleDetails(details);
+                e.preventDefault();
+            }
+        });
+    });
+
+    $$('.show-swagger-response-example').forEach(function (title) {
+        $.bind(title, {
+            'click': function (e) {
+                console.log('tets');
+                var details = $('.swagger-response-example', title.parentNode);
+                $.toggleDetails(details);
+                e.preventDefault();
+            }
+        });
+    });
+}
+
+
+// DOM already loaded?
+if (document.readyState !== "loading") {
+    init();
+}
+else {
+    // Wait for it
+    document.addEventListener("DOMContentLoaded", init);
+}
+</script>
+<script src="/js/anchor.min.js"></script>
+<script>
+    anchors.add('h1, h2, h3, h4, h5');
+    anchors.remove('.no-anchor, .page-content > h1:first-child');
+</script>
+        </div>
+    </div>
+</div>
+
+    <footer class="footer">
+    <a href="/" class="footer-logo"><img src="/images/logo.png" alt="AusDigital"><span>AusDigital.org</span></a>
+    <ul class="footer-menu">
+        <li><a href="http://ausdigital.org/about">About AusDigital</a></li>
+        <li><a href="https://github.com/ausdigital" target="_blank">Github</a></li>
+        <li><a href="http://eepurl.com/ctZ6hf" target="_blank">Newsletter</a></li>
+        <li><a href="http://chat.ausdigital.org/" target="_blank">Join</a> <a href="https://ausdigital.slack.com/messages/general/" target="_blank">team</a></li>
+    </ul>
+    <div class="footer-credits">
+        This page was generated by GitHub Pages.
+        Comments, issues and suggestions are welcome in the <a href="https://github.com/ausdigital/ausdigital.github.io/issues/new">ticket system</a>.
+        Pull requests welcome in the <a href="https://github.com/ausdigital/ausdigital.github.io/">site repository</a>.
+    </div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79579364-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </body>
+</html>

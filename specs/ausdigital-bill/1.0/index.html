@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>AusDigital Billing Semantics (BILL) 1.0 Specification - AusDigital Standards by ausdigital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-line">
+        <div class="wrapper">
+            <div id="mobile-menu-wrapper" class="mobile-menu">
+                <button id="hamburger-menu" class="hamburger-menu">
+                    <span>toggle menu</span>
+                </button>
+                <div id="mobile-menu" style="display: none;">
+                    
+                    <ul class="sidebar-menu">
+    
+    <li class="menu-title">Benefits</li>
+    <li><a  href="/business-case/">A Business Case</a></li>
+    <li class="menu-title">Technical Specs</li>
+    <li><a  href="/ausdigital-idp/">Identity Provider (IDP)</a></li>
+    <li><a  href="/ausdigital-dcl/">Capability Locator (DCL)</a></li>
+    <li><a  href="/ausdigital-dcp/">Capability Publisher (DCP)</a></li>
+    <li><a  href="/ausdigital-tap/">Access Point (TAP)</a></li>
+    <li><a  href="/ausdigital-tap-gw/">TAP Gateway (TAP-GW)</a></li>
+    <li><a  href="/ausdigital-nry/">Notary (NRY)</a></li>
+    <li><a  href="/ausdigital-syn/">UBL Syntax (SYN)</a></li>
+    <li class="menu-title">Semantic Specs</li>
+    <li><a  href="/ausdigital-code/">Code Lists Mgmt (CODE)</a></li>
+    <li><a class="active" href="/ausdigital-bill/">Billing Process (BILL)</a></li>
+    <li><a  href="/ausdigital-po/">Purchase Orders (PO)</a></li>
+    <li><a  href="/ausdigital-ship/">Fulfillment (SHIP)</a></li>
+    <li class="menu-title">Governance</li>
+    <li><a  href="/governance-model/">Governance Model</a></li>
+    <li class="menu-title">Community</li>
+    <li><a href="http://eepurl.com/ctZ6hf" target="_blank">Newsletter (subscribe)</a></li>
+    <li><a href="http://chat.ausdigital.org" target="_blank">Chat (join team)</a></li>
+    <li><a href="https://github.com/ausdigital/" target="_blank">GitHub</a></li>
+</ul>
+                </div>
+            </div>
+            <a href="/" class="logo"><img src="/images/logo.png" alt="AusDigital"><span>AusDigital.org</span></a>
+            <div class="header-search">
+                <script>
+                    (function() {
+                        var cx = '017892665596304004128:tj19kxwel_m';
+                        var gcse = document.createElement('script');
+                        gcse.type = 'text/javascript';
+                        gcse.async = true;
+                        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                        var s = document.getElementsByTagName('script')[0];
+                        s.parentNode.insertBefore(gcse, s);
+                    })();
+                </script>
+                <gcse:search></gcse:search>
+            </div>
+            
+        </div>
+    </div>
+    <div class="header-content">
+        <div class="wrapper">
+            <img src="/images/logo.png" alt="AusDigital">
+            <div class="header-text-box">
+                <div class="header-name">AusDigital Standards</div>
+                <div class="header-tagline">Business to Business data exchange open standards community </div>
+            </div>
+        </div>
+    </div>
+</header>
+<script type="text/javascript">
+    document.getElementById('hamburger-menu').onclick = function() {
+        var nf = document.getElementById('mobile-menu');
+
+        // Show and hide menu items when toggle is clicked
+        if(nf.style.display==='none') {
+            nf.style.display = 'block';
+        }
+        else {
+            nf.style.display = 'none';
+        }
+    };
+
+    window.addEventListener('click', function(e){
+        if (!document.getElementById('mobile-menu-wrapper').contains(e.target)){
+            document.getElementById('mobile-menu').style.display= 'none';
+        }
+    });
+</script>
+
+<div class="main-wrapper">
+    <div class="main-content">
+        <div class="page-sidebar">
+            <ul class="sidebar-menu">
+    
+    <li class="menu-title">Benefits</li>
+    <li><a  href="/business-case/">A Business Case</a></li>
+    <li class="menu-title">Technical Specs</li>
+    <li><a  href="/ausdigital-idp/">Identity Provider (IDP)</a></li>
+    <li><a  href="/ausdigital-dcl/">Capability Locator (DCL)</a></li>
+    <li><a  href="/ausdigital-dcp/">Capability Publisher (DCP)</a></li>
+    <li><a  href="/ausdigital-tap/">Access Point (TAP)</a></li>
+    <li><a  href="/ausdigital-tap-gw/">TAP Gateway (TAP-GW)</a></li>
+    <li><a  href="/ausdigital-nry/">Notary (NRY)</a></li>
+    <li><a  href="/ausdigital-syn/">UBL Syntax (SYN)</a></li>
+    <li class="menu-title">Semantic Specs</li>
+    <li><a  href="/ausdigital-code/">Code Lists Mgmt (CODE)</a></li>
+    <li><a class="active" href="/ausdigital-bill/">Billing Process (BILL)</a></li>
+    <li><a  href="/ausdigital-po/">Purchase Orders (PO)</a></li>
+    <li><a  href="/ausdigital-ship/">Fulfillment (SHIP)</a></li>
+    <li class="menu-title">Governance</li>
+    <li><a  href="/governance-model/">Governance Model</a></li>
+    <li class="menu-title">Community</li>
+    <li><a href="http://eepurl.com/ctZ6hf" target="_blank">Newsletter (subscribe)</a></li>
+    <li><a href="http://chat.ausdigital.org" target="_blank">Chat (join team)</a></li>
+    <li><a href="https://github.com/ausdigital/" target="_blank">GitHub</a></li>
+</ul>
+        </div>
+        <div class="page-content docs-content">
+            <div class="spec-header">
+                
+                <ul>
+                    <li>Spec ID: <p>ausdigital-bill/1</p>
+</li>
+                    <li><p><img src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" alt="raw" /></p>
+</li>
+                    <li>Editor: <p><a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#115;&#116;&#101;&#118;&#101;&#110;&#046;&#099;&#097;&#112;&#101;&#108;&#108;&#064;&#103;&#111;&#115;&#111;&#117;&#114;&#099;&#101;&#046;&#099;&#111;&#109;&#046;&#097;&#117;">Steven Capell</a></p>
+</li>
+                    <li>Contributors: 
+</li>
+                </ul>
+            </div>
+            <div class="specs-toc">
+    <!--<div class="specs-toc-title">Table of contents</div>-->
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#introduction">Introduction</a></li>
+<li class="toc-entry toc-h2"><a href="#goals">Goals</a></li>
+<li class="toc-entry toc-h2"><a href="#status">Status</a></li>
+<li class="toc-entry toc-h2"><a href="#glossary">Glossary</a></li>
+<li class="toc-entry toc-h2"><a href="#licence">Licence</a></li>
+<li class="toc-entry toc-h2"><a href="#change-process">Change Process</a></li>
+<li class="toc-entry toc-h2"><a href="#language">Language</a></li>
+<li class="toc-entry toc-h1"><a href="#billing-process">Billing Process</a></li>
+<li class="toc-entry toc-h2"><a href="#state-lifecycle">State Lifecycle</a></li>
+<li class="toc-entry toc-h1"><a href="#ubl-document-identifiers">UBL Document Identifiers</a></li>
+<li class="toc-entry toc-h2"><a href="#customizationid">CustomizationID</a></li>
+<li class="toc-entry toc-h2"><a href="#invoice-document-profiles">Invoice Document Profiles</a></li>
+<li class="toc-entry toc-h2"><a href="#application-response-document-profile-for-ausdigital-bill">Application Response Document Profile for AusDigital BILL</a></li>
+<li class="toc-entry toc-h1"><a href="#transport-layer-bindings">Transport Layer Bindings</a></li>
+<li class="toc-entry toc-h2"><a href="#conversations">Conversations</a></li>
+<li class="toc-entry toc-h2"><a href="#attachments">Attachments</a></li>
+<li class="toc-entry toc-h1"><a href="#ubl-syntax-10-billing-document-specifications">UBL Syntax 1.0 Billing Document Specifications</a></li>
+<li class="toc-entry toc-h2"><a href="#invoice-document">Invoice Document</a></li>
+<li class="toc-entry toc-h2"><a href="#response-document">Response Document</a></li>
+<li class="toc-entry toc-h1"><a href="#ubl-syntax-20-billing-document-specifications">UBL Syntax 2.0 Billing Document Specifications</a></li>
+<li class="toc-entry toc-h2"><a href="#invoice-document-1">Invoice Document</a></li>
+<li class="toc-entry toc-h2"><a href="#response-document-1">Response Document</a></li>
+<li class="toc-entry toc-h1"><a href="#validation-rules">Validation Rules</a></li>
+<li class="toc-entry toc-h3"><a href="#validation-rules---common">Validation Rules - Common</a></li>
+<li class="toc-entry toc-h3"><a href="#validation-rules---profileidbill-invoice">Validation Rules - “ProfileID”:”bill-invoice”</a></li>
+<li class="toc-entry toc-h3"><a href="#validation-rules---profileidbill-rcti">Validation Rules - “ProfileID”:”bill-rcti”</a></li>
+<li class="toc-entry toc-h3"><a href="#validation-rules---profileidbill-taxreceipt">Validation Rules - “ProfileID”:”bill-taxreceipt”</a></li>
+<li class="toc-entry toc-h3"><a href="#validation-rules---profileidbill-adjustment">Validation Rules - “ProfileID”:”bill-adjustment”</a></li>
+<li class="toc-entry toc-h3"><a href="#validation-rules---profileidcreditnote">Validation Rules - “ProfileID”:”creditnote”</a></li>
+<li class="toc-entry toc-h3"><a href="#validation-rules---profileidbill-debitnote-v1">Validation Rules - “ProfileID”:”bill-debitnote-v1”</a></li>
+<li class="toc-entry toc-h1"><a href="#related-material">Related Material</a></li>
+</ul>
+</div>
+            <h2 id="introduction">Introduction</h2>
+
+<p>This document describes the AusDigital Billing Semantics (BILL) 1.0 Specification. TBA.</p>
+
+<h2 id="goals">Goals</h2>
+
+<ul>
+  <li>To provide a clear and unambiguous specification for the exchange of invoices between any two business systems.</li>
+  <li>To ensure that there is sufficient business value to both the buyer (accounts payable automation) and the supplier (accounts receivable automation) so that there is a compelling buisness case for implementation.</li>
+</ul>
+
+<p>These are achieved by:</p>
+
+<ul>
+  <li>A strong focus on the invoice state lifecycle and the interactions that change the state of an invoice - particularly the response documents from buyer to seller.</li>
+  <li>Coverage of all invoice types (invoice, debit note, credit note, adjustment invoice, RCTI, tax receipt)</li>
+  <li>A clear mapping from process context to document properties and business rules that are relevant to the process.</li>
+</ul>
+
+<h2 id="status">Status</h2>
+
+<p>This spec is an early draft for consultation.</p>
+
+<p>This specification aims to support the Australian Digital Business Council
+<a href="http://ausdigital.org">eInvoicing initiative</a>, and is under active
+development at
+<a href="https://github.com/ausdigital/ausdigital-bill">https://github.com/ausdigital/ausdigital-bill</a>.</p>
+
+<p>Comments and feedback are encouraged and welcome. Pull requests with improvements are welcome too.</p>
+
+<h2 id="glossary">Glossary</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Phrase</th>
+      <th>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ausdigital-bill/1</td>
+      <td>This specification.</td>
+    </tr>
+    <tr>
+      <td>ausdigital-code/1</td>
+      <td>Version 1 of the AusDigital <a href="http://ausdigital.org/ausdigital-code">Code Lists Management (CODE)</a> specification.</td>
+    </tr>
+    <tr>
+      <td>ausdigital-syn/1</td>
+      <td>Version 1 of the AusDigital <a href="http://ausdigital.org/ausdigital-syn">UBL Syntax(SYN)</a> specification.</td>
+    </tr>
+    <tr>
+      <td>ausdigital-syn/2</td>
+      <td>Version 2 of the AusDigital <a href="http://ausdigital.org/ausdigital-syn">UBL Syntax(SYN)</a> specification.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This service depends on - TBA.</p>
+
+<p>The TBA specification depends on this document. Note, TBA.</p>
+
+<h2 id="licence">Licence</h2>
+
+<p>Copyright (c) 2016 the Editor and Contributors. All rights reserved.</p>
+
+<p>This Specification is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software Foundation; 
+either version 3 of the License, or (at your option) any later version.</p>
+
+<p>This Specification is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE. See the GNU General Public License for more details.</p>
+
+<p>You should have received a copy of the GNU General Public License along with this program;
+if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+
+<h2 id="change-process">Change Process</h2>
+
+<p>This document is governed by the <a href="http://rfc.unprotocols.org/spec:2/COSS/">2/COSS</a> (COSS).</p>
+
+<h2 id="language">Language</h2>
+
+<p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” 
+in this document are to be interpreted as described in RFC 2119.</p>
+
+<h1 id="billing-process">Billing Process</h1>
+
+<p>The Ausdigital billing process is based on the internaltional UBL billing process and uses the UBL2.1 Invoice and document response schema.</p>
+
+<h2 id="state-lifecycle">State Lifecycle</h2>
+
+<p>The diagram shows the allowed set of states for an invoice as understood by both parties in the collaborative process.  Every transition from one state to another is triggered by the exchange of a business message - which could be either an invoice (one of six profiles) or a response document (with one of four response codes).</p>
+
+<p><img src="./Billing-StateLifecycle.png" alt="Billing State Lifecycle" /></p>
+
+<ul>
+  <li>The TaxReceipt has the simplest lifecycle because it is just a record of a previous payment and so there is only a single invoice (<code class="highlighter-rouge">"ProfileID":"bill-taxreceipt-v1"</code>) sent from seller to buyer and the state is “paid”.  No document response needed.</li>
+  <li>The receipt of an RCTI (<code class="highlighter-rouge">"ProfileID":"bill-rcti-v1"</code>) by a seller from a buyer takes the state directly to “approved” because this is a payer initiated transaction.  However the payer may subsequently send an invoice (<code class="highlighter-rouge">"ProfileID":"bill-debitnote-v1"</code>) to make an adjustment to the rcti prior to eventual payment is accordance with payment terms.</li>
+  <li>The standard invoice that is a demand for future payment from seller to buyer is the most complex lifecycle because there can be</li>
+  <li>various response documents indicating buyer processing status (acknowledged, approved, disputed, rejected)</li>
+  <li>a re-issue of the invoice with changes (<code class="highlighter-rouge">"ProfileID":"bill-adjustment-v1"</code>) from seller to buyer - usually in response to a disputed status.</li>
+  <li>an issue of a credit note against an existing invoice (<code class="highlighter-rouge">"ProfileID":"bill-creditnote-v1"</code>) - also usually in response to a disputed status.</li>
+  <li>an outright rejection of the invoice by the buyer which leads to a cancelled end-state.</li>
+  <li>The “success” end state in all cases is “paid” - indicated by the receipt of a payment record from a bank reconciliation file (outside of the scope of this specification).</li>
+  <li>In some cases a received invoice may be invalid (ie unreadable or does not comply with mandatory business rules).  In that case, the invoice is rejected and the state becomes “invalid”.  The sender must fix and start again.</li>
+</ul>
+
+<h1 id="ubl-document-identifiers">UBL Document Identifiers</h1>
+
+<h2 id="customizationid">CustomizationID</h2>
+
+<p>UBL CustomizationID is used to identify the authority that is responsible for the localisation of the UBL for a specific jusridiction or industry context.</p>
+
+<p>For all UBL documents exchanged in accordance with this BILL specification, the customizationID is always “ausdigital.org” (<code class="highlighter-rouge">"CustomizationID":"ausdigital.org"</code>).</p>
+
+<h2 id="invoice-document-profiles">Invoice Document Profiles</h2>
+
+<p>The same UBL 2.1 Invoice document is used in six different ausdigital process contexts, indicated using the UBL ProfileID.</p>
+
+<p>In all cases, the Schema reference is “urn:oasis:names:specification:ubl:schema:xsd:Invoice-2”</p>
+
+<ul>
+  <li>For XML syntax, this is the xmlns namesapce reference.</li>
+  <li>for JSON syntax, this value is carried in the “_D” element.</li>
+</ul>
+
+<p>The Allowed values for the UBL document “ProfileID” element are:</p>
+
+<ul>
+  <li>Standard invoice from seller to buyer (<code class="highlighter-rouge">"ProfileID":"bill-invoice-v1"</code>)</li>
+  <li>Updated standard invoice from seller to buyer that replaces a pervious invoice of the same ID (<code class="highlighter-rouge">"ProfileID":"bill-adjustment-v1"</code>)</li>
+  <li>Recipient created tax invoice from buyer to seller (<code class="highlighter-rouge">"ProfileID":"bill-rcti-v1"</code>)</li>
+  <li>Tax receipt sent from seller to buyer after payment has been made - usually for POS or online purchases (<code class="highlighter-rouge">"ProfileID":"bill-taxreceipt-v1"</code>)</li>
+  <li>Credit note sent from seller to buyer that references an earlier standard invoice (<code class="highlighter-rouge">"ProfileID":"bill-creditnote-v1"</code>)</li>
+  <li>Debit note sent from buyer to seller that references an earlier RCTI (<code class="highlighter-rouge">"ProfileID":"bill-debitnote-v1"</code>)</li>
+</ul>
+
+<p>The detailed business validation rules for each invoice profile are defined in <a href="#validation-rules">Validation Rules</a>.</p>
+
+<h2 id="application-response-document-profile-for-ausdigital-bill">Application Response Document Profile for AusDigital BILL</h2>
+
+<p>The UBL Application response document is used in many different process contexts.  In all cases, the Schema reference is “urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2”</p>
+
+<p>When used to indicate invoice status information in the BILL lifecycle, the applicationResponse document will always carry the the same profileID:</p>
+
+<ul>
+  <li>Application response to AusDigital BILL Invoice (<code class="highlighter-rouge">"ProfileID":"bill-response-v1"</code>)</li>
+</ul>
+
+<p>A UBL document response provides a means for the receiver party to update the sender on the processing state of the invoice.  The set of valid document response codes is defined by the state lifecyle.  The allowed values are:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">"responseCode":"UT"</code> - invalid, returned by the recipient ledger if the invoice document does not validate.  Error details should be sent in the “description” element.</li>
+  <li><code class="highlighter-rouge">"responseCode":"AB"</code> - acknowledged, confirms receipt of the invoice (but does not imply approval to pay).</li>
+  <li><code class="highlighter-rouge">"responseCode":"AP"</code> - approved, means that the payer has approved the invoice for (future) payment in accordance with payment terms.</li>
+  <li><code class="highlighter-rouge">"responseCode":"DI"</code> - disputed, means that the payer has not accepted the invoice and will dispute some or all of the invoice.</li>
+  <li><code class="highlighter-rouge">"responseCode":"RE"</code> - rejected, means that the payer has rejected the entire invoice and will not be paying.</li>
+</ul>
+
+<h1 id="transport-layer-bindings">Transport Layer Bindings</h1>
+
+<p>The invoice document is exchanged in accordance with the <a href="http://ausdigital.org/specs/ausdigital-tap/2.0/">TAP protocol</a>. This paragraph describes the binding between the business seamntic layer and the TAP messaging protocol layer.</p>
+
+<h2 id="conversations">Conversations</h2>
+
+<p>As a buyer and seller ledger, I need a way to connect business semantics to message semantics with a unique and durable key such as a  so that I can share it with interested third parties and limit what they can see to just the transaction I want to share.  This requirement is met as folows:</p>
+
+<ul>
+  <li>The invoice state lifecycle defines the scope of one e-invoice “conversation”</li>
+  <li>There MUST be a unique identifier for each “conversation” and it MUST be placed into the TAP header “reference” field</li>
+  <li>The identifier MUST created by the initiator of the conversation</li>
+  <li>The identifier MAY be a business level identifier such as in invoice number so long as it is unique between buyer and seller (ie no other conversations with the same identifier can exist).</li>
+  <li>The identifier MUST be maintained by the participating (buyer and seller) ledgers as the durable link between the business layer and messaging layer.</li>
+</ul>
+
+<h2 id="attachments">Attachments</h2>
+
+<p>In many cases, the seller may wish to send additional documents together with the UBL invoice.  Typical examples are:</p>
+
+<ul>
+  <li>a human readable PDF version of the invoice, or</li>
+  <li>a timesheet that supports the charges in the invoice, or</li>
+  <li>a metering breakdown that supports a utility invoice.</li>
+</ul>
+
+<p>These are sent as separate “attachment” messages at any time after the related semantic document.  The attachment message is handled like any other message in the e-invoicing exchange except that it:</p>
+
+<ul>
+  <li>MUST include the TAP header “attachedTo” property which MUST contain the same value as the “hash” property of the referenced message.</li>
+</ul>
+
+<h1 id="ubl-syntax-10-billing-document-specifications">UBL Syntax 1.0 Billing Document Specifications</h1>
+
+<p>The billing process is supported by the invoice document (six variants) and the response document (four status codes) as described in the <a href="#billing-process">billing process</a> model.  This section specifies the required invoice and response document models.</p>
+
+<h2 id="invoice-document">Invoice Document</h2>
+
+<p>Is defined by the DBC <a href="https://github.com/ausdigital/ausdigital-bill/blob/master/resources/ausdigital-syn/1.0/spec/maindoc/CoreInvoice-1.0.xsd">CoreInvoice XML Schema</a> library.</p>
+
+<ul>
+  <li><strong><a href="https://github.com/ausdigital/ausdigital-bill/tree/master/resources/ausdigital-syn/1.0/samples/Invoice/">Invoice Samples</a></strong></li>
+</ul>
+
+<h2 id="response-document">Response Document</h2>
+
+<p>Is defined by the DBC <a href="https://github.com/ausdigital/ausdigital-bill/blob/master/resources/ausdigital-syn/1.0/spec/maindoc/Response-1.0.xsd">Document Response XML Schema</a> library.</p>
+
+<ul>
+  <li><strong><a href="https://github.com/ausdigital/ausdigital-bill/blob/master/resources/ausdigital-syn/1.0/samples/Response/SampleResponse-ConformantResponse.xml">Response Sample</a></strong></li>
+</ul>
+
+<p>The response document is a generic structure for all UBL document responses.  The generic response becomes a meaningful invoice response via the correct population of two key fields:</p>
+
+<ul>
+  <li>“profileID” which MUST be one of the 6 invoice profiles define in the <a href="#invoice-document-profiles">billing process</a></li>
+  <li>“statusReasonCode” which MUST contain one of the 4 values defined in the <a href="#document-response-codes">invoice response codes</a></li>
+</ul>
+
+<h1 id="ubl-syntax-20-billing-document-specifications">UBL Syntax 2.0 Billing Document Specifications</h1>
+
+<p>The billing process is supported by the invoice document (six variants) and the response document (four status codes) as described in the <a href="#billing-process">billing process</a> model.  This page specifies the required invoice and response document models.</p>
+
+<h2 id="invoice-document-1">Invoice Document</h2>
+
+<p>Is defined by the <a href="https://github.com/ausdigital/ausdigital-bill/blob/master/resources/ausdigital-syn/2.0/spec/Invoice.json">Invoice Schema</a> which is a simple single root JSON Schema that is a semantically equivalent representation of the DBC <a href="https://github.com/ausdigital/ausdigital-bill/blob/master/resources/ausdigital-syn/1.0/spec/maindoc/CoreInvoice-1.0.xsd">CoreInvoice XML Schema</a> library.</p>
+
+<ul>
+  <li><strong><a href="http://ausdigital.org/docson.html#https://raw.githubusercontent.com/ausdigital/ausdigital-bill/master/resources/ausdigital-syn/2.0/spec/Invoice.json">Browsable Invoice Schema</a></strong></li>
+  <li><strong><a href="https://github.com/ausdigital/ausdigital-bill/tree/master/resources/ausdigital-syn/2.0/samples/Invoice/">Invoice Samples</a></strong></li>
+</ul>
+
+<h2 id="response-document-1">Response Document</h2>
+
+<p>Is defined by the <a href="https://github.com/ausdigital/ausdigital-bill/blob/master/resources/ausdigital-syn/2.0/spec/Response.json">Response Schema</a> which is a simple single root JSON Schema that is a semantically equivalent representation of the DBC <a href="https://github.com/ausdigital/ausdigital-bill/blob/master/resources/ausdigital-syn/1.0/spec/maindoc/Response-1.0.xsd">Document Response XML Schema</a> library.</p>
+
+<ul>
+  <li><strong><a href="http://ausdigital.org/docson.html#https://raw.githubusercontent.com/ausdigital/ausdigital-bill/master/resources/ausdigital-syn/2.0/spec/Response.json">Browsable Response Schema</a></strong></li>
+  <li><strong><a href="https://github.com/ausdigital/ausdigital-bill/blob/master/resources/ausdigital-syn/2.0/samples/Response/SampleResponse-ConformantResponse.json">Response Sample</a></strong></li>
+</ul>
+
+<p>The response document is a generic structure for all UBL document responses.  The generic response becomes a meaningful invoice response via the correct population of two key fields:</p>
+
+<ul>
+  <li>“profileID” which MUST be one of the 6 invoice profiles define in the <a href="#invoice-document-profiles">invoice document profiles</a></li>
+  <li>“statusReasonCode” which MUST contain one of the 4 values defined in the <a href="#document-response-codes">invoice response codes</a></li>
+</ul>
+
+<h1 id="validation-rules">Validation Rules</h1>
+
+<p>Validation rules from the <a href="https://github.com/ausdigital/ausdigital-bill/blob/master/docs/1.0/eInvoicing_Semantic_Model_v1.0.pdf">ADBC eInvoicing Semantic Model</a> are re-stated here but are broken down according to the invoice document usage context as identified by the ProfielID element.</p>
+
+<h3 id="validation-rules---common">Validation Rules - Common</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rule</th>
+      <th>Mandatory</th>
+      <th>Optional</th>
+      <th>Extension</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>An Invoice of more than $82.50 (including GST) to a GST-registered Buyer MUST be a Tax Invoice.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice must contain a Document Type Code</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MUST contain the Supplier’s Business Name or the ABN of the Supplier.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice with a Total Amount greater than $1000 MUST have either the Buyer’s Business Name or the ABN of the Buyer.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MAY contain the ABN plus a GST branch number for Suppliers with GST branches registered with the ATO.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MUST contain an Invoice Issue Date.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line MUST have a Description.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MAY contain a Description of Properties of Invoiced Items.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line MAY contain an Invoiced Quantity.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line MUST contain the Invoice Line Extension Amount (Net Price multiplied by Invoiced Quantity) (excluding GST) for the Items sold.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MUST contain the sum total of all Invoice Line Extension Amounts.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line MUST contain the GST Amount for the Items sold or indicate the extent to which Items are taxable.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line MUST contain the Amount Payable (Invoice Line Extension Amount plus GST Amount) for the Items sold.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line MAY contain a GST Amount of zero.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line MAY specify a GST Category.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MUST contain the Invoice level Tax Amount exclusive of GST.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MUST contain the Invoice level GST Total Amount.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MUST have an Invoice Identifier.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MUST have a Supplier Business Name.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MUST have a valid Document Type Code.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MUST have an Issue Date.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MAY have a Delivery Date.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MAY have an Invoice Period.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MAY have an Invoice Period Start Date.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MAY have an Invoice Period End Date.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice End Period Date MUST be later or equal to an Invoice Period Start Date.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MAY have a Sales Order Identifier.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MAY have a Purchase Order Identifier.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MAY have a Contact Identifier.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MAY have an Electronic Address.</td>
+      <td> </td>
+      <td> </td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td>An Invoice MUST have at least one Invoice Line.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line Item MAY have a Suppliers Item Identifier.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line Item MUST have a Description.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line MAY have a Quantity.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line MAY have a Net Amount.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line MAY have a Dispatch Advice Identifier.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line MAY have a Receipt Advice Identifier.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line MAY have a delivery Address.</td>
+      <td> </td>
+      <td> </td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td>An Invoice Line Item MAY have a Country of Origin.</td>
+      <td> </td>
+      <td> </td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td>An Invoice MAY have one or more Document References.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>The Invoice Level Net Amount MUST be equal to the sum of Invoice Line Net Amounts.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>The Invoice Level Allowance Amount MUST be equal to the sum of Invoice Line Allowances plus any Invoice Level Allowances.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>The Invoice Level Charge Amount MUST be equal to the sum of Invoice Line Charges plus any Invoice Level Charges.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>The Invoice Level Net Amount MUST be equal to the Invoice Level Gross Amount - Invoice Level Allowance Amount + Invoice Level Charge Amount.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>The Invoice Level GST Amount MUST be equal to the sum of Invoice Line GST Amounts.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>The Invoice Level Total Amount MUST be equal to the Invoice Level Net Amount + the Invoice Level Tax Amount.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MAY have an Amount Payable.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MUST have an Invoice Level Total Amount.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MAY have an Invoice Level Net Amount.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MAY have a Related Invoice Identifier.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MAY have an Amount Payable.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MAY have one or more Document References.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Level Total Amount MUST be greater than 0.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line MAY have a Net Amount.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line Extended Amount after all allowances and charges MUST NOT be negative.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line Price MUST be 0 or more.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line Item MUST have a Net Price.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line MAY have a Quantity.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MAY have an Allowance Rate and Base Amount at Invoice Level.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Level Allowance MUST be greater than 0.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Level Allowance MAY have a GST Category.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Level Allowance Reason Description MUST match the Invoice Level Allowance Reason Code (if any).</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MAY have a Charge Rate and Base Amount at Invoice Level.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Level Charge MUST be greater than 0.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Level Charge MAY have a GST Category.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Level Charge Reason Description MUST match the Invoice Level Charge Reason Code (if any).</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line MAY have an Allowance Rate and Base Amount.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line Allowance MUST be greater than 0.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line Allowance MUST have an Allowance Reason Description.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line Allowance Reason Description MUST match the Invoice Line Allowance Reason Code (if any).</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line MAY have a Charge Rate and Base Amount.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line Charge MUST be greater than 0.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line Charge MUST have a Charge Reason Description.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice Line Charge Reason Description MUST match the Invoice Line Charge Reason Code (if any).</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>A Payment Means MUST have a valid Payment Means Type Code.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>A Payment Means Financial Institution Account Identifier MUST have Financial Institution Identifier.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>A Payment Means for a card payment MUST state the last 4 to 6 digits of the Financial Institution Account Identifier.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>An Invoice MUST have a Payee Business Name if Payee Business Name is not the same as the Suppliers Business Name.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="validation-rules---profileidbill-invoice">Validation Rules - “ProfileID”:”bill-invoice”</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rule</th>
+      <th>Mandatory</th>
+      <th>Optional</th>
+      <th>Extension</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A Tax Invoice for goods or services that do not all include GST (mixed supplies) shall indicate which goods or services do not include GST.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="validation-rules---profileidbill-rcti">Validation Rules - “ProfileID”:”bill-rcti”</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rule</th>
+      <th>Mandatory</th>
+      <th>Optional</th>
+      <th>Extension</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A Recipient Created Tax Invoice MUST contain either the Business Name or the ABN of the Buyer.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>A Recipient Created Tax Invoice MUST contain the Payee Name if GST is payable.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>A Recipient Created Tax Invoice MAY contain the following statement: “The recipient and the supplier declare that this agreement applies to supplies to which this tax invoice relates. The recipient can issue tax invoices in respect of these supplies. The supplier will not issue tax invoices in respect of these supplies. The supplier acknowledges that it is registered for GST and that it will notify the recipient if it ceases to be registered. The recipient acknowledges that it is registered for GST and that it will notify the supplier if it ceases to be registered for GST. Acceptance of this RCTI constitutes acceptance of the terms of this written agreement. Both parties to this supply agree that they are parties to an RCTI agreement. The supplier agrees to notify the recipient if the supplier does not wish to accept the proposed agreement within 21 days of receiving this document.”</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="validation-rules---profileidbill-taxreceipt">Validation Rules - “ProfileID”:”bill-taxreceipt”</h3>
+<p>tbd</p>
+
+<h3 id="validation-rules---profileidbill-adjustment">Validation Rules - “ProfileID”:”bill-adjustment”</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rule</th>
+      <th>Mandatory</th>
+      <th>Optional</th>
+      <th>Extension</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>An Invoice MUST contain a Document Type Code indicating it is an adjustment document.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="validation-rules---profileidcreditnote">Validation Rules - “ProfileID”:”creditnote”</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rule</th>
+      <th>Mandatory</th>
+      <th>Optional</th>
+      <th>Extension</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A Credit Note MAY have a Related Invoice Identifier.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>A Credit Note MAY have a Total Amount.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>A Credit Note MAY have a Buyer Accounting Reference.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>The Credit Note Total Amount MUST be greater than 0.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>A Credit Note Line MAY have a Net Amount.</td>
+      <td> </td>
+      <td>X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>The Credit Note Line Net Price MUST NOT be negative.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>A Payment Means Type Code for a Credit MUST have a Financial Institution Account Identifier.</td>
+      <td>X</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="validation-rules---profileidbill-debitnote-v1">Validation Rules - “ProfileID”:”bill-debitnote-v1”</h3>
+
+<p>tbd</p>
+
+<h1 id="related-material">Related Material</h1>
+
+<ul>
+  <li>ADBC eInvoicing Semantic Model (v1.0, available <a href="https://github.com/ausdigital/ausdigital-bill/blob/master/docs/1.0/eInvoicing_Semantic_Model_v1.0.pdf">here</a>), which provides background to the <a href="http://ausdigital.org">AusDigital</a> community process.</li>
+  <li><a href="https://github.com/ausdigital/ausdigital-bill/issues/">GitHub issues</a> for collaborating on the development of the BILL.</li>
+  <li>A reference <a href="https://bill.testpoint.io/">BILL service</a> (for testing and development purposes).</li>
+  <li>Free, Open-Source Software <a href="https://github.com/test-point/testpoint-bill">BILL implementation</a>.</li>
+  <li>An automated <a href="https://github.com/test-point/testpoint-bill">DCL test suite</a>.</li>
+</ul>
+
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <a href="/" class="footer-logo"><img src="/images/logo.png" alt="AusDigital"><span>AusDigital.org</span></a>
+    <ul class="footer-menu">
+        <li><a href="http://ausdigital.org/about">About AusDigital</a></li>
+        <li><a href="https://github.com/ausdigital" target="_blank">Github</a></li>
+        <li><a href="http://eepurl.com/ctZ6hf" target="_blank">Newsletter</a></li>
+        <li><a href="http://chat.ausdigital.org/" target="_blank">Join</a> <a href="https://ausdigital.slack.com/messages/general/" target="_blank">team</a></li>
+    </ul>
+    <div class="footer-credits">
+        This page was generated by GitHub Pages.
+        Comments, issues and suggestions are welcome in the <a href="https://github.com/ausdigital/ausdigital.github.io/issues/new">ticket system</a>.
+        Pull requests welcome in the <a href="https://github.com/ausdigital/ausdigital.github.io/">site repository</a>.
+    </div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79579364-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<script src="/js/anchor.min.js"></script>
+<script>
+    anchors.add('h1, h2, h3, h4, h5');
+    anchors.remove('.no-anchor, .page-content > h1:first-child');
+</script>
+</body>
+</html>
