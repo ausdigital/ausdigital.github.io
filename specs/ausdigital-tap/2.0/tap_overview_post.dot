@@ -1,0 +1,16 @@
+digraph d {
+   node [shape=rectangle];
+   rankdir=LR;
+   label="POST to TAP";
+   subgraph cluster_body {
+      label="HTTP Body (multipart/form-data)";
+      subgraph cluster_msg {
+         label="<<json>>\nmessage";
+	 gloop [label="<<OpenPGP>>\ncyphertext of signed document"];
+	 hash [label="<<OpenSSL>>\nhash of signed document"];
+	 reference [label="<<string>>\narbitrary reference"];
+	 recipient [label="<<URN>>\nsender identifier"];
+      }
+      signature [label="<<OpenPGP>>\nsignature"];
+   }
+}

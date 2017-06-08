@@ -1,0 +1,22 @@
+digraph d {
+    label="Response 200 OK";
+    node [shape=rectangle];
+    rankdir=LR;
+    subgraph cluster_json {
+        label="HTTP response body\n(application/json)";
+	ts [label="Acknowledgement\ntime-stamp"];
+	subgraph cluster_callbacks {
+	    label="list of callbacks";
+	    subgraph cluster_cb1 {
+	        label="Callback 1"
+		url1 [label="<<URL>>\nCallback URL"];
+		sem1 [label="<<URL>>\nSemantic Reference"];
+	    }
+	    subgraph cluster_cbn {
+	        label="Callback ...n"
+		urln [label="<<URL>>\nCallback URL"];
+		semn [label="<<URL>>\nSemantic Reference"];
+	    }
+	}
+    }
+}
