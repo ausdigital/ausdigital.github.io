@@ -1,0 +1,168 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "The \"Digital Capability Lookup\" (DCL) specification defines DNS based method to discover which DCP(SMP) is the authoritative source for a given business. AusDigital version.\n",
+    "version": "1.0.0",
+    "title": "Digital Capability Lookup (DCL) interface specification"
+  },
+  "host": "dbc-dcl.testpoint.io",
+  "basePath": "/api/ausdigital/v0",
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "JWT": {
+      "type": "apiKey",
+      "description": "JWT token value prepended by `JWT`, for example: \n`JWT XXXXX.YYYYYYYYYYYYYYYYYYYYYYY.ZZZZZZ`\nYou can get your JWT for testpoint.io services at https://idp.testpoint.io/\n",
+      "in": "header",
+      "name": "Authorization"
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "responses": {
+    "200": {
+      "description": "OK."
+    },
+    "201": {
+      "description": "Created.",
+      "schema": {
+        "$ref": "#/definitions/hash"
+      }
+    },
+    "204": {
+      "description": "No content."
+    },
+    "400": {
+      "description": "Bad request."
+    },
+    "403": {
+      "description": "Forbidden. Authentication credentials were not provided."
+    },
+    "500": {
+      "description": "Internal server error."
+    }
+  },
+  "parameters": {
+    "capabilityParticipantIDURLParameter": {
+      "name": "participantId",
+      "in": "path",
+      "description": "Participant ID",
+      "required": true,
+      "type": "string",
+      "default": "urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::xxxxx"
+    },
+    "newRecordParticipant": {
+      "name": "body",
+      "in": "body",
+      "description": "body",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/newRecordParticipantMetadata"
+      }
+    }
+  },
+  "paths": {
+    "/dcl-record/": {
+      "post": {
+        "tags": [
+          "DCL record management"
+        ],
+        "summary": "Add or update a relationship between a participant and DCP for a current ParticipantID",
+        "operationId": "addRelationshipByParticipant",
+        "parameters": [
+          {
+            "$ref": "#/parameters/newRecordParticipant"
+          }
+        ],
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/200"
+          },
+          "201": {
+            "$ref": "#/responses/201"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "403": {
+            "$ref": "#/responses/403"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      }
+    },
+    "/dcl-record/{participantId}": {
+      "delete": {
+        "tags": [
+          "DCL record management"
+        ],
+        "summary": "Delete a relationship between a participant and DCP for a specific ParticipantID",
+        "operationId": "deleteRelationshipByParticipantID",
+        "parameters": [
+          {
+            "$ref": "#/parameters/capabilityParticipantIDURLParameter"
+          }
+        ],
+        "security": [
+          {
+            "JWT": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "$ref": "#/responses/204"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "403": {
+            "$ref": "#/responses/403"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "newRecordParticipantMetadata": {
+      "properties": {
+        "participantIdentifierScheme": {
+          "type": "string",
+          "default": "urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151"
+        },
+        "participantIdentifier": {
+          "type": "string"
+        },
+        "capabilityPublisherUrl": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "participantIdentifier": "51824753556",
+        "participantIdentifierScheme": "urn:oasis:names:tx:ebcore:partyid-type:iso6523:0151",
+        "capabilityPublisherUrl": "dcp.testpoint.io"
+      }
+    },
+    "hash": {
+      "properties": {
+        "hash": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "hash": "B-7ca4a2858bd2c58700e0e7aa752c5f18"
+      }
+    }
+  }
+}
