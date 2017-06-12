@@ -169,6 +169,9 @@
 <li class="toc-entry toc-h2"><a href="#customizationid">CustomizationID</a></li>
 <li class="toc-entry toc-h2"><a href="#invoice-document-profiles">Invoice Document Profiles</a></li>
 <li class="toc-entry toc-h2"><a href="#application-response-document-profile-for-ausdigital-bill">Application Response Document Profile for AusDigital BILL</a></li>
+<li class="toc-entry toc-h1"><a href="#service-registry-bindings">Service Registry Bindings</a></li>
+<li class="toc-entry toc-h2"><a href="#document-identifier">Document Identifier</a></li>
+<li class="toc-entry toc-h2"><a href="#process-identifier">Process Identifier</a></li>
 <li class="toc-entry toc-h1"><a href="#transport-layer-bindings">Transport Layer Bindings</a></li>
 <li class="toc-entry toc-h2"><a href="#conversations">Conversations</a></li>
 <li class="toc-entry toc-h2"><a href="#attachments">Attachments</a></li>
@@ -348,6 +351,28 @@ in this document are to be interpreted as described in RFC 2119.</p>
   <li><code class="highlighter-rouge">"responseCode":"AP"</code> - approved, means that the payer has approved the invoice for (future) payment in accordance with payment terms.</li>
   <li><code class="highlighter-rouge">"responseCode":"DI"</code> - disputed, means that the payer has not accepted the invoice and will dispute some or all of the invoice.</li>
   <li><code class="highlighter-rouge">"responseCode":"RE"</code> - rejected, means that the payer has rejected the entire invoice and will not be paying.</li>
+</ul>
+
+<h1 id="service-registry-bindings">Service Registry Bindings</h1>
+
+<p>This section describes how the Digital Capability Publisher Service Metadata structure should be populated in order to describe a participant’s support for the BILL specification.</p>
+
+<h2 id="document-identifier">Document Identifier</h2>
+
+<p>“DocumentIdentifier” MUST follow the global SMP and UBL specifications for a UBL invoice to indicate simply that this is a UBL 2 invoice document.. Namely</p>
+
+<ul>
+  <li>“scheme”=”bdx-docid-qns” and</li>
+  <li>“value”=”urn:oasis:names:specification:ubl:schema:xsd:Invoice-2”</li>
+</ul>
+
+<h2 id="process-identifier">Process Identifier</h2>
+
+<p>The DCP “ProcessIdentifier” identifies the process context and so MUST map directly to the UBL ProfileID:</p>
+
+<ul>
+  <li>“Scheme” = “digitalbusinesscouncil.com.au” and</li>
+  <li>“value” = the same as the UBL “ProfileID” value - “bill-rcti-v1”</li>
 </ul>
 
 <h1 id="transport-layer-bindings">Transport Layer Bindings</h1>
