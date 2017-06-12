@@ -601,6 +601,8 @@ has ASCII-Armour encoding (suitable for inclusion in a json document).</p>
     </span><span class="nt">"cyphertext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"initiator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"responder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></p>
@@ -610,13 +612,20 @@ has ASCII-Armour encoding (suitable for inclusion in a json document).</p>
   <li>encrypted by receiver public key</li>
   <li>signed by sender private key</li>
   <li>“hash” contains cryptographic hash of the document (before signing and encryption)</li>
-  <li>“sender” contains unique participant identifier of client
-    <ul>
-      <li>sender must make his public keys, used for signing operations, available in the DCP</li>
-    </ul>
-  </li>
-  <li>“reference” contains additional information about conversations or original message (which this one is replies to)</li>
+  <li>“sender” contains unique participant identifier of client</li>
+  <li>sender must make his public keys, used for signing operations, available in the DCP</li>
+  <li>together “initiator” and “reference” form a candidate conversation identifier</li>
+  <li>initiator is the sender of the first message in a conversation</li>
+  <li>“responder” is the recipient of the first message in the conversation</li>
+  <li>all but the first message in a conversation must have a “responder”</li>
+  <li>“reference” is an identifier chosen by the initiator (e.g. “invoice-1234567”)</li>
+  <li>the initiator must not reuse references, they are locally unique</li>
 </ul>
+
+<p>While the combination of “initiator” and “refernce” are a minimal candidate identifier
+for the conversation, the conversation identifier is all three values together. Thus
+each conversation has two valid identifiers (the first message with a null responder,
+and all subsequent messages which have a non-null responder).</p>
 
 <h3 id="compose-message-example">Compose Message Example</h3>
 
