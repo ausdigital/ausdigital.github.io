@@ -189,15 +189,28 @@ are optional and minimally trusted.</p>
 
 <h2 id="goals">Goals</h2>
 
-<p>The primary goal of the Transaction Access Point (TAP) 2.0 Specification is to TBA.</p>
+<p>The primary goal of the Transaction Access Point (TAP) 2.0 Specification is to provide a standard way for business systems to send and receive secure messages with the following characteristics:</p>
 
-<p>The Transaction Access Point (TAP) 2.0 Specification defines TBA.</p>
+<ul>
+  <li>Support multiple gateway topologies (traditional EDI “4 corner” model, point-to-point and broker-based models, etc)</li>
+  <li>Enforced carrier neutrality; sender encrypts, recipient decrypts, intermediaries only have access to payload cyphertext (protect against weak permieter-security on complex gateway topologies)</li>
+  <li>Selectively transparent; enable 3rd information sharing protocols</li>
+  <li>Sufficient envelope data to allows 3rd parties to verify message cleartext and be aware of appropriately linked data.</li>
+</ul>
+
+<p>The Transaction Access Point (TAP) 2.0 Specification defines:</p>
+
+<ul>
+  <li>API for interacting with business message endpoints</li>
+  <li>Generic envelope structure that supports any type of business message</li>
+  <li>Allowable cryptographic techniques</li>
+</ul>
 
 <h2 id="status">Status</h2>
 
 <p>This spec is an early draft for consuiltation.</p>
 
-<p>This specification aims to support the Australian Digital Business Council
+<p>This specification aims to support the Australian
 <a href="http://ausdigital.org">eInvoicing initiative</a>, and is under active
 development at
 <a href="https://github.com/ausdigital/ausdigital-tap">https://github.com/ausdigital/ausdigital-tap</a>.</p>
