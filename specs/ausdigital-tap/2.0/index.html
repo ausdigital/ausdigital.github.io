@@ -171,6 +171,7 @@
 <li class="toc-entry toc-h2"><a href="#sending-a-business-message">Sending a business message</a></li>
 <li class="toc-entry toc-h3"><a href="#sign-the-business-document">Sign the Business Document</a></li>
 <li class="toc-entry toc-h3"><a href="#create-hash-of-signed-business-document">Create hash of signed business document</a></li>
+<li class="toc-entry toc-h4"><a href="#note-about-auditability">Note about auditability</a></li>
 <li class="toc-entry toc-h3"><a href="#create-cyphertext-of-signed-business-document">Create cyphertext of signed business document</a></li>
 <li class="toc-entry toc-h4"><a href="#note-about-published-keys">Note about published keys</a></li>
 <li class="toc-entry toc-h3"><a href="#message-format">Message format</a></li>
@@ -196,6 +197,7 @@ are optional and minimally trusted.</p>
   <li>Enforced carrier neutrality; sender encrypts, recipient decrypts, intermediaries only have access to payload cyphertext (protect against weak permieter-security on complex gateway topologies)</li>
   <li>Selectively transparent; enable 3rd information sharing protocols</li>
   <li>Sufficient envelope data to allows 3rd parties to verify message cleartext and be aware of appropriately linked data.</li>
+  <li>Support evidence of provonance and auditability without compromosing security</li>
 </ul>
 
 <p>The Transaction Access Point (TAP) 2.0 Specification defines:</p>
@@ -293,10 +295,11 @@ document exchange.</p>
 <p>A TAP might be provided by a commercial ledger service, or maintained as part of an
 independent business system.</p>
 
-<p>The TAP specification has two parts. The main part (ausdigital-tap/2) defines the protocol all peers
-must follow (and interfaces they must provide) to send and receive business documents. The
-second part is an optional gateway specification (ausdigital-tapgw/1), which defines a client-server
-protocol for trusted business system components (e.g. ledger services) to interact with independent TAP service providers in a generic way.</p>
+<p>The TAP specification has two parts. The main part (ausdigital-tap/2) defines the protocol
+all peers must follow (and interfaces they must provide) to send and receive business
+documents. The second part is an optional gateway specification (ausdigital-tapgw/1), which
+defines a client-server protocol for trusted business system components (e.g. ledger
+services) to interact with independent TAP service providers in a generic way.</p>
 
 <h2 id="dependencies">Dependencies</h2>
 
@@ -316,24 +319,37 @@ repository. Future semantic payloads may be supported without change to the prot
 
 <p>TAPGW providers also depend on the
 ausdigital-idp/1. TAPs do not need to
-authenticate when they interact with each other, due to use of well known cryprograpic keys
-and service endpoint addresses.</p>
+authenticate when they interact with each other, due to use of well known cryprograpic
+keys and service endpoint addresses.</p>
 
 <h2 id="tap-protocol-overview">TAP Protocol Overview</h2>
 
-<p>In this protocol, a Transaction Access Point (TAP) is a business system component that sends and receives business messages. The TAP Protocol describes how one TAP sends the message, and how the other TAP responds when a message is received.</p>
+<p>In this protocol, a Transaction Access Point (TAP) is a business system component that
+sends and receives business messages. The TAP Protocol describes how one TAP sends the
+message, and how the other TAP responds when a message is received.</p>
 
-<p>The message is sent to the receiving TAP using HTTP POST operation, with a <code class="highlighter-rouge">Content-Type: multipart/form-data</code> body. This body contains two parts, <code class="highlighter-rouge">message</code> and <code class="highlighter-rouge">signature</code>.</p>
+<p>The message is sent to the receiving TAP using HTTP POST operation, with a
+<code class="highlighter-rouge">Content-Type: multipart/form-data</code> body. This body contains two parts, <code class="highlighter-rouge">message</code> and
+<code class="highlighter-rouge">signature</code>.</p>
 
-<p>The <code class="highlighter-rouge">message</code> part is a mixture of cleartext metadata (used by TAPs) and enciphered payload (used by trusted business system components). The cleartext metadata does not contain sensitive business information, whereas access to the business-sensitive information within the payload is not necessary for participating in the TAP protocol.</p>
+<p>The <code class="highlighter-rouge">message</code> part is a mixture of cleartext metadata (used by TAPs) and enciphered
+payload (used by trusted business system components). The cleartext metadata does not
+contain sensitive business information, whereas access to the business-sensitive
+information within the payload is not necessary for participating in the TAP protocol.</p>
 
-<p>The <code class="highlighter-rouge">signature</code> part is created by a business system component trusted by the sender (with access to the sender’s private key material). The signature can be used as a unique identifier of the message contents (e.g. transmitted document id).</p>
+<p>The <code class="highlighter-rouge">signature</code> part is created by a business system component trusted by the sender
+(with access to the sender’s private key material). The signature can be used as a
+unique identifier of the message contents (e.g. transmitted document id).</p>
 
 <p><img src="./tap_overview_post.png" alt="Illustration of POST body" title="Business document sent to TAP" /></p>
 
-<p>Receiving TAPs may also use the signature as a filter (messages with invalid signatures MAY be dropped by receiving TAPs, rather than delivered). This allows TAPs to buffer trusted components from anonymous denial of service attacks.</p>
+<p>Receiving TAPs may also use the signature as a filter (messages with invalid
+signatures MAY be dropped by receiving TAPs, rather than delivered). This allows TAPs
+to buffer trusted components from anonymous denial of service attacks.</p>
 
-<p>When a valid message is received, the TAP issues an HTTP 200 status and returns a response body with <code class="highlighter-rouge">Content-Type: application/json</code>, containing received message information and optional HATEOS-style list of callback URLs.</p>
+<p>When a valid message is received, the TAP issues an HTTP 200 status and returns a
+response body with <code class="highlighter-rouge">Content-Type: application/json</code>, containing received message
+information and optional HATEOS-style list of callback URLs.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -352,7 +368,8 @@ and service endpoint addresses.</p>
 
 <h1 id="tap-protocol-details">TAP Protocol Details</h1>
 
-<p>The TAP Protocol is a very simple REST API. One business sends a message directly to another business’ TAP endpoint (discovered via the <code class="highlighter-rouge">ausdigital-dcp/1</code> protocol):</p>
+<p>The TAP Protocol is a very simple REST API. One business sends a message directly
+to another business’ TAP endpoint (discovered via the <code class="highlighter-rouge">ausdigital-dcp/1</code> protocol):</p>
 
 <ul>
   <li>The sender uses the HTTP POST verb (over HTTPS) to send the signed message to a TAP,</li>
@@ -363,7 +380,8 @@ and service endpoint addresses.</p>
 
 <h2 id="receiving-a-business-message">Receiving a business message</h2>
 
-<p>When a message is sent to a TAP endpoint, it MUST validate the message before delivering it to the recipient:</p>
+<p>When a message is sent to a TAP endpoint, it MUST validate the message before
+delivering it to the recipient:</p>
 
 <ul>
   <li>If the message does not validate against the JSON schema, return HTTP error (400).</li>
@@ -398,9 +416,15 @@ and service endpoint addresses.</p>
 
 <h3 id="sign-the-business-document">Sign the Business Document</h3>
 
-<p>The TAP protocol MAY be used to transport any business message in any format. It MAY be used to transport messages compliant with Billing Semantics. Messages SHOULD be formatted as XML or JSON and UTF-8 encoded.</p>
+<p>The TAP protocol MAY be used to transport any business message in any format. It MAY
+be used to transport messages compliant with Billing Semantics. Messages SHOULD be
+formatted as XML or JSON and UTF-8 encoded.</p>
 
-<p>Message signing is interpreted in the sense used by the OpenPGP standard (RFC4880), however strict compliance would involve 3DES algorithm which is not supported. Approved signing algorithms are those determined <code class="highlighter-rouge">--safe</code> by the <em>modern</em> (Eliptic Curve Cryptography compatible) distribution of GnuPG. This is version 2.1.15 at the time of writing, but any stable release at or above v2.1.15 is appropriate.</p>
+<p>Message signing is interpreted in the sense used by the OpenPGP standard (RFC4880),
+however strict compliance would involve 3DES algorithm which is not supported.
+Approved signing algorithms are those determined <code class="highlighter-rouge">--safe</code> by the <em>modern</em> (Eliptic
+Curve Cryptography compatible) distribution of GnuPG. This is version 2.1.15 at the
+time of writing, but any stable release at or above v2.1.15 is appropriate.</p>
 
 <p>The following public key formats are supported:</p>
 
@@ -409,9 +433,15 @@ and service endpoint addresses.</p>
   <li>RSA (RFC4880)</li>
 </ul>
 
-<p>Business documents compression is discouraged, because it is redundant due to compression at the HTTP layer (per RFC2616 and RFC1952). Business documents MAY be compressed with ZIP (RFC1951), ZLIB (RFC1950), or BZip2 algorithms.</p>
+<p>Business documents compression is discouraged, because it is redundant due to
+compression at the HTTP layer (per RFC2616 and RFC1952). Business documents MAY be
+compressed with ZIP (RFC1951), ZLIB (RFC1950), or BZip2 algorithms.</p>
 
-<p>The business document and signature are combined into a single ASCII-Armoured file per RFC4880 (i.e. including use of Radix-64 to convert UTF-8 to 7 bit ASCII in the signed file). For example, assuming the current working directory contains a business document <code class="highlighter-rouge">doc.json</code>, a signed document <code class="highlighter-rouge">signed_doc.txt</code> can be created using the GnuPG command line program like this:</p>
+<p>The business document and signature are combined into a single ASCII-Armoured file
+per RFC4880 (i.e. including use of Radix-64 to convert UTF-8 to 7 bit ASCII in the
+signed file). For example, assuming the current working directory contains a business
+document <code class="highlighter-rouge">doc.json</code>, a signed document <code class="highlighter-rouge">signed_doc.txt</code> can be created using the
+GnuPG command line program like this:</p>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>gpg2 <span class="se">\</span>
  --output <span class="s2">"signed_doc.txt"</span> <span class="se">\</span>
@@ -435,30 +465,75 @@ and service endpoint addresses.</p>
 
 <p>It is not necessary to sign the hash, because the entire message is signed.</p>
 
-<p>This hash is of the cleartext “business document” before the signing. When the recipient decrypts the business document, they are able to verify the hash. If the recipient-generated hash does not match the hash in the message, the recipient MUST NOT provide business acceptance of the document.</p>
+<p>This hash is of the cleartext “business document” before the signing. When the
+recipient decrypts the business document, they are able to verify the hash. If the
+recipient-generated hash does not match the hash in the message, the recipient MUST
+NOT provide business acceptance of the document.</p>
 
-<p>The hash is calculated before the signing, so, if sender for some reasons calculates 2 different signatures using 2 different keys - the hash is still the same.</p>
+<p>The hash is calculated before the signing, so, if sender for some reasons calculates
+2 different signatures using 2 different keys - the hash is still the same.</p>
 
-<p><strong>TODO: this is a very strange paragraph.</strong>
-If a 3rd party is presented with a copy of the message (including this hash), and with a copy of the signed business document, they are able to verify that the hash of the signed business document matches the hash in the message. That way, if the recipient provides business acceptance of the document, the third party knows the document that was accepted matches the cleartext document they were shown (despite the fact the 3rd party does not have access to recipient key material).</p>
-
-<p>Assuming the current working directory contains a document <code class="highlighter-rouge">doc.txt</code>, a hash of the signed document <code class="highlighter-rouge">doc.hash</code> can be created with openssl like this:</p>
+<p>Assuming the current working directory contains a document <code class="highlighter-rouge">doc.txt</code>, a hash of the
+signed document <code class="highlighter-rouge">doc.hash</code> can be created with openssl like this:</p>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>openssl dgst -sha256 -out <span class="s2">"doc.hash"</span> <span class="s2">"doc.txt"</span>
 </code></pre>
 </div>
 
-<p>For example, if your doc.txt contains text <code class="highlighter-rouge"><span class="p">{</span><span class="nt">"document_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice"</span><span class="p">}</span></code> (ending with newline character) the result is:
-<code class="highlighter-rouge">
-SHA256(doc.txt)= 14a62c86caa60bb3987248e93e51cacd46392562475738d3213b44f457ee163b
-</code>
-where <code class="highlighter-rouge">14a62c86caa60bb3987248e93e51cacd46392562475738d3213b44f457ee163b</code> is a document hash in plan SHA256 HEX format.</p>
+<p>For example, if your doc.txt contains text <code class="highlighter-rouge"><span class="p">{</span><span class="nt">"document_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice"</span><span class="p">}</span></code> (ending
+with newline character) the result is:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SHA256(doc.txt)= 14a62c86caa60bb3987248e93e51cacd46392562475738d3213b44f457ee163b
+</code></pre>
+</div>
+
+<p>where <code class="highlighter-rouge">14a62c86caa60bb3987248e93e51cacd46392562475738d3213b44f457ee163b</code> is a
+document hash in plan SHA256 HEX format.</p>
+
+<h4 id="note-about-auditability">Note about auditability</h4>
+
+<p>The TAP interface is used to exchange encrypted messages, but they are wrapped
+in an envelope that contains cleartext which the TAP interface has access to.</p>
+
+<p>If a 3rd party is presented with a copy of the message (including the cleartext
+envelope), and with a copy of the signed business document, they are able to use
+the “hash of the signed business document” to verify that the cleartext document
+they have matches the contents of the cyphertext payload.</p>
+
+<p>This is true even though they are unable to decrypt the cyphertext, because they
+do not have access to the key material of the recipient.</p>
+
+<p>This means that if a 3rd party has access to the encrypted traffic, while they
+are unable to read the message payload, they are able to verify the contents of
+a message if someone shares the cleartext with them. It is not possible for a
+participant to make a false claim about the contents of messages.</p>
+
+<p>One example of a 3rd party who would benefit from this ability to verify encrypted
+payloads is a creditor providing an invoice factoring service. A borrower could
+provide their lender with cleartext invoices (and other documents in a BILL-SPEC
+conversation), and use the RESTRICT_LIST features of the <code class="highlighter-rouge">ausdigital-nry</code> to
+provide their lender with access to the enctypted messages. The lender could
+then confirm that the cleartext provided by the borrower matched the contents
+of the encrypted message payloads, even though they do not have the ability to
+decrypt them.</p>
+
+<p>Another example of an interested 3rd party would be a value-adding reseller who
+want’s to prove the provonance of supply. They could do this by providing access
+to messages (either with <code class="highlighter-rouge">ausdigital-nry</code> RESTRICT_LIST, or some other publishing
+mechanism) as well as cleartext. Cleartext and messages could be passed down the
+supply chain to prove provonance from source, and document value adding steps.</p>
 
 <h3 id="create-cyphertext-of-signed-business-document">Create cyphertext of signed business document</h3>
 
-<p>The message does not contain plaintext of the business document (signed or otherwise). It contains the hash of the plaintext (as per above), and cyphertext of the signed plaintext document.</p>
+<p>The message does not contain plaintext of the business document (signed or otherwise).
+It contains the hash of the plaintext (as per above), and cyphertext of the signed
+plaintext document.</p>
 
-<p>The cyphertext is created using public key cryptography, using the appropriate public key for the recipient business endpoint. The public parts of these keypairs are discoverable using the appropriate DCP for each business identifier URNs, which is discoverable using the global DCL. Public keys MUST be published in ASCII-Armoured form in the DCP.</p>
+<p>The cyphertext is created using public key cryptography, using the appropriate public
+key for the recipient business endpoint. The public parts of these keypairs are
+discoverable using the appropriate DCP for each business identifier URNs, which is
+discoverable using the global DCL. Public keys MUST be published in ASCII-Armoured
+form in the DCP.</p>
 
 <p>Example:</p>
 
@@ -482,21 +557,30 @@ where <code class="highlighter-rouge">14a62c86caa60bb3987248e93e51cacd4639256247
   </li>
 </ul>
 
-<p>Use of mature, well-known and extensively scrutinised cryptography implementations is strongly encouraged. The following examples use GnuPG, although any compliant RFC4880 implementation could be used in an equivalent way.</p>
+<p>Use of mature, well-known and extensively scrutinised cryptography implementations is
+strongly encouraged. The following examples use GnuPG, although any compliant RFC4880
+implementation could be used in an equivalent way.</p>
 
-<p>Assuming the recipient’s public key is not already in the sender’s GnuPG keyring, but is in the current working directory as <code class="highlighter-rouge">recipient.gpg</code>, it can be added to the sender’s GnuPG keyring like this:</p>
+<p>Assuming the recipient’s public key is not already in the sender’s GnuPG keyring, but
+is in the current working directory as <code class="highlighter-rouge">recipient.gpg</code>, it can be added to the sender’s
+GnuPG keyring like this:</p>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>gpg2 --import <span class="s2">"recipient.gpg"</span>
 </code></pre>
 </div>
 
-<p>With GnuPG, this is only necessary once. Subsequent messages to the same recipient can skip the key importing step.</p>
+<p>With GnuPG, this is only necessary once. Subsequent messages to the same recipient can
+skip the key importing step.</p>
 
 <h4 id="note-about-published-keys">Note about published keys</h4>
 
 <p>Implementation-specific section.</p>
 
-<p>Once the recipient’s key has been added to the sender’s keyring, and assuming the current working directory contains a signed document <code class="highlighter-rouge">signed_doc.txt</code>, and the user namespace identifier of the recipient public key is <code class="highlighter-rouge">91f68ffafa1288ad55cb3e61e937870fb5598cc098e125fe29412ab3047f15e1@dcp.testpoint.io</code> then cyphertext of signed business document can be created with:</p>
+<p>Once the recipient’s key has been added to the sender’s keyring, and assuming the
+current working directory contains a signed document <code class="highlighter-rouge">signed_doc.txt</code>, and the user
+namespace identifier of the recipient public key is
+<code class="highlighter-rouge">91f68ffafa1288ad55cb3e61e937870fb5598cc098e125fe29412ab3047f15e1@dcp.testpoint.io</code>
+then cyphertext of signed business document can be created with:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>gpg2 --armour \
  --output "cyphertext.gpg"
@@ -506,7 +590,8 @@ where <code class="highlighter-rouge">14a62c86caa60bb3987248e93e51cacd4639256247
 </code></pre>
 </div>
 
-<p>This will create a file <code class="highlighter-rouge">cyphertext.gpg</code> in the current working directory, which has ASCII-Armour encoding (suitable for inclusion in a json document).</p>
+<p>This will create a file <code class="highlighter-rouge">cyphertext.gpg</code> in the current working directory, which
+has ASCII-Armour encoding (suitable for inclusion in a json document).</p>
 
 <h3 id="message-format">Message format</h3>
 
@@ -535,9 +620,13 @@ where <code class="highlighter-rouge">14a62c86caa60bb3987248e93e51cacd4639256247
 
 <h3 id="compose-message-example">Compose Message Example</h3>
 
-<p>The <code class="highlighter-rouge">message</code> part is a mixture of cleartext metadata (used by TAPs) and enciphered payload (used by trusted business system components). The cleartext metadata does not contain sensitive business information, whereas access to the business-sensitive information within the payload is not necessary for participating in the TAP protocol.</p>
+<p>The <code class="highlighter-rouge">message</code> part is a mixture of cleartext metadata (used by TAPs) and enciphered
+payload (used by trusted business system components). The cleartext metadata does not
+contain sensitive business information, whereas access to the business-sensitive
+information within the payload is not necessary for participating in the TAP protocol.</p>
 
-<p>The message part does not need to be in any kind of canonical form. It MUST be a valid json document.</p>
+<p>The message part does not need to be in any kind of canonical form. It MUST be a
+valid json document.</p>
 
 <p>Assuming the current working directory contains:</p>
 
@@ -548,7 +637,8 @@ where <code class="highlighter-rouge">14a62c86caa60bb3987248e93e51cacd4639256247
   <li><code class="highlighter-rouge">sender.txt</code>, containing the URN of the business identifier of the sender</li>
 </ul>
 
-<p>Then the following python script will create <code class="highlighter-rouge">message.json</code> file containing the cyphertext and associated metadata in json format.</p>
+<p>Then the following python script will create <code class="highlighter-rouge">message.json</code> file containing the
+cyphertext and associated metadata in json format.</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">json</span>
 
@@ -585,15 +675,20 @@ where <code class="highlighter-rouge">14a62c86caa60bb3987248e93e51cacd4639256247
 
 <h3 id="generate-signature">Generate signature</h3>
 
-<p>The <code class="highlighter-rouge">signature</code> part is created by a business system component trusted by the sender (with access to the sender’s private key material). The signature can also be used to uniquely identify the message contents.</p>
+<p>The <code class="highlighter-rouge">signature</code> part is created by a business system component trusted by the sender
+(with access to the sender’s private key material). The signature can also be used to
+uniquely identify the message contents.</p>
 
-<p>Assuming the current working directory contains the message (as <code class="highlighter-rouge">message.json</code>), the following command will create a signature <code class="highlighter-rouge">message.sig</code>:</p>
+<p>Assuming the current working directory contains the message (as <code class="highlighter-rouge">message.json</code>), the
+following command will create a signature <code class="highlighter-rouge">message.sig</code>:</p>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>gpg2 --output message.sig --sign message.json
 </code></pre>
 </div>
 
-<p>Implementation note: the easiest way to make sure that specific key is used for signature is to have only single private key in GPG keyring. GPG for linux support custom keyring location.</p>
+<p>Implementation note: the easiest way to make sure that specific key is used for
+signature is to have only single private key in GPG keyring. GPG for linux support
+custom keyring location.</p>
 
 <h3 id="posting-the-message-to-the-recipient-tap">Posting the message to the recipient TAP</h3>
 
@@ -606,9 +701,13 @@ where <code class="highlighter-rouge">14a62c86caa60bb3987248e93e51cacd4639256247
   <li>MUST NOT rely on additional TAP-related information in HTTP headers, such as message or conversation identifiers.</li>
 </ul>
 
-<p>The message is sent to the receiving TAP using HTTP POST operation. The posted body contains two parts, named <code class="highlighter-rouge">message</code> and <code class="highlighter-rouge">signature</code>.</p>
+<p>The message is sent to the receiving TAP using HTTP POST operation. The posted body
+contains two parts, named <code class="highlighter-rouge">message</code> and <code class="highlighter-rouge">signature</code>.</p>
 
-<p>Assuming the current working directory contains the message (as message.json) and signature (as message.sig), the following curl command will post the message to the recipient TAP (replace <code class="highlighter-rouge">&lt;TAP_URL&gt;</code> with HTTPS URL discovered from the Service Metadata Publisher).</p>
+<p>Assuming the current working directory contains the message (as message.json) and
+signature (as message.sig), the following curl command will post the message to the
+recipient TAP (replace <code class="highlighter-rouge">&lt;TAP_URL&gt;</code> with HTTPS URL discovered from the Service
+Metadata Publisher).</p>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>curl -X POST <span class="se">\</span>
  -H <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\</span>
@@ -620,8 +719,11 @@ where <code class="highlighter-rouge">14a62c86caa60bb3987248e93e51cacd4639256247
 
 <h2 id="receipt-and-technical-acknowledgement">Receipt and Technical Acknowledgement</h2>
 
-<p>When a valid message is received, the TAP issues an HTTP 200 status and returns a response body with <code class="highlighter-rouge">Content-Type: application/json</code>, containing information about the message and optional HATEOS-style list of callback URLs.
-Check the <a href="http://ausdigital.org/specs/ausdigital-tap/2.0/api">API</a>  for possible responses, success and errors.</p>
+<p>When a valid message is received, the TAP issues an HTTP 200 status and returns
+a response body with <code class="highlighter-rouge">Content-Type: application/json</code>, containing information
+about the message and optional HATEOS-style list of callback URLs.
+Check the <a href="http://ausdigital.org/specs/ausdigital-tap/2.0/api">API</a> for possible
+responses, success and errors.</p>
 
 <p>TODO:</p>
 
