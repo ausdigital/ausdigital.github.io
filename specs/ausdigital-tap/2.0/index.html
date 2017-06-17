@@ -184,20 +184,28 @@
 </div>
             <h2 id="introduction">Introduction</h2>
 
-<p>This document describes a protocol for exchanging formal documents (such as invoices)
-between businesses. TAP is a secure, decentralised, peer to peer architecture where gateways
-are optional and minimally trusted.</p>
+<p>This document describes a protocol for exchanging formal documents (such as
+invoices) between businesses. TAP is a secure, decentralised, peer to peer
+architecture where gateways are optional and minimally trusted.</p>
 
 <h2 id="goals">Goals</h2>
 
-<p>The primary goal of the Transaction Access Point (TAP) 2.0 Specification is to provide a standard way for business systems to send and receive secure messages with the following characteristics:</p>
+<p>The primary goal of the Transaction Access Point (TAP) 2.0 Specification is
+to provide a standard way for business systems to send and receive secure
+messages with the following characteristics:</p>
 
 <ul>
-  <li>Support multiple gateway topologies (traditional EDI “4 corner” model, point-to-point and broker-based models, etc)</li>
-  <li>Enforced carrier neutrality; sender encrypts, recipient decrypts, intermediaries only have access to payload cyphertext (protect against weak permieter-security on complex gateway topologies)</li>
-  <li>Selectively transparent; enable 3rd information sharing protocols</li>
-  <li>Sufficient envelope data to allows 3rd parties to verify message cleartext and be aware of appropriately linked data.</li>
-  <li>Support evidence of provonance and auditability without compromosing security</li>
+  <li>Support multiple gateway topologies (traditional EDI “4 corner” model,
+point-to-point and broker-based models, etc)</li>
+  <li>Enforced carrier neutrality; sender encrypts, recipient decrypts,
+intermediaries only have access to payload cyphertext (protect against weak
+permieter-security on complex gateway topologies)</li>
+  <li>Selectively transparent; enable sub-protocols for information sharing with
+appropriate 3rd parties.</li>
+  <li>Sufficient envelope data to allows 3rd parties to verify message cleartext
+and be aware of appropriately linked data.</li>
+  <li>Support evidence of provonance and auditability without compromosing
+security</li>
 </ul>
 
 <p>The Transaction Access Point (TAP) 2.0 Specification defines:</p>
@@ -217,7 +225,8 @@ are optional and minimally trusted.</p>
 development at
 <a href="https://github.com/ausdigital/ausdigital-tap">https://github.com/ausdigital/ausdigital-tap</a>.</p>
 
-<p>Comments and feedback are encouraged and welcome. Pull requests with improvements are welcome too.</p>
+<p>Comments and feedback are encouraged and welcome. Pull requests with
+improvements are welcome too.</p>
 
 <h2 id="glossary">Glossary:</h2>
 
@@ -264,50 +273,56 @@ development at
 
 <p>Copyright (c) 2016, 2017 the Editor and Contributors. All rights reserved.</p>
 
-<p>This Specification is free software; you can redistribute it and/or modify it under the
-terms of the GNU General Public License as published by the Free Software Foundation;
-either version 3 of the License, or (at your option) any later version.</p>
+<p>This Specification is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the Free
+Software Foundation; either version 3 of the License, or (at your option) any
+later version.</p>
 
-<p>This Specification is distributed in the hope that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-PURPOSE. See the GNU General Public License for more details.</p>
+<p>This Specification is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+details.</p>
 
-<p>You should have received a copy of the GNU General Public License along with this program;
-if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+<p>You should have received a copy of the GNU General Public License along with
+this program; if not, see
+<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
 
 <h2 id="change-process">Change Process</h2>
 
-<p>This document is governed by the <a href="http://rfc.unprotocols.org/spec:2/COSS/">2/COSS</a> (COSS).</p>
+<p>This document is governed by the
+<a href="http://rfc.unprotocols.org/spec:2/COSS/">2/COSS</a> (COSS).</p>
 
 <h2 id="language">Language</h2>
 
-<p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”,
-“RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in
-RFC 2119.</p>
+<p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”,
+“SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be
+interpreted as described in RFC 2119.</p>
 
 <h1 id="introduction-1">Introduction</h1>
 
-<p>The Transaction Access Point (TAP) is a persistently connected “peer” capable of sending and
-receiving business documents, such as invoices. It interacts with other TAPs following the
-protocol specified in this document. The TAP is an autonomous agent in business-to-business
-document exchange.</p>
+<p>The Transaction Access Point (TAP) is a persistently connected “peer” capable
+of sending and receiving business documents, such as invoices. It interacts
+with other TAPs following the protocol specified in this document. The TAP is
+an autonomous agent in business-to-business document exchange.</p>
 
-<p>A TAP might be provided by a commercial ledger service, or maintained as part of an
-independent business system.</p>
+<p>A TAP might be provided by a commercial ledger service, or maintained as part
+of an independent business system.</p>
 
-<p>The TAP specification has two parts. The main part (ausdigital-tap/2) defines the protocol
-all peers must follow (and interfaces they must provide) to send and receive business
-documents. The second part is an optional gateway specification (ausdigital-tapgw/1), which
-defines a client-server protocol for trusted business system components (e.g. ledger
-services) to interact with independent TAP service providers in a generic way.</p>
+<p>The TAP specification has two parts. The main part (ausdigital-tap/2) defines
+the protocol all peers must follow (and interfaces they must provide) to send
+and receive business documents. The second part is an optional gateway
+specification (ausdigital-tapgw/1), which defines a client-server protocol
+for trusted business system components (e.g. ledger services) to interact with
+independent TAP service providers in a generic way.</p>
 
 <h2 id="dependencies">Dependencies</h2>
 
-<p>The messages sent between TAPs carry semantic payloads. Currently, these include
-ausdigital-bill/1.
-That specification is maintained independently in the
+<p>The messages sent between TAPs carry semantic payloads. Currently, these
+include ausdigital-bill/1. That specification is maintained independently in
+the
 <a href="https://github.com/ausdigital/ausdigital-bill">https://github.com/ausdigital/ausdigital-bill</a>
-repository. Future semantic payloads may be supported without change to the protocol.</p>
+repository. Future semantic payloads may be supported without change to the
+protocol.</p>
 
 <p>All TAPs depend on the following Services:</p>
 
@@ -317,10 +332,9 @@ repository. Future semantic payloads may be supported without change to the prot
   <li>ausdigital-nry/1</li>
 </ul>
 
-<p>TAPGW providers also depend on the
-ausdigital-idp/1. TAPs do not need to
-authenticate when they interact with each other, due to use of well known cryprograpic
-keys and service endpoint addresses.</p>
+<p>TAPGW providers also depend on the ausdigital-idp/1. TAPs do not need to
+authenticate when they interact with each other, due to use of well known
+cryprograpic keys and service endpoint addresses.</p>
 
 <h2 id="tap-protocol-overview">TAP Protocol Overview</h2>
 
