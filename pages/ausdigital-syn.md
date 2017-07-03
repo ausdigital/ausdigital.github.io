@@ -8,7 +8,7 @@ permalink: /ausdigital-syn/
 
 This specification describes a syntax and processing model for UBL semantics. 
 
-# SYN-XML Version:
+## SYN-XML Version:
 
 * An XML syntax model for UBL semantics.
 * The XSD/Schematron/Genericode validation.
@@ -16,7 +16,7 @@ This specification describes a syntax and processing model for UBL semantics.
 * [SYN-XML GitHub repository](https://github.com/ausdigital/ausdigital-syn-xml/)
 * [SYN-XML Slack channel](https://ausdigital.slack.com/messages/spec-syn-xml/) ([you must signup to ausdigital slack first](https://chat.ausdigital.org/))
 
-# SYN-JSON Version:
+## SYN-JSON Version:
 
 * A simple JSON syntax model for UBL semantics.
 * A lossless transformation model between UBL XML (UBL XML Syntax 1.0 spec) and JSON (UBL JSON Syntax 1.0 spec) representations.
@@ -27,7 +27,7 @@ The intent of UBL JSON Syntax 1.0 spec is to provide developers with a much simp
 * [SYN-JSON 1.0 GitHub repository](https://github.com/ausdigital/ausdigital-syn-json)
 * [SYN-JSON 1.0 Slack channel](https://ausdigital.slack.com/messages/spec-syn-json/)
 
-# SYN-SOL Version
+## SYN-SOL Version
 
 * A Solidity Syntax stadard used in Ethereum Blockchain smart contracts representing UBL semantics. 
 * Supported by an Oracle implementation that provides interchange with parties outside of the Ethereum network.
