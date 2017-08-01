@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>AusDigital Identity Provider (IDP) 1.0 Specification - AusDigital Standards by ausdigital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-line">
+        <div class="wrapper">
+            <div id="mobile-menu-wrapper" class="mobile-menu">
+                <button id="hamburger-menu" class="hamburger-menu">
+                    <span>toggle menu</span>
+                </button>
+                <div id="mobile-menu" style="display: none;">
+                    
+                    <ul class="sidebar-menu">
+    
+    <li class="menu-title">Benefits</li>
+    <li><a  href="/business-case/">A Business Case</a></li>
+    <li class="menu-title">Technical Specs</li>
+    <li><a class="active" href="/ausdigital-idp/">Identity Provider (IDP)</a></li>
+    <li><a  href="/ausdigital-dcl/">Capability Locator (DCL)</a></li>
+    <li><a  href="/ausdigital-dcp/">Capability Publisher (DCP)</a></li>
+    <li><a  href="/ausdigital-tap/">Access Point (TAP)</a></li>
+    <li><a  href="/ausdigital-tap-gw/">TAP Gateway (TAP-GW)</a></li>
+    <li><a  href="/ausdigital-nry/">Notary (NRY)</a></li>
+    <li><a  href="/ausdigital-syn/">UBL Syntax (SYN)</a></li>
+    <li class="menu-title">Semantic Specs</li>
+    <li><a  href="/ausdigital-code/">Code Lists Mgmt (CODE)</a></li>
+    <li><a  href="/ausdigital-bill/">Billing Process (BILL)</a></li>
+    <li><a  href="/ausdigital-po/">Purchase Orders (PO)</a></li>
+    <li><a  href="/ausdigital-ship/">Fulfillment (SHIP)</a></li>
+    <li class="menu-title">Governance</li>
+    <li><a  href="/governance-model/">Governance Model</a></li>
+    <li class="menu-title">Community</li>
+    <li><a href="http://eepurl.com/ctZ6hf" target="_blank">Newsletter (subscribe)</a></li>
+    <li><a href="http://chat.ausdigital.org" target="_blank">Chat (join team)</a></li>
+    <li><a href="https://github.com/ausdigital/" target="_blank">GitHub</a></li>
+</ul>
+                </div>
+            </div>
+            <a href="/" class="logo"><img src="/images/logo.png" alt="AusDigital"><span>AusDigital.org</span></a>
+            <div class="header-search">
+                <script>
+                    (function() {
+                        var cx = '017892665596304004128:tj19kxwel_m';
+                        var gcse = document.createElement('script');
+                        gcse.type = 'text/javascript';
+                        gcse.async = true;
+                        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                        var s = document.getElementsByTagName('script')[0];
+                        s.parentNode.insertBefore(gcse, s);
+                    })();
+                </script>
+                <gcse:search></gcse:search>
+            </div>
+            
+        </div>
+    </div>
+    <div class="header-content">
+        <div class="wrapper">
+            <img src="/images/logo.png" alt="AusDigital">
+            <div class="header-text-box">
+                <div class="header-name">AusDigital Standards</div>
+                <div class="header-tagline">Business to Business data exchange open standards community </div>
+            </div>
+        </div>
+    </div>
+</header>
+<script type="text/javascript">
+    document.getElementById('hamburger-menu').onclick = function() {
+        var nf = document.getElementById('mobile-menu');
+
+        // Show and hide menu items when toggle is clicked
+        if(nf.style.display==='none') {
+            nf.style.display = 'block';
+        }
+        else {
+            nf.style.display = 'none';
+        }
+    };
+
+    window.addEventListener('click', function(e){
+        if (!document.getElementById('mobile-menu-wrapper').contains(e.target)){
+            document.getElementById('mobile-menu').style.display= 'none';
+        }
+    });
+</script>
+
+<div class="main-wrapper">
+    <div class="main-content">
+        <div class="page-sidebar">
+            <ul class="sidebar-menu">
+    
+    <li class="menu-title">Benefits</li>
+    <li><a  href="/business-case/">A Business Case</a></li>
+    <li class="menu-title">Technical Specs</li>
+    <li><a class="active" href="/ausdigital-idp/">Identity Provider (IDP)</a></li>
+    <li><a  href="/ausdigital-dcl/">Capability Locator (DCL)</a></li>
+    <li><a  href="/ausdigital-dcp/">Capability Publisher (DCP)</a></li>
+    <li><a  href="/ausdigital-tap/">Access Point (TAP)</a></li>
+    <li><a  href="/ausdigital-tap-gw/">TAP Gateway (TAP-GW)</a></li>
+    <li><a  href="/ausdigital-nry/">Notary (NRY)</a></li>
+    <li><a  href="/ausdigital-syn/">UBL Syntax (SYN)</a></li>
+    <li class="menu-title">Semantic Specs</li>
+    <li><a  href="/ausdigital-code/">Code Lists Mgmt (CODE)</a></li>
+    <li><a  href="/ausdigital-bill/">Billing Process (BILL)</a></li>
+    <li><a  href="/ausdigital-po/">Purchase Orders (PO)</a></li>
+    <li><a  href="/ausdigital-ship/">Fulfillment (SHIP)</a></li>
+    <li class="menu-title">Governance</li>
+    <li><a  href="/governance-model/">Governance Model</a></li>
+    <li class="menu-title">Community</li>
+    <li><a href="http://eepurl.com/ctZ6hf" target="_blank">Newsletter (subscribe)</a></li>
+    <li><a href="http://chat.ausdigital.org" target="_blank">Chat (join team)</a></li>
+    <li><a href="https://github.com/ausdigital/" target="_blank">GitHub</a></li>
+</ul>
+        </div>
+        <div class="page-content docs-content">
+            <div class="spec-header">
+                
+                <ul>
+                    <li>Spec ID: <p>ausdigital-idp/1</p>
+</li>
+                    <li><p><img src="http://rfc.unprotocols.org/spec:2/COSS/raw.svg" alt="raw" /></p>
+</li>
+                    <li>Editor: <p><a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#104;&#114;&#105;&#115;&#116;&#111;&#112;&#104;&#101;&#114;&#046;&#100;&#046;&#103;&#111;&#117;&#103;&#104;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">Chris Gough</a></p>
+</li>
+                    <li>Contributors: <p><a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#115;&#116;&#101;&#118;&#101;&#110;&#046;&#099;&#097;&#112;&#101;&#108;&#108;&#064;&#103;&#111;&#115;&#111;&#117;&#114;&#099;&#101;&#046;&#099;&#111;&#109;&#046;&#097;&#117;">Steven Capell</a></p>
+</li>
+                </ul>
+            </div>
+            <div class="specs-toc">
+    <!--<div class="specs-toc-title">Table of contents</div>-->
+    <ul class="section-nav">
+<ul>
+<li class="toc-entry toc-h2"><a href="#introduction">Introduction</a></li>
+<li class="toc-entry toc-h2"><a href="#goals">Goals</a></li>
+<li class="toc-entry toc-h2"><a href="#status">Status</a></li>
+<li class="toc-entry toc-h2"><a href="#glossary">Glossary</a></li>
+<li class="toc-entry toc-h2"><a href="#licence">Licence</a></li>
+<li class="toc-entry toc-h2"><a href="#change-process">Change Process</a></li>
+<li class="toc-entry toc-h2"><a href="#language">Language</a></li>
+</ul>
+<li class="toc-entry toc-h1"><a href="#idp-concepts">IDP Concepts</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#identity-services">Identity Services</a></li>
+<li class="toc-entry toc-h2"><a href="#access-tokens">Access Tokens</a></li>
+<li class="toc-entry toc-h2"><a href="#claims-and-scopes">Claims and Scopes</a></li>
+<li class="toc-entry toc-h2"><a href="#custom-claims-and-scopes-in-the-adbc-idp-domain">Custom Claims and Scopes in the ADBC IDP domain</a></li>
+<li class="toc-entry toc-h2"><a href="#participant-id-claim-name">Participant ID claim name</a></li>
+<li class="toc-entry toc-h2"><a href="#id-schemes-and-jurisdictions">ID Schemes and Jurisdictions</a></li>
+<li class="toc-entry toc-h2"><a href="#two-kinds-of-trust">Two kinds of trust</a></li>
+<li class="toc-entry toc-h2"><a href="#how-an-rp-trusts-an-idp">How an RP trusts an IDP</a></li>
+<li class="toc-entry toc-h2"><a href="#how-an-rp-trusts-a-token">How an RP trusts a Token</a></li>
+<li class="toc-entry toc-h2"><a href="#authorisation-and-contractual-proof-of-consent">Authorisation and contractual proof of consent</a></li>
+<li class="toc-entry toc-h2"><a href="#the-alias-relationship-between-identities">The “alias” relationship between identities</a></li>
+<li class="toc-entry toc-h2"><a href="#the-on-behalf-of-relationship-between-identities">The “on behalf of” relationship between identities</a></li>
+<li class="toc-entry toc-h2"><a href="#business-network-relationships-between-identities">Business network relationships between identities</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#scope">Scope</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#jurisdictions">Jurisdictions</a></li>
+<li class="toc-entry toc-h2"><a href="#identity-schemes">Identity Schemes</a></li>
+<li class="toc-entry toc-h2"><a href="#adding-jurisdictions-and-identity-schemes-to-the-standard">Adding Jurisdictions and Identity Schemes to the standard</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#levels-of-assurance-loa">Levels Of Assurance (LOA)</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#specified-loas">Specified LOAs</a></li>
+<li class="toc-entry toc-h2"><a href="#logical-model">Logical Model</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#loa-rules">LOA Rules</a></li>
+<li class="toc-entry toc-h1"><a href="#related-material">Related Material</a></li>
+</ul>
+</div>
+            <h2 id="introduction">Introduction</h2>
+
+<p>This document describes a federated model for providing identity assurance for secure business messaging. The initial development is focussed on supporting digital procure-to-pay protocols (in particular the Australian eInvoicing Framework), however the design is intended to be more generic than that.</p>
+
+<p>Integrity in the transactional network depends on business identity confidence.  Specifically that a person creating a transaction does have an authorised role in a business that is identified by a recognised scheme (eg Australian Business Number).  The framework can allow multiple assurance levels about an identity claim so long as the assurance level associated with any transaction is known to all parties.</p>
+
+<p><img src="images/IdentityModel.png" alt="Identity Framework" /></p>
+
+<p>The Open ID Connect (OIDC) specification is a very well established protocol for authentication and authorisation that meets the needs of the framework.  Therefore this specification builds upon OIDC by specifying a set of scopes, claims, and assurance levels that will support consistent use of a marketplace of identity providers.</p>
+
+<h2 id="goals">Goals</h2>
+
+<p>This specification is based on the widely used <a href="https://en.wikipedia.org/wiki/OpenID_Connect">OpenID Connect</a> standard (OIDC) for authentication and authorisation. The specification uses the defined extension mechanism in OIDC to provide a standardised set of scopes, claims, and identity assurance levels.</p>
+
+<p>These extensions:</p>
+
+<ul>
+  <li>Allow a person or online service to prove they have authorisation to update business metadata on behalf of a business. This authorisation is necessary to orchestrate the various distributed components that are involved in secure business messaging.</li>
+  <li>Simplify the adaption of existing identity schemes for secure business messaging / procure-to-pay applications.</li>
+  <li>Leave jurisdictions free to regulate local business identity however they like.</li>
+</ul>
+
+<p>This specification does not create or nominate any central authority, other than to propose that identity providers implement this open standard consistently. Instead, it is based on the idea of an <em>identity market</em> that spans multiple jurisdictions, where participants and individuals make their own decisions about trust.</p>
+
+<h2 id="status">Status</h2>
+
+<p>This specification aims to support the Australian Digital Business Council
+<a href="http://ausdigital.org">eInvoicing initiative</a>, and is under active
+development at
+<a href="https://github.com/ausdigital/ausdigital-idp">https://github.com/ausdigital/ausdigital-idp</a>.</p>
+
+<p>Comments and feedback are encouraged and welcome. Pull requests with improvements are welcome too.</p>
+
+<h2 id="glossary">Glossary</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Phrase</th>
+      <th>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ausdigital-idp/1</td>
+      <td>This specification.</td>
+    </tr>
+    <tr>
+      <td>ausdigital-dcl/1</td>
+      <td>Version 1 of the AusDigtial <a href="http://ausdigital.org/specs/ausdigital-dcl/1.0">Digital Capability Locator (DCL)</a> specification</td>
+    </tr>
+    <tr>
+      <td>ausdigital-dcp/1</td>
+      <td>Version 1 of the AusDigital <a href="http://ausdigital.org/specs/ausdigital-dcp/1.0">Digital Capability Publisher (IDP)</a> specification.</td>
+    </tr>
+    <tr>
+      <td>ausdigital-tap/1</td>
+      <td>Version 1 of the AusDigital <a href="http://ausdigital.org/ausdigital-tap">Transaction Access Point(TAP)</a> specification.</td>
+    </tr>
+    <tr>
+      <td>ausdigital-tap/2</td>
+      <td>Version 2 of the AusDigital <a href="http://ausdigital.org/ausdigital-tap">Transaction Access Point(TAP)</a> specification.</td>
+    </tr>
+    <tr>
+      <td>ausdigital-nry/1</td>
+      <td>Version 1 of the AusDigital <a href="http://ausdigital.org/ausdigital-nry">Notary (NRY)</a> specification.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The IDP service depends on TBA and TBA.</p>
+
+<p>Other TBA and TBA services both depend on the IDP service.</p>
+
+<h2 id="licence">Licence</h2>
+
+<p>Copyright (c) 2016 the Editor and Contributors. All rights reserved.</p>
+
+<p>This Specification is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
+
+<p>This Specification is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+
+<p>You should have received a copy of the GNU General Public License along with this program; if not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>.</p>
+
+<h2 id="change-process">Change Process</h2>
+
+<p>This document is governed by the <a href="http://rfc.unprotocols.org/spec:2/COSS/">2/COSS</a> (COSS).</p>
+
+<h2 id="language">Language</h2>
+
+<p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in RFC 2119.</p>
+
+<h1 id="idp-concepts">IDP Concepts</h1>
+
+<p>This chapter explains concepts used in the ADBC IDP Specification.</p>
+
+<p>While many of these concepts are common to other identity management
+systems (such as SAML), terminology is not always used consistently
+between communities. We aim for consistent language with the OpenID
+Connect community, because ADBC IDP Specification is built on OpenID
+Connect.</p>
+
+<h2 id="identity-services">Identity Services</h2>
+
+<p>The ADBC IDP Specification is an application of <a href="http://openid.net/connect/">OpenID
+Connect</a> (OIDC).</p>
+
+<p>Under OIDC, an Identity Provider (IDP) is a service that has multiple
+clients. These clients are called Relying Parties (RP). The IDP also has
+multiple users, which can authenticate through the IDP and provide
+authorisation (to RPs).</p>
+
+<ul>
+  <li>An IDP can have multiple clients</li>
+  <li>An RP can be a client of multiple IDPs</li>
+  <li>An IDP can have many Users</li>
+</ul>
+
+<p><img src="images/identity_services.png" alt="identity services ERD" /></p>
+
+<h2 id="access-tokens">Access Tokens</h2>
+
+<p>Identity service consumers are called “Relying Parties” because they
+<em>rely on</em> services provided by the IDP. In practice this means the IDP
+provides the RP with a token, which the RP can make use of.</p>
+
+<p>OIDC provides a number of mechanisms for the RP to consume identity
+service. ADBC IDP Specification only uses one of them, called a (JWT)[<a href="https://jwt.io/">https://jwt.io/</a>] (JSON Web Token).</p>
+
+<p>This means that the RP is issued a JWT by the IDP, and the RP relies on
+that JWT for information about someone’s identity, and to prove that
+(according to the IDP) the RP has the user’s permission to do certain
+things.</p>
+
+<p><img src="images/jwt.png" alt="JWT ERD" /></p>
+
+<p>A JWT:</p>
+
+<ul>
+  <li>is issued by an IDP</li>
+  <li>is issued for an IDP’s client (RP)</li>
+  <li>proves authentication by an identity (user)</li>
+  <li>proves the RP has been authorised by the identity to do some things</li>
+</ul>
+
+<p>From the RP’s perspective, something happens between a user and the IDP
+(authentication of the user, and authorisation of the RP based on the
+user’s explicit consent) and as a result, the IDP creates a JWT and
+provides it to the RP.</p>
+
+<h2 id="claims-and-scopes">Claims and Scopes</h2>
+
+<p>All OIDC tokens can be used by the RP as proof that (acording to the
+IDP) they have some authorisation scopes and authentication claims by
+the IDP.</p>
+
+<p>A JWT can have:</p>
+
+<ul>
+  <li>multiple authorisation scopes (information about permission given to the RP)</li>
+  <li>multiple authentication claims (information about the identity of the user that gave permission).</li>
+</ul>
+
+<p>The OIDC protocol contains some standard scopes and claims which must be
+supported by all compliant IDPs, and also allows OIDC applications to
+implement custom scopes and claims if they need to. The ADBC IDP
+Specification makes used of a custom scope and standardised claims, which ADBC IDP Specification compliant IDPs must also support.</p>
+
+<p><img src="images/claims_and_scopes.png" alt="claims and scopes ERD" /></p>
+
+<h2 id="custom-claims-and-scopes-in-the-adbc-idp-domain">Custom Claims and Scopes in the ADBC IDP domain</h2>
+
+<p>The ADBC IDP Specification aims to support an open market of identity
+providers. This means there can be multiple Identity Schemes, where each
+scheme is represented by a type of OIDC authentication claim for
+different types of business identifier. Initially, the ADBC IDP
+Specification defines an Australian Business Number (ABN) type of
+identity claim, however other claims will be supported if compliant
+Identity Providers can be found to service them.</p>
+
+<p>The ADBC IDP Specification also adds a single additional authorisation
+scope (“update business metadata”). This scope is required for
+orchestrating business message components.</p>
+
+<p><img src="images/update_business_metadata.png" alt="update business metadata ERD" /></p>
+
+<p>For example, under the spec, a JWT may prove:</p>
+
+<ul>
+  <li>Authentication with a claim to represent ABN 12345678</li>
+  <li>Authorisation with scope of “update business metadata”</li>
+</ul>
+
+<p>In this example the identity claim is against the “Australian Business
+Number” ID Scheme (ABN). It means that (according to this IDP), this
+client of the IDP is the business known as ABN 12345678, and they have
+given the RP permission to update their businesses metadata.</p>
+
+<h2 id="participant-id-claim-name">Participant ID claim name</h2>
+
+<p>Any participant ID claim name represents prefix of full participant ID schema without last commponent. Content of that claim is a list of dicts, where every dict contains only one component, key is the last component of schema, value is participant ID without schema.</p>
+
+<p>JWT example (partial):
+<code class="highlighter-rouge">
+ "urn:oasis:names:tc:ebcore:partyid-type:iso6523": [
+    {"0151": "11111111111"},
+    {"0088": "22222222222"},
+    {"0088": "33333333333"},
+    {"0088": "44444444444"}
+  ],
+  "urn:unregistered": [
+    {"foo": "1234"},
+    {"bar": "5678"}
+  ],
+  "urn:oasis:names:tc:ebcore:partyid-type:iso20022:ProprietaryIdentification": [
+    {"ausdigitalorg": "nry.testpoint.io"},
+    {"company2": "..."}
+  ],
+</code></p>
+
+<p>Participant ID’s extracted from that JWT:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>urn:oasis:names:tc:ebcore:partyid-type:iso6523:0151::11111111111
+urn:oasis:names:tc:ebcore:partyid-type:iso6523:0088::22222222222
+urn:oasis:names:tc:ebcore:partyid-type:iso6523:0088::33333333333
+urn:oasis:names:tc:ebcore:partyid-type:iso6523:0088::44444444444
+urn:unregistered:foo::1234
+urn:unregistered:bar::5678
+urn:oasis:names:tc:ebcore:partyid-type:iso20022:ProprietaryIdentification:ausdigitalorg::nry.testpoint.io
+urn:oasis:names:tc:ebcore:partyid-type:iso20022:ProprietaryIdentification:company2::...
+</code></pre>
+</div>
+
+<h2 id="id-schemes-and-jurisdictions">ID Schemes and Jurisdictions</h2>
+
+<p>Anybody can invent their own business identifier scheme. The currency of
+an ID Schemes in the identity market is exactly equal to the extent that
+it proves useful.</p>
+
+<p>Some ID Schemes have an official jurisdiction. For example, the ABN is
+the legal business identifier in Australia. Other ID Schemes do not have
+an official jurisdiction. For example, DUNS numbers are managed by a
+company (Dun and Bradstreet). There is no need for a central authority
+of identifier schemes (although multiple exist). The International
+Standards Organisation provides a list of identifier schemes which are
+potential candidates.</p>
+
+<p>Where a Jurisdiction has an official ID Scheme, the head of power
+(Government) of that jurisdiction may also provide services in the
+identity market. For example in Australia, the Commonwealth owned
+Australian Business Register operates an IDP service called VanGuard.</p>
+
+<ul>
+  <li>An ID Scheme may have zero or one Jurisdiction</li>
+  <li>A Jurisdiction may have zero or more ID Schemes (we would expect 1 to be the usual number)</li>
+  <li>A Jurisdiction may operate zero or more Identity Providers</li>
+  <li>An Identity Provider may be operated publicly (by a Jurisdiction) or privately (by a person or company).</li>
+</ul>
+
+<p><img src="images/id_schemes_and_jurisdictions.png" alt="ID schemes and jurisdictions ERD" /></p>
+
+<h2 id="two-kinds-of-trust">Two kinds of trust</h2>
+
+<p>There are two kinds of trust that need to be taken into consideration by
+a RP. They relate to the strength of the identity and of credentials.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>RP Trust type</th>
+      <th>Credential Strength</th>
+      <th>Identity Strength</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>What is trusted</td>
+      <td>The authentication token (JWT)</td>
+      <td>Identity Claims within the JWT</td>
+    </tr>
+    <tr>
+      <td>Who is trusted</td>
+      <td>The Identity Provider (IDP)</td>
+      <td>The authenticated business</td>
+    </tr>
+    <tr>
+      <td>RP Confidence</td>
+      <td>The token actually represents authentication</td>
+      <td>The IDP user is who they claim to be</td>
+    </tr>
+    <tr>
+      <td>How is it trusted</td>
+      <td>Totally (all or nothing)</td>
+      <td>To a degree (level of assurance)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Credential strength is a partially subjective assessment of the IDP
+itself, it relates to the RP’s confidence that the IDP user (which the
+IDP thinks is the business) did in fact authorise the token. Credential
+strength is a measure of how confident an RP can be that the IDP’s
+customer actually issued the token. The RP either rejects or accepts a
+JWT, Credential strength is an all or nothing proposition.</p>
+
+<p>Assuming a JWT is accepted, how confident is the RP that the IDP’s
+customer is who they claim to be? Because a JWT can contain multiple
+such identity claims, this degree of trust is placed in each individual
+claim, not the JWT itself. The ADBC IDP Specification is geared towards
+business identities and relies on participation in regulated commerce as
+it’s source of identity strength. It defines different “Levels of
+Assurance” (LOA) depending on the regulatory regime that underpins the
+identity assurance.</p>
+
+<h2 id="how-an-rp-trusts-an-idp">How an RP trusts an IDP</h2>
+
+<p>Consider these two hypothetical scenarios:</p>
+
+<ul>
+  <li>IDP-A uses a username/password credential for authenticating Australian businesses, where both the username and password are always easily guessable (single factor weak credential). It would be trivially easy to trick the IDP-A into issuing tokens that do not in fact represent authentication or authorisation of the business.</li>
+  <li>IDP-B requires a very long and complicated password and the presentation of a tamper-resistant hardware device in person to a physically secure location, where a full-body NMRI scan is performed (triple factor strong credentials). It is very difficult to trick IDP-B into issuing tokens that do not represent authentication and authorisation of the business.</li>
+</ul>
+
+<p><img src="images/credential_trust.png" alt="credential trust ERD" /></p>
+
+<p>An RP has to make their own assessment of the security of the IDP, based
+on the IDP’s systems and processes, and perhaps also their reputation.
+An assessment of credential security is applied equally to every token
+issued by the IDP.</p>
+
+<p>Credential Strength is one area where IDPs differentiate and compete in
+a trust market. <a href="https://keybase.io/">https://keybase.io/</a> is an example of a (non-OIDC)
+identity service that competes on the strength of their credentials,
+using blockchain-notarised cryptographic keys. This illustrates
+credential strength differentiation in the trust market, however keybase
+is geared towards individuals (not businesses identities) and relies on
+aggregated evidence of participation in society as it’s identity
+strength (not Jurisdictional regulation).</p>
+
+<h2 id="how-an-rp-trusts-a-token">How an RP trusts a Token</h2>
+
+<p>The trust that an RP places in the identity of a token is applied to
+individual claims, not to the token itself (or the IDP). Recall that a
+tokens can have multiple claims, and within the ASBC IDP Specification,
+each claim is associated an identity scheme, (which may belong to a
+jurisdiction, etc).</p>
+
+<p>Imagine four scenarios. In all of them, the IDP issued an token with two
+authentication claims:</p>
+
+<ul>
+  <li>the about the ABN is 1234567</li>
+  <li>the DUNS number is 56789</li>
+</ul>
+
+<p>In the first scenario, the IDP is operated by Dun and Bradstreet (who
+administer DUNS numbers). In this situation, the RP might have:</p>
+
+<ul>
+  <li>Medium confidence in identity assurance the DUNS claim</li>
+  <li>Low confidence in the identity assurance of the ABN claim</li>
+</ul>
+
+<p>In the second scenario, the IDP is operated by an Australian bank. Due
+to anti money laundering and other KYC type regulations, the RP might
+have:</p>
+
+<ul>
+  <li>High confidence in the ABN claim</li>
+  <li>Low confidence in the DUNS claim</li>
+</ul>
+
+<p>In the third scenario, the IDP is operated by the Australian
+Commonwealth (Government). The RP might have:</p>
+
+<ul>
+  <li>Very High confidence in the ABN claim</li>
+  <li>Low confidence in the DUNS claim</li>
+</ul>
+
+<p>In the fourth scenario, the IDP is operated by a commercial organisation
+with a contractual obligation to verify the identity of it’s claims. The
+RP might have:</p>
+
+<ul>
+  <li>Medium confidence in the ABN claim</li>
+  <li>Medium confidence in the DUNS claim</li>
+</ul>
+
+<p><img src="images/loa_trust.png" alt="LOA trust ERD" /></p>
+
+<p>In words, that illustration says:</p>
+
+<ul>
+  <li>An IDP can issue many tokens (JWT)</li>
+  <li>An RP can be issued many tokens</li>
+  <li>Each token can have many claims</li>
+  <li>Each claim is associated with an identity scheme.</li>
+  <li>The RP has a certain amount of trust in the identity of the claim (called “Level of (identity) Assurance” or “LOA”).</li>
+</ul>
+
+<p>In the ADBC IDP Specification, Identity Strength of authentication
+claims are measured in with 4 standardised Levels of Assurance (LOA),
+ranging from low (self-asserted identity) through to very high
+(Government identity services). A significant part of the specification
+related to definition of these levels and how an RP can apply them.</p>
+
+<h2 id="authorisation-and-contractual-proof-of-consent">Authorisation and contractual proof of consent</h2>
+
+<p>The authorisation scopes attached to the JWT explicitly declare what the
+token allows the RP to do.</p>
+
+<p>OIDC supports multiple “Authorisation Flows”, which are all based on the
+concept that the RP is explicitly granted permission based on explicit
+consent of the End-User, which is given in response to a request for
+access by the RP. The ADBC IDP specification mandates that the OIDC
+Authorisation Code Flow is supported (MUST be supported). Other OIDC
+authorisation flows are allowed (MAY be supported).</p>
+
+<p>Not all authorisation systems are based on consent. Other systems (such
+as Role Based Control) are also common, and use rules (rather than
+explicit consent by a human in response to a request) to determine what
+authorisation is provided.</p>
+
+<p>The ADBC IDP Specification extends OIDC with a special kind of
+authorisation called “contractual proof of consent”. This results in the
+RP having a token that is like a JWT issued as part of an OIDC
+Authorisation Code Flow, however the consent was granted by the End-User
+before hand, not at the time of the request.</p>
+
+<p>Contractual proof of consent tokens are necessary in the ADBC IDP
+Specification because of the need to support machine-to-machine
+integration, where each machine is operating on behalf of End-User
+businesses in fully automated workflows. In these workflows, there is no
+human to provide consent at the time of the interaction. Instead, the
+End-User business makes a contract with the operator of the IDP,
+explicitly giving them permission to grant authorisation tokens on their
+behalf.</p>
+
+<p>This is also described as a “Known Customer Relationship”. A result of
+the RP trusting the integrity of the IDP contractual proof of consent
+process, is that the RP “knows” that the End-User business “is a
+customer of” the IDP. Put another way, “known customer relationship”
+trusts are implemented in the ADBC IDP Spec using the mechanism of
+“contractual consent tokens”, which are identical to OIDC Code
+Authorisation Flow tokens from an systems integration perspective. The
+fact that they are not generated in the usual way by the IDP does not
+impact the RP, as long as the RP is willing to trust the IDP to do so.</p>
+
+<h2 id="the-alias-relationship-between-identities">The “alias” relationship between identities</h2>
+
+<p>If a relying party obtains a token from an IDP that contain multiple
+identity claims, this means the single token represents multiple
+identifiers. The token does not represent a multitude of authorisations,
+it represents a singular authorisation with multiple identifiers.
+According to the token, these identifiers have an “alias” relationship
+with each other. In other words, the business that provided
+authorisation is “also known as” each of the identity claims.</p>
+
+<p>Furthermore, a relying party can obtain authorisation tokens from
+multiple identity providers. Tokens from different IDPs may contain a
+different set of identity claims, or may contain equivalent claims at
+different levels of assurance.</p>
+
+<p>The relying party may make some reasonable inferences about alias
+relationships between identifiers based on the set of concurrent claims
+from multiple identity providers. If made, such inferences must be made
+at equivalent LOA of the linked claim (inference must not be used to
+escalate LOA).</p>
+
+<p>For example:</p>
+
+<ul>
+  <li>If IDP-X issued a token with ID-A@LOA-2 and ID-B@LOA-2; and</li>
+  <li>IDP-Y issued the same RP a token with ID-B@LOA-1 and ID-C@LOA-1;</li>
+  <li>by transitive inference, the RP knows ID-A is an alias for ID-C</li>
+  <li>the LOA of this alias relationship is LOA-1 (the lesser of LOA-1 and LOA-2)</li>
+</ul>
+
+<p>The other way to establish alias relationships between identities is a
+mutual pair of assertions. For example, if ID-A asserted an alias
+relationship with ID-B, and ID-B asserted an alias relationship with
+ID-A. Either identity could break this alias relationship by revoking
+their assertion.</p>
+
+<p>Mutually asserted alias relationships are made at the higher LOA of the
+pair. For example:</p>
+
+<ul>
+  <li>If IDP-X issued a token for ID-A@LOA-2; and</li>
+  <li>This token was used to assert alias relationship with ID-C; and</li>
+  <li>IDP-Y issued a token for ID-C@LOA-1; and</li>
+  <li>that token was used to assert alias relationship with ID-A; then</li>
+  <li>by mutual assertion, ID-A is an alias for ID-C</li>
+  <li>the LOA of the alias relationship is LOA-2 (the greater of LOA-1 and LOA-2)</li>
+</ul>
+
+<h2 id="the-on-behalf-of-relationship-between-identities">The “on behalf of” relationship between identities</h2>
+
+<p>Authorisation scopes pertain to the authentication claims in a token. If
+they trust the token at all (trust the IDP), then the RP will also trust
+the identity claims in the token to the proscribed level of assurance.
+Within those parameters, the Relying Party can be confident (and can
+prove) that have permission to perform a certain type of action with the
+consent of the End-User business.</p>
+
+<p>But authenticated parties do not always act on their own behalf. There
+are circumstances where one party (e.g. a professional service provider
+such as a book keeper or other leger service) has the permission and
+ability to make certain actions on the behalf of another business.</p>
+
+<p>These role-based authorisations are not part of the ADBC IDP
+Specification. They May be supported elsewhere, but not as part of this
+spec. There is no need for specific OICD authorisation scopes or rules
+to support this. If the ADBC Service Metadata Publisher specification
+included role-based access control lists, then the existing
+authorisation scope (update business metadata) would be sufficient to
+allow maintenance of these access control lists.</p>
+
+<h2 id="business-network-relationships-between-identities">Business network relationships between identities</h2>
+
+<p>There are many other kinds of relationships between businesses, many
+different complex webs of association. Some of them resemble social
+media friend networks.</p>
+
+<p>The ADBC IDP Specification does not attempt to capture or model these
+relationship graphs. Like access control lists used to implement a
+role-based security model for “on behalf of” relationships, it is
+possible to capture association webs as business metadata. There is no
+need to make any specific provision in the ADBC-IDP Specification to
+support them.</p>
+
+<h1 id="scope">Scope</h1>
+
+<h2 id="jurisdictions">Jurisdictions</h2>
+
+<p>Australia is the only jurisdiction currently supported by the ADBC IDP Specification.</p>
+
+<p>The design-intent of the specification is to be applicable to any jurisdiction.</p>
+
+<p>Any jurisdiction with one or more appropriate identity schemes and a suitable identity market could be included in the specification.</p>
+
+<h2 id="identity-schemes">Identity Schemes</h2>
+
+<p>The Australian Business Number (ABN) is currently the only ID Scheme supported by the ADBC IDP Specification.</p>
+
+<p>The design intent is to define a standard that’s applicable to any appropriate ID Scheme.</p>
+
+<h2 id="adding-jurisdictions-and-identity-schemes-to-the-standard">Adding Jurisdictions and Identity Schemes to the standard</h2>
+
+<p>The process for adding a jurisdiction to the specification starts with raising a ticket at the <a href="https://github.com/ausdigital/ausdigital-idp">community GitHub site</a>. This is the same process as any other change to the Specification (<a href="https://rfc.unprotocols.org/spec:2/COSS/">Consensus Oriented Specification System</a>).</p>
+
+<p>The reason other jurisdictions and schemes have not been pre-emptively included, is that there is no evidence of need for these in the current community. Contribution from stakeholders in jurisdictions outside Australia would be very welcome.</p>
+
+<h1 id="levels-of-assurance-loa">Levels Of Assurance (LOA)</h1>
+
+<p>The IDP Concepts chapter describes level of assurance as the trust that
+an RP places in the individual identity claims.</p>
+
+<h2 id="specified-loas">Specified LOAs</h2>
+
+<p>A relying party places categorical trust in each identity claims that it
+accepts from an IDP.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>LOA</th>
+      <th>Confidence</th>
+      <th>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Low</td>
+      <td>Self-asserted identity</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Moderate</td>
+      <td>Unregulated community/organisation assurance</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>High</td>
+      <td>Regulated organisation assurance</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Very High</td>
+      <td>Jurisdictional Assurance</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>These categories are non-discretionary, meaning that if the relying
+party accepts the token from the IDP, the LOA of the trust is determined
+by rules that are part of the ADBC IDP Specification (not by policy of
+the individual relying party).</p>
+
+<h2 id="logical-model">Logical Model</h2>
+
+<p>The following entity/relationship diagram illustrates the logical model
+referenced in the rules that determine LOA. These terms are defined in
+the IDP Concepts chapter.</p>
+
+<p><img src="images/loa_logical_model.png" alt="LOA logical ERD" /></p>
+
+<p>In words, the logical model means:</p>
+
+<ul>
+  <li>An IDP can make many Identity Claims</li>
+  <li>All Identity Claims are associated with one Identity Scheme</li>
+  <li>An Identity Scheme may be associated with zero or one Jurisdiction</li>
+  <li>A Jurisdiction may have more than one Identity Scheme</li>
+  <li>A Jurisdiction may have more than one pieces of KYC regulation.</li>
+</ul>
+
+<h1 id="loa-rules">LOA Rules</h1>
+
+<ul>
+  <li>If an ID Scheme has no Jurisdiction, then a Relying Party MUST NOT trust ID Claims against that scheme above LOA-1. The maximum possible LOA for schemes without jurisdiction is LOA-1, LOA-0 is also possible for schemes without a jurisdiction.</li>
+  <li>If an IDP is not bound to KYC Regulation in the Jurisdiction of the ID Scheme, then a Relying Party MUST NOT trust ID Claims against that scheme from that IDP at LOA-2.</li>
+  <li>If an IDP is bound to KYC Regulation in the Jurisdiction of the ID Scheme, then a Relying Party MAY trust ID Claims against that scheme from that IDP at LOA-2.</li>
+  <li>If a Relying Party does not have a contractual relationship with an IDP assuring security cooperation in the event of incident or complaint, the relying party MUST NOT trust ID Claims from that IDP at LOA-2.</li>
+  <li>If an IDP is operated by the head of power (i.e. Government) in the Jurisdiction of the ID Scheme, then the Relying Party MUST trust Identity Claims against that scheme from that IDP at LOA-3.</li>
+  <li>A Relying Party may chose to reject claims from any IDP, including claims from an IDP operated by the head of power in the Jurisdiction of the Identity Scheme.</li>
+</ul>
+
+<p># Known Customers</p>
+
+<p>The ADBC IDP Specification has a requirement to support fully automated
+workflows. Some OIDC tokens provide persistent authorisation, but there
+are some automated business to business processes where the End-User is
+unlikely to be available to provide authorisation in realtime.</p>
+
+<p>Our solution is what we call a “Known Customer” authentication. This
+combines “on behalf of” relationship between businesses with contractual
+proof of consent. The credential security of Known Customer
+relationships is intrinsically weak, therefor needs to be supported by
+strong perimeter security processes such as legal protection, audit,
+monitoring, review and dispute resolution capabilities.</p>
+
+<p>Known customer relationship is only allowed for LOA1 and LOA2 claims.</p>
+
+<p>Support for Known Customers at LOA-1 or LOA-2 requires an additional API
+(not part of OIDC), to allow the trusted business to:</p>
+
+<ul>
+  <li>Assert that the business identity is a known customer request a JWT with a known customer’s identity claim and “manage business metadata” authorisation scope.</li>
+</ul>
+
+<p>TODO: cross reference API specifications</p>
+
+<p>There must be a contractual relationship between the RP and the trusted
+business, that ensures known customer assertions are auditable and
+operated with appropriate security precautions.</p>
+
+<p>An LOA-1 claim essentially relies on offline authorisation by the
+business, through commercial/contractual arrangements between End-User
+businesses and the organisation that has a Known Customer relationship
+with them.</p>
+
+<p>An LOA-2 claim is like an LOA-1 claim, except the commercial/contractual
+relationship between End User businesses and the organisation issuing
+authorisations on their behalf is regulated by the KYC regulations in
+the Jurisdiction of the Identity Scheme that the claim is made under.</p>
+
+<p>The JWT is issued through the REST API, not using the OIDC protocol.
+However, once issued it can be validated and renewed as though it were
+issued through the OICD protocol (Authorisation Code Flow).</p>
+
+<h1 id="related-material">Related Material</h1>
+
+<ul>
+  <li><a href="https://github.com/ausdigital/ausdigital-idp/issues/">GitHub issues</a> for collaborating on the development of the IDP.</li>
+  <li>A reference <a href="https://idp.testpoint.io/">IDP service</a> (for testing and development purposes).</li>
+  <li>Free, Open-Source Software <a href="https://github.com/test-point/testpoint-idp">IDP implementation</a>.</li>
+  <li>An automated <a href="https://github.com/test-point/testpoint-idp">IDP test suite</a>.</li>
+</ul>
+
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <a href="/" class="footer-logo"><img src="/images/logo.png" alt="AusDigital"><span>AusDigital.org</span></a>
+    <ul class="footer-menu">
+        <li><a href="http://ausdigital.org/about">About AusDigital</a></li>
+        <li><a href="https://github.com/ausdigital" target="_blank">Github</a></li>
+        <li><a href="http://eepurl.com/ctZ6hf" target="_blank">Newsletter</a></li>
+        <li><a href="http://chat.ausdigital.org/" target="_blank">Join</a> <a href="https://ausdigital.slack.com/messages/general/" target="_blank">team</a></li>
+    </ul>
+    <div class="footer-credits">
+        This page was generated by GitHub Pages.
+        Comments, issues and suggestions are welcome in the <a href="https://github.com/ausdigital/ausdigital.github.io/issues/new">ticket system</a>.
+        Pull requests welcome in the <a href="https://github.com/ausdigital/ausdigital.github.io/">site repository</a>.
+    </div>
+</footer>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79579364-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<script src="/js/anchor.min.js"></script>
+<script>
+    anchors.add('h1, h2, h3, h4, h5');
+    anchors.remove('.no-anchor, .page-content > h1:first-child');
+</script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Transaction Access Point (TAP) callback protocol interfaces
+  description: The "Transaction Access Point" (TAP) callback specification defines a standard protocol for ledger systems to consume technical callbacks during TAP messages exchange.
+schemes:
+  - https
+basePath: /
+produces:
+  - application/json
+parameters:
+  callbackUrl:
+    name: callbackUrl
+    in: path
+    description: The any callback URL.
+    required: true
+    type: string
+  callback:
+    name: callback
+    in: formData
+    description: 'The callback file. Must be a valid json document. Shema - https://github.com/ausdigital/ausdigital-tap/blob/master/docs/2.0/callback-schema.json'
+    required: true
+    type: file
+  signature:
+    name: signature
+    in: formData
+    description: The signature file.
+    required: true
+    type: file
+  contentTypeMPHeader:
+    name: Content-Type
+    in: header
+    description: The content type multipart/form-data header.
+    required: true
+    type: string
+    default: multipart/form-data
+    enum:
+      - multipart/form-data
+responses:
+  '404':
+    description: The origin server did not find a current representation of the target resource or is not willing to disclose that one exists.
+    schema:
+      $ref: '#/definitions/errors'
+    examples:
+      application/json: |-
+        {
+          "errors":[{
+              "code":"TAP-0001",
+              "name":"Resource Not Found.",
+              "userMessage":"The origin server did not find a current representation of the target resource or is not willing to disclose that one exists."
+            }
+          ]
+        }
+  '415':
+    description: Unsupported media type.
+    schema:
+      $ref: '#/definitions/errors'
+    examples:
+      application/json: |-
+        {
+          "errors":[{
+              "code":"TAP-0002",
+              "name":"Unsupported media type.",
+              "userMessage":"The origin server is refusing to service the request because the payload is in a format not supported by this method on the target resource."
+            }
+          ]
+        }
+  '500':
+    description: Internal server error; no action required; may help to retry request later or contact support.
+    schema:
+      $ref: '#/definitions/errors'
+    examples:
+      application/json: |-
+        {
+          "errors":[{
+              "code":"TAP-0003",
+              "name":"Internal server error.",
+              "userMessage":"The server encountered an unexpected condition that prevented it from fulfilling the request."
+            }
+          ]
+        }
+  400-nofile:
+    description: The server cannot or will not process the request due to something that is perceived to be a client error.
+    schema:
+      $ref: '#/definitions/errors'
+    examples:
+      application/json: |-
+        {
+          "errors":[{
+              "code":"TAP-0004",
+              "name":"Bad Request.",
+              "userMessage":"The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing)."
+            }
+          ]
+        }
+paths:
+  '/{callbackUrl}':
+    post:
+      tags:
+        - Post TAP message
+      summary: Post TAP message to given TAP URL
+      description: 'Post TAP message. Payload must be a TAP message with a signature, each in a separate formData parameter. TAP URL could be any valid URL.'
+      operationId: postTAPMessage
+      consumes:
+        - multipart/form-data
+      parameters:
+        - $ref: '#/parameters/callbackUrl'
+        - $ref: '#/parameters/contentTypeMPHeader'
+        - $ref: '#/parameters/callback'
+        - $ref: '#/parameters/signature'
+      responses:
+        '200':
+          description: OK. callback has been received.
+          headers:
+            Content-Type:
+              type: string
+              description: Mandatory. Value - application/json.
+        '400':
+          $ref: '#/responses/400-nofile'
+        '404':
+          $ref: '#/responses/404'
+        '415':
+          $ref: '#/responses/415'
+        '500':
+          $ref: '#/responses/500'
+definitions:
+  callback:
+    description: The TAP callback model.
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          type:
+            type: string
+            description: Data type for a callback message.
+            enum: 
+            - TapCallback
+          id:
+            type: string
+            description: The message id, provided with the 200 response when the message was initially posted.
+          attributes:
+            type: object
+            description: The TAP Message attributes.
+            properties:
+              messageHash:
+                type: string
+                description: encyphered document SHA256 hash (before the encryption)
+              status:
+                type: string
+                description: The TAP Message status.
+                enum:
+                  - new
+                  - read
+              deliveryStatus:
+                type: string
+                description: The TAP Message delivery status.
+                enum:
+                  - sent
+                  - delivered
+                  - error
+              deliveryMessage:
+                type: string
+                description: The user-friendly message explaining the specific delivery status reason.
+              statusDate:
+                type: string
+                format: date-time
+                description: ISO 8601 datetime format with the timezone.
+              initiatorParticipantID:
+                type: string
+                description: The initiator participant identifier in the format scheme_X::id_A
+              responderParticipantID:
+                type: string
+                description: The responder  participant identifier in the format scheme_Y::id_B
+              initiatorReference:
+                type: string
+                description: The initiator reference of the TAP message(?).
+              senderParticipantID:
+                type: string
+                description: The sender  participant identifier in the format scheme_X::id_A
+              endpointID:
+                type: string
+                format: uri
+                description: scheme_Z::id_C.
+  errors:
+    type: object
+    properties:
+      errors:
+        type: array
+        items:
+          $ref: '#/definitions/error'
+  error:
+    description: The standard error response definition.
+    properties:
+      code:
+        type: string
+        description: The code associated with the error.
+      name:
+        type: string
+        description: The name category for the error.
+      userMessage:
+        type: string
+        description: The human readable error message.

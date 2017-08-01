@@ -1,0 +1,18 @@
+digraph d {
+  node [shape=rectangle];
+  label="Hosting Obligation Contract (HOC)\nSigned Merkel-DAG Structure";
+  subgraph cluster_pub {
+    label="always public";
+    HOC_PROOF [label="HOC Proof\nproof.json\nproof.sig"];
+    HOC_HEADER [label="HOC Header"];
+  }
+  subgraph cluster_stp {
+    label="sometimes private";
+    HOC_DETAIL [label="HOC Detail"];
+    OBJECT [label="Notarised\nObject"];
+  }
+  
+  HOC_PROOF -> HOC_HEADER [arrowhead=none];
+  HOC_HEADER -> HOC_DETAIL [arrowhead=crow];
+  HOC_DETAIL -> OBJECT [arrowhead=crow];
+}

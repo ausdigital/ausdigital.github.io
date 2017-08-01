@@ -1,0 +1,86 @@
+{
+  "title": "The TAP callback model.",
+  "id": "https://raw.githubusercontent.com/ausdigital/ausdigital-tap/master/docs/2.0/callback-schema.json#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "type",
+        "id",
+        "attributes"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Data type for a callback message.",
+          "enum": ["TapCallback"]
+        },
+        "id": {
+          "type": "string",
+          "description": "The message id, provided with the 200 response when the message was initially posted."
+        },
+        "attributes": {
+          "type": "object",
+          "description": "The message attributes.",
+          "required": [
+            "messageHash",
+            "deliveryStatus",
+            "deliveryMessage",
+            "statusDate",
+            "initiatorParticipantID",
+            "responderParticipantID",
+            "initiatorReference",
+            "senderParticipantID",
+            "endpointID"
+          ],
+          "properties": {
+            "messageHash": {
+              "type": "string",
+              "description": "The value from the message.json file, i.e. unique for message content."
+            },
+            "deliveryStatus": {
+              "type": "string",
+              "description": "The TAP message delivery status.",
+              "enum": ["sent", "delivered", "error"]
+            },
+            "deliveryMessage": {
+              "type": "string",
+              "description": "The user-friendly message explaining the specific delivery status reason."
+            },
+            "statusDate": {
+              "type": "string",
+              "description": "ISO 8601 datetime format with the timezone."
+            },
+            "initiatorParticipantID": {
+              "type": "string",
+              "description": "The initiator participant identifier in the format scheme_X::id_A"
+            },
+            "responderParticipantID": {
+              "type": "string",
+              "description": "The responder participant identifier in the format scheme_Y::id_B"
+            },
+            "initiatorReference": {
+              "type": "string",
+              "description": "The initiator reference of the TAP message(?)."
+            },
+            "senderParticipantID": {
+              "type": "string",
+              "description": "The sender participant identifier in the format scheme_X::id_A"
+            },
+            "endpointID": {
+              "type": "string",
+              "description": "scheme_Z::id_C"
+            }
+          }
+        }
+      }
+    }
+  }
+}
