@@ -13,7 +13,7 @@ The Notary service provides an irrefutable history of a specific "contract" (eg 
 
 | Specification URL | Version | Status | API Definition | Issues List |
 | ----------------- | ------  | ------ | -------------- | ----------- |
-| [NRY 1.0 spec](http://ausdigital.org/specs/ausdigital-nry/1.0/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)   | [NRY 1.0 API](http://swagger.testpoint.io?url=http://ausdigital.org/specs/ausdigital-nry/1.0/swagger.json){:target="_blank"} |  [NRY 1.0 Issues](https://github.com/ausdigital/ausdigital-nry/issues)  |
+| [NRY 1.0 spec](http://ausdigital.org/specs/ausdigital-nry/1.0/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg)   | [NRY 1.0 API](http://swagger.testpoint.io?url=http://ausdigital.org/specs/ausdigital-nry/1.0/swagger.yaml){:target="_blank"} |  [NRY 1.0 Issues](https://github.com/ausdigital/ausdigital-nry/issues)  |
 
 ## Known Implementations
 

@@ -38,8 +38,8 @@ The intent of UBL JSON Syntax 1.0 spec is to provide developers with a much simp
 | Specification URL | Version | Status | API Definition | Issues List |
 | ----------------- | ------  | ------ | -------------- | ----------- |
 | [SYN-XML 1.0 spec](http://ausdigital.org/specs/ausdigital-syn-xml/1.0/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | N/A | [SYN-XML 1.0 Issues](https://github.com/ausdigital/ausdigital-syn-xml/issues)  |
-| [SYN-JSON 1.0 spec](http://ausdigital.org/specs/ausdigital-syn-json/1.0/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [SYN-JSON 1.0 API](http://swagger.testpoint.io?url=http://ausdigital.org/specs/ausdigital-syn-json/1.0/swagger.json){:target="_blank"}   | [SYN-JSON 1.0 Issues](https://github.com/ausdigital/ausdigital-syn-json/issues)  |
-| [SYN-SOL 1.0 spec](http://ausdigital.org/specs/ausdigital-syn-sol/1.0/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [SYN-SOL 1.0 API](http://swagger.testpoint.io?url=http://ausdigital.org/specs/ausdigital-syn-sol/1.0/swagger.json){:target="_blank"}   | [SYN-SOL 1.0 Issues](https://github.com/ausdigital/ausdigital-syn-sol/issues)  |
+| [SYN-JSON 1.0 spec](http://ausdigital.org/specs/ausdigital-syn-json/1.0/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [SYN-JSON 1.0 API](http://swagger.testpoint.io?url=http://ausdigital.org/specs/ausdigital-syn-json/1.0/swagger.yaml){:target="_blank"}   | [SYN-JSON 1.0 Issues](https://github.com/ausdigital/ausdigital-syn-json/issues)  |
+| [SYN-SOL 1.0 spec](http://ausdigital.org/specs/ausdigital-syn-sol/1.0/) | 1.0 | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) | [SYN-SOL 1.0 API](http://swagger.testpoint.io?url=http://ausdigital.org/specs/ausdigital-syn-sol/1.0/swagger.yaml){:target="_blank"}   | [SYN-SOL 1.0 Issues](https://github.com/ausdigital/ausdigital-syn-sol/issues)  |
 
 ## Known Implementations
 
