@@ -253,6 +253,8 @@ paths:
       summary: Create/Update Service Metadata
       description: Create/Update Service Metadata
       operationId: createServiceMetadata
+      consumes : 
+        - application/xml
       parameters:
         - $ref: '#/parameters/participantIdUrlParameter'
         - $ref: '#/parameters/documentIdUrlParameter'
